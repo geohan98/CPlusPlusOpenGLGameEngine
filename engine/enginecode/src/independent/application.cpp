@@ -15,13 +15,16 @@ namespace Engine {
 		{
 			s_instance = this;
 		}
+
+		logger = new Log();
+		logger->start();
 	}
 
 	Application::~Application()
 	{
 	}
 
-	
+
 
 	void Application::run()
 	{
