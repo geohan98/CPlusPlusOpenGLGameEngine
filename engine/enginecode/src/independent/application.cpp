@@ -16,7 +16,7 @@ namespace Engine {
 			s_instance = this;
 		}
 
-		logger = new Log();
+		logger = std::shared_ptr<Log>(new Log());
 		logger->start();
 	}
 
@@ -24,11 +24,8 @@ namespace Engine {
 	{
 	}
 
-
-
 	void Application::run()
 	{
-
 	}
 
 }

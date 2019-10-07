@@ -1,31 +1,41 @@
-#include <systems/log.h>
+#include "engine_pch.h"
+#include "systems/log.h"
 
-Engine::Log::Log()
-{
-}
 
-Engine::Log::~Log()
-{
-}
+namespace Engine {
 
-void Engine::Log::start(SystemSignal init, ...)
-{
-	if (!b_loggerActive)
+	std::shared_ptr<spdlog::logger> Log::m_logger;
+	bool Log::b_loggerActive = false;
+
+	Log::Log()
 	{
-		m_logger = spdlog::basic_logger_mt("Basic Logger", "logs/basic.txt");
-		b_loggerActive = true;
-		m_logger->info("Logger Started");
 	}
-	else
-	{
-		m_logger->info("Logger Already Running");
-	}
-}
 
-void Engine::Log::stop(SystemSignal close, ...)
-{
-	if (b_loggerActive)
+	Log::~Log()
 	{
-		m_logger->info("Logger Stopping");
 	}
+
+	void Log::start(SystemSignal init, ...)
+	{
+		if (!b_loggerActive)
+		{
+			std::cout << "Hello World" << std::endl;
+			m_logger = spdlog::stdout_color_st("Console");
+			b_loggerActive = true;
+			m_logger->info("Logger Started");
+		}
+		else
+		{
+			m_logger->info("Logger Already Running");
+		}
+	}
+
+	void Log::stop(SystemSignal close, ...)
+	{
+		if (b_loggerActive)
+		{
+			m_logger->info("Logger Stopping");
+		}
+	}
+
 }
