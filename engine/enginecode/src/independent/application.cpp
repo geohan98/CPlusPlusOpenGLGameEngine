@@ -16,8 +16,9 @@ namespace Engine {
 			s_instance = this;
 		}
 
-		logger = std::shared_ptr<Log>(new Log());
-		logger->start();
+		m_logger = std::shared_ptr<Log>(new Log());
+		m_timer = std::shared_ptr<Timer>(new Timer());
+
 	}
 
 	Application::~Application()
@@ -26,6 +27,9 @@ namespace Engine {
 
 	void Application::run()
 	{
+		m_timer->start();
+		m_logger->start();
+		Log::getLogger()->info(m_timer->getAppStart());
 	}
 
 }

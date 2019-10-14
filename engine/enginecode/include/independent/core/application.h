@@ -2,6 +2,7 @@
 */
 #pragma once
 #include "systems/log.h"
+#include "systems/timer.h"
 
 namespace Engine {
 
@@ -15,7 +16,8 @@ namespace Engine {
 	{
 	protected:
 		Application(); //!< Constructor
-		std::shared_ptr<Log> logger;
+		std::shared_ptr<Log> m_logger;
+		std::shared_ptr<Timer> m_timer;
 	private:
 		static Application* s_instance; //!< Singleton instance of the application
 	public:

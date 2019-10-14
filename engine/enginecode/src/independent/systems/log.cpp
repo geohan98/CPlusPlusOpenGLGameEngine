@@ -19,7 +19,6 @@ namespace Engine {
 	{
 		if (!b_loggerActive)
 		{
-			std::cout << "Hello World" << std::endl;
 			m_logger = spdlog::stdout_color_st("Console");
 			b_loggerActive = true;
 			m_logger->info("Logger Started");
