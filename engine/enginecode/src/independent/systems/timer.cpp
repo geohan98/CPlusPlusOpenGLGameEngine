@@ -4,24 +4,36 @@
 
 namespace Engine {
 
-	std::shared_ptr<std::chrono::high_resolution_clock::time_point> m_appStart;
-	bool Timer::b_timerActive = false;
+	std::chrono::high_resolution_clock::time_point I_Timer::m_appStart;
+	bool I_Timer::b_timerActive = false;
 
-	Timer::Timer()
+	I_Timer::I_Timer() {}
+
+	I_Timer::~I_Timer() {}
+
+	void I_Timer::start(SystemSignal init, ...)
 	{
+		b_timerActive = true;
+		Reset();
+		m_timeScale = 1.0f;
+		m_DeltaTime = std::chrono::duration<float>(0.0f);
 	}
 
-	Timer::~Timer()
+	void I_Timer::stop(SystemSignal close, ...) {}
+
+	void I_Timer::Reset() 
 	{
+		m_frameStart = std::chrono::high_resolution_clock::now();
 	}
 
-	void Timer::start(SystemSignal init, ...)
+	void I_Timer::setTimeScale(float t)
 	{
-		*m_appStart = std::chrono::high_resolution_clock::now();
+		m_timeScale = t;
 	}
 
-	void Timer::stop(SystemSignal close, ...)
+	void I_Timer::Tick()
 	{
+		m_DeltaTime = std::chrono::high_resolution_clock::now() - m_frameStart;
 	}
 
 }

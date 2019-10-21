@@ -4,18 +4,18 @@
 
 namespace Engine {
 
-	std::shared_ptr<spdlog::logger> Log::m_logger;
-	bool Log::b_loggerActive = false;
+	std::shared_ptr<spdlog::logger> I_Logger::m_logger;
+	bool I_Logger::b_loggerActive = false;
 
-	Log::Log()
+	I_Logger::I_Logger()
 	{
 	}
 
-	Log::~Log()
+	I_Logger::~I_Logger()
 	{
 	}
 
-	void Log::start(SystemSignal init, ...)
+	void I_Logger::start(SystemSignal init, ...)
 	{
 		if (!b_loggerActive)
 		{
@@ -29,7 +29,7 @@ namespace Engine {
 		}
 	}
 
-	void Log::stop(SystemSignal close, ...)
+	void I_Logger::stop(SystemSignal close, ...)
 	{
 		if (b_loggerActive)
 		{
