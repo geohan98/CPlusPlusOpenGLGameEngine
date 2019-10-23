@@ -19,32 +19,26 @@ namespace Engine {
 			s_instance = this;
 		}
 
-		m_logger.reset(new I_Logger());
+		m_logger.reset(I_Logger::getInstance());
 		m_logger->start();
 
-		m_timer.reset(new I_Timer());
+		m_timer.reset(I_Timer::getInstance());
 		m_timer->start();
-		I_Logger::getLogger()->info("Timer Started At: {0}", I_Timer::getAppStart());
 	}
 
 	Application::~Application()
 	{
 		m_logger->stop();
 		m_timer->stop();
-		std::cin.get();
 	}
 
 	void Application::run()
 	{
-		bool isRunning = true;
-		float frameRate = 60.0f;
-
-		while (isRunning)
+		while (true)
 		{
 			m_timer->Tick();
-
-				m_timer->Reset();
-				I_Logger::getLogger()->info(1 / m_timer->getDeltaTime());
+			m_timer->Reset();
+			m_logger->Info(1 / m_timer->getDeltaTime());
 		}
 	}
 

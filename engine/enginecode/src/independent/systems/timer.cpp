@@ -2,10 +2,25 @@
 #include "include/independent/systems/timer.h"
 
 
-namespace Engine {
 
-	std::chrono::high_resolution_clock::time_point I_Timer::m_appStart;
-	bool I_Timer::b_timerActive = false;
+namespace Engine
+{
+	//Singleton Pattern
+	bool I_Timer::b_Flag = false;
+	I_Timer* I_Timer::instance = nullptr;
+	I_Timer* I_Timer::getInstance()
+	{
+		if (!b_Flag)
+		{
+			instance = new I_Timer();
+			b_Flag = true;
+			return instance;
+		}
+		else
+		{
+			return instance;
+		}
+	}
 
 	I_Timer::I_Timer() {}
 
@@ -19,16 +34,13 @@ namespace Engine {
 		m_DeltaTime = std::chrono::duration<float>(0.0f);
 	}
 
-	void I_Timer::stop(SystemSignal close, ...) {}
-
-	void I_Timer::Reset() 
+	void I_Timer::stop(SystemSignal close, ...)
 	{
-		m_frameStart = std::chrono::high_resolution_clock::now();
 	}
 
-	void I_Timer::setTimeScale(float t)
+	void I_Timer::Reset()
 	{
-		m_timeScale = t;
+		m_frameStart = std::chrono::high_resolution_clock::now();
 	}
 
 	void I_Timer::Tick()

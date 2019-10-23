@@ -4,16 +4,26 @@
 
 namespace Engine {
 
-	std::shared_ptr<spdlog::logger> I_Logger::m_logger;
-	bool I_Logger::b_loggerActive = false;
-
-	I_Logger::I_Logger()
+	//Singleton Pattern
+	bool I_Logger::b_Flag = false;
+	I_Logger* I_Logger::instance = nullptr;
+	I_Logger* I_Logger::getInstance()
 	{
+		if (!b_Flag)
+		{
+			instance = new I_Logger();
+			b_Flag = true;
+			return instance;
+		}
+		else
+		{
+			return instance;
+		}
 	}
 
-	I_Logger::~I_Logger()
-	{
-	}
+	I_Logger::I_Logger() {}
+
+	I_Logger::~I_Logger() {}
 
 	void I_Logger::start(SystemSignal init, ...)
 	{
@@ -35,6 +45,46 @@ namespace Engine {
 		{
 			m_logger->info("Logger Stopping");
 		}
+	}
+
+	void I_Logger::Info(std::string msg)
+	{
+		m_logger->info(msg);
+	}
+
+	void I_Logger::Info(float msg)
+	{
+		m_logger->info(msg);
+	}
+
+	void I_Logger::Warning(std::string msg)
+	{
+		m_logger->warn(msg);
+	}
+
+	void I_Logger::Warning(float msg)
+	{
+		m_logger->warn(msg);
+	}
+
+	void I_Logger::Error(std::string msg)
+	{
+		m_logger->error(msg);
+	}
+
+	void I_Logger::Error(float msg)
+	{
+		m_logger->error(msg);
+	}
+
+	void I_Logger::Critical(std::string msg)
+	{
+		m_logger->critical(msg);
+	}
+
+	void I_Logger::Critical(float msg)
+	{
+		m_logger->critical(msg);
 	}
 
 }

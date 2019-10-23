@@ -3,30 +3,36 @@
 #include <memory>
 #include <chrono>
 
-namespace Engine {
-	class I_Timer
+namespace Engine
+{
+	class I_Timer : public System
 	{
+		//Singleton Pattern
 	private:
-		static std::chrono::high_resolution_clock::time_point m_appStart;
-		std::chrono::high_resolution_clock::time_point m_frameStart;
-		std::chrono::duration<float> m_DeltaTime;
-		float m_timeScale;
-		static bool b_timerActive;
-	public:
+		static bool b_Flag;
+		static I_Timer* instance;
 		I_Timer();
+	public:
+		static I_Timer* getInstance();
 		~I_Timer();
 
+	private:
+		std::chrono::high_resolution_clock::time_point m_appStart;
+		std::chrono::high_resolution_clock::time_point m_frameStart;
+		std::chrono::duration<float> m_DeltaTime = std::chrono::duration<float>(0.0f);
+		float m_timeScale = 1.0f;
+		bool b_timerActive = false;
+	public:
 		void start(SystemSignal init = SystemSignal::None, ...);
 		void stop(SystemSignal close = SystemSignal::None, ...);
 
 		void Reset();
 		void Tick();
 
-		void setTimeScale(float t = 1.0f);
-		float getTimeScale() { return m_timeScale; }
+		inline void setTimeScale(float t) { m_timeScale = t; }
+		inline float getTimeScale() { return m_timeScale; }
 		inline float getDeltaTime() { return m_DeltaTime.count(); }
-
-		static float getAppStart(){ return m_appStart.time_since_epoch().count(); }
-		inline static bool getTimerStatus() { return b_timerActive; };
+		inline float getAppStart() { return m_appStart.time_since_epoch().count(); }
+		inline bool getTimerStatus() { return b_timerActive; }
 	};
 }
