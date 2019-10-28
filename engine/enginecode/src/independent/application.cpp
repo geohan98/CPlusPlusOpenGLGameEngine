@@ -5,8 +5,11 @@
 #include "engine_pch.h"
 #include "core/application.h"
 
-#include "systems/log.h"
-#include "systems/timer.h"
+#include "systems/EventDispatcher.h"
+
+
+
+
 
 
 namespace Engine {
@@ -26,20 +29,34 @@ namespace Engine {
 		m_timer->start();
 	}
 
+	bool Application::onClose(WindowResize & e)
+	{
+		m_logger->Info("Closing Application");
+		return false;
+	}
+
+	bool Application::onResize(WindowResize & e)
+	{
+		m_logger->Info("Resizing Window");
+		return false;
+	}
+
 	Application::~Application()
 	{
 		m_logger->stop();
 		m_timer->stop();
 	}
 
+	void Application::onEvent(Event& e)
+	{
+		EventDispatcher d(e);
+		d.dispatch<WindowClose>(std::bind(&Application::onClose, this, std::placeholders::_1));
+		d.dispatch<WindowResize>(std::bind(&Application::onResize, this, std::placeholders::_1));
+	}
+
 	void Application::run()
 	{
-		while (true)
-		{
-			m_timer->Tick();
-			m_timer->Reset();
-			m_logger->Info(1 / m_timer->getDeltaTime());
-		}
+
 	}
 
 }

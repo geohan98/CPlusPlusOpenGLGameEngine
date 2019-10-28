@@ -2,12 +2,13 @@
 
 #include "include/independent/systems/events/event.h"
 
-class MouseButtonPressed : Event
+class MouseButtonPressed : public Event
 {
 private:
 	int m_button;
 public:
 	MouseButtonPressed(int button) : m_button(button) {};
+	static EventType getStaticType() { return EventType::MouseButtonPressed; }
 	EventType getEventType() const override { return EventType::MouseButtonPressed; }
 	int getCategoryFlags() const override { return EventCategoryMouseButton; }
 

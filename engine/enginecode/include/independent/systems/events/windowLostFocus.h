@@ -2,13 +2,14 @@
 
 #include "include/independent/systems/events/event.h"
 
-class WindowLostFocus : Event
+class WindowLostFocus : public Event
 {
 private:
 	int m_xPos;
 	int m_yPos;
 public:
 	WindowLostFocus(int xPos, int yPos) : m_xPos(xPos), m_yPos(yPos) {};
+	static EventType getStaticType() { return EventType::WindowLostFocus; }
 	EventType getEventType() const override { return EventType::WindowLostFocus; }
 	int getCategoryFlags() const override { return EventCategoryWindow; }
 
