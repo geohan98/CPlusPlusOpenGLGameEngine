@@ -7,7 +7,7 @@ namespace Engine
 {
 	std::shared_ptr<spdlog::logger> Log::s_coreLogger;
 	std::shared_ptr<spdlog::logger> Log::s_clientLogger;
-	bool Log::b_loggerActive = false;
+	bool Log::s_loggerActive = false;
 
 	void Log::start(SystemSignal init, ...)
 	{
@@ -18,7 +18,7 @@ namespace Engine
 		s_clientLogger = spdlog::stdout_color_mt("APP");
 		s_clientLogger->set_level(spdlog::level::trace);
 
-		b_loggerActive = true;
+		s_loggerActive = true;
 	}
 
 	void Log::stop(SystemSignal close, ...)

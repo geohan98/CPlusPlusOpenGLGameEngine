@@ -2,7 +2,7 @@
 */
 #pragma once
 #include "systems/log.h"
-#include "systems/timer.h"
+#include "systems/time.h"
 #include "systems/events/event.h"
 #include "systems/events/applicationEvents.h"
 #include "systems/events/keyEvents.h"
@@ -22,7 +22,7 @@ namespace Engine {
 	protected:
 		Application(); //!< Constructor
 		std::shared_ptr<Log> m_logger;
-		std::shared_ptr<I_Timer> m_timer;
+		std::shared_ptr<Time> m_timer;
 		static float m_timestep;
 
 		bool onClose(WindowResize& e);

@@ -12,14 +12,14 @@ namespace Engine {
 	private:
 		static std::shared_ptr<spdlog::logger> s_coreLogger;
 		static std::shared_ptr<spdlog::logger> s_clientLogger;
-		static bool b_loggerActive;
+		static bool s_loggerActive;
 	public:
 		void start(SystemSignal init = SystemSignal::None, ...);
 		void stop(SystemSignal close = SystemSignal::None, ...);
 
 		inline static std::shared_ptr<spdlog::logger>& getCoreLogger() { return s_coreLogger; };
 		inline static std::shared_ptr<spdlog::logger>& getClientLogger() { return s_clientLogger; };
-		inline static bool getLoggerStatus() { return b_loggerActive; };
+		inline static bool getLoggerStatus() { return s_loggerActive; };
 	};
 }
 

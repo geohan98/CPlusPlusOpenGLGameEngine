@@ -18,6 +18,9 @@ namespace Engine {
 
 		m_logger = std::shared_ptr<Log>(new Log());
 		m_logger->start();
+
+		m_timer = std::shared_ptr<Time>(new Time());
+		m_timer->start();
 	}
 
 	bool Application::onClose(WindowResize& e)
@@ -39,7 +42,12 @@ namespace Engine {
 
 	void Application::run()
 	{
-
+		while (true)
+		{
+			m_timer->reset();
+			LOG_CORE_TRACE(1 / TIME_DELTA_TIME);
+			m_timer->tick();
+		}
 	}
 
 }
