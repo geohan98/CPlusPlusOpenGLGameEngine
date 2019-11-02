@@ -3,7 +3,6 @@
 #pragma once
 #include "systems/log.h"
 #include "systems/timer.h"
-#include "systems/events/event.h"
 #include "systems/events/EventsHeader.h"
 
 namespace Engine {

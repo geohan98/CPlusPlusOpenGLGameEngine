@@ -1,15 +1,16 @@
 #pragma once
 
+#include "engine_pch.h"
 
 enum class EventType
 {
 	None = 0,
-	WindowClose,WindowResize,WindowFocus,WindowLostFocus,WindowMoved,
-	KeyPressed,KeyReleased,KeyTyped,
-	MouseButtonPressed,MouseButtonReleased,MouseMoved,MouseScrolled
+	WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
+	KeyPressed, KeyReleased, KeyTyped,
+	MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 };
 
-enum EventCategory 
+enum EventCategory
 {
 	None = 0,
 	EventCategoryWindow = 1 << 0,		//00000001

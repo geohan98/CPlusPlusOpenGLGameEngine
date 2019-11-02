@@ -1,3 +1,4 @@
+#include "systems/events/event.h"
 #include "systems/events/keyPressed.h"
 #include "systems/events/keyReleased.h"
 #include "systems/events/keyTyped.h"

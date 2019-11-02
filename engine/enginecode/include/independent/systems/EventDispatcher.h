@@ -1,12 +1,13 @@
 #pragma once
 
+#include "engine_pch.h"
 #include "systems/events/event.h"
 
 
 class EventDispatcher
 {
 	template<typename T>
-	using EventFunc = std::function<bool(t&)>;
+	using EventFunc = std::function<bool(T&)>;
 public:
 	EventDispatcher(Event& event) : m_event(event) {}
 
