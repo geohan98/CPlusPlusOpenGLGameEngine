@@ -10,7 +10,7 @@ namespace Engine
 		static std::chrono::high_resolution_clock::time_point s_frameStart;
 		static std::chrono::duration<float> s_deltaTime;
 		static float s_timeScale;
-		static bool s_timerActive;
+		static bool s_timeActive;
 	public:
 		void start(SystemSignal init = SystemSignal::None, ...);
 		void stop(SystemSignal close = SystemSignal::None, ...);
@@ -22,7 +22,7 @@ namespace Engine
 		inline static float getTimeScale() { return s_timeScale; }
 		inline static float getDeltaTime() { return s_deltaTime.count(); }
 		inline static float getAppStart() { return s_appStart.time_since_epoch().count(); }
-		inline static bool getTimerStatus() { return s_timerActive; }
+		inline static bool getTimerStatus() { return s_timeActive; }
 	};
 }
 

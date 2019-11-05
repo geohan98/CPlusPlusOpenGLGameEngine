@@ -3,10 +3,14 @@
 #include "graphicsContext.h"
 #include <string>
 #include <functional>
+#include "systems/events/event.h"
+#include "systems/events/applicationEvents.h"
+#include "systems/events/mouseEvents.h"
+#include "systems/events/keyEvents.h"
 
 namespace Engine {
 
-	class Event; // Be replaced
+	//class Event; // Be replaced
 
 	struct WindowProperties
 	{

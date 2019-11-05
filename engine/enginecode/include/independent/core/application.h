@@ -7,6 +7,7 @@
 #include "systems/events/applicationEvents.h"
 #include "systems/events/keyEvents.h"
 #include "systems/events/mouseEvents.h"
+#include "windows/windowSystem.h"
 
 
 namespace Engine {
@@ -23,12 +24,15 @@ namespace Engine {
 		Application(); //!< Constructor
 		std::shared_ptr<Log> m_logger;
 		std::shared_ptr<Time> m_timer;
+		std::shared_ptr<WindowSystem> m_window;
 		static float m_timestep;
 
-		bool onClose(WindowResize& e);
-		bool onResize(WindowResize& e);
 	private:
 		static Application* s_instance; //!< Singleton instance of the application
+
+		bool onClose(WindowClose& e);
+		bool onResize(WindowResize& e);
+
 	public:
 		virtual ~Application(); //!< Deconstructor
 		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
