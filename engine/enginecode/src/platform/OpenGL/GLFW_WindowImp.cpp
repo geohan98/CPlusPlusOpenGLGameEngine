@@ -32,7 +32,7 @@ namespace Engine
 			LOG_CORE_INFO("GLFW WINDOW CREATED");
 		}
 
-		m_context = std::shared_ptr<GraphicsContext>(new GLFW_GraphicsContext(m_nativeWindow));
+		m_context = std::unique_ptr<GraphicsContext>(new GLFW_GraphicsContext(m_nativeWindow));
 		m_context->init();
 
 		glfwSetWindowUserPointer(m_nativeWindow, &m_callBack);
@@ -61,8 +61,11 @@ namespace Engine
 	}
 	void GLFW_WindowImp::close()
 	{
+		m_context.release();
 		LOG_CORE_WARN("DESTROYING GLFW WINDOW");
 		glfwDestroyWindow(m_nativeWindow);
+		LOG_CORE_WARN("TERMINATING GLFW");
+		glfwTerminate();
 	}
 	GLFW_WindowImp::GLFW_WindowImp(const WindowProperties& properties)
 	{

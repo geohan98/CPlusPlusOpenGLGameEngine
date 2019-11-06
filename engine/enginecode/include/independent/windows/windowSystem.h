@@ -1,5 +1,4 @@
 #pragma once
-
 #include "systems/system.h"
 #include "windows/window.h"
 
@@ -14,5 +13,6 @@ namespace Engine
 		virtual void stop(SystemSignal close = SystemSignal::None, ...) = 0;
 		void setEventCallback(const std::function<void(Event&)>& callback) { m_window->setEventCallback(callback); };
 		void update(float timestep) { m_window->onUpdate(timestep); }
+		inline void* getNativeWindow() { return m_window->getNativeWindow(); }
 	};
 }

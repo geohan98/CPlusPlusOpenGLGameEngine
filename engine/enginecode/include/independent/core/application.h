@@ -21,27 +21,28 @@ namespace Engine {
 	class Application
 	{
 	protected:
-		Application(); //!< Constructor
-		std::shared_ptr<Log> m_logger;
-		std::shared_ptr<Time> m_timer;
-		std::shared_ptr<WindowSystem> m_window;
+		Application();															//!< Constructor
+		std::unique_ptr<Log> m_logger;
+		std::unique_ptr<Time> m_timer;
+		std::unique_ptr<WindowSystem> m_window;
 		static float m_timestep;
 
 	private:
-		static Application* s_instance; //!< Singleton instance of the application
+		static Application* s_instance;											//!< Singleton instance of the application
 
 		bool onClose(WindowClose& e);
 		bool onResize(WindowResize& e);
 
 	public:
-		virtual ~Application(); //!< Deconstructor
-		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
+		virtual ~Application();													//!< Deconstructor
+		inline static Application& getInstance() { return *s_instance; }		//!< Instance getter from singleton pattern
 		inline static float getTimestep() { return m_timestep; }
 		void onEvent(Event& e);
+		WindowSystem* getWindow() { return &(*m_window); }
 		void run(); //!< Main loop
 	};
 
 	// To be defined in users code
-	Application* startApplication(); //!< Function definition which provides an entry hook
+	Application* startApplication();											//!< Function definition which provides an entry hook
 
 }
