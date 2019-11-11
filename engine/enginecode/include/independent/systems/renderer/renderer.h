@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 
 namespace Engine
@@ -15,4 +15,4 @@ namespace Engine
 	public:
 		static API getAPI() { return s_API; }
 	};
-}
+}*/

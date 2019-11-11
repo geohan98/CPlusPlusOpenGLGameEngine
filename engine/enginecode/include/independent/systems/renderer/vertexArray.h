@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 namespace Engine
 {
@@ -22,4 +22,4 @@ namespace Engine
 		static VertexArray* create();
 
 	};
-}
+}*/

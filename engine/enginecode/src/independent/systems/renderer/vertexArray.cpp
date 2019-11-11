@@ -1,5 +1,5 @@
 #include "engine_pch.h"
-
+/*
 #include "systems/renderer/vertexArray.h"
 #include "systems/renderer/renderer.h"
 #include "include/platform/OpenGL/OpenGL_vertexArray.h"
@@ -22,4 +22,4 @@ namespace Engine
 			LOG_CORE_CRITICAL("UNKNOWN GRAPHICS API");
 		}
 	}
-}
+}*/

@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 namespace Engine
 {
@@ -10,4 +10,4 @@ namespace Engine
 		virtual unsigned int getSize() const = 0;
 		static IndexBuffer* create(unsigned int* indices, unsigned int size);
 	};
-}
+}*/

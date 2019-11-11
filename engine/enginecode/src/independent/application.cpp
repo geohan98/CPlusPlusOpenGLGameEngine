@@ -26,27 +26,84 @@ namespace Engine {
 		m_timer = std::unique_ptr<Time>(new Time());
 		m_timer->start();
 
-		m_window = std::unique_ptr<WindowSystem>(new GLFW_WindowSys);
-		m_window->start();
+		m_windowSys = std::unique_ptr<WindowSystem>(new GLFW_WindowSys());
+		m_windowSys->start();
+
+		m_window.reset(GLFW_WindowImp::create());
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
 	}
 
-	bool Application::onClose(WindowClose& e)
+	bool Application::onWindowResize(WindowResize& e)
+	{
+		LOG_CORE_INFO("WINDOW RESIZE: {0} x {1}", e.getWidth(), e.getHeight());
+		return true;
+	}
+
+	bool Application::onWindowClose(WindowClose& e)
 	{
 		LOG_CORE_INFO("CLOSING APPLICATION");
 		running = false;
 		return true;
 	}
 
-	bool Application::onResize(WindowResize& e)
+	bool Application::onWindowMoved(WindowMoved & e)
 	{
-		LOG_CORE_INFO("WINDOW RESIZE: {0} x {1}", e.getWidth(), e.getHeight());
+		LOG_CORE_INFO("WINDOW MOVED TO: {0} x {1}", e.getxPos(), e.getyPos());
+		return false;
+	}
+
+	bool Application::onWindowLostFocus(WindowLostFocus & e)
+	{
+		LOG_CORE_INFO("WINDOW LOST FOCUS");
+		return false;
+	}
+
+	bool Application::onKeyPressed(KeyPressed & e)
+	{
+		LOG_CORE_INFO("KEY PRESSED: {0}", e.getButton());
+		return false;
+	}
+
+	bool Application::onKeyReleased(KeyReleased & e)
+	{
+		LOG_CORE_INFO("KEY RELEASED: {0}", e.getButton());
+		return false;
+	}
+
+	bool Application::onKeyTyped(KeyTyped & e)
+	{
+		LOG_CORE_INFO("KEY TYPED: {0}", e.getButton());
+		return false;
+	}
+
+	bool Application::onMouseMove(MouseMoved& e)
+	{
+		LOG_CORE_INFO("MOUSE MOVED: {0} x {1}", e.getxPos(), e.getyPos());
 		return true;
+	}
+
+	bool Application::onMouseScrolled(MouseScrolled & e)
+	{
+		LOG_CORE_INFO("MOUSE SCROLLED: {0} x {1}", e.getxDelta(), e.getyDelta());
+		return false;
+	}
+
+	bool Application::onMouseButtonPressed(MouseButtonPressed & e)
+	{
+		LOG_CORE_INFO("MOUSE BUTTON PRESSED: {0}", e.getButton());
+		return false;
+	}
+
+	bool Application::onMouseButtonReleased(MouseButtonReleased & e)
+	{
+		LOG_CORE_INFO("MOUSE BUTTON RELEASED: {0}", e.getButton());
+		return false;
 	}
 
 	Application::~Application()
 	{
-		m_window->stop();
+		m_window->close();
+		m_windowSys->stop();
 		m_timer->stop();
 		m_logger->stop();
 		std::cin.get();
@@ -55,15 +112,27 @@ namespace Engine {
 	void Application::onEvent(Event& e)
 	{
 		EventDispatcher dispactcher(e);
-		dispactcher.dispatch<WindowClose>(std::bind(&Application::onClose, this, std::placeholders::_1));
-		dispactcher.dispatch<WindowResize>(std::bind(&Application::onResize, this, std::placeholders::_1));
+		//Application Events
+		dispactcher.dispatch<WindowResize>(std::bind(&Application::onWindowResize, this, std::placeholders::_1));
+		dispactcher.dispatch<WindowClose>(std::bind(&Application::onWindowClose, this, std::placeholders::_1));
+		dispactcher.dispatch<WindowMoved>(std::bind(&Application::onWindowMoved, this, std::placeholders::_1));
+		dispactcher.dispatch<WindowLostFocus>(std::bind(&Application::onWindowLostFocus, this, std::placeholders::_1));
+		//Key Events
+		dispactcher.dispatch<KeyPressed>(std::bind(&Application::onKeyPressed, this, std::placeholders::_1));
+		dispactcher.dispatch<KeyReleased>(std::bind(&Application::onKeyReleased, this, std::placeholders::_1));
+		dispactcher.dispatch<KeyTyped>(std::bind(&Application::onKeyTyped, this, std::placeholders::_1));
+		//Mouse Events
+		dispactcher.dispatch<MouseMoved>(std::bind(&Application::onMouseMove, this, std::placeholders::_1));
+		dispactcher.dispatch<MouseMoved>(std::bind(&Application::onMouseMove, this, std::placeholders::_1));
+		dispactcher.dispatch<MouseMoved>(std::bind(&Application::onMouseMove, this, std::placeholders::_1));
+		dispactcher.dispatch<MouseMoved>(std::bind(&Application::onMouseMove, this, std::placeholders::_1));
 	}
 
 	void Application::run()
 	{
 		while (running)
 		{
-			m_window->update(1 / 60);
+			m_window->onUpdate(1 / 60);
 		}
 	}
 }

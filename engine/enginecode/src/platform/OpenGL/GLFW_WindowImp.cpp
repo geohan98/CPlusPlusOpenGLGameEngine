@@ -11,17 +11,7 @@ namespace Engine
 	{
 		m_properties = properties;
 
-		if (!glfwInit())
-		{
-			LOG_CORE_CRITICAL("FAILED TO INITALIZE GLFW");
-			return;
-		}
-		else
-		{
-			LOG_CORE_INFO("GLFW INITALIZED");
-		}
-
-		GLFWwindow* m_nativeWindow = glfwCreateWindow(m_properties.m_width, m_properties.m_height, m_properties.m_title.c_str(), NULL, NULL);
+		m_nativeWindow = glfwCreateWindow(m_properties.m_width, m_properties.m_height, m_properties.m_title.c_str(), NULL, NULL);
 		if (!m_nativeWindow)
 		{
 			LOG_CORE_CRITICAL("FAILED TO CREATE GLFW WINDOW");
@@ -64,8 +54,6 @@ namespace Engine
 		m_context.release();
 		LOG_CORE_WARN("DESTROYING GLFW WINDOW");
 		glfwDestroyWindow(m_nativeWindow);
-		LOG_CORE_WARN("TERMINATING GLFW");
-		glfwTerminate();
 	}
 	GLFW_WindowImp::GLFW_WindowImp(const WindowProperties& properties)
 	{
@@ -73,7 +61,6 @@ namespace Engine
 	}
 	GLFW_WindowImp::~GLFW_WindowImp()
 	{
-		close();
 	}
 	void GLFW_WindowImp::onUpdate(float timestep)
 	{

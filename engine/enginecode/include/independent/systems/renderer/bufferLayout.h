@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include <vector>
 #include <initializer_list>
 
@@ -41,4 +41,4 @@ namespace Engine
 			calcStrideAndOffset();
 		}
 	};
-}
+}*/

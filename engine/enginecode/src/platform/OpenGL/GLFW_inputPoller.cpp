@@ -6,7 +6,6 @@
 
 namespace Engine
 {
-
 	std::unique_ptr<InputPoller> InputPoller::s_instance = std::unique_ptr<InputPoller>(new GLFW_InputPoller);
 
 

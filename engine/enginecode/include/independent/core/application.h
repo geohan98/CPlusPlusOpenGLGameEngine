@@ -8,6 +8,7 @@
 #include "systems/events/keyEvents.h"
 #include "systems/events/mouseEvents.h"
 #include "windows/windowSystem.h"
+#include "windows/window.h"
 
 
 namespace Engine {
@@ -24,22 +25,35 @@ namespace Engine {
 		Application();															//!< Constructor
 		std::unique_ptr<Log> m_logger;
 		std::unique_ptr<Time> m_timer;
-		std::unique_ptr<WindowSystem> m_window;
+		std::shared_ptr<Window> m_window;
+		std::unique_ptr<WindowSystem> m_windowSys;
 		static float m_timestep;
-
 	private:
 		static Application* s_instance;											//!< Singleton instance of the application
+		//Application Events
+		bool onWindowResize(WindowResize& e);
+		bool onWindowClose(WindowClose& e);
+		bool onWindowMoved(WindowMoved& e);
+		bool onWindowLostFocus(WindowLostFocus& e);
+		//Key Events
+		bool onKeyPressed(KeyPressed& e);
+		bool onKeyReleased(KeyReleased& e);
+		bool onKeyTyped(KeyTyped& e);
+		//Mouse Events
+		bool onMouseMove(MouseMoved& e);
+		bool onMouseScrolled(MouseScrolled& e);
+		bool onMouseButtonPressed(MouseButtonPressed& e);
+		bool onMouseButtonReleased(MouseButtonReleased& e);
 
-		bool onClose(WindowClose& e);
-		bool onResize(WindowResize& e);
+
 
 	public:
 		virtual ~Application();													//!< Deconstructor
 		inline static Application& getInstance() { return *s_instance; }		//!< Instance getter from singleton pattern
 		inline static float getTimestep() { return m_timestep; }
 		void onEvent(Event& e);
-		WindowSystem* getWindow() { return &(*m_window); }
-		void run(); //!< Main loop
+		std::shared_ptr<Window> getWindow() { return m_window; }
+		void run();																//!< Main loop
 	};
 
 	// To be defined in users code

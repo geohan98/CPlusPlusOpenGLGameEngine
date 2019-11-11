@@ -6,11 +6,17 @@ namespace Engine
 {
 	class KeyPressed : public Event
 	{
+	private:
+		int m_button;
+		int m_repeatCount;
 	public:
 		KeyPressed(int button, int repeatCode) {};
 		static EventType getStaticType() { return EventType::KeyPressed; }
 		EventType getEventType() const override { return EventType::KeyPressed; }
 		int getCategoryFlags() const override { return EventCategoryKeyboard; }
+
+		inline int getButton() const { return m_button; }
+		inline int getRepeatCount() const { return m_repeatCount; }
 	};
 
 	class KeyReleased : public Event
