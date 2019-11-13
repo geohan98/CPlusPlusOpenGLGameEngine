@@ -46,58 +46,66 @@ namespace Engine {
 		return true;
 	}
 
-	bool Application::onWindowMoved(WindowMoved & e)
+	bool Application::onWindowMoved(WindowMoved& e)
 	{
 		LOG_CORE_INFO("WINDOW MOVED TO: {0} x {1}", e.getxPos(), e.getyPos());
-		return false;
+		return true;
 	}
 
-	bool Application::onWindowLostFocus(WindowLostFocus & e)
+	bool Application::onWindowLostFocus(WindowLostFocus& e)
 	{
 		LOG_CORE_INFO("WINDOW LOST FOCUS");
-		return false;
+		return true;
 	}
 
-	bool Application::onKeyPressed(KeyPressed & e)
+	bool Application::onKeyPressed(KeyPressed& e)
 	{
-		LOG_CORE_INFO("KEY PRESSED: {0}", e.getButton());
-		return false;
+		if (e.getRepeatCount() == 0)
+		{
+			LOG_CORE_INFO("KEY PRESSED: {0}", e.getButton());
+		}
+		else
+		{
+			LOG_CORE_INFO("KEY HELD: {0}", e.getButton());
+		}
+
+		return true;
 	}
 
-	bool Application::onKeyReleased(KeyReleased & e)
+	bool Application::onKeyReleased(KeyReleased& e)
 	{
 		LOG_CORE_INFO("KEY RELEASED: {0}", e.getButton());
-		return false;
+		return true;
 	}
 
-	bool Application::onKeyTyped(KeyTyped & e)
+	bool Application::onKeyTyped(KeyTyped& e)
 	{
 		LOG_CORE_INFO("KEY TYPED: {0}", e.getButton());
-		return false;
+		return true;
 	}
 
 	bool Application::onMouseMove(MouseMoved& e)
 	{
-		LOG_CORE_INFO("MOUSE MOVED: {0} x {1}", e.getxPos(), e.getyPos());
+		LOG_CORE_INFO("MOUSE MOVED TO: {0} x {1}", e.getxPos(), e.getyPos());
 		return true;
 	}
 
-	bool Application::onMouseScrolled(MouseScrolled & e)
+	bool Application::onMouseScrolled(MouseScrolled& e)
 	{
 		LOG_CORE_INFO("MOUSE SCROLLED: {0} x {1}", e.getxDelta(), e.getyDelta());
-		return false;
+		return true;
 	}
 
-	bool Application::onMouseButtonPressed(MouseButtonPressed & e)
+	bool Application::onMouseButtonPressed(MouseButtonPressed& e)
 	{
 		LOG_CORE_INFO("MOUSE BUTTON PRESSED: {0}", e.getButton());
-		return false;
+		return true;
 	}
 
-	bool Application::onMouseButtonReleased(MouseButtonReleased & e)
+	bool Application::onMouseButtonReleased(MouseButtonReleased& e)
 	{
 		LOG_CORE_INFO("MOUSE BUTTON RELEASED: {0}", e.getButton());
-		return false;
+		return true;
 	}
 
 	Application::~Application()
@@ -123,9 +131,9 @@ namespace Engine {
 		dispactcher.dispatch<KeyTyped>(std::bind(&Application::onKeyTyped, this, std::placeholders::_1));
 		//Mouse Events
 		dispactcher.dispatch<MouseMoved>(std::bind(&Application::onMouseMove, this, std::placeholders::_1));
-		dispactcher.dispatch<MouseMoved>(std::bind(&Application::onMouseMove, this, std::placeholders::_1));
-		dispactcher.dispatch<MouseMoved>(std::bind(&Application::onMouseMove, this, std::placeholders::_1));
-		dispactcher.dispatch<MouseMoved>(std::bind(&Application::onMouseMove, this, std::placeholders::_1));
+		dispactcher.dispatch<MouseScrolled>(std::bind(&Application::onMouseScrolled, this, std::placeholders::_1));
+		dispactcher.dispatch<MouseButtonPressed>(std::bind(&Application::onMouseButtonPressed, this, std::placeholders::_1));
+		dispactcher.dispatch<MouseButtonReleased>(std::bind(&Application::onMouseButtonReleased, this, std::placeholders::_1));
 	}
 
 	void Application::run()

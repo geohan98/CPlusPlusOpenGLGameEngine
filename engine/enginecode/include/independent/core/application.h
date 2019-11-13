@@ -44,15 +44,12 @@ namespace Engine {
 		bool onMouseScrolled(MouseScrolled& e);
 		bool onMouseButtonPressed(MouseButtonPressed& e);
 		bool onMouseButtonReleased(MouseButtonReleased& e);
-
-
-
 	public:
 		virtual ~Application();													//!< Deconstructor
 		inline static Application& getInstance() { return *s_instance; }		//!< Instance getter from singleton pattern
+		std::shared_ptr<Window> getWindow() { return m_window; }
 		inline static float getTimestep() { return m_timestep; }
 		void onEvent(Event& e);
-		std::shared_ptr<Window> getWindow() { return m_window; }
 		void run();																//!< Main loop
 	};
 
