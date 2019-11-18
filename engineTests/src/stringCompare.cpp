@@ -1,9 +1,10 @@
-#include "stringCompare.h"
+/*#include "stringCompare.h"
 
 TEST(StrCompare, CStrEqual) {
 	EXPECT_STREQ(expectVal, actualValTrue);
 }
 
 TEST(StrCompare, CStrNotEqual) {
-	EXPECT_STREQ(expectVal, actualValFalse);
+	EXPECT_STRNE(expectVal, actualValFalse);
 }
+*/

@@ -81,7 +81,7 @@ namespace Engine
 			}
 		);
 
-		///Mouse Event Callbacks
+		//Mouse Event Callbacks
 		glfwSetCursorPosCallback(m_nativeWindow, [](GLFWwindow* window, double xPos, double yPos)
 			{
 				std::function<void(Event&)>& callback = *(std::function<void(Event&)>*)glfwGetWindowUserPointer(window);
