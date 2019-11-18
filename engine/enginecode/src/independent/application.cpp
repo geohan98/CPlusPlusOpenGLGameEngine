@@ -6,6 +6,7 @@
 
 #include "include/platform/OpenGL/GLFW_windowSys.h"
 #include "include/platform/OpenGL/GLFW_windowImp.h"
+#include "include/platform/OpenGL/GLFW_Codes.h"
 
 namespace Engine {
 
@@ -29,7 +30,7 @@ namespace Engine {
 		m_windowSys = std::unique_ptr<WindowSystem>(new GLFW_WindowSys());
 		m_windowSys->start();
 
-		m_window.reset(GLFW_WindowImp::create());
+		m_window = std::unique_ptr<Window>(Window::create());
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
 	}
 
@@ -67,6 +68,11 @@ namespace Engine {
 		else
 		{
 			LOG_CORE_INFO("KEY HELD: {0}", e.getButton());
+		}
+
+		if (e.getButton() == KEY_ESCAPE)
+		{
+			running = false;
 		}
 
 		return true;
