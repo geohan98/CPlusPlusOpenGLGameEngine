@@ -1,4 +1,4 @@
-/*#pragma once
+#pragma once
 
 namespace Engine
 {
@@ -14,4 +14,4 @@ namespace Engine
 
 		static VertexBuffer* create(float vertices, unsigned int size, BufferLayout& layout);
 	};
-}*/
+}

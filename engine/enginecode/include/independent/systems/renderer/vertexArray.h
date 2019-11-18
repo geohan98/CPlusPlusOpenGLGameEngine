@@ -1,4 +1,5 @@
-/*#pragma once
+#pragma once
+#include <vector>
 
 namespace Engine
 {
@@ -22,4 +23,4 @@ namespace Engine
 		static VertexArray* create();
 
 	};
-}*/
+}

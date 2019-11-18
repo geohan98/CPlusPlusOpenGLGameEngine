@@ -114,7 +114,6 @@ namespace Engine {
 		m_windowSys->stop();
 		m_timer->stop();
 		m_logger->stop();
-		std::cin.get();
 	}
 
 	void Application::onEvent(Event& e)
