@@ -1,15 +1,17 @@
 /** \file application.h
 */
 #pragma once
+
 #include "systems/log.h"
 #include "systems/time.h"
+#include "include/independent/windows/window.h"
+#include "windows/window.h"
+#include "windows/windowSystem.h"
 #include "systems/events/event.h"
 #include "systems/events/applicationEvents.h"
 #include "systems/events/keyEvents.h"
-#include "systems/events/mouseEvents.h"
-#include "windows/windowSystem.h"
-#include "windows/window.h"
-
+#include "systems/ButtonCodes.h"
+#include "systems/inputPoller.h"
 
 namespace Engine {
 
@@ -22,38 +24,49 @@ namespace Engine {
 	class Application
 	{
 	protected:
-		Application();															//!< Constructor
-		std::unique_ptr<Log> m_logger;
-		std::unique_ptr<Time> m_timer;
-		std::shared_ptr<Window> m_window;
-		std::unique_ptr<WindowSystem> m_windowSys;
-		static float m_timestep;
+		Application(); //!< Constructor
 	private:
-		static Application* s_instance;											//!< Singleton instance of the application
-		//Application Events
-		bool onWindowResize(WindowResize& e);
-		bool onWindowClose(WindowClose& e);
-		bool onWindowMoved(WindowMoved& e);
-		bool onWindowLostFocus(WindowLostFocus& e);
-		//Key Events
-		bool onKeyPressed(KeyPressed& e);
-		bool onKeyReleased(KeyReleased& e);
-		bool onKeyTyped(KeyTyped& e);
-		//Mouse Events
-		bool onMouseMove(MouseMoved& e);
-		bool onMouseScrolled(MouseScrolled& e);
-		bool onMouseButtonPressed(MouseButtonPressed& e);
-		bool onMouseButtonReleased(MouseButtonReleased& e);
+		static Application* s_instance; //!< Singleton instance of the application
+		bool m_running = true; //!< Is the application running?
+		std::shared_ptr<Window> m_window; //!< Window (abstract)
+		static glm::ivec2 s_screenResolution; //!< Screen res
+		// Systems
+		std::shared_ptr<Log> m_log; //!< Logging system
+		std::shared_ptr<Time> m_timer; //!< Timing system
+		std::shared_ptr<WindowSystem> m_windows; //!< Windows system
+		// shared data
+		static float s_timestep; //!< last frame timestep
+
+#pragma region TempVars
+// Temp stuff
+		unsigned int m_FCvertexArray; // Flat Colour VAO
+		unsigned int m_FCvertexBuffer;// Flat Colour VBO
+		unsigned int m_TPvertexArray; // Textured Phong VAO
+		unsigned int m_TPvertexBuffer;// Textured Phong VBO
+		unsigned int m_FCindexBuffer; // Index buffer for colour cube
+		unsigned int m_TPindexBuffer; // Index buffer for texture Phong cube
+		unsigned int m_FCprogram; // Flat colour shader ID
+		unsigned int m_TPprogram; // Textured Phong shader ID
+		unsigned int m_numberTexture; // Texture ID
+		unsigned int m_letterTexture; // Texture ID
+		unsigned int m_textureSlots[2]; // Slot where the textures are stored
+		bool m_goingUp = false; // Is the cude going up?
+		float m_timeSummed = 10.f; // How much timer has elasped?
+#pragma endregion TempVars
+
 	public:
-		virtual ~Application();													//!< Deconstructor
-		inline static Application& getInstance() { return *s_instance; }		//!< Instance getter from singleton pattern
-		std::shared_ptr<Window> getWindow() { return m_window; }
-		inline static float getTimestep() { return m_timestep; }
-		void onEvent(Event& e);
-		void run();																//!< Main loop
+		virtual ~Application(); //!< Deconstructor
+		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
+		inline static float getTimestep() { return s_timestep; }
+		inline std::shared_ptr<Window> getWindow() { return m_window; }
+		void onEvent(Event& e); //!< Called when an event happens
+		bool onClose(WindowClose& e); //!< On close event
+		bool onResize(WindowResize& e); //!< On resize event
+		bool onKeyPressed(KeyPressed& e); //!< On keypress event
+		void run(); //!< Main loop
 	};
 
 	// To be defined in users code
-	Application* startApplication();											//!< Function definition which provides an entry hook
+	Application* startApplication(); //!< Function definition which provides an entry hook
 
 }

@@ -2,6 +2,7 @@
 #include <vector>
 #include <initializer_list>
 #include <string>
+#include "systems/ButtonCodes.h"
 
 namespace Engine
 {
@@ -29,6 +30,23 @@ namespace Engine
 		}
 	}
 
+	static unsigned int ShaderDataTypeToOpenGL(ShaderDataType type)
+	{
+		switch (type)
+		{
+		case Engine::ShaderDataType::Int:			return GL_INT;
+		case Engine::ShaderDataType::Int2:			return GL_INT;
+		case Engine::ShaderDataType::Int4:			return GL_INT;
+		case Engine::ShaderDataType::Float:			return GL_FLOAT;
+		case Engine::ShaderDataType::Float2:		return GL_FLOAT;
+		case Engine::ShaderDataType::Float3:		return GL_FLOAT;
+		case Engine::ShaderDataType::Float4:		return GL_FLOAT;
+		case Engine::ShaderDataType::Mat3:			return GL_FLOAT;
+		case Engine::ShaderDataType::Mat4:			return GL_FLOAT;
+		case Engine::ShaderDataType::Bool:			return GL_BOOL;
+		}
+	}
+
 	static ShaderDataType GLSLStrToSDT(const std::string& glslSrc)
 	{
 
@@ -47,7 +65,7 @@ namespace Engine
 		unsigned int m_offset;
 		bool m_normalized;
 
-		BufferElement() {};
+
 		BufferElement(ShaderDataType dataType, bool normalized = false) : m_dataType(dataType), m_size(ShaderDataTypeSize(dataType)), m_offset(0), m_normalized(normalized) {}
 	};
 
@@ -55,12 +73,13 @@ namespace Engine
 	{
 	private:
 		std::vector<BufferElement> m_elements;
-		unsigned int m_stride;
+		unsigned int m_stride = 0;
 		void calcStrideAndOffset();
 	public:
 		BufferLayout() {};
 		BufferLayout(const std::initializer_list<BufferElement>& elements);
 		inline unsigned int getStride() const { return m_stride; }
+		inline const std::vector<BufferElement>& GetElements() const { return m_elements; }
 		std::vector<BufferElement>::iterator begin() { return m_elements.begin(); }
 		std::vector<BufferElement>::iterator end() { return m_elements.end(); }
 		std::vector<BufferElement>::const_iterator begin()const { return m_elements.begin(); }

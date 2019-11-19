@@ -131,3 +131,8 @@
 #define KEY_RIGHT_ALT          346
 #define KEY_RIGHT_SUPER        347
 #define KEY_MENU               348
+
+//OpenGL Shader Codes
+#define GL_FLOAT 0x1406
+#define GL_INT 0x1404
+#define GL_BOOL 0x8B56

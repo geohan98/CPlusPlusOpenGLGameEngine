@@ -2,6 +2,7 @@
 #include "include/platform/OpenGL/OpenGL_vertexBuffer.h"
 #include "glad/glad.h"
 #include "systems/log.h"
+#include "include/platform/OpenGL/OpenGL_bufferLayout.h"
 
 namespace Engine
 {
@@ -10,6 +11,13 @@ namespace Engine
 		glCreateBuffers(1, &m_rendererID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_rendererID);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+		for (unsigned i = 0; i < layout.GetElements().size(); i++)
+		{
+			const auto& element = layout.GetElements()[i];
+			glEnableVertexAttribArray(i);
+			glVertexAttribPointer(i, ShaderDataTypeSize(element.m_dataType), ShaderDataTypeToOpenGL(element.m_dataType), element.m_normalized, layout.getStride(), (const void*)element.m_offset);
+		}
 	}
 	void OpenGL_VertexBuffer::bind()
 	{
@@ -24,6 +32,6 @@ namespace Engine
 	}
 	const BufferLayout& OpenGL_VertexBuffer::getLayout() const
 	{
-		// TODO: insert return statement here
+		return OpenGL_BufferLayout();
 	}
 }

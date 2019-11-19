@@ -2,7 +2,7 @@
 #include "include/platform/OpenGL/GLFW_inputPoller.h"
 #include <GLFW/glfw3.h>
 #include "core/application.h"
-#include "include/platform/OpenGL/GLFW_Codes.h"
+#include "systems/ButtonCodes.h"
 
 namespace Engine
 {
