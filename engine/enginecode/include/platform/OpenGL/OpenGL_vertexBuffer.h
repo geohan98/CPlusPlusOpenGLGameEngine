@@ -1,5 +1,6 @@
 #pragma once
 #include "systems/renderer/vertexBuffer.h"
+#include "systems/renderer/bufferLayout.h"
 
 namespace Engine
 {
@@ -7,6 +8,7 @@ namespace Engine
 	{
 	private:
 		unsigned int m_rendererID;
+		BufferLayout m_layout;
 	public:
 		OpenGL_VertexBuffer(float* vertices, unsigned int size, BufferLayout& layout);
 		void bind() override;

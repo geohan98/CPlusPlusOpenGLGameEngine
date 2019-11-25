@@ -5,11 +5,11 @@
 
 namespace Engine
 {
-	OpenGL_IndexBuffer::OpenGL_IndexBuffer(unsigned int* indices, unsigned int size)
+	OpenGL_IndexBuffer::OpenGL_IndexBuffer(unsigned int* indices, unsigned int count)
 	{
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(unsigned int), indices, GL_STATIC_DRAW);
 	}
 	void OpenGL_IndexBuffer::bind()
 	{
@@ -19,7 +19,7 @@ namespace Engine
 	{
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
-	unsigned int OpenGL_IndexBuffer::getSize() const
+	unsigned int OpenGL_IndexBuffer::getCount() const
 	{
 		return 0;
 	}

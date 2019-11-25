@@ -3,10 +3,13 @@
 
 namespace Engine
 {
+
 	class OpenGL_VertexArray : public VertexArray
 	{
 	private:
 		unsigned int m_rendererID;
+		std::shared_ptr<VertexBuffer> m_vertexBuffer;
+		std::shared_ptr<IndexBuffer> m_indexBuffer;
 	public:
 		OpenGL_VertexArray();
 		void bind() override;

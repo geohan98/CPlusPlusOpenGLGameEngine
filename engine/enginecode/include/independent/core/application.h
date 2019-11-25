@@ -13,6 +13,11 @@
 #include "systems/ButtonCodes.h"
 #include "systems/inputPoller.h"
 
+#include "include/platform/OpenGL/OpenGL_vertexArray.h"
+#include "include/platform/OpenGL/OpenGL_vertexBuffer.h"
+#include "include/platform/OpenGL/OpenGL_indexBuffer.h"
+#include "include/independent/systems/renderer/bufferLayout.h"
+
 namespace Engine {
 
 	/**
@@ -39,6 +44,15 @@ namespace Engine {
 
 #pragma region TempVars
 // Temp stuff
+
+		std::shared_ptr<OpenGL_VertexArray> vao;
+		BufferLayout bl;
+		std::shared_ptr<OpenGL_VertexBuffer> vbo;
+		std::shared_ptr<OpenGL_IndexBuffer>  ibo;
+
+
+
+
 		unsigned int m_FCvertexArray; // Flat Colour VAO
 		unsigned int m_FCvertexBuffer;// Flat Colour VBO
 		unsigned int m_TPvertexArray; // Textured Phong VAO

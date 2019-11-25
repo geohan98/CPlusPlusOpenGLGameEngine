@@ -18,6 +18,7 @@
 #include "core/application.h"
 #ifdef NG_PLATFORM_WINDOWS
 #include "include/platform/OpenGL/GLFW_windowSys.h"
+
 #endif // NG_PLATFORM_WINDOWS
 
 namespace Engine {
@@ -61,8 +62,11 @@ namespace Engine {
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
 		// Enabling backface culling to ensure triangle vertices are correct ordered (CCW)
-		glEnable(GL_CULL_FACE);
-		glCullFace(GL_BACK);
+		//glEnable(GL_CULL_FACE);
+		//glCullFace(GL_BACK);
+
+
+
 
 		glGenVertexArrays(1, &m_FCvertexArray);
 		glBindVertexArray(m_FCvertexArray);
@@ -97,6 +101,8 @@ namespace Engine {
 			0.5f,  -0.5f, 0.5f, 0.2f, 0.2f, 0.8f
 		};
 
+
+
 		glBufferData(GL_ARRAY_BUFFER, sizeof(FCvertices), FCvertices, GL_STATIC_DRAW);
 
 		glEnableVertexAttribArray(0);
@@ -123,6 +129,18 @@ namespace Engine {
 			22, 23, 20
 		};
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+		vao = std::shared_ptr<OpenGL_VertexArray>(new OpenGL_VertexArray());
+		vao->bind();
+		bl = { {ShaderDataType::Float3},{ShaderDataType::Float3} };
+		vbo = std::shared_ptr<OpenGL_VertexBuffer>(new OpenGL_VertexBuffer(FCvertices, sizeof(FCvertices), bl));
+		vbo->bind();
+		ibo = std::shared_ptr<OpenGL_IndexBuffer>(new OpenGL_IndexBuffer(indices, 36));
+		ibo->bind();
+		vao->setVertexBuffer(vbo);
+		vao->setIndexBuffer(ibo);
+
+
 
 		std::string FCvertSrc = R"(
 				#version 440 core
@@ -484,7 +502,11 @@ namespace Engine {
 		if (e.getButton() == KEY_ESCAPE) //Escape
 		{
 			m_running = false;
-			m_window->close();
+			return true;
+		}
+		if (e.getButton() == KEY_TAB)
+		{
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 			return true;
 		}
 		return false;
@@ -540,9 +562,13 @@ namespace Engine {
 			glm::mat4 fcMVP = projection * view * FCmodel;
 			glUseProgram(m_FCprogram);
 			glBindVertexArray(m_FCvertexArray);
+
+			vbo->bind();
+			ibo->bind();
+			vao->bind();
 			GLuint MVPLoc = glGetUniformLocation(m_FCprogram, "u_MVP");
 			glUniformMatrix4fv(MVPLoc, 1, GL_FALSE, &fcMVP[0][0]);
-			glDrawElements(GL_TRIANGLES, 3 * 12, GL_UNSIGNED_INT, nullptr);
+			glDrawElements(GL_TRIANGLES, ibo->getCount(), GL_UNSIGNED_INT, nullptr);
 
 			glm::mat4 tpMVP = projection * view * TPmodel;
 			unsigned int texSlot;

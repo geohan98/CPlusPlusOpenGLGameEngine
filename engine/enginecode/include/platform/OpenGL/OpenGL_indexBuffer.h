@@ -8,9 +8,9 @@ namespace Engine
 	private:
 		unsigned int m_RendererID;
 	public:
-		OpenGL_IndexBuffer(unsigned int* indices, unsigned int size);
+		OpenGL_IndexBuffer(unsigned int* indices, unsigned int count);
 		void bind() override;
 		void unbind() override;
-		unsigned int getSize() const override;
+		unsigned int getCount() const override;
 	};
 }
