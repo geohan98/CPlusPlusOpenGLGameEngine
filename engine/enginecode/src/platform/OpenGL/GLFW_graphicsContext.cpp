@@ -2,9 +2,6 @@
 #include "include/platform/OpenGL/GLFW_graphicsContext.h"
 #include "systems/log.h"
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
 namespace Engine
 {
 	GLFW_GraphicsContext::GLFW_GraphicsContext(GLFWwindow* window) : m_window(window)
@@ -23,6 +20,17 @@ namespace Engine
 		else
 		{
 			LOG_CORE_INFO("GLAD INITALIZED");
+
+			glEnable(GL_DEBUG_OUTPUT);
+			glDebugMessageCallback([](GLenum source,
+				GLenum type,
+				GLuint id,
+				GLenum severity,
+				GLsizei length,
+				const GLchar* message,
+				const void* userParam) {
+				LOG_CORE_INFO("OpenGL Debug: [Type {0}] [ID {1}] [Severity {2}]; {3}", type, id, severity, message);
+			}, 0);
 		}
 	}
 

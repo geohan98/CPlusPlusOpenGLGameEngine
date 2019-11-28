@@ -15,7 +15,7 @@ namespace Engine
 		}
 		m_stride = previousOffset;
 	}
-	BufferLayout::BufferLayout(const std::initializer_list<BufferElement>& elements)
+	BufferLayout::BufferLayout(const std::initializer_list<BufferElement>& elements) : m_elements(elements)
 	{
 		calcStrideAndOffset();
 	}

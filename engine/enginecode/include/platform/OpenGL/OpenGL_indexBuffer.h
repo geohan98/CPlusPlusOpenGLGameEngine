@@ -7,6 +7,7 @@ namespace Engine
 	{
 	private:
 		unsigned int m_RendererID;
+		unsigned int m_Count;
 	public:
 		OpenGL_IndexBuffer(unsigned int* indices, unsigned int count);
 		void bind() override;

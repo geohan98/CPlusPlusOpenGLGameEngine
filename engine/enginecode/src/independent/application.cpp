@@ -130,16 +130,19 @@ namespace Engine {
 		};
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-		vao = std::shared_ptr<OpenGL_VertexArray>(new OpenGL_VertexArray());
-		vao->bind();
 		bl = { {ShaderDataType::Float3},{ShaderDataType::Float3} };
+
+		vao = std::shared_ptr<OpenGL_VertexArray>(new OpenGL_VertexArray());
+
 		vbo = std::shared_ptr<OpenGL_VertexBuffer>(new OpenGL_VertexBuffer(FCvertices, sizeof(FCvertices), bl));
 		vbo->bind();
+
 		ibo = std::shared_ptr<OpenGL_IndexBuffer>(new OpenGL_IndexBuffer(indices, 36));
 		ibo->bind();
+
 		vao->setVertexBuffer(vbo);
 		vao->setIndexBuffer(ibo);
-
+		vao->bind();
 
 
 		std::string FCvertSrc = R"(
@@ -517,7 +520,7 @@ namespace Engine {
 
 		while (m_running)
 		{
-			LOG_CORE_INFO("FPS: {0}", (int)(1.0f / s_timestep));
+			//LOG_CORE_INFO("FPS: {0}", (int)(1.0f / s_timestep));
 
 #pragma region TempDrawCode
 			// Temporary draw code to be abstracted
@@ -561,14 +564,15 @@ namespace Engine {
 
 			glm::mat4 fcMVP = projection * view * FCmodel;
 			glUseProgram(m_FCprogram);
-			glBindVertexArray(m_FCvertexArray);
+			//glBindVertexArray(m_FCvertexArray);
 
-			vbo->bind();
-			ibo->bind();
+
+		
 			vao->bind();
+
 			GLuint MVPLoc = glGetUniformLocation(m_FCprogram, "u_MVP");
 			glUniformMatrix4fv(MVPLoc, 1, GL_FALSE, &fcMVP[0][0]);
-			glDrawElements(GL_TRIANGLES, ibo->getCount(), GL_UNSIGNED_INT, nullptr);
+			glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, nullptr);
 
 			glm::mat4 tpMVP = projection * view * TPmodel;
 			unsigned int texSlot;

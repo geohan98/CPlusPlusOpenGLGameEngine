@@ -5,7 +5,7 @@
 
 namespace Engine
 {
-	OpenGL_IndexBuffer::OpenGL_IndexBuffer(unsigned int* indices, unsigned int count)
+	OpenGL_IndexBuffer::OpenGL_IndexBuffer(unsigned int* indices, unsigned int count) : m_Count(count)
 	{
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
@@ -21,6 +21,6 @@ namespace Engine
 	}
 	unsigned int OpenGL_IndexBuffer::getCount() const
 	{
-		return 0;
+		return m_Count;
 	}
 }
