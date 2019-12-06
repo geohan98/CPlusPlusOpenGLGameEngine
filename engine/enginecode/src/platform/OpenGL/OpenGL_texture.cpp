@@ -4,53 +4,63 @@
 
 namespace Engine
 {
-	OpenGL_Texture::OpenGL_Texture(const std::string & filepath)
+	OpenGL_Texture::OpenGL_Texture(const std::string& filepath)
 	{
-		glGenTextures(1, &id);
-		m_TextureSlot = s_TextureSlot;
-		s_TextureSlot++;
-		glActiveTexture(GL_TEXTURE0 + m_TextureSlot);
-		glBindTexture(GL_TEXTURE_2D, id);
+		glGenTextures(1, &m_id);
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	}
 
-	OpenGL_Texture::OpenGL_Texture(unsigned int width, unsigned int height, unsigned int channels, unsigned char * texData)
+	OpenGL_Texture::OpenGL_Texture(unsigned int width, unsigned int height, unsigned int channels, unsigned char* texData) : m_width(width), m_height(height), m_channels(channels)
 	{
+		glGenTextures(1, &m_id);
+		glTextureStorage2D(m_id, 1, GL_RGBA, m_width, m_height);
 
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		if (channels == 3)
+		{
+			glPixelStorei(GL_UNPACK_ALIGNMENT, 3);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_width, m_height, 0, GL_RGB, GL_UNSIGNED_BYTE, texData);
+			glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+		}
+		else if (channels == 4)
+		{
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_width, m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texData);
+		}
+		else if (channels == 1)
+		{
+			glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, m_width, m_height, 0, GL_RED, GL_UNSIGNED_BYTE, texData);
+			glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+		}
+		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 
-	unsigned int OpenGL_Texture::getWidth() const
+	OpenGL_Texture::~OpenGL_Texture()
 	{
-		return m_width;
-	}
-
-	unsigned int OpenGL_Texture::getHeight() const
-	{
-		return m_height;
-	}
-
-	unsigned int OpenGL_Texture::getChannels() const
-	{
-		return m_channels;
+		glDeleteTextures(1, &m_id);
 	}
 
 	unsigned int OpenGL_Texture::getSlot() const
 	{
-		return m_TextureSlot;
+		return 0;
 	}
-
-	Texture * Engine::Texture::createFromFile(const std::string & filepath)
+	void OpenGL_Texture::bind(unsigned int slot) const
 	{
-		return new OpenGL_Texture(filepath);
+		glActiveTexture(GL_TEXTURE0 + slot);
+		glBindTexture(GL_TEXTURE_2D, m_id);
 	}
-
-	Texture * Engine::Texture::createFromRawData(unsigned int width, unsigned int height, unsigned int channels, unsigned char * texData)
+	void OpenGL_Texture::unbind() const
 	{
-		return new OpenGL_Texture(width,height,channels, texData);
 	}
 }
