@@ -16,7 +16,8 @@
 #include "include/platform/OpenGL/OpenGL_vertexArray.h"
 #include "include/platform/OpenGL/OpenGL_vertexBuffer.h"
 #include "include/platform/OpenGL/OpenGL_indexBuffer.h"
-#include "include/independent/systems/renderer/bufferLayout.h"
+#include "systems/renderer/bufferLayout.h"
+#include "include/platform/OpenGL/OpenGL_texture.h"
 
 namespace Engine {
 
@@ -54,6 +55,8 @@ namespace Engine {
 		BufferLayout bl1;
 		std::shared_ptr<OpenGL_VertexBuffer> vbo1;
 		std::shared_ptr<OpenGL_IndexBuffer>  ibo1;
+		std::shared_ptr<OpenGL_Texture> tex;
+		std::shared_ptr<OpenGL_Texture> tex1;
 
 		unsigned int m_FCprogram; // Flat colour shader ID
 		unsigned int m_TPprogram; // Textured Phong shader ID

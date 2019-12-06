@@ -11,6 +11,8 @@ namespace Engine
 		int m_width;
 		int m_height;
 		int m_channels;
+		unsigned int m_slot;
+		static unsigned int s_slot;
 	public:
 		OpenGL_Texture(const std::string& filepath);
 		OpenGL_Texture(unsigned int width, unsigned int height, unsigned int channels, unsigned char* texData);
@@ -22,7 +24,7 @@ namespace Engine
 		unsigned int getChannels() const override { return m_channels; };
 		unsigned int getSlot() const override;
 
-		void bind(unsigned int slot) const;
+		void bind() const;
 		void unbind() const;
 	};
 }
