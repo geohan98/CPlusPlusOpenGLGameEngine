@@ -50,15 +50,11 @@ namespace Engine {
 		std::shared_ptr<OpenGL_VertexBuffer> vbo;
 		std::shared_ptr<OpenGL_IndexBuffer>  ibo;
 
+		std::shared_ptr<OpenGL_VertexArray> vao1;
+		BufferLayout bl1;
+		std::shared_ptr<OpenGL_VertexBuffer> vbo1;
+		std::shared_ptr<OpenGL_IndexBuffer>  ibo1;
 
-
-
-		unsigned int m_FCvertexArray; // Flat Colour VAO
-		unsigned int m_FCvertexBuffer;// Flat Colour VBO
-		unsigned int m_TPvertexArray; // Textured Phong VAO
-		unsigned int m_TPvertexBuffer;// Textured Phong VBO
-		unsigned int m_FCindexBuffer; // Index buffer for colour cube
-		unsigned int m_TPindexBuffer; // Index buffer for texture Phong cube
 		unsigned int m_FCprogram; // Flat colour shader ID
 		unsigned int m_TPprogram; // Textured Phong shader ID
 		unsigned int m_numberTexture; // Texture ID

@@ -65,15 +65,6 @@ namespace Engine {
 		//glEnable(GL_CULL_FACE);
 		//glCullFace(GL_BACK);
 
-
-
-
-		glGenVertexArrays(1, &m_FCvertexArray);
-		glBindVertexArray(m_FCvertexArray);
-
-		glCreateBuffers(1, &m_FCvertexBuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, m_FCvertexBuffer);
-
 		float FCvertices[6 * 24] = {
 			-0.5f, -0.5f, -0.5f, 0.8f, 0.2f, 0.2f, // red square
 			 0.5f, -0.5f, -0.5f, 0.8f, 0.2f, 0.2f,
@@ -101,19 +92,6 @@ namespace Engine {
 			0.5f,  -0.5f, 0.5f, 0.2f, 0.2f, 0.8f
 		};
 
-
-
-		glBufferData(GL_ARRAY_BUFFER, sizeof(FCvertices), FCvertices, GL_STATIC_DRAW);
-
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0); // (pos 0 (pos), 3 floats, float, not normalised, 6 float between each data line, start at 0)
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(sizeof(float) * 3)); // (pos 1 (colour), 3 floats, float, not normalised, 6 float between each data line, start at 3)
-
-		glCreateBuffers(1, &m_FCindexBuffer);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_FCindexBuffer);
-
-
 		unsigned int indices[3 * 12] = {
 			2, 1, 0,
 			0, 3, 2,
@@ -128,22 +106,16 @@ namespace Engine {
 			20, 21, 22,
 			22, 23, 20
 		};
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 		bl = { {ShaderDataType::Float3},{ShaderDataType::Float3} };
-
 		vao = std::shared_ptr<OpenGL_VertexArray>(new OpenGL_VertexArray());
-
 		vbo = std::shared_ptr<OpenGL_VertexBuffer>(new OpenGL_VertexBuffer(FCvertices, sizeof(FCvertices), bl));
 		vbo->bind();
-
 		ibo = std::shared_ptr<OpenGL_IndexBuffer>(new OpenGL_IndexBuffer(indices, 36));
 		ibo->bind();
-
 		vao->setVertexBuffer(vbo);
 		vao->setIndexBuffer(ibo);
 		vao->bind();
-
 
 		std::string FCvertSrc = R"(
 				#version 440 core
@@ -241,13 +213,6 @@ namespace Engine {
 
 		// Added textuer phong shader and cube
 
-		glGenVertexArrays(1, &m_TPvertexArray);
-		glBindVertexArray(m_TPvertexArray);
-
-		glCreateBuffers(1, &m_TPvertexBuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, m_TPvertexBuffer);
-
-
 		float TPvertices[8 * 24] = {
 			-0.5f, -0.5f, -0.5f, 0.f, 0.f, -1.f, 0.33f, 0.5f,
 			 0.5f, -0.5f, -0.5f, 0.f, 0.f, -1.f, 0.f, 0.5f,
@@ -275,18 +240,15 @@ namespace Engine {
 			0.5f,  -0.5f, 0.5f,  1.f, 0.f, 0.f, 0.66f, 1.0f
 		};
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(TPvertices), TPvertices, GL_STATIC_DRAW);
-
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0); // (pos 0 (pos), 3 floats, float, not normalised, 6 float between each data line, start at 0)
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(sizeof(float) * 3)); // (pos 1 (normal), 3 floats, float, not normalised, 6 float between each data line, start at 3)
-		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(sizeof(float) * 6)); // (pos 1 (normal), 3 floats, float, not normalised, 6 float between each data line, start at 3)
-
-		glCreateBuffers(1, &m_TPindexBuffer);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_TPindexBuffer);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		bl1 = { {ShaderDataType::Float3},{ShaderDataType::Float3},{ShaderDataType::Float2} };
+		vao1 = std::shared_ptr<OpenGL_VertexArray>(new OpenGL_VertexArray());
+		vbo1 = std::shared_ptr<OpenGL_VertexBuffer>(new OpenGL_VertexBuffer(TPvertices, sizeof(TPvertices), bl1));
+		vbo1->bind();
+		ibo1 = std::shared_ptr<OpenGL_IndexBuffer>(new OpenGL_IndexBuffer(indices, 36));
+		ibo1->bind();
+		vao1->setVertexBuffer(vbo1);
+		vao1->setIndexBuffer(ibo);
+		vao1->bind();
 
 		std::string TPvertSrc = R"(
 				#version 440 core
@@ -564,10 +526,9 @@ namespace Engine {
 
 			glm::mat4 fcMVP = projection * view * FCmodel;
 			glUseProgram(m_FCprogram);
-			//glBindVertexArray(m_FCvertexArray);
 
 
-		
+
 			vao->bind();
 
 			GLuint MVPLoc = glGetUniformLocation(m_FCprogram, "u_MVP");
@@ -580,7 +541,7 @@ namespace Engine {
 			else texSlot = m_textureSlots[1];
 
 			glUseProgram(m_TPprogram);
-			glBindVertexArray(m_TPvertexArray);
+			vao1->bind();
 
 			MVPLoc = glGetUniformLocation(m_TPprogram, "u_MVP");
 			glUniformMatrix4fv(MVPLoc, 1, GL_FALSE, &tpMVP[0][0]);
@@ -602,7 +563,6 @@ namespace Engine {
 
 			GLuint texDataLoc = glGetUniformLocation(m_TPprogram, "u_texData");
 			glUniform1i(texDataLoc, texSlot);
-
 			glDrawElements(GL_TRIANGLES, 3 * 12, GL_UNSIGNED_INT, nullptr);
 
 			// End temporary code
