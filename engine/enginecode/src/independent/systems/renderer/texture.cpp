@@ -9,16 +9,16 @@ namespace Engine
 	{
 		switch (RenderAPI::getAPI())
 		{
-		case API::None: return nullptr;
-		case API::OpenGL: return new OpenGL_Texture(filepath);
+		case RenderAPI::API::None: return nullptr;
+		case RenderAPI::API::OpenGL: return new OpenGL_Texture(filepath);
 		}
 	}
 	Texture* Texture::createFromRawData(unsigned int width, unsigned int height, unsigned int channels, unsigned char* texData)
 	{
 		switch (RenderAPI::getAPI())
 		{
-		case API::None: return nullptr;
-		case API::OpenGL: return new OpenGL_Texture(width, height, channels, texData);
+		case RenderAPI::API::None: return nullptr;
+		case RenderAPI::API::OpenGL: return new OpenGL_Texture(width, height, channels, texData);
 		}
 	}
 }

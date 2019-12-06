@@ -6,11 +6,11 @@ namespace Engine
 	class OpenGL_Texture : public Texture
 	{
 	private:
-		std::string m_path;
+		std::string m_filePath;
 		unsigned int m_id;
-		unsigned int m_width;
-		unsigned int m_height;
-		unsigned int m_channels;
+		int m_width;
+		int m_height;
+		int m_channels;
 	public:
 		OpenGL_Texture(const std::string& filepath);
 		OpenGL_Texture(unsigned int width, unsigned int height, unsigned int channels, unsigned char* texData);
