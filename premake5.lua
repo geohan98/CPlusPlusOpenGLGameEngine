@@ -29,7 +29,8 @@ project "Engine"
 		"%{prj.name}/enginecode/**.h",
 		"%{prj.name}/enginecode/**.cpp",
 		"engine/precompiled/engine_pch.h",
-		"engine/precompiled/engine_pch.cpp"
+		"engine/precompiled/engine_pch.cpp",
+		"vendor/stb_image/stb_image.cpp"
 	}
 
 	includedirs
@@ -85,7 +86,6 @@ project "Sandbox"
 	{
 		"%{prj.name}/include/**.h",
 		"%{prj.name}/src/**.cpp",
-		"vendor/stb_image/stb_image.cpp"
 	}
 
 	includedirs
@@ -136,7 +136,6 @@ project "Sandbox"
 		{ 
 			"%{prj.name}/include/*.h",
 			"%{prj.name}/src/*.cpp",
-			"vendor/stb_image/stb_image.cpp"
 		}
 
         includedirs
@@ -182,7 +181,6 @@ project "Spike"
 	{
 		"%{prj.name}/include/**.h",
 		"%{prj.name}/src/**.cpp",
-		"vendor/stb_image/stb_image.cpp"
 	}
 
 	includedirs
