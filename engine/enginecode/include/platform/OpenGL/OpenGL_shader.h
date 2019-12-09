@@ -9,8 +9,9 @@ namespace Engine
 	private:
 		unsigned int program_ID;
 	protected:
-		std::string parseShader(const std::string& filepath);
-		unsigned int compileShader(unsigned int type, const std::string source);
+		void parseShader(const std::string& filepath);
+		void compileAndLink(std::string& vertex, std::string& fragment);
+		bool compile(unsigned int type, const std::string& source, unsigned int & id);
 		int getUniformLocation(const std::string name);
 	public:
 		OpenGL_Shader(const std::string& filepath);
