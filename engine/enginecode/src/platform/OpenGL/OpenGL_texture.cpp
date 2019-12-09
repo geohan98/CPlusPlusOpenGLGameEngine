@@ -31,7 +31,6 @@ namespace Engine
 
 		if (m_channels == 3)
 		{
-			glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_width, m_height, 0, GL_RGB, GL_UNSIGNED_BYTE, localBuffer);
 		}
 		else if (m_channels == 4)
