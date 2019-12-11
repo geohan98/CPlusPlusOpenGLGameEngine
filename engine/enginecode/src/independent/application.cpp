@@ -378,6 +378,9 @@ namespace Engine {
 		tex1 = std::shared_ptr<OpenGL_Texture>(new OpenGL_Texture("assets/textures/numberCube.png"));
 		tex1->bind();
 
+		prog = std::shared_ptr<OpenGL_Shader>(new OpenGL_Shader("assets/shaders/flatColor.shader"));
+		prog1 = std::shared_ptr<OpenGL_Shader>(new OpenGL_Shader("assets/shaders/texPhong.shader"));
+
 #pragma endregion TempSetup
 
 		// Reset timer
@@ -480,7 +483,7 @@ namespace Engine {
 			glUseProgram(m_FCprogram);
 
 
-
+			prog->bind();
 			vao->bind();
 
 			GLuint MVPLoc = glGetUniformLocation(m_FCprogram, "u_MVP");

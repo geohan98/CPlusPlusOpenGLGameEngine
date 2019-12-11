@@ -1,5 +1,6 @@
 #pragma once
 #include "systems/renderer/shader.h"
+#include "systems/renderer/bufferLayout.h"
 #include <string>
 
 namespace Engine
@@ -7,15 +8,15 @@ namespace Engine
 	class OpenGL_Shader : public Shader
 	{
 	private:
-		unsigned int program_ID;
-	protected:
-		void parseShader(const std::string& filepath);
+		unsigned int m_program_ID;
+		BufferLayout m_bufferlayout;
+		UniformLayout m_uniformLayout;
+		void parseSource(const std::string& filepath);
 		void compileAndLink(std::string& vertex, std::string& fragment);
-		bool compile(unsigned int type, const std::string& source, unsigned int & id);
-		int getUniformLocation(const std::string name);
+		void setUniformLocations();
 	public:
 		OpenGL_Shader(const std::string& filepath);
-		OpenGL_Shader(const std::string& vertexFilePath, const std::string& fragmentFilePath);
+		OpenGL_Shader(const std::string& vertex, const std::string& fragment);
 		unsigned int id() override;
 		void bind() override;
 		void unbind() override;

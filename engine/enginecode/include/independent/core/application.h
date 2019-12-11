@@ -18,6 +18,7 @@
 #include "include/platform/OpenGL/OpenGL_indexBuffer.h"
 #include "systems/renderer/bufferLayout.h"
 #include "include/platform/OpenGL/OpenGL_texture.h"
+#include "include/platform/OpenGL/OpenGL_shader.h"
 
 namespace Engine {
 
@@ -57,6 +58,8 @@ namespace Engine {
 		std::shared_ptr<OpenGL_IndexBuffer>  ibo1;
 		std::shared_ptr<OpenGL_Texture> tex;
 		std::shared_ptr<OpenGL_Texture> tex1;
+		std::shared_ptr<OpenGL_Shader> prog;
+		std::shared_ptr<OpenGL_Shader> prog1;
 
 		unsigned int m_FCprogram; // Flat colour shader ID
 		unsigned int m_TPprogram; // Textured Phong shader ID
