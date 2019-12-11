@@ -14,6 +14,7 @@ namespace Engine
 		void parseSource(const std::string& filepath);
 		void compileAndLink(std::string& vertex, std::string& fragment);
 		void setUniformLocations();
+		void dispatchUniformUpload(ShaderDataType type, unsigned int location, void* data);
 	public:
 		OpenGL_Shader(const std::string& filepath);
 		OpenGL_Shader(const std::string& vertex, const std::string& fragment);

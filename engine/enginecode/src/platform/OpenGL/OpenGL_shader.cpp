@@ -151,6 +151,72 @@ namespace Engine
 		}
 	}
 
+	void OpenGL_Shader::dispatchUniformUpload(ShaderDataType type, unsigned int location, void* data)
+	{
+		const float* addrf;
+		const int* addri;
+		float valueFloat;
+		int valueInt;
+
+		switch (type)
+		{
+		case Engine::ShaderDataType::None:
+			LOG_CORE_INFO("TYPE NOT SUPPORTED");
+			break;
+		case Engine::ShaderDataType::Int:
+			valueInt = *(int*)data;
+			glUniform1i(location, valueInt);
+			break;
+		case Engine::ShaderDataType::Int2:
+			addri = (const int*)data;
+			glUniform2iv(location, 1, addri);
+			break;
+		case Engine::ShaderDataType::Int3:
+			addri = (const int*)data;
+			glUniform3iv(location, 1, addri);
+			break;
+		case Engine::ShaderDataType::Int4:
+			addri = (const int*)data;
+			glUniform4iv(location, 1, addri);
+			break;
+		case Engine::ShaderDataType::Float:
+			valueFloat = *(float*)data;
+			glUniform1f(location, valueFloat);
+			break;
+		case Engine::ShaderDataType::Float2:
+			addrf = (const float*)data;
+			glUniform2fv(location, 1, addrf);
+			break;
+		case Engine::ShaderDataType::Float3:
+			addrf = (const float*)data;
+			glUniform3fv(location, 1, addrf);
+			break;
+		case Engine::ShaderDataType::Float4:
+			addrf = (const float*)data;
+			glUniform4fv(location, 1, addrf);
+			break;
+		case Engine::ShaderDataType::Mat3:
+			addrf = (const float*)data;
+			glUniformMatrix3fv(location, 1, GL_FALSE, addrf);
+			break;
+		case Engine::ShaderDataType::Mat4:
+			addrf = (const float*)data;
+			glUniformMatrix4fv(location, 1, GL_FALSE, addrf);
+			break;
+		case Engine::ShaderDataType::Bool:
+			valueInt = *(bool*)data;
+			glUniform1i(location, valueInt);
+			break;
+		case Engine::ShaderDataType::Sampler2D:
+			valueInt = *(int*)data;
+			glUniform1i(location, valueInt);
+			break;
+		default:
+			LOG_CORE_INFO("TYPE NOT SUPPORTED");
+			break;
+		}
+	}
+
 	OpenGL_Shader::OpenGL_Shader(const std::string& filepath) : m_program_ID(0)
 	{
 		parseSource(filepath);
@@ -176,6 +242,7 @@ namespace Engine
 	}
 	bool OpenGL_Shader::uploadData(const std::string& name, void* data)
 	{
+		dispatchUniformUpload((ShaderDataType)m_uniformLayout[name].first, m_uniformLayout[name].second, data);
 		return false;
 	}
 	bool OpenGL_Shader::uploadData(const UniformLayout& uniforms)
