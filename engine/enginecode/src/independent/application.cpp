@@ -47,7 +47,7 @@ namespace Engine {
 		m_windows = std::shared_ptr<WindowSystem>(new GLFW_WindowSys());
 #endif // NG_PLATFORM_WINDOWS
 		m_windows->start();
-		LOG_CORE_INFO("Windows system initialised");
+		LOG_CORE_INFO("WINDOWS SYSTEM INITALISED");
 
 		// Create window
 		m_window = std::shared_ptr<Window>(Window::create());
@@ -107,104 +107,6 @@ namespace Engine {
 			22, 23, 20
 		};
 
-		
-
-		std::string FCvertSrc = R"(
-				#version 440 core
-			
-				layout(location = 0) in vec3 a_vertexPosition;
-				layout(location = 1) in vec3 a_vertexColour;
-				out vec3 fragmentColour;
-				uniform mat4 u_MVP;
-				void main()
-				{
-					fragmentColour = a_vertexColour;
-					gl_Position =  u_MVP * vec4(a_vertexPosition,1);
-				}
-			)";
-
-		std::string FCFragSrc = R"(
-				#version 440 core
-			
-				layout(location = 0) out vec4 colour;
-				in vec3 fragmentColour;
-				void main()
-				{
-					colour = vec4(fragmentColour, 1.0);
-				}
-		)";
-
-		GLuint FCVertShader = glCreateShader(GL_VERTEX_SHADER);
-
-		const GLchar* source = FCvertSrc.c_str();
-		glShaderSource(FCVertShader, 1, &source, 0);
-		glCompileShader(FCVertShader);
-
-		GLint isCompiled = 0;
-		glGetShaderiv(FCVertShader, GL_COMPILE_STATUS, &isCompiled);
-		if (isCompiled == GL_FALSE)
-		{
-			GLint maxLength = 0;
-			glGetShaderiv(FCVertShader, GL_INFO_LOG_LENGTH, &maxLength);
-
-			std::vector<GLchar> infoLog(maxLength);
-			glGetShaderInfoLog(FCVertShader, maxLength, &maxLength, &infoLog[0]);
-			LOG_CORE_ERROR("Shader compile error: {0}", std::string(infoLog.begin(), infoLog.end()));
-
-			glDeleteShader(FCVertShader);
-			return;
-		}
-
-		GLuint FCFragShader = glCreateShader(GL_FRAGMENT_SHADER);
-
-		source = FCFragSrc.c_str();
-		glShaderSource(FCFragShader, 1, &source, 0);
-		glCompileShader(FCFragShader);
-
-		glGetShaderiv(FCFragShader, GL_COMPILE_STATUS, &isCompiled);
-		if (isCompiled == GL_FALSE)
-		{
-			GLint maxLength = 0;
-			glGetShaderiv(FCFragShader, GL_INFO_LOG_LENGTH, &maxLength);
-
-			std::vector<GLchar> infoLog(maxLength);
-			glGetShaderInfoLog(FCFragShader, maxLength, &maxLength, &infoLog[0]);
-			LOG_CORE_ERROR("Shader compile error: {0}", std::string(infoLog.begin(), infoLog.end()));
-
-			glDeleteShader(FCFragShader);
-			glDeleteShader(FCVertShader);
-
-			return;
-		}
-
-		m_FCprogram = glCreateProgram();
-		glAttachShader(m_FCprogram, FCVertShader);
-		glAttachShader(m_FCprogram, FCFragShader);
-		glLinkProgram(m_FCprogram);
-
-		GLint isLinked = 0;
-		glGetProgramiv(m_FCprogram, GL_LINK_STATUS, (int*)&isLinked);
-		if (isLinked == GL_FALSE)
-		{
-			GLint maxLength = 0;
-			glGetProgramiv(m_FCprogram, GL_INFO_LOG_LENGTH, &maxLength);
-
-			std::vector<GLchar> infoLog(maxLength);
-			glGetProgramInfoLog(m_FCprogram, maxLength, &maxLength, &infoLog[0]);
-			LOG_CORE_ERROR("Shader linking error: {0}", std::string(infoLog.begin(), infoLog.end()));
-
-			glDeleteProgram(m_FCprogram);
-			glDeleteShader(FCVertShader);
-			glDeleteShader(FCFragShader);
-
-			return;
-		}
-
-		glDetachShader(m_FCprogram, FCVertShader);
-		glDetachShader(m_FCprogram, FCFragShader);
-
-		// Added textuer phong shader and cube
-
 		float TPvertices[8 * 24] = {
 			-0.5f, -0.5f, -0.5f, 0.f, 0.f, -1.f, 0.33f, 0.5f,
 			 0.5f, -0.5f, -0.5f, 0.f, 0.f, -1.f, 0.f, 0.5f,
@@ -231,131 +133,10 @@ namespace Engine {
 			0.5f,  0.5f, 0.5f, 1.f, 0.f, 0.f,  0.66f, 0.5f,
 			0.5f,  -0.5f, 0.5f,  1.f, 0.f, 0.f, 0.66f, 1.0f
 		};
-
 		
-
-		std::string TPvertSrc = R"(
-				#version 440 core
-			
-				layout(location = 0) in vec3 a_vertexPosition;
-				layout(location = 1) in vec3 a_vertexNormal;
-				layout(location = 2) in vec2 a_texCoord;
-				out vec3 fragmentPos;
-				out vec3 normal;
-				out vec2 texCoord;
-				uniform mat4 u_model;
-				uniform mat4 u_MVP;
-				void main()
-				{
-					fragmentPos = vec3(u_model * vec4(a_vertexPosition, 1.0));
-					normal = mat3(transpose(inverse(u_model))) * a_vertexNormal;
-					texCoord = vec2(a_texCoord.x, a_texCoord.y);
-					gl_Position =  u_MVP * vec4(a_vertexPosition,1.0);
-				}
-			)";
-
-		std::string TPFragSrc = R"(
-				#version 440 core
-			
-				layout(location = 0) out vec4 colour;
-				in vec3 normal;
-				in vec3 fragmentPos;
-				in vec2 texCoord;
-				uniform vec3 u_lightPos; 
-				uniform vec3 u_viewPos; 
-				uniform vec3 u_lightColour;
-				uniform sampler2D u_texData;
-				void main()
-				{
-					float ambientStrength = 0.4;
-					vec3 ambient = ambientStrength * u_lightColour;
-					vec3 norm = normalize(normal);
-					vec3 lightDir = normalize(u_lightPos - fragmentPos);
-					float diff = max(dot(norm, lightDir), 0.0);
-					vec3 diffuse = diff * u_lightColour;
-					float specularStrength = 0.8;
-					vec3 viewDir = normalize(u_viewPos - fragmentPos);
-					vec3 reflectDir = reflect(-lightDir, norm);  
-					float spec = pow(max(dot(viewDir, reflectDir), 0.0), 64);
-					vec3 specular = specularStrength * spec * u_lightColour;  
-					
-					colour = vec4((ambient + diffuse + specular), 1.0) * texture(u_texData, texCoord);
-				}
-		)";
-
-		GLuint TPVertShader = glCreateShader(GL_VERTEX_SHADER);
-
-		source = TPvertSrc.c_str();
-		glShaderSource(TPVertShader, 1, &source, 0);
-		glCompileShader(TPVertShader);
-
-		isCompiled = 0;
-		glGetShaderiv(TPVertShader, GL_COMPILE_STATUS, &isCompiled);
-		if (isCompiled == GL_FALSE)
-		{
-			GLint maxLength = 0;
-			glGetShaderiv(TPVertShader, GL_INFO_LOG_LENGTH, &maxLength);
-
-			std::vector<GLchar> infoLog(maxLength);
-			glGetShaderInfoLog(TPVertShader, maxLength, &maxLength, &infoLog[0]);
-			LOG_CORE_ERROR("Shader compile error: {0}", std::string(infoLog.begin(), infoLog.end()));
-
-			glDeleteShader(TPVertShader);
-			return;
-		}
-
-		GLuint TPFragShader = glCreateShader(GL_FRAGMENT_SHADER);
-
-		source = TPFragSrc.c_str();
-		glShaderSource(TPFragShader, 1, &source, 0);
-		glCompileShader(TPFragShader);
-
-		glGetShaderiv(TPFragShader, GL_COMPILE_STATUS, &isCompiled);
-		if (isCompiled == GL_FALSE)
-		{
-			GLint maxLength = 0;
-			glGetShaderiv(TPFragShader, GL_INFO_LOG_LENGTH, &maxLength);
-
-			std::vector<GLchar> infoLog(maxLength);
-			glGetShaderInfoLog(TPFragShader, maxLength, &maxLength, &infoLog[0]);
-			LOG_CORE_ERROR("Shader compile error: {0}", std::string(infoLog.begin(), infoLog.end()));
-
-			glDeleteShader(TPFragShader);
-			glDeleteShader(TPVertShader);
-
-			return;
-		}
-
-		m_TPprogram = glCreateProgram();
-		glAttachShader(m_TPprogram, TPVertShader);
-		glAttachShader(m_TPprogram, TPFragShader);
-		glLinkProgram(m_TPprogram);
-
-		isLinked = 0;
-		glGetProgramiv(m_TPprogram, GL_LINK_STATUS, (int*)&isLinked);
-		if (isLinked == GL_FALSE)
-		{
-			GLint maxLength = 0;
-			glGetProgramiv(m_TPprogram, GL_INFO_LOG_LENGTH, &maxLength);
-
-			std::vector<GLchar> infoLog(maxLength);
-			glGetProgramInfoLog(m_TPprogram, maxLength, &maxLength, &infoLog[0]);
-			LOG_CORE_ERROR("Shader linking error: {0}", std::string(infoLog.begin(), infoLog.end()));
-
-			glDeleteProgram(m_TPprogram);
-			glDeleteShader(TPVertShader);
-			glDeleteShader(TPFragShader);
-
-			return;
-		}
-
-		glDetachShader(m_TPprogram, FCVertShader);
-		glDetachShader(m_TPprogram, FCFragShader);
 
 		FCmodel = glm::translate(glm::mat4(1), glm::vec3(1.5, 0, 3));
 		TPmodel = glm::translate(glm::mat4(1), glm::vec3(-1.5, 0, 3));
-
-		// End temporary code
 
 		tex = std::shared_ptr<OpenGL_Texture>(new OpenGL_Texture("assets/textures/letterCube.png"));
 		tex->bind();
@@ -405,7 +186,7 @@ namespace Engine {
 
 	void Application::onEvent(Event& e)
 	{
-		LOG_CORE_INFO("Event: {0}", e.getEventType());
+		LOG_CORE_INFO("EVENT: {0}", e.getEventType());
 
 		EventDispatcher dispatcher(e);
 		dispatcher.dispatch<WindowClose>(std::bind(&Application::onClose, this, std::placeholders::_1));
@@ -415,7 +196,7 @@ namespace Engine {
 
 	bool Application::onClose(WindowClose& e)
 	{
-		LOG_CORE_INFO("Closing application");
+		LOG_CORE_INFO("CLOSING APPLICATION");
 		m_running = false;
 		return true;
 	}
@@ -489,14 +270,6 @@ namespace Engine {
 			// End of code to make the cube move.
 
 			glm::mat4 fcMVP = projection * view * FCmodel;
-			glUseProgram(m_FCprogram);
-
-
-
-			GLuint MVPLoc = glGetUniformLocation(m_FCprogram, "u_MVP");
-			//glUniformMatrix4fv(MVPLoc, 1, GL_FALSE, &fcMVP[0][0]);
-
-
 
 			prog->bind();
 			prog->uploadData("u_MVP", &fcMVP[0][0]);
@@ -509,32 +282,17 @@ namespace Engine {
 			if (m_goingUp) texSlot = 0;
 			else texSlot = 1;
 
-			glUseProgram(m_TPprogram);
+			glm::vec3 lightColour = glm::vec3(1.0f, 1.0f, 1.0f);
+			glm::vec3 lightPos = glm::vec3(1.0f, 4.0f, -6.0f);
+			glm::vec3 viewPos = glm::vec3(0.0f, 0.0f, -4.5f);
 
-			MVPLoc = glGetUniformLocation(m_TPprogram, "u_MVP");
-			glUniformMatrix4fv(MVPLoc, 1, GL_FALSE, &tpMVP[0][0]);
-
-			GLuint modelLoc = glGetUniformLocation(m_TPprogram, "u_model");
-			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &TPmodel[0][0]);
-
-			GLuint colLoc = glGetUniformLocation(m_TPprogram, "u_objectColour");
-			glUniform3f(colLoc, 0.2f, 0.8f, 0.5f);
-
-			GLuint lightColLoc = glGetUniformLocation(m_TPprogram, "u_lightColour");
-			glUniform3f(lightColLoc, 1.0f, 1.0f, 1.0f);
-
-			GLuint lightPosLoc = glGetUniformLocation(m_TPprogram, "u_lightPos");
-			glUniform3f(lightPosLoc, 1.0f, 4.0f, -6.0f);
-
-			GLuint viewPosLoc = glGetUniformLocation(m_TPprogram, "u_viewPos");
-			glUniform3f(viewPosLoc, 0.0f, 0.0f, -4.5f);
-
-			GLuint texDataLoc = glGetUniformLocation(m_TPprogram, "u_texData");
-			glUniform1i(texDataLoc, texSlot);
-
-
-			//prog1->bind();
-			//prog1->uploadData("u_MVP", &tpMVP[0][0]);
+			prog1->bind();
+			prog1->uploadData("u_MVP", (void*)&tpMVP[0][0]);
+			prog1->uploadData("u_model", (void*)&TPmodel[0][0]);
+			prog1->uploadData("u_lightColour", (void*)&lightColour);
+			prog1->uploadData("u_lightPos", (void*)&lightPos);
+			prog1->uploadData("u_viewPos", (void*)&viewPos);
+			prog1->uploadData("u_texData", (void*)&texSlot);
 
 
 			vao1->bind();
@@ -544,6 +302,7 @@ namespace Engine {
 #pragma endregion TempDrawCode
 
 			m_window->onUpdate(s_timestep);
+
 		}
 	}
 

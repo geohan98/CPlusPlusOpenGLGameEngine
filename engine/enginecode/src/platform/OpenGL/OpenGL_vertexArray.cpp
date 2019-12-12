@@ -31,7 +31,7 @@ namespace Engine
 
 		for (unsigned i = 0; i < layout.GetElements().size(); i++)
 		{
-			LOG_CORE_INFO("Added Element");
+			//LOG_CORE_INFO("Added Element");
 			const auto& element = layout.GetElements()[i];
 			glEnableVertexAttribArray(i);
 			glVertexAttribPointer(i, ShaderDataTypeComponentCount(element.m_dataType), ShaderDataTypeToOpenGL(element.m_dataType), element.m_normalized, layout.getStride(), (const void*)element.m_offset);

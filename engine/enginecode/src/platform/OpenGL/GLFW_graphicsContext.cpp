@@ -29,7 +29,7 @@ namespace Engine
 				GLsizei length,
 				const GLchar* message,
 				const void* userParam) {
-				LOG_CORE_INFO("OpenGL Debug: [Type {0}] [ID {1}] [Severity {2}]; {3}", type, id, severity, message);
+				//LOG_CORE_INFO("OpenGL Debug: [Type {0}] [ID {1}] [Severity {2}]; {3}", type, id, severity, message);
 			}, 0);
 		}
 	}
