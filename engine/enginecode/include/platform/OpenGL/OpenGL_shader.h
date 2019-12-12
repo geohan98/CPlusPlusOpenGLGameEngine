@@ -11,6 +11,7 @@ namespace Engine
 		unsigned int m_program_ID;
 		BufferLayout m_bufferlayout;
 		UniformLayout m_uniformLayout;
+		std::map<std::string, std::pair<ShaderDataType,int>> m_uniformLocationCache;
 		void parseSource(const std::string& filepath);
 		void compileAndLink(std::string& vertex, std::string& fragment);
 		void setUniformLocations();

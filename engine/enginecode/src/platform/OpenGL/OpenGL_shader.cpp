@@ -29,7 +29,7 @@ namespace Engine
 				std::string x = line;
 				x = x.substr(x.find("in") + 3);
 				x = x.erase(x.find(" "));
-				//LOG_CORE_INFO(x);
+				LOG_CORE_INFO(x);
 				m_bufferlayout.addElement(GLSLStrToSDT(x));
 			}
 
@@ -42,10 +42,10 @@ namespace Engine
 
 				y = y.substr(x.size() + 1, y.find(";"));
 				y = y.erase(y.find(";"));
-				//LOG_CORE_INFO(x);
-				//LOG_CORE_INFO(y);
-				m_uniformLayout[y].first = (void*)GLSLStrToSDT(x);
-				m_uniformLayout[y].second = -1;
+				LOG_CORE_INFO(x);
+				LOG_CORE_INFO(y);
+				m_uniformLocationCache[y].first = GLSLStrToSDT(x);
+				m_uniformLocationCache[y].second = - 1;
 			}
 
 
@@ -135,9 +135,9 @@ namespace Engine
 
 	void OpenGL_Shader::setUniformLocations()
 	{
-		std::map<std::string, std::pair<void*, unsigned int>>::iterator it;
+		std::map<std::string, std::pair<ShaderDataType, int>>::iterator it;
 
-		for (auto it = m_uniformLayout.begin(); it != m_uniformLayout.end(); ++it)
+		for (auto it = m_uniformLocationCache.begin(); it != m_uniformLocationCache.end(); ++it)
 		{
 			if (it->second.second == -1)
 			{
@@ -242,7 +242,7 @@ namespace Engine
 	}
 	bool OpenGL_Shader::uploadData(const std::string& name, void* data)
 	{
-		dispatchUniformUpload((ShaderDataType)m_uniformLayout[name].first, m_uniformLayout[name].second, data);
+		dispatchUniformUpload(m_uniformLocationCache[name].first, m_uniformLocationCache[name].second, data);
 		return false;
 	}
 	bool OpenGL_Shader::uploadData(const UniformLayout& uniforms)

@@ -107,15 +107,7 @@ namespace Engine {
 			22, 23, 20
 		};
 
-		bl = { {ShaderDataType::Float3},{ShaderDataType::Float3} };
-		vao = std::shared_ptr<OpenGL_VertexArray>(new OpenGL_VertexArray());
-		vbo = std::shared_ptr<OpenGL_VertexBuffer>(new OpenGL_VertexBuffer(FCvertices, sizeof(FCvertices), bl));
-		vbo->bind();
-		ibo = std::shared_ptr<OpenGL_IndexBuffer>(new OpenGL_IndexBuffer(indices, 36));
-		ibo->bind();
-		vao->setVertexBuffer(vbo);
-		vao->setIndexBuffer(ibo);
-		vao->bind();
+		
 
 		std::string FCvertSrc = R"(
 				#version 440 core
@@ -240,15 +232,7 @@ namespace Engine {
 			0.5f,  -0.5f, 0.5f,  1.f, 0.f, 0.f, 0.66f, 1.0f
 		};
 
-		bl1 = { {ShaderDataType::Float3},{ShaderDataType::Float3},{ShaderDataType::Float2} };
-		vao1 = std::shared_ptr<OpenGL_VertexArray>(new OpenGL_VertexArray());
-		vbo1 = std::shared_ptr<OpenGL_VertexBuffer>(new OpenGL_VertexBuffer(TPvertices, sizeof(TPvertices), bl1));
-		vbo1->bind();
-		ibo1 = std::shared_ptr<OpenGL_IndexBuffer>(new OpenGL_IndexBuffer(indices, 36));
-		ibo1->bind();
-		vao1->setVertexBuffer(vbo1);
-		vao1->setIndexBuffer(ibo);
-		vao1->bind();
+		
 
 		std::string TPvertSrc = R"(
 				#version 440 core
@@ -379,7 +363,32 @@ namespace Engine {
 		tex1->bind();
 
 		prog = std::shared_ptr<OpenGL_Shader>(new OpenGL_Shader("assets/shaders/flatColor.shader"));
+
 		prog1 = std::shared_ptr<OpenGL_Shader>(new OpenGL_Shader("assets/shaders/texPhong.shader"));
+
+		bl = { {ShaderDataType::Float3},{ShaderDataType::Float3} };
+		vao = std::shared_ptr<OpenGL_VertexArray>(new OpenGL_VertexArray());
+		vbo = std::shared_ptr<OpenGL_VertexBuffer>(new OpenGL_VertexBuffer(FCvertices, sizeof(FCvertices), prog->getBufferLayout()));
+		vbo->bind();
+		ibo = std::shared_ptr<OpenGL_IndexBuffer>(new OpenGL_IndexBuffer(indices, 36));
+		ibo->bind();
+		vao->setVertexBuffer(vbo);
+		vao->setIndexBuffer(ibo);
+		vao->bind();
+
+
+		bl1 = { {ShaderDataType::Float3},{ShaderDataType::Float3},{ShaderDataType::Float2} };
+		vao1 = std::shared_ptr<OpenGL_VertexArray>(new OpenGL_VertexArray());
+		vbo1 = std::shared_ptr<OpenGL_VertexBuffer>(new OpenGL_VertexBuffer(TPvertices, sizeof(TPvertices), prog1->getBufferLayout()));
+		vbo1->bind();
+		ibo1 = std::shared_ptr<OpenGL_IndexBuffer>(new OpenGL_IndexBuffer(indices, 36));
+		ibo1->bind();
+		vao1->setVertexBuffer(vbo1);
+		vao1->setIndexBuffer(ibo);
+		vao1->bind();
+
+
+		
 
 #pragma endregion TempSetup
 
@@ -483,12 +492,17 @@ namespace Engine {
 			glUseProgram(m_FCprogram);
 
 
-			prog->bind();
-			vao->bind();
 
 			GLuint MVPLoc = glGetUniformLocation(m_FCprogram, "u_MVP");
-			glUniformMatrix4fv(MVPLoc, 1, GL_FALSE, &fcMVP[0][0]);
-			glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, nullptr);
+			//glUniformMatrix4fv(MVPLoc, 1, GL_FALSE, &fcMVP[0][0]);
+
+
+
+			prog->bind();
+			prog->uploadData("u_MVP", &fcMVP[0][0]);
+			vao->bind();
+
+			glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, nullptr); //DRAW CALL
 
 			glm::mat4 tpMVP = projection * view * TPmodel;
 			unsigned int texSlot;
@@ -496,7 +510,6 @@ namespace Engine {
 			else texSlot = 1;
 
 			glUseProgram(m_TPprogram);
-			vao1->bind();
 
 			MVPLoc = glGetUniformLocation(m_TPprogram, "u_MVP");
 			glUniformMatrix4fv(MVPLoc, 1, GL_FALSE, &tpMVP[0][0]);
@@ -518,7 +531,14 @@ namespace Engine {
 
 			GLuint texDataLoc = glGetUniformLocation(m_TPprogram, "u_texData");
 			glUniform1i(texDataLoc, texSlot);
-			glDrawElements(GL_TRIANGLES, 3 * 12, GL_UNSIGNED_INT, nullptr);
+
+
+			//prog1->bind();
+			//prog1->uploadData("u_MVP", &tpMVP[0][0]);
+
+
+			vao1->bind();
+			glDrawElements(GL_TRIANGLES, 3 * 12, GL_UNSIGNED_INT, nullptr); //DRAW CALL
 
 			// End temporary code
 #pragma endregion TempDrawCode

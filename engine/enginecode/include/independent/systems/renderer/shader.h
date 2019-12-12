@@ -5,7 +5,7 @@
 namespace Engine
 {
 	class BufferLayout;
-	using UniformLayout = std::map < std::string, std::pair<void*, int>>;
+	using UniformLayout = std::map < std::string, void*>;
 
 	class Shader
 	{
