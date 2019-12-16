@@ -20,6 +20,8 @@
 #include "include/platform/OpenGL/OpenGL_texture.h"
 #include "include/platform/OpenGL/OpenGL_shader.h"
 
+#include "systems/resourceManager.h"
+
 namespace Engine {
 
 	/**
@@ -60,6 +62,8 @@ namespace Engine {
 		std::shared_ptr<OpenGL_Texture> tex1;
 		std::shared_ptr<OpenGL_Shader> prog;
 		std::shared_ptr<OpenGL_Shader> prog1;
+
+		std::shared_ptr<ResourceManager> m_resources;
 
 		unsigned int m_FCprogram; // Flat colour shader ID
 		unsigned int m_TPprogram; // Textured Phong shader ID

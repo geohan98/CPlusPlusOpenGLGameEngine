@@ -47,13 +47,15 @@ namespace Engine {
 		m_windows = std::shared_ptr<WindowSystem>(new GLFW_WindowSys());
 #endif // NG_PLATFORM_WINDOWS
 		m_windows->start();
-		LOG_CORE_INFO("WINDOWS SYSTEM INITALISED");
+		LOG_CORE_WARN("WINDOW SYSTEM INITALISED");
 
 		// Create window
 		m_window = std::shared_ptr<Window>(Window::create());
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
 		// Set screen res
 		Application::s_screenResolution = glm::ivec2(m_window->getWidth(), m_window->getHeight());
+
+		m_resources.reset(new ResourceManager());
 
 #pragma region TempSetup
 		//  Temporary set up code to be abstracted
@@ -133,7 +135,7 @@ namespace Engine {
 			0.5f,  0.5f, 0.5f, 1.f, 0.f, 0.f,  0.66f, 0.5f,
 			0.5f,  -0.5f, 0.5f,  1.f, 0.f, 0.f, 0.66f, 1.0f
 		};
-		
+
 
 		FCmodel = glm::translate(glm::mat4(1), glm::vec3(1.5, 0, 3));
 		TPmodel = glm::translate(glm::mat4(1), glm::vec3(-1.5, 0, 3));
@@ -169,7 +171,7 @@ namespace Engine {
 		vao1->bind();
 
 
-		
+
 
 #pragma endregion TempSetup
 
@@ -196,7 +198,7 @@ namespace Engine {
 
 	bool Application::onClose(WindowClose& e)
 	{
-		LOG_CORE_INFO("CLOSING APPLICATION");
+		LOG_CORE_WARN("CLOSING APPLICATION");
 		m_running = false;
 		return true;
 	}
@@ -225,9 +227,10 @@ namespace Engine {
 	void Application::run()
 	{
 
+		LOG_CORE_INFO(m_resources->parseFilePath("assets/textures/letterCube.png"));
+
 		while (m_running)
 		{
-			//LOG_CORE_INFO("FPS: {0}", (int)(1.0f / s_timestep));
 
 #pragma region TempDrawCode
 			// Temporary draw code to be abstracted

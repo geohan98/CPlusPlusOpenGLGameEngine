@@ -45,7 +45,7 @@ namespace Engine
 				//LOG_CORE_INFO(x);
 				//LOG_CORE_INFO(y);
 				m_uniformLocationCache[y].first = GLSLStrToSDT(x);
-				m_uniformLocationCache[y].second = - 1;
+				m_uniformLocationCache[y].second = -1;
 			}
 
 
@@ -142,7 +142,7 @@ namespace Engine
 			if (it->second.second == -1)
 			{
 				it->second.second = glGetUniformLocation(m_program_ID, it->first.c_str());
-				LOG_CORE_INFO("UNIFORM '{0}', TYPE == '{1}', LOCATION == '{2}'", it->first, it->second.first ,it->second.second);
+				LOG_CORE_TRACE("UNIFORM CACHED, '{0}', TYPE == '{1}', LOCATION == '{2}'", it->first, it->second.first, it->second.second);
 				if (it->second.second == -1)
 				{
 					LOG_CORE_ERROR("UNIFORM '{0}', DOES NOT EXSIST", it->first);
@@ -161,7 +161,7 @@ namespace Engine
 		switch (type)
 		{
 		case Engine::ShaderDataType::None:
-			LOG_CORE_INFO("TYPE NOT SPECIFIED");
+			LOG_CORE_ERROR("UNIFORM TYPE NOT SPECIFIED");
 			break;
 		case Engine::ShaderDataType::Int:
 			valueInt = *(int*)data;
@@ -210,9 +210,6 @@ namespace Engine
 		case Engine::ShaderDataType::Sampler2D:
 			valueInt = *(int*)data;
 			glUniform1i(location, valueInt);
-			break;
-		default:
-			LOG_CORE_INFO("TYPE NOT SUPPORTED");
 			break;
 		}
 	}

@@ -10,6 +10,6 @@ namespace Engine
 
 		virtual unsigned int getCount() const = 0;
 
-		static IndexBuffer* create(unsigned int* indices, unsigned int size);
+		static IndexBuffer* create(unsigned int* indices, unsigned int count);
 	};
 }

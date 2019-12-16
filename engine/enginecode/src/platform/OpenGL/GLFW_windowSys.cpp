@@ -14,7 +14,7 @@ namespace Engine
 		}
 		else
 		{
-			LOG_CORE_INFO("GLFW INITALIZED");
+			LOG_CORE_WARN("GLFW INITALIZED");
 		}
 	}
 	void GLFW_WindowSys::stop(SystemSignal close, ...)

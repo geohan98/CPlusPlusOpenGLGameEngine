@@ -19,7 +19,7 @@ namespace Engine
 		}
 		else
 		{
-			LOG_CORE_INFO("GLFW WINDOW CREATED");
+			LOG_CORE_WARN("GLFW WINDOW CREATED");
 		}
 
 		m_context = std::unique_ptr<GraphicsContext>(new GLFW_GraphicsContext(m_nativeWindow));
