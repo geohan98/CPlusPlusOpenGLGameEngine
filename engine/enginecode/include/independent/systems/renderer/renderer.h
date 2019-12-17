@@ -1,15 +1,12 @@
 #pragma once
 #include <memory>
 
+#include "systems/renderer/renderCommand.h"
+#include "systems/renderer/material.h"
 class SceneData;
-class Material;
-class RenderCommand;
 
 namespace Engine
 {
-
-
-
 	class Renderer
 	{
 	public:

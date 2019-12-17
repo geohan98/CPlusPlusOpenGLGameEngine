@@ -8,7 +8,7 @@
 
 namespace Engine
 {
-	VertexBuffer* VertexBuffer::create(float* vertices, unsigned int size, BufferLayout& layout)
+	VertexBuffer* VertexBuffer::create(float* vertices, unsigned int size, VertexBufferLayout& layout)
 	{
 		switch (RenderAPI::getAPI())
 		{

@@ -4,7 +4,7 @@
 
 namespace Engine
 {
-	class BufferLayout;
+	class VertexBufferLayout;
 	using UniformLayout = std::map < std::string, void*>;
 
 	class Shader
@@ -15,7 +15,7 @@ namespace Engine
 		virtual void unbind() = 0;
 		virtual bool uploadData(const std::string& name, void* data) = 0;
 		virtual bool uploadData(const UniformLayout& uniforms) = 0;
-		virtual BufferLayout getBufferLayout() const = 0;
+		virtual VertexBufferLayout getBufferLayout() const = 0;
 		virtual UniformLayout getUniformLayout() const = 0;
 
 		static Shader* create(const std::string& filepath);

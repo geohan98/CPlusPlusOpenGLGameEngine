@@ -1,7 +1,7 @@
 #include "engine_pch.h"
 #include "systems/log.h"
 #include "include/platform/OpenGL/OpenGL_shader.h"
-#include "systems/renderer/bufferLayout.h"
+#include "systems/renderer/vertexBufferLayout.h"
 #include "glad/glad.h"
 
 #include <iostream>
@@ -246,7 +246,7 @@ namespace Engine
 	{
 		return false;
 	}
-	BufferLayout OpenGL_Shader::getBufferLayout() const
+	VertexBufferLayout OpenGL_Shader::getBufferLayout() const
 	{
 		return m_bufferlayout;
 	}

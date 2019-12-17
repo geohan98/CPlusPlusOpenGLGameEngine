@@ -1,10 +1,11 @@
 #include "engine_pch.h"
-#include "systems/renderer/bufferLayout.h"
-#include "systems/ButtonCodes.h"
+#include "systems/log.h"
+#include "systems/renderer/uniformBuffer.h"
 
 namespace Engine
 {
-	void BufferLayout::calcStrideAndOffset()
+
+	void UniformBufferLayout::calcStrideAndOffset()
 	{
 		unsigned int previousOffset = 0;
 
@@ -15,7 +16,8 @@ namespace Engine
 		}
 		m_stride = previousOffset;
 	}
-	BufferLayout::BufferLayout(const std::initializer_list<BufferElement>& elements) : m_elements(elements)
+
+	UniformBufferLayout::UniformBufferLayout(const std::initializer_list<UniformBufferElement>& elements) : m_elements(elements)
 	{
 		calcStrideAndOffset();
 	}

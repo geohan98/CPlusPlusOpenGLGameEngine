@@ -40,7 +40,7 @@ namespace Engine
 		static std::shared_ptr<VertexArray> getVertexArray(const std::string& name);
 		static bool doesVertexArrayExist(const std::string& name);
 
-		static std::shared_ptr<VertexBuffer> addVertexBuffer(const std::string& name, float* vertices, unsigned int size, BufferLayout& layout);
+		static std::shared_ptr<VertexBuffer> addVertexBuffer(const std::string& name, float* vertices, unsigned int size, VertexBufferLayout& layout);
 		static std::shared_ptr<VertexBuffer> getVertexBuffer(const std::string& name);
 		static bool doesVertexBufferExist(const std::string& name);
 

@@ -5,7 +5,7 @@
 
 namespace Engine
 {
-	OpenGL_VertexBuffer::OpenGL_VertexBuffer(float* vertices, unsigned int size, BufferLayout& layout)
+	OpenGL_VertexBuffer::OpenGL_VertexBuffer(float* vertices, unsigned int size, VertexBufferLayout& layout)
 	{
 		m_layout = layout;
 		glCreateBuffers(1, &m_rendererID);
@@ -24,7 +24,7 @@ namespace Engine
 	void OpenGL_VertexBuffer::edit(float* vertices, unsigned int size, unsigned int offset)
 	{
 	}
-	const BufferLayout& OpenGL_VertexBuffer::getLayout() const
+	const VertexBufferLayout& OpenGL_VertexBuffer::getLayout() const
 	{
 		return m_layout;
 	}

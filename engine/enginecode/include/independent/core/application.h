@@ -16,7 +16,7 @@
 #include "include/platform/OpenGL/OpenGL_vertexArray.h"
 #include "include/platform/OpenGL/OpenGL_vertexBuffer.h"
 #include "include/platform/OpenGL/OpenGL_indexBuffer.h"
-#include "systems/renderer/bufferLayout.h"
+#include "systems/renderer/vertexBufferLayout.h"
 #include "include/platform/OpenGL/OpenGL_texture.h"
 #include "include/platform/OpenGL/OpenGL_shader.h"
 
@@ -50,12 +50,12 @@ namespace Engine {
 // Temp stuff
 
 		std::shared_ptr<OpenGL_VertexArray> vao;
-		BufferLayout bl;
+		VertexBufferLayout bl;
 		std::shared_ptr<OpenGL_VertexBuffer> vbo;
 		std::shared_ptr<OpenGL_IndexBuffer>  ibo;
 
 		std::shared_ptr<OpenGL_VertexArray> vao1;
-		BufferLayout bl1;
+		VertexBufferLayout bl1;
 		std::shared_ptr<OpenGL_VertexBuffer> vbo1;
 		std::shared_ptr<OpenGL_IndexBuffer>  ibo1;
 		std::shared_ptr<OpenGL_Texture> tex;

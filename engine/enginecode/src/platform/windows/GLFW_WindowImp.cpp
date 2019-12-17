@@ -1,6 +1,6 @@
 #include "engine_pch.h"
-#include "include/platform/OpenGL/GLFW_windowImp.h"
-#include "include/platform/OpenGL/GLFW_graphicsContext.h"
+#include "include/platform/windows/GLFW_windowImp.h"
+#include "include/platform/windows/GLFW_graphicsContext.h"
 #include "systems/log.h"
 
 #include <GLFW/glfw3.h>
@@ -121,8 +121,6 @@ namespace Engine
 		);
 
 	}
-
-
 
 	void GLFW_WindowImp::close()
 	{

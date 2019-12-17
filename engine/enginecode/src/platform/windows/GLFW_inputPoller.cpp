@@ -1,5 +1,5 @@
 #include "engine_pch.h"
-#include "include/platform/OpenGL/GLFW_inputPoller.h"
+#include "include/platform/windows/GLFW_inputPoller.h"
 #include <GLFW/glfw3.h>
 #include "core/application.h"
 #include "systems/ButtonCodes.h"

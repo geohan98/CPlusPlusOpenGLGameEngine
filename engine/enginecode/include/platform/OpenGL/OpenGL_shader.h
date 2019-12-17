@@ -1,6 +1,6 @@
 #pragma once
 #include "systems/renderer/shader.h"
-#include "systems/renderer/bufferLayout.h"
+#include "systems/renderer/vertexBufferLayout.h"
 #include <string>
 
 namespace Engine
@@ -9,9 +9,9 @@ namespace Engine
 	{
 	private:
 		unsigned int m_program_ID;
-		BufferLayout m_bufferlayout;
+		VertexBufferLayout m_bufferlayout;
 		UniformLayout m_uniformLayout;
-		std::map<std::string, std::pair<ShaderDataType,int>> m_uniformLocationCache;
+		std::map<std::string, std::pair<ShaderDataType, int>> m_uniformLocationCache;
 		void parseSource(const std::string& filepath);
 		void compileAndLink(std::string& vertex, std::string& fragment);
 		void setUniformLocations();
@@ -24,7 +24,7 @@ namespace Engine
 		void unbind() override;
 		bool uploadData(const std::string& name, void* data) override;
 		bool uploadData(const UniformLayout& uniforms) override;
-		BufferLayout getBufferLayout() const override;
+		VertexBufferLayout getBufferLayout() const override;
 		UniformLayout getUniformLayout() const override;
 	};
 }

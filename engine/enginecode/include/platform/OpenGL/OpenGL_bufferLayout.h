@@ -1,9 +1,9 @@
 #pragma once
-#include "systems/renderer/bufferLayout.h"
+#include "systems/renderer/vertexBufferLayout.h"
 
 namespace Engine {
 
-	class OpenGL_BufferLayout : public BufferLayout
+	class OpenGL_BufferLayout : public VertexBufferLayout
 	{
 	public:
 		OpenGL_BufferLayout() {};

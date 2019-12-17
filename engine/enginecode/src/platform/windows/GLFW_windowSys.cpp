@@ -1,5 +1,5 @@
 #include "engine_pch.h"
-#include "include/platform/OpenGL/GLFW_windowSys.h"
+#include "include/platform/windows/GLFW_windowSys.h"
 #include "GLFW/glfw3.h"
 #include "systems/Log.h"
 
@@ -10,7 +10,6 @@ namespace Engine
 		if (!glfwInit())
 		{
 			LOG_CORE_CRITICAL("FAILED TO INITALIZE GLFW");
-			return;
 		}
 		else
 		{

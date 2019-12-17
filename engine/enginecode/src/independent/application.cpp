@@ -1,7 +1,6 @@
 /** \file application.cpp
 */
 
-
 #include "engine_pch.h"
 
 #pragma region TempIncludes
@@ -17,7 +16,7 @@
 
 #include "core/application.h"
 #ifdef NG_PLATFORM_WINDOWS
-#include "include/platform/OpenGL/GLFW_windowSys.h"
+#include "include/platform/windows/GLFW_windowSys.h"
 
 #endif // NG_PLATFORM_WINDOWS
 
@@ -64,8 +63,8 @@ namespace Engine {
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
 		// Enabling backface culling to ensure triangle vertices are correct ordered (CCW)
-		//glEnable(GL_CULL_FACE);
-		//glCullFace(GL_BACK);
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
 
 		float FCvertices[6 * 24] = {
 			-0.5f, -0.5f, -0.5f, 0.8f, 0.2f, 0.2f, // red square

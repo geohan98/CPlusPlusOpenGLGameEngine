@@ -1,7 +1,4 @@
 #pragma once
-#include <vector>
-#include <initializer_list>
-#include <string>
 #include "systems/ButtonCodes.h"
 
 namespace Engine
@@ -84,38 +81,4 @@ namespace Engine
 		case Engine::ShaderDataType::Sampler2D:		return 1;
 		}
 	}
-
-	class BufferElement
-	{
-	public:
-		ShaderDataType m_dataType;
-		unsigned int m_size;
-		unsigned int m_offset;
-		bool m_normalized;
-
-
-		BufferElement(ShaderDataType dataType, bool normalized = false) : m_dataType(dataType), m_size(ShaderDataTypeSize(dataType)), m_offset(0), m_normalized(normalized) {}
-	};
-
-	class BufferLayout
-	{
-	private:
-		std::vector<BufferElement> m_elements;
-		unsigned int m_stride = 0;
-		void calcStrideAndOffset();
-	public:
-		BufferLayout() {};
-		BufferLayout(const std::initializer_list<BufferElement>& elements);
-		inline unsigned int getStride() const { return m_stride; }
-		inline const std::vector<BufferElement>& GetElements() const { return m_elements; }
-		std::vector<BufferElement>::iterator begin() { return m_elements.begin(); }
-		std::vector<BufferElement>::iterator end() { return m_elements.end(); }
-		std::vector<BufferElement>::const_iterator begin()const { return m_elements.begin(); }
-		std::vector<BufferElement>::const_iterator end()const { return m_elements.end(); }
-		void addElement(ShaderDataType datatype)
-		{
-			m_elements.push_back(BufferElement(datatype));
-			calcStrideAndOffset();
-		}
-	};
 }

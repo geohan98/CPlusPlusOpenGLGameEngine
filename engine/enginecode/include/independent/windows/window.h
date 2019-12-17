@@ -10,8 +10,6 @@
 
 namespace Engine {
 
-	//class Event; // Be replaced
-
 	struct WindowProperties
 	{
 		std::string m_title;
