@@ -1,4 +1,4 @@
-
+#pragma once
 
 #include "windows/windowSystem.h"
 #include "windows/window.h"

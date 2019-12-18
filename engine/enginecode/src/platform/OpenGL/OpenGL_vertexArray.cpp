@@ -1,6 +1,6 @@
 #include "engine_pch.h"
 #include "include/platform/OpenGL/OpenGL_vertexArray.h"
-#include "glad/glad.h"
+#include <glad/glad.h>
 #include "systems/log.h"
 #include "include/platform/OpenGL/OpenGL_vertexBuffer.h"
 #include "include/platform/OpenGL/OpenGL_indexBuffer.h"

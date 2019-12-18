@@ -1,4 +1,4 @@
-
+#pragma once
 
 #include "engine_pch.h"
 

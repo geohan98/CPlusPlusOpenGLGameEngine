@@ -1,4 +1,4 @@
-
+#pragma once
 #include "systems/renderer/renderer.h"
 
 namespace Engine

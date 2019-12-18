@@ -1,3 +1,4 @@
+#pragma once
 #include "systems/renderer/uniformBuffer.h"
 
 namespace Engine

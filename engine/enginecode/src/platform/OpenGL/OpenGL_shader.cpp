@@ -2,7 +2,7 @@
 #include "systems/log.h"
 #include "include/platform/OpenGL/OpenGL_shader.h"
 #include "systems/renderer/vertexBufferLayout.h"
-#include "glad/glad.h"
+#include <glad/glad.h>
 
 #include <iostream>
 #include <fstream>

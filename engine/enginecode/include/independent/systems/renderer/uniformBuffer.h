@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include "systems/renderer/uniformBufferLayout.h"
 #include "systems/renderer/shader.h"

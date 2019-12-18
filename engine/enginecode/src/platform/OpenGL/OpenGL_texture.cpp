@@ -1,7 +1,7 @@
 #include "engine_pch.h"
 #include "systems/log.h"
 #include "include/platform/OpenGL/OpenGL_texture.h"
-#include "glad/glad.h"
+#include <glad/glad.h>
 #include <stb_image.h>
 
 namespace Engine

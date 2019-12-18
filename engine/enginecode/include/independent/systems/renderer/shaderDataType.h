@@ -1,4 +1,4 @@
-
+#pragma once
 #include "systems/ButtonCodes.h"
 
 namespace Engine

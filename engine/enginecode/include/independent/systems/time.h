@@ -1,4 +1,4 @@
-
+#pragma once
 #include <systems/system.h>
 #include <chrono>
 

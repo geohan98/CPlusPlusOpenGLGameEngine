@@ -1,4 +1,4 @@
-
+#pragma once
 
 #include "windows/graphicsContext.h"
 
@@ -6,8 +6,6 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
-struct GLFWwindow;
 
 namespace Engine
 {
