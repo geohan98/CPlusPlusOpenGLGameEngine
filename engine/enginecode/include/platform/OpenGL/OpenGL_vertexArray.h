@@ -1,4 +1,4 @@
-#pragma once
+
 #include "systems/renderer/vertexArray.h"
 
 namespace Engine

@@ -1,4 +1,4 @@
-#pragma once
+
 #include "systems/renderer/texture.h"
 
 namespace Engine

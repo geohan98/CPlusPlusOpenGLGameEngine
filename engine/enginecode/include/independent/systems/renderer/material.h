@@ -1,4 +1,4 @@
-#pragma once
+
 #include <memory>
 #include <variant>
 #include <map>

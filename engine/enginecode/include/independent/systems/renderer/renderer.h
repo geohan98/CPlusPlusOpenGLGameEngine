@@ -1,12 +1,15 @@
-#pragma once
+
 #include <memory>
 
 #include "systems/renderer/renderCommand.h"
 #include "systems/renderer/material.h"
-class SceneData;
+#include "systems/renderer/uniformBuffer.h"
 
 namespace Engine
 {
+	using SceneData = std::unordered_map<std::shared_ptr<UniformBuffer>, std::vector<void*>>;
+	using PerDrawData = std::map<std::string, void*>;
+
 	class Renderer
 	{
 	public:

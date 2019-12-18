@@ -1,4 +1,4 @@
-#pragma once
+
 #include "systems/inputPoller.h"
 
 namespace Engine

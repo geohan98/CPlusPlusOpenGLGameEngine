@@ -1,4 +1,4 @@
-#pragma once
+
 #include "systems/renderer/shader.h"
 #include "systems/renderer/vertexBufferLayout.h"
 #include <string>

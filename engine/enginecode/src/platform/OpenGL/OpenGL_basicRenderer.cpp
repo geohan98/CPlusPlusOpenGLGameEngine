@@ -1,7 +1,6 @@
 #include "engine_pch.h"
 #include "systems/log.h"
 #include "include/platform/OpenGL/OpenGL_basicRenderer.h"
-
 #include <glad/glad.h>
 
 namespace Engine
@@ -15,7 +14,20 @@ namespace Engine
 
 	void OpenGL_BasicRenderer::beginScene(const SceneData& sceneData)
 	{
+		for (auto uboPair : sceneData)
+		{
+			unsigned int offset = 0;
+			unsigned int size;
+			int i = 0;
 
+			UniformBufferLayout layout = uboPair.first->getLayout();
+
+			for (auto bufferElement : layout)
+			{
+				uboPair.first->setData(bufferElement.m_offset, bufferElement.m_size, uboPair.second[i]);
+				i++;
+			}
+		}
 	}
 
 	void OpenGL_BasicRenderer::endScene()
@@ -31,8 +43,8 @@ namespace Engine
 		auto geometry = std::get<std::shared_ptr<VertexArray>>(materials->getGeometry());
 		geometry->bind();
 
-		auto uniformData = materials->getData();
-		for (auto dataPair : uniformData)
+		auto perDrawData = materials->getData();
+		for (auto dataPair : perDrawData)
 		{
 			shader->uploadData(dataPair.first, dataPair.second);
 		}

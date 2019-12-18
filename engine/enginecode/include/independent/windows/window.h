@@ -1,4 +1,4 @@
-#pragma once
+
 
 #include "graphicsContext.h"
 #include <string>

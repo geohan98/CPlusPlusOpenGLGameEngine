@@ -230,6 +230,10 @@ namespace Engine {
 
 		while (m_running)
 		{
+			m_timer->tick();
+			m_timer->reset();
+			s_timestep = m_timer->getDeltaTime();
+			LOG_CORE_INFO(1.0f / m_timer->getDeltaTime());
 
 #pragma region TempDrawCode
 			// Temporary draw code to be abstracted
@@ -304,7 +308,6 @@ namespace Engine {
 #pragma endregion TempDrawCode
 
 			m_window->onUpdate(s_timestep);
-
 		}
 	}
 

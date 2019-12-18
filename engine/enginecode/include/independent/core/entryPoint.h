@@ -1,6 +1,6 @@
 /** \file entryPoint.h
 */
-#pragma once
+
 
 #include "core/application.h"
 

@@ -1,4 +1,4 @@
-#pragma once
+
 #include "systems/renderer/renderCommand.h"
 #include "glad/glad.h"
 

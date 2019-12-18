@@ -1,7 +1,7 @@
 /** \file system.h
 */
 
-#pragma once
+
 
 #include <cstdarg>
 

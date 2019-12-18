@@ -1,4 +1,4 @@
-#pragma once
+
 #include "systems/renderer/indexBuffer.h"
 
 namespace Engine
