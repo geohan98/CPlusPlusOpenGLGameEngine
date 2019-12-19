@@ -1,6 +1,6 @@
 #include "engine_pch.h"
-#include "systems/renderer/texture.h"
-#include "systems/renderer/renderAPI.h"
+#include "renderer/texture.h"
+#include "renderer/renderAPI.h"
 #include "include/platform/OpenGL/OpenGL_texture.h"
 
 namespace Engine

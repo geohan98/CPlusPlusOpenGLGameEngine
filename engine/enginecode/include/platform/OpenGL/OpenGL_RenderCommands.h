@@ -1,5 +1,5 @@
 #pragma once
-#include "systems/renderer/renderCommand.h"
+#include "renderer/renderCommand.h"
 #include <glad/glad.h>
 
 
@@ -13,7 +13,7 @@ namespace Engine
 
 	void OpenGL_ClearDepthColourBufferCommand::action()
 	{
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
 	class OpenGL_setClearColourCommand : public RenderCommand
@@ -73,4 +73,41 @@ namespace Engine
 			glDisable(GL_CULL_FACE);
 		}
 	}
+
+	class OpenGL_setPolygonModeFill : public RenderCommand
+	{
+	public:
+		OpenGL_setPolygonModeFill() {};
+		void action() override;
+	};
+
+	void OpenGL_setPolygonModeFill::action()
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
+
+	class OpenGL_setPolygonModeLine : public RenderCommand
+	{
+	public:
+		OpenGL_setPolygonModeLine() {};
+		void action() override;
+	};
+
+	void OpenGL_setPolygonModeLine::action()
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	}
+
+	class OpenGL_setPolygonModePoint : public RenderCommand
+	{
+	public:
+		OpenGL_setPolygonModePoint() {};
+		void action() override;
+	};
+
+	void OpenGL_setPolygonModePoint::action()
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+	}
+
 }

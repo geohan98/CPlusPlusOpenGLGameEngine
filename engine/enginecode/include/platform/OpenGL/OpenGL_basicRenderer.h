@@ -1,5 +1,5 @@
 #pragma once
-#include "systems/renderer/renderer.h"
+#include "renderer/renderer.h"
 
 namespace Engine
 {

@@ -1,5 +1,7 @@
 #pragma once
 #include "core/camera.h"
+#include <glm/gtc/quaternion.hpp>
+#include <glm/gtx/quaternion.hpp>
 
 namespace Engine
 {
@@ -16,6 +18,6 @@ namespace Engine
 		inline glm::quat getOrientation() const { return m_orientation; }
 		void setPosition(glm::vec3& position) { m_position = position; updateView(); }
 		void setOrientation(glm::quat& orientation) { m_orientation = orientation; updateView(); }
-		void setPositionRotation(const glm::vec3& position, float orientation) { m_position = position; m_orientation = orientation; updateView(); }
+		void setPositionRotation(const glm::vec3& position, glm::quat& orientation) { m_position = position; m_orientation = orientation; updateView(); }
 	};
 }

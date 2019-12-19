@@ -1,5 +1,5 @@
 #pragma once
-#include "systems/renderer/material.h"
+#include "renderer/material.h"
 
 namespace Engine
 {
@@ -7,6 +7,7 @@ namespace Engine
 	{
 
 	public:
+		OpenGL_Material(const std::shared_ptr<Shader>& Shader, const std::shared_ptr<VertexArray>& vertexArray);
 		void init(const std::shared_ptr<Shader>& Shader, const std::shared_ptr<VertexArray>& vertexArray);
 		void setShader(const std::shared_ptr<Shader>& shader) override;
 		void setGeometry(const std::variant<std::shared_ptr<VertexArray>, std::shared_ptr<VertexBuffer>>& geometry) override;

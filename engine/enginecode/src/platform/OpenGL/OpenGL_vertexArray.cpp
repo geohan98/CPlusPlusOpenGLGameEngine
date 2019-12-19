@@ -55,6 +55,6 @@ namespace Engine
 	}
 	unsigned int OpenGL_VertexArray::getDrawCount() const
 	{
-		return 0;
+		return m_indexBuffer->getCount();
 	}
 }

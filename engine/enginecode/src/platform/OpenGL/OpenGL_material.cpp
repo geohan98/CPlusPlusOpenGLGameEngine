@@ -4,6 +4,11 @@
 
 namespace Engine
 {
+	OpenGL_Material::OpenGL_Material(const std::shared_ptr<Shader>& Shader, const std::shared_ptr<VertexArray>& vertexArray)
+	{
+		m_shader = Shader;
+		m_geomertry = vertexArray;
+	}
 
 	void OpenGL_Material::init(const std::shared_ptr<Shader>& Shader, const std::shared_ptr<VertexArray>& vertexArray)
 	{

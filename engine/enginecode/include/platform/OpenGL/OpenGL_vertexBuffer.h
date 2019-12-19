@@ -1,6 +1,6 @@
 #pragma once
-#include "systems/renderer/vertexBuffer.h"
-#include "systems/renderer/vertexBufferLayout.h"
+#include "renderer/vertexBuffer.h"
+#include "renderer/vertexBufferLayout.h"
 
 namespace Engine
 {

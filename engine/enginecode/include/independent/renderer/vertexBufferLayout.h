@@ -2,7 +2,7 @@
 #include <vector>
 #include <initializer_list>
 #include <string>
-#include "systems/renderer/shaderDataType.h"
+#include "renderer/shaderDataType.h"
 #include "systems/ButtonCodes.h"
 
 namespace Engine

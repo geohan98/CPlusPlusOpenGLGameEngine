@@ -1,14 +1,14 @@
 #include "engine_pch.h"
 
-#include "systems/renderer/vertexBuffer.h"
-#include "systems/renderer/renderAPI.h"
-#include "include/platform/OpenGL/OpenGL_vertexBuffer.h"
+#include "renderer/vertexArray.h"
+#include "renderer/renderAPI.h"
+#include "include/platform/OpenGL/OpenGL_vertexArray.h"
 
 #include "systems/log.h"
 
 namespace Engine
 {
-	VertexBuffer* VertexBuffer::create(float* vertices, unsigned int size, VertexBufferLayout& layout)
+	VertexArray* VertexArray::create()
 	{
 		switch (RenderAPI::getAPI())
 		{
@@ -16,7 +16,7 @@ namespace Engine
 			LOG_CORE_CRITICAL("NO GRAPHICS API SELECTED");
 			break;
 		case RenderAPI::API::OpenGL:
-			return new OpenGL_VertexBuffer(vertices, size, layout);
+			return new OpenGL_VertexArray();
 			break;
 		default:
 			LOG_CORE_CRITICAL("UNKNOWN GRAPHICS API");

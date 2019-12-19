@@ -1,7 +1,7 @@
 #include "engine_pch.h"
 #include "systems/log.h"
-#include "systems/renderer/shader.h"
-#include "systems/renderer/renderAPI.h"
+#include "renderer/shader.h"
+#include "renderer/renderAPI.h"
 #include "include/platform/OpenGL/OpenGL_shader.h"
 
 namespace Engine

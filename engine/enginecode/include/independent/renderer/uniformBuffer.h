@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include "systems/renderer/uniformBufferLayout.h"
-#include "systems/renderer/shader.h"
+#include "renderer/uniformBufferLayout.h"
+#include "renderer/shader.h"
 
 namespace Engine
 {

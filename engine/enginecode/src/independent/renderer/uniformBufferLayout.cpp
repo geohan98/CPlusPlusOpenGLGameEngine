@@ -1,6 +1,6 @@
 #include "engine_pch.h"
 #include "systems/log.h"
-#include "systems/renderer/uniformBuffer.h"
+#include "renderer/uniformBuffer.h"
 
 namespace Engine
 {

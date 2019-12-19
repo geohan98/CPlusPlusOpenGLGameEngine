@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include "systems/renderer/shaderDataType.h"
+#include "renderer/shaderDataType.h"
 
 namespace Engine
 {

@@ -1,9 +1,9 @@
 #pragma once
 #include <memory>
 
-#include "systems/renderer/renderCommand.h"
-#include "systems/renderer/material.h"
-#include "systems/renderer/uniformBuffer.h"
+#include "renderer/renderCommand.h"
+#include "renderer/material.h"
+#include "renderer/uniformBuffer.h"
 
 namespace Engine
 {

@@ -2,33 +2,19 @@
 */
 
 #include "engine_pch.h"
-
-#pragma region TempIncludes
-// temp includes
-#include <glad/glad.h>
-#include <gl/GL.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
-
-#pragma endregion TempIncludes
-
 #include "core/application.h"
 #ifdef NG_PLATFORM_WINDOWS
 #include "include/platform/windows/GLFW_windowSys.h"
-
-#endif // NG_PLATFORM_WINDOWS
+#endif
 
 namespace Engine {
-	// Set static vars
+
 	Application* Application::s_instance = nullptr;
 	float Application::s_timestep = 1.0f / 60.0f;
 	glm::ivec2 Application::s_screenResolution = glm::ivec2(0, 0);
-
-#pragma region TempGlobalVars
 	glm::mat4 FCmodel, TPmodel;
-#pragma endregion TempGlobalVars
 
 	Application::Application()
 	{
@@ -37,34 +23,24 @@ namespace Engine {
 			s_instance = this;
 		}
 
-		// Start systems 
 		m_log.reset(new Log());
 		m_log->start();
 		m_timer.reset(new Time());
 		m_timer->start();
+		m_resources.reset(new ResourceManager());
+		m_resources->start();
 #ifdef NG_PLATFORM_WINDOWS
 		m_windows = std::shared_ptr<WindowSystem>(new GLFW_WindowSys());
-#endif // NG_PLATFORM_WINDOWS
+#endif
 		m_windows->start();
-		LOG_CORE_WARN("WINDOW SYSTEM INITALISED");
-
-		// Create window
 		m_window = std::shared_ptr<Window>(Window::create());
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
-		// Set screen res
+
 		Application::s_screenResolution = glm::ivec2(m_window->getWidth(), m_window->getHeight());
 
-		m_resources.reset(new ResourceManager());
-
-#pragma region TempSetup
-		//  Temporary set up code to be abstracted
-
-		// Enable standard depth detest (Z-buffer)
-		glEnable(GL_DEPTH_TEST);
-		glDepthFunc(GL_LESS);
-		// Enabling backface culling to ensure triangle vertices are correct ordered (CCW)
-		glEnable(GL_CULL_FACE);
-		glCullFace(GL_BACK);
+		m_renderer = std::shared_ptr<Renderer>(Renderer::createBasic3D());
+		m_renderer->actionCommand(RenderCommand::setBackFaceCullingCommand(true));
+		m_renderer->actionCommand(RenderCommand::setDepthTestLessCommand(true));
 
 		float FCvertices[6 * 24] = {
 			-0.5f, -0.5f, -0.5f, 0.8f, 0.2f, 0.2f, // red square
@@ -136,51 +112,18 @@ namespace Engine {
 		};
 
 
-		FCmodel = glm::translate(glm::mat4(1), glm::vec3(1.5, 0, 3));
-		TPmodel = glm::translate(glm::mat4(1), glm::vec3(-1.5, 0, 3));
-
-		tex = std::shared_ptr<OpenGL_Texture>(new OpenGL_Texture("assets/textures/letterCube.png"));
-		tex->bind();
-		tex1 = std::shared_ptr<OpenGL_Texture>(new OpenGL_Texture("assets/textures/numberCube.png"));
-		tex1->bind();
-
-		prog = std::shared_ptr<OpenGL_Shader>(new OpenGL_Shader("assets/shaders/flatColor.shader"));
-
-		prog1 = std::shared_ptr<OpenGL_Shader>(new OpenGL_Shader("assets/shaders/texPhong.shader"));
-
-		bl = { {ShaderDataType::Float3},{ShaderDataType::Float3} };
-		vao = std::shared_ptr<OpenGL_VertexArray>(new OpenGL_VertexArray());
-		vbo = std::shared_ptr<OpenGL_VertexBuffer>(new OpenGL_VertexBuffer(FCvertices, sizeof(FCvertices), prog->getBufferLayout()));
-		vbo->bind();
-		ibo = std::shared_ptr<OpenGL_IndexBuffer>(new OpenGL_IndexBuffer(indices, 36));
-		ibo->bind();
-		vao->setVertexBuffer(vbo);
-		vao->setIndexBuffer(ibo);
-		vao->bind();
-
-
-		bl1 = { {ShaderDataType::Float3},{ShaderDataType::Float3},{ShaderDataType::Float2} };
-		vao1 = std::shared_ptr<OpenGL_VertexArray>(new OpenGL_VertexArray());
-		vbo1 = std::shared_ptr<OpenGL_VertexBuffer>(new OpenGL_VertexBuffer(TPvertices, sizeof(TPvertices), prog1->getBufferLayout()));
-		vbo1->bind();
-		ibo1 = std::shared_ptr<OpenGL_IndexBuffer>(new OpenGL_IndexBuffer(indices, 36));
-		ibo1->bind();
-		vao1->setVertexBuffer(vbo1);
-		vao1->setIndexBuffer(ibo);
-		vao1->bind();
-
-
-
-
-#pragma endregion TempSetup
-
-		// Reset timer
-		m_timer->getDeltaTime();
+		m_resources->addShader("assets/shaders/flatColor.shader");
+		m_resources->addVertexArray("VAO1");
+		m_resources->addVertexBuffer("VBO1", FCvertices, sizeof(FCvertices), m_resources->getShader("assets/shaders/flatColor.shader")->getBufferLayout());
+		m_resources->addIndexBuffer("Index1", indices, 36);
+		m_resources->getVertexArray("VAO1")->setVertexBuffer(m_resources->getVertexBuffer("VBO1"));
+		m_resources->getVertexArray("VAO1")->setIndexBuffer(m_resources->getIndexBuffer("Index1"));
+		m_resources->addMaterial("FC_CUBE", m_resources->getShader("assets/shaders/flatColor.shader"), m_resources->getVertexArray("VAO1"));
+		FCmodel = glm::translate(glm::mat4(1), glm::vec3(0, 0, 3));
 	}
 
 	Application::~Application()
 	{
-		// Stop systems
 		m_timer->stop();
 		m_log->stop();
 	}
@@ -215,9 +158,19 @@ namespace Engine {
 			m_running = false;
 			return true;
 		}
-		if (e.getButton() == KEY_TAB)
+		if (e.getButton() == KEY_1)
 		{
-			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+			m_renderer->actionCommand(RenderCommand::setPolygonModeFill());
+			return true;
+		}
+		if (e.getButton() == KEY_2)
+		{
+			m_renderer->actionCommand(RenderCommand::setPolygonModeLine());
+			return true;
+		}
+		if (e.getButton() == KEY_3)
+		{
+			m_renderer->actionCommand(RenderCommand::setPolygonModePoint());
 			return true;
 		}
 		return false;
@@ -235,11 +188,8 @@ namespace Engine {
 			s_timestep = m_timer->getDeltaTime();
 			LOG_CORE_INFO(1.0f / m_timer->getDeltaTime());
 
-#pragma region TempDrawCode
-			// Temporary draw code to be abstracted
-
-			glClearColor(0.8f, 0.8f, 0.8f, 1);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			m_renderer->actionCommand(RenderCommand::setClearColourCommand(0.9, 0.9, 0.9, 1.0f));
+			m_renderer->actionCommand(RenderCommand::ClearDepthColourBufferCommand());
 
 			glm::mat4 projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f); // Basic 4:3 camera
 
@@ -249,63 +199,17 @@ namespace Engine {
 				glm::vec3(0.f, 1.f, 0.f)  // Standing straight  up
 			);
 
-			// Code to make the cube move, you can ignore this more or less.
-			glm::mat4 FCtranslation, TPtranslation;
 
-			if (m_goingUp)
-			{
-				FCtranslation = glm::translate(FCmodel, glm::vec3(0.0f, 0.2f * s_timestep, 0.0f));
-				TPtranslation = glm::translate(TPmodel, glm::vec3(0.0f, -0.2f * s_timestep, 0.0f));
-			}
-			else
-			{
-				FCtranslation = glm::translate(FCmodel, glm::vec3(0.0f, -0.2f * s_timestep, 0.0f));
-				TPtranslation = glm::translate(TPmodel, glm::vec3(0.0f, 0.2f * s_timestep, 0.0f));
-			}
-
-			m_timeSummed += s_timestep;
-			if (m_timeSummed > 20.0f) {
-				m_timeSummed = 0.f;
-				m_goingUp = !m_goingUp;
-			}
-
-
-			FCmodel = glm::rotate(FCtranslation, glm::radians(20.f) * s_timestep, glm::vec3(0.f, 1.f, 0.f)); // Spin the cube at 20 degrees per second
-			TPmodel = glm::rotate(TPtranslation, glm::radians(-20.f) * s_timestep, glm::vec3(0.f, 1.f, 0.f)); // Spin the cube at 20 degrees per second
-
-			// End of code to make the cube move.
+			FCmodel = glm::rotate(FCmodel, glm::radians(20.f) * s_timestep, glm::vec3(0.f, 1.f, 0.f)); // Spin the cube at 20 degrees per second
 
 			glm::mat4 fcMVP = projection * view * FCmodel;
 
-			prog->bind();
-			prog->uploadData("u_MVP", &fcMVP[0][0]);
-			vao->bind();
-
-			glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, nullptr); //DRAW CALL
-
-			glm::mat4 tpMVP = projection * view * TPmodel;
-			unsigned int texSlot;
-			if (m_goingUp) texSlot = 0;
-			else texSlot = 1;
+			m_resources->getMaterial("FC_CUBE")->setDataElement("u_MVP", &fcMVP[0][0]);
+			m_renderer->submit(m_resources->getMaterial("FC_CUBE"));
 
 			glm::vec3 lightColour = glm::vec3(1.0f, 1.0f, 1.0f);
 			glm::vec3 lightPos = glm::vec3(1.0f, 4.0f, -6.0f);
 			glm::vec3 viewPos = glm::vec3(0.0f, 0.0f, -4.5f);
-
-			prog1->bind();
-			prog1->uploadData("u_MVP", (void*)&tpMVP[0][0]);
-			prog1->uploadData("u_model", (void*)&TPmodel[0][0]);
-			prog1->uploadData("u_lightColour", (void*)&lightColour);
-			prog1->uploadData("u_lightPos", (void*)&lightPos);
-			prog1->uploadData("u_viewPos", (void*)&viewPos);
-			prog1->uploadData("u_texData", (void*)&texSlot);
-
-
-			vao1->bind();
-			glDrawElements(GL_TRIANGLES, 3 * 12, GL_UNSIGNED_INT, nullptr); //DRAW CALL
-
-			// End temporary code
-#pragma endregion TempDrawCode
 
 			m_window->onUpdate(s_timestep);
 		}

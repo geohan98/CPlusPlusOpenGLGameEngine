@@ -12,5 +12,8 @@ namespace Engine
 		static RenderCommand* setClearColourCommand(float r, float g, float b, float a);
 		static RenderCommand* setDepthTestLessCommand(bool enabled);
 		static RenderCommand* setBackFaceCullingCommand(bool enabled);
+		static RenderCommand* setPolygonModeFill();
+		static RenderCommand* setPolygonModeLine();
+		static RenderCommand* setPolygonModePoint();
 	};
 }

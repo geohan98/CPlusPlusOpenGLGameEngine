@@ -1,14 +1,13 @@
 #include "engine_pch.h"
-
-#include "systems/renderer/vertexArray.h"
-#include "systems/renderer/renderAPI.h"
-#include "include/platform/OpenGL/OpenGL_vertexArray.h"
+#include "renderer/indexBuffer.h"
+#include "renderer/renderAPI.h"
+#include "include/platform/OpenGL/OpenGL_indexBuffer.h"
 
 #include "systems/log.h"
 
 namespace Engine
 {
-	VertexArray* VertexArray::create()
+	IndexBuffer* IndexBuffer::create(unsigned int* indices, unsigned int count)
 	{
 		switch (RenderAPI::getAPI())
 		{
@@ -16,7 +15,7 @@ namespace Engine
 			LOG_CORE_CRITICAL("NO GRAPHICS API SELECTED");
 			break;
 		case RenderAPI::API::OpenGL:
-			return new OpenGL_VertexArray();
+			return new OpenGL_IndexBuffer(indices, count);
 			break;
 		default:
 			LOG_CORE_CRITICAL("UNKNOWN GRAPHICS API");

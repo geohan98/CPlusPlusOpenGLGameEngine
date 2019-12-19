@@ -10,6 +10,7 @@ namespace Engine
 	AssetManager<Texture> ResourceManager::m_textures;
 	AssetManager<VertexArray> ResourceManager::m_vertexArrayObjects;
 	AssetManager<VertexBuffer> ResourceManager::m_vertexBufferObjects;
+	AssetManager<Material> ResourceManager::m_materials;
 
 	std::string ResourceManager::parseFilePath(const std::string& str)
 	{
@@ -123,6 +124,24 @@ namespace Engine
 	bool ResourceManager::doesVertexBufferExist(const std::string& name)
 	{
 		return m_vertexBufferObjects.contains(name);
+	}
+
+	//MATERIALS
+
+	std::shared_ptr<Material> ResourceManager::addMaterial(const std::string& name, std::shared_ptr<Shader> shader, std::shared_ptr<VertexArray> vertexArray)
+	{
+		m_materials.add(name, std::shared_ptr<Material>(Material::create(shader, vertexArray)));
+		return m_materials.get(name);
+	}
+
+	std::shared_ptr<Material> ResourceManager::getMaterial(const std::string& name)
+	{
+		return m_materials.get(name);
+	}
+
+	bool ResourceManager::doesMaterialExist(const std::string& name)
+	{
+		return m_materials.contains(name);
 	}
 
 }

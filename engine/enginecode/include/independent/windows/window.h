@@ -1,12 +1,11 @@
 #pragma once
-
 #include "graphicsContext.h"
 #include <string>
 #include <functional>
-#include "systems/events/event.h"
-#include "systems/events/applicationEvents.h"
-#include "systems/events/mouseEvents.h"
-#include "systems/events/keyEvents.h"
+#include "events/event.h"
+#include "events/applicationEvents.h"
+#include "events/mouseEvents.h"
+#include "events/keyEvents.h"
 
 namespace Engine {
 

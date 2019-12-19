@@ -1,5 +1,5 @@
 #include "engine_pch.h"
-#include "systems/renderer/vertexBufferLayout.h"
+#include "renderer/vertexBufferLayout.h"
 #include "systems/ButtonCodes.h"
 
 namespace Engine

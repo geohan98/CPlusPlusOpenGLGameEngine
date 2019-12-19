@@ -1,5 +1,5 @@
 #pragma once
-#include "systems/renderer/indexBuffer.h"
+#include "renderer/indexBuffer.h"
 
 namespace Engine
 {

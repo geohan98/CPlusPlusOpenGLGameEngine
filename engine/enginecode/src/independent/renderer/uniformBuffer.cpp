@@ -1,7 +1,7 @@
 #include "engine_pch.h"
 #include "systems/log.h"
-#include "systems/renderer/uniformBuffer.h"
-#include "systems/renderer/renderAPI.h"
+#include "renderer/uniformBuffer.h"
+#include "renderer/renderAPI.h"
 #include "include/platform/OpenGL/OpenGL_uniformBuffer.h"
 
 namespace Engine

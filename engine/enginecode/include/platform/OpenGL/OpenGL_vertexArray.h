@@ -1,5 +1,5 @@
 #pragma once
-#include "systems/renderer/vertexArray.h"
+#include "renderer/vertexArray.h"
 
 namespace Engine
 {

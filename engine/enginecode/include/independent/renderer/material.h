@@ -4,9 +4,9 @@
 #include <map>
 #include <string>
 
-#include "systems/renderer/shader.h"
-#include "systems/renderer/vertexArray.h"
-#include "systems/renderer/vertexBuffer.h"
+#include "renderer/shader.h"
+#include "renderer/vertexArray.h"
+#include "renderer/vertexBuffer.h"
 
 
 namespace Engine
