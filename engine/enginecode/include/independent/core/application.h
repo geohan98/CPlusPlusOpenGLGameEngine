@@ -11,6 +11,7 @@
 #include "systems/inputPoller.h"
 #include "systems/resourceManager.h"
 #include "renderer/renderer.h"
+#include "core/perspectiveCamera3D.h"
 
 namespace Engine {
 
@@ -28,9 +29,8 @@ namespace Engine {
 		std::shared_ptr<WindowSystem> m_windows;
 		std::shared_ptr<ResourceManager> m_resources;
 		std::shared_ptr<Renderer> m_renderer;
+		std::shared_ptr<PerspectiveCamera3D> m_camera;
 		static float s_timestep;
-		bool m_goingUp = false;
-		float m_timeSummed = 10.f;
 	public:
 		virtual ~Application();
 		inline static Application& getInstance() { return *s_instance; }

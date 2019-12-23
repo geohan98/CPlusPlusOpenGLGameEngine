@@ -8,8 +8,8 @@ namespace Engine
 	private:
 		glm::vec2 m_position = glm::vec2(0.0f);
 		float m_rotation = 0.0f;
-		void updateView() override;
 	public:
+		void updateView() override;
 		OrthographicCamera2D(float left, float right, float bottom, float top);
 		void reset(float left, float right, float bottom, float top);
 		inline glm::vec2 getPosition() const { return m_position; }

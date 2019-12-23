@@ -15,9 +15,6 @@ namespace Engine
 		PerspectiveCamera3D(float fov, float aspectRatio, float nearClip, float farClip);
 		void reset(float fov, float aspectRatio, float nearClip, float farClip);
 		inline glm::vec3 getPosition() const { return m_position; }
-		inline glm::quat getOrientation() const { return m_orientation; }
-		void setPosition(glm::vec3& position) { m_position = position; updateView(); }
-		void setOrientation(glm::quat& orientation) { m_orientation = orientation; updateView(); }
-		void setPositionRotation(const glm::vec3& position, glm::quat& orientation) { m_position = position; m_orientation = orientation; updateView(); }
+		void setView(const glm::mat4& view) { m_view = view; m_viewProjection = m_projection * m_view; }
 	};
 }
