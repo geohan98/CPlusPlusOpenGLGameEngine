@@ -7,9 +7,11 @@
 
 namespace Engine
 {
+
 	class PositionComponent : public Component
 	{
 	private:
+
 		glm::mat4 m_model;
 		glm::mat4 m_translation;
 		glm::mat4 m_rotation;
@@ -17,6 +19,7 @@ namespace Engine
 		glm::vec3 m_transVec;
 		glm::vec3 m_rotVec;
 		glm::vec3 m_scaleVec;
+
 		inline void caclulateModel()
 		{
 			m_translation = glm::translate(glm::mat4(1.0f), m_transVec);
@@ -24,7 +27,9 @@ namespace Engine
 			m_scale = glm::scale(m_scaleVec);
 			m_model = m_translation * m_rotation * m_scale;
 		}
+
 	public:
+
 		PositionComponent(glm::vec3 trans, glm::vec3 rot, glm::vec3 scale) : m_transVec(trans), m_rotVec(rot), m_scaleVec(scale), m_model(glm::mat4(1.0f))
 		{
 			m_rotVec.x = glm::radians(m_rotVec.x);
@@ -71,4 +76,5 @@ namespace Engine
 		}
 
 	};
+
 }

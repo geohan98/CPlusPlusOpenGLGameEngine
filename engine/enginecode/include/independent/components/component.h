@@ -26,6 +26,7 @@ namespace Engine
 	class Component
 	{
 	protected:
+		std::string m_name = "Component";
 		GameObject* m_parent = nullptr;
 		virtual void sendMessage(const ComponentMessage& msg);
 	public:
@@ -35,4 +36,5 @@ namespace Engine
 		virtual void onEvent(Event& e) {}
 		virtual void receiveMessage(const ComponentMessage& msg) = 0;
 	};
+
 }

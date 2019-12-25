@@ -8,12 +8,14 @@ namespace Engine
 	class GameObject
 	{
 	protected:
+		std::string m_name = "GameObject";
 		std::vector<std::shared_ptr<Component>> m_components;
 	public:
 		void onUpdate(float timestep);
 		void onEvent(Event& e);
 		void addComponent(const std::shared_ptr<Component>& comp);
-		void removeComponent(std::vector<std::shared_ptr<Component>>::iterator it);
+		void removeComponent(std::vector<std::shared_ptr<Component>>::iterator itt);
+
 		template<typename G>
 		std::vector<std::shared_ptr<Component>>::iterator getComponent()
 		{
