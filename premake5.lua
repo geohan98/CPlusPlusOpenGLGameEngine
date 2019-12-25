@@ -43,7 +43,8 @@ project "Engine"
 		"vendor/Glad/include",
 		"vendor/glm/",
 		"vendor/stb_image",
-		"vendor/freetype2/include"
+		"vendor/freetype2/include",
+		"vendor/json/single_include/nlohmann"
 	}
 	
 	links 
@@ -95,7 +96,8 @@ project "Sandbox"
 		"engine/enginecode/include/independent",
 		"engine/precompiled/",
 		"vendor/spdlog/include",
-		"vendor/glm/"
+		"vendor/glm/",
+		"vendor/json/single_include/nlohmann"
 	}
 
 	links
