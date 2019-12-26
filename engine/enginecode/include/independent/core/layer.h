@@ -3,7 +3,7 @@
 #include <memory>
 #include "systems/resourceManager.h"
 #include "renderer/renderer.h"
-#include "core/cameraController.h"
+#include "cameras/cameraController.h"
 #include "events/event.h"
 
 

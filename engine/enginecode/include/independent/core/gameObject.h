@@ -22,7 +22,7 @@ namespace Engine
 			auto result = m_components.end();
 			for (auto it = m_components.begin(); it != m_components.end(); ++it)
 			{
-				if (typeid(decltype(*(it->get)))).hash_code() == typeid(g).hash_code()) return it;
+				if (typeid(decltype(*(it->get()))).hash_code() == typeid(g).hash_code()) return it;
 			}
 
 			return result;

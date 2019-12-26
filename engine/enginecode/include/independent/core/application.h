@@ -11,7 +11,7 @@
 #include "systems/inputPoller.h"
 #include "systems/resourceManager.h"
 #include "renderer/renderer.h"
-#include "core/perspectiveCamera3D.h"
+#include "cameras/cameraController3D.h"
 
 namespace Engine {
 
@@ -26,10 +26,11 @@ namespace Engine {
 		static glm::ivec2 s_screenResolution;
 		std::shared_ptr<Log> m_log;
 		std::shared_ptr<Time> m_timer;
+		std::shared_ptr<InputPoller> m_inputPoller;
 		std::shared_ptr<WindowSystem> m_windows;
 		std::shared_ptr<ResourceManager> m_resources;
 		std::shared_ptr<Renderer> m_renderer;
-		std::shared_ptr<PerspectiveCamera3D> m_camera;
+		std::shared_ptr<CameraController3D> m_cameraController;
 		static float s_timestep;
 	public:
 		virtual ~Application();

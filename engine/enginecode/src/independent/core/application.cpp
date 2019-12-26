@@ -7,6 +7,7 @@
 #include "core/application.h"
 #ifdef NG_PLATFORM_WINDOWS
 #include "include/platform/windows/GLFW_windowSys.h"
+#include "include/platform/windows/GLFW_inputPoller.h"
 #endif
 
 namespace Engine {
@@ -31,6 +32,7 @@ namespace Engine {
 		m_resources->start();
 #ifdef NG_PLATFORM_WINDOWS
 		m_windows = std::shared_ptr<WindowSystem>(new GLFW_WindowSys());
+		m_inputPoller = std::shared_ptr<InputPoller>(new GLFW_InputPoller());
 #endif
 		m_windows->start();
 		m_window = std::shared_ptr<Window>(Window::create());
@@ -41,6 +43,9 @@ namespace Engine {
 		m_renderer = std::shared_ptr<Renderer>(Renderer::createBasic3D());
 		m_renderer->actionCommand(RenderCommand::setBackFaceCullingCommand(true));
 		m_renderer->actionCommand(RenderCommand::setDepthTestLessCommand(true));
+
+		m_cameraController = std::make_shared<CameraController3D>(CameraController3D());
+		m_cameraController->init(60, 800.0f / 600.0f, 0.1, 100);
 
 		float FCvertices[6 * 24] = {
 			-0.5f, -0.5f, -0.5f, 0.8f, 0.2f, 0.2f, // red square
@@ -178,15 +183,12 @@ namespace Engine {
 
 	void Application::run()
 	{
-
-		LOG_CORE_INFO(m_resources->parseFilePath("assets/textures/letterCube.png"));
-
 		while (m_running)
 		{
 			m_timer->tick();
 			m_timer->reset();
 			s_timestep = m_timer->getDeltaTime();
-			LOG_CORE_INFO(1.0f / m_timer->getDeltaTime());
+			//LOG_CORE_INFO(1.0f / m_timer->getDeltaTime());
 
 			m_renderer->actionCommand(RenderCommand::setClearColourCommand(0.9, 0.9, 0.9, 1.0f));
 			m_renderer->actionCommand(RenderCommand::ClearDepthColourBufferCommand());
@@ -202,7 +204,7 @@ namespace Engine {
 
 			FCmodel = glm::rotate(FCmodel, glm::radians(20.f) * s_timestep, glm::vec3(0.f, 1.f, 0.f)); // Spin the cube at 20 degrees per second
 
-			glm::mat4 fcMVP = projection * view * FCmodel;
+			glm::mat4 fcMVP = m_cameraController->getCamera()->getViewProjection() * FCmodel;
 
 			m_resources->getMaterial("FC_CUBE")->setDataElement("u_MVP", &fcMVP[0][0]);
 			m_renderer->submit(m_resources->getMaterial("FC_CUBE"));
@@ -212,6 +214,7 @@ namespace Engine {
 			glm::vec3 viewPos = glm::vec3(0.0f, 0.0f, -4.5f);
 
 			m_window->onUpdate(s_timestep);
+			m_cameraController->onUpdate(s_timestep);
 		}
 	}
 
