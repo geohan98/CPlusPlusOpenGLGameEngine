@@ -16,20 +16,62 @@ namespace Engine
 	{
 		if (InputPoller::isKeyPressed(KEY_W))
 		{
-			m_camera->setPosition(m_camera->getPosition() + (glm::vec3(0.0f, 0.0f, 1.0f) * m_moveSpeed * timestep));
+			m_camera->setPosition(m_camera->getPosition() + (m_camera->m_forward * m_moveSpeed * timestep));
 		}
 		if (InputPoller::isKeyPressed(KEY_S))
 		{
-			m_camera->setPosition(m_camera->getPosition() + (glm::vec3(0.0f, 0.0f, 1.0f) * -m_moveSpeed * timestep));
+			m_camera->setPosition(m_camera->getPosition() + (m_camera->m_forward * -m_moveSpeed * timestep));
 		}
 		if (InputPoller::isKeyPressed(KEY_A))
 		{
-			m_camera->setPosition(m_camera->getPosition() + (glm::vec3(1.0f, 0.0f, 0.0f) * m_moveSpeed * timestep));
+			m_camera->setPosition(m_camera->getPosition() + (m_camera->m_right * -m_moveSpeed * timestep));
 		}
 		if (InputPoller::isKeyPressed(KEY_D))
 		{
-			m_camera->setPosition(m_camera->getPosition() + (glm::vec3(1.0f, 0.0f, 0.0f) * -m_moveSpeed * timestep));
+			m_camera->setPosition(m_camera->getPosition() + (m_camera->m_right * m_moveSpeed * timestep));
 		}
+		if (InputPoller::isKeyPressed(KEY_SPACE))
+		{
+			m_camera->setPosition(m_camera->getPosition() + (m_camera->m_up * m_moveSpeed * timestep));
+		}
+		if (InputPoller::isKeyPressed(KEY_LEFT_SHIFT))
+		{
+			m_camera->setPosition(m_camera->getPosition() + (m_camera->m_up * -m_moveSpeed * timestep));
+		}
+
+		if (InputPoller::isKeyPressed(KEY_RIGHT))
+		{
+			m_camera->setRotation(m_camera->getRotation() + (glm::vec3(0.0f, 90.0f, 0.0f) * m_moveSpeed * timestep));
+		}
+
+		if (InputPoller::isKeyPressed(KEY_LEFT))
+		{
+			m_camera->setRotation(m_camera->getRotation() + (glm::vec3(0.0f, 90.0f, 0.0f) * -m_moveSpeed * timestep));
+		}
+
+		if (InputPoller::isKeyPressed(KEY_UP))
+		{
+			m_camera->setRotation(m_camera->getRotation() + (glm::vec3(90.0f, 0.0f, 0.0f) * m_moveSpeed * timestep));
+		}
+
+		if (InputPoller::isKeyPressed(KEY_DOWN))
+		{
+			m_camera->setRotation(m_camera->getRotation() + (glm::vec3(90.0f, 0.0f, 0.0f) * -m_moveSpeed * timestep));
+		}
+
+		if (InputPoller::isKeyPressed(KEY_E))
+		{
+			m_camera->setRotation(m_camera->getRotation() + (glm::vec3(0.0f, 0.0f, 90.0f) * m_moveSpeed * timestep));
+		}
+
+		if (InputPoller::isKeyPressed(KEY_Q))
+		{
+			m_camera->setRotation(m_camera->getRotation() + (glm::vec3(0.0f, 0.0f, 90.0f) * -m_moveSpeed * timestep));
+		}
+
+
+
+
 		m_camera->update();
 	}
 

@@ -202,7 +202,7 @@ namespace Engine {
 			);
 
 
-			FCmodel = glm::rotate(FCmodel, glm::radians(20.f) * s_timestep, glm::vec3(0.f, 1.f, 0.f)); // Spin the cube at 20 degrees per second
+			FCmodel = glm::rotate(FCmodel, glm::radians(0.f) * s_timestep, glm::vec3(0.f, 1.f, 0.f)); // Spin the cube at 20 degrees per second
 
 			glm::mat4 fcMVP = m_cameraController->getCamera()->getViewProjection() * FCmodel;
 

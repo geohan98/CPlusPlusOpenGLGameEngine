@@ -13,6 +13,7 @@ namespace Engine
 		glm::vec3 forward = glm::vec3(0.0f, 0.0f, 1.0f);
 		glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
 		m_position = glm::vec3(0.0f, 0.0f, -5.0f);
+		m_rotation = glm::vec3(0.0f, 90.0f, 0.0f);
 		m_view = glm::lookAt(m_position, m_position + forward, up);
 
 		m_viewProjection = m_projection * m_view;
@@ -20,9 +21,16 @@ namespace Engine
 
 	void Camera3D::update()
 	{
-		glm::vec3 forward = glm::vec3(0.0f, 0.0f, 1.0f);
-		glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
-		m_view = glm::lookAt(m_position, m_position + forward, up);
+		m_forward = glm::vec3(0.0f, 0.0f, 1.0f);
+
+		m_forward.x = m_forward.x * cos(glm::radians(m_rotation.y)) - m_forward.z * sin(glm::radians(m_rotation.y));
+		m_forward.z = m_forward.z * cos(glm::radians(m_rotation.y)) + m_forward.x * sin(glm::radians(m_rotation.y));
+
+
+		m_right = glm::vec3(1.0f, 0.0f, 0.0f);
+		m_up = glm::vec3(0.0f, 1.0f, 0.0f);
+
+		m_view = glm::lookAt(m_position, m_position + m_forward, m_up);
 
 		m_viewProjection = m_projection * m_view;
 	}
