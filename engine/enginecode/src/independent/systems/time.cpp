@@ -15,17 +15,15 @@ namespace Engine
 		s_deltaTime = std::chrono::duration<float>(0.0f);
 		s_timeScale = 1.0f;
 		s_timeActive = true;
-		reset();
 	}
+
 	void Time::stop(SystemSignal close, ...)
 	{
 	}
-	void Time::reset()
-	{
-		s_frameStart = std::chrono::high_resolution_clock::now();
-	}
+
 	void Time::tick()
 	{
 		s_deltaTime = std::chrono::high_resolution_clock::now() - s_frameStart;
+		s_frameStart = std::chrono::high_resolution_clock::now();
 	}
 }

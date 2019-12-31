@@ -17,6 +17,7 @@ namespace Engine
 
 	void LayerStack::push(std::shared_ptr<Layer> layer)
 	{
+		layer->onAttach();
 		m_layers.push_back(layer);
 	}
 

@@ -15,7 +15,6 @@ namespace Engine
 		void start(SystemSignal init = SystemSignal::None, ...);
 		void stop(SystemSignal close = SystemSignal::None, ...);
 
-		void reset();
 		void tick();
 
 		inline static void setTimeScale(float t) { s_timeScale = t; }

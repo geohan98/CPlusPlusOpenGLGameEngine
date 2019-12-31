@@ -1,9 +1,9 @@
 #pragma once
-#include "cameraController.h"
+#include "cameras/cameraController.h"
 
 namespace Engine
 {
-	class CameraController3D : public CameraController
+	class CameraController2D : public CameraController
 	{
 	private:
 		float m_translateSpeed = 1.0f;

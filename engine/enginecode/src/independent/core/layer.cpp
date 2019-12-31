@@ -5,7 +5,7 @@
 namespace Engine
 {
 
-	Layer::Layer(std::string name) : m_name(name)
+	Layer::Layer(const std::string& name) : m_name(name)
 	{
 		LOG_CORE_INFO("LAYER ADDED '{0}'", name);
 	}
