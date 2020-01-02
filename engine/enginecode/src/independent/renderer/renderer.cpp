@@ -4,6 +4,7 @@
 #include "renderer/renderAPI.h"
 
 #include "include/platform/OpenGL/OpenGL_basicRenderer.h"
+#include "include/platform/OpenGL/OpenGL_2DRenderer.h"
 
 namespace Engine
 {
@@ -16,6 +17,21 @@ namespace Engine
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGL_BasicRenderer();
+			break;
+		default:
+			LOG_CORE_WARN("NO RENDER API SELECTED");
+			break;
+		}
+	}
+	Renderer* Renderer::createBasic2D()
+	{
+		switch (RenderAPI::getAPI())
+		{
+		case RenderAPI::API::None:
+			LOG_CORE_WARN("NO RENDER API SELECTED");
+			break;
+		case RenderAPI::API::OpenGL:
+			return new OpenGL_2DRenderer();
 			break;
 		default:
 			LOG_CORE_WARN("NO RENDER API SELECTED");

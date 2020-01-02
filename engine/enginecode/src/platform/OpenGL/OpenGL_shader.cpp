@@ -35,6 +35,8 @@ namespace Engine
 
 			if (line.find("uniform ") != std::string::npos)
 			{
+				if (line.find("layout") != std::string::npos) continue;
+
 				std::string x = line;
 				x = x.substr(x.find("uniform") + 8);
 				std::string y = x;

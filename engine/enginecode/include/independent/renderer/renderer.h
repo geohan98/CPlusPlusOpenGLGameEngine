@@ -20,5 +20,6 @@ namespace Engine
 		virtual void flush() = 0;
 
 		static Renderer* createBasic3D();
+		static Renderer* createBasic2D();
 	};
 }

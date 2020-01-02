@@ -12,6 +12,7 @@ namespace Engine
 	void Time::start(SystemSignal init, ...)
 	{
 		s_appStart = std::chrono::high_resolution_clock::now();
+		s_frameStart = std::chrono::high_resolution_clock::now();
 		s_deltaTime = std::chrono::duration<float>(0.0f);
 		s_timeScale = 1.0f;
 		s_timeActive = true;

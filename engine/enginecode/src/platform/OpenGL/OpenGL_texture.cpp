@@ -10,7 +10,6 @@ namespace Engine
 
 	OpenGL_Texture::OpenGL_Texture(const std::string& filepath) : m_id(0), m_filePath(filepath), m_width(0), m_height(0), m_channels(0)
 	{
-		//stbi_set_flip_vertically_on_load(1);
 		unsigned char* localBuffer = stbi_load(m_filePath.c_str(), &m_width, &m_height, &m_channels, 0);
 		if (!localBuffer)
 		{

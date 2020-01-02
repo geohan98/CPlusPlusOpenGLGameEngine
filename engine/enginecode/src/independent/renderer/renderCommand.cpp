@@ -115,4 +115,19 @@ namespace Engine
 			break;
 		}
 	}
+	RenderCommand* RenderCommand::setBlendMode(bool enbaled)
+	{
+		switch (RenderAPI::getAPI())
+		{
+		case RenderAPI::API::None:
+			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+			break;
+		case RenderAPI::API::OpenGL:
+			return new OpenGL_setBlendMode(enbaled);
+			break;
+		default:
+			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+			break;
+		}
+	}
 }

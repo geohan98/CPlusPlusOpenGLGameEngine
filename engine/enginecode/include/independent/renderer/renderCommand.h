@@ -15,5 +15,6 @@ namespace Engine
 		static RenderCommand* setPolygonModeFill();
 		static RenderCommand* setPolygonModeLine();
 		static RenderCommand* setPolygonModePoint();
+		static RenderCommand* setBlendMode(bool enbaled);
 	};
 }

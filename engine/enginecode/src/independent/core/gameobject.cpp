@@ -7,27 +7,24 @@ namespace Engine
 
 	void GameObject::onUpdate(float timestep)
 	{
-		auto it = m_components.begin();
-
-		for (it; it != m_components.end(); ++it)
+		for (auto& it : m_components)
 		{
-			(*it)->onUpdate(timestep);
+			it->onUpdate(timestep);
 		}
 	}
 
 	void GameObject::onEvent(Event& e)
 	{
-		auto it = m_components.begin();
-
-		for (it; it != m_components.end(); ++it)
+		for (auto& it : m_components)
 		{
-			(*it)->onEvent(e);
+			it->onEvent(e);
 		}
 	}
 
 	void GameObject::addComponent(const std::shared_ptr<Component>& comp)
 	{
 		m_components.push_back(comp);
+		m_components.back()->onAttach(this);
 	}
 
 	void GameObject::removeComponent(std::vector<std::shared_ptr<Component>>::iterator itt)

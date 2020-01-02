@@ -50,6 +50,7 @@ namespace Engine
 
 		void onUpdate(float timestep) override
 		{
+			caclulateModel();
 			std::pair<std::string, void*> data("u_model", (void*)&m_model[0][0]);
 			ComponentMessage msg(ComponentMessageType::UniformSet, data);
 			sendMessage(msg);
@@ -60,18 +61,20 @@ namespace Engine
 			switch (msg.m_msgType)
 			{
 			case ComponentMessageType::PositionSet:
+			{
 				glm::vec3 pos = std::any_cast<glm::vec3>(msg.m_msgData);
 				m_transVec = pos;
-				caclulateModel();
 				return;
+			}
 			case ComponentMessageType::PositionIntergrate:
+			{
 				std::pair<glm::vec3, glm::vec3> vel = std::any_cast<std::pair<glm::vec3, glm::vec3>>(msg.m_msgData);
 				m_transVec += vel.first;
 				m_rotVec.x += glm::radians(vel.second.x);
 				m_rotVec.y += glm::radians(vel.second.y);
 				m_rotVec.z += glm::radians(vel.second.z);
-				caclulateModel();
 				return;
+			}
 			}
 		}
 

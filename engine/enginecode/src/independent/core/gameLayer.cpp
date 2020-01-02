@@ -54,8 +54,6 @@ namespace Engine
 		m_resourceManager = std::shared_ptr<ResourceManager>(new ResourceManager());
 		m_resourceManager->start();
 		m_renderer = std::shared_ptr<Renderer>(Renderer::createBasic3D());
-		m_renderer->actionCommand(RenderCommand::setBackFaceCullingCommand(true));
-		m_renderer->actionCommand(RenderCommand::setDepthTestLessCommand(true));
 		m_renderer->actionCommand(RenderCommand::setClearColourCommand(0.9, 0.9, 0.9, 1.0f));
 		m_camera = std::shared_ptr<CameraController3D>(new CameraController3D);
 		m_camera->init(80.0f, 800.0f / 600.0f, 0.1, 100.0f);
@@ -67,8 +65,16 @@ namespace Engine
 		m_resourceManager->getVertexArray("VAO1")->setVertexBuffer(m_resourceManager->getVertexBuffer("VBO1"));
 		m_resourceManager->getVertexArray("VAO1")->setIndexBuffer(m_resourceManager->getIndexBuffer("Index1"));
 		m_resourceManager->addMaterial("FC_CUBE", m_resourceManager->getShader("assets/shaders/flatColor.shader"), m_resourceManager->getVertexArray("VAO1"));
-		m_models.push_back(glm::translate(glm::mat4(1), glm::vec3(0, 0, 3)));
 
+		m_materials.push_back(std::shared_ptr<MaterialComponent>(new MaterialComponent(m_resourceManager->getMaterial("FC_CUBE"))));
+		m_positions.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f))));
+		m_velocities.push_back(std::shared_ptr<VelocityComponent>(new VelocityComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 45.0f, 0.0f))));
+
+
+		m_gameObjects.push_back(std::shared_ptr<GameObject>(new GameObject()));
+		m_gameObjects.back()->addComponent(m_materials.back());
+		m_gameObjects.back()->addComponent(m_positions.back());
+		m_gameObjects.back()->addComponent(m_velocities.back());
 	}
 
 	void GameLayer::onDetach()
@@ -78,18 +84,32 @@ namespace Engine
 
 	void GameLayer::onUpdate(float timestep)
 	{
-		LOG_CORE_TRACE("GAME LAYER FPS = '{0}'", 1.0f / timestep);
 		m_camera->onUpdate(timestep);
+		for (auto& CGO : m_gameObjects)
+		{
+			CGO->onUpdate(timestep);
+		}
+
+		m_renderer->actionCommand(RenderCommand::setDepthTestLessCommand(true));
+		m_renderer->actionCommand(RenderCommand::setBackFaceCullingCommand(true));
 		m_renderer->actionCommand(RenderCommand::ClearDepthColourBufferCommand());
-		glm::mat4 fcMVP = m_camera->getCamera()->getViewProjection() * m_models.back();
-		m_resourceManager->getMaterial("FC_CUBE")->setDataElement("u_MVP", &fcMVP[0][0]);
-		m_renderer->submit(m_resourceManager->getMaterial("FC_CUBE"));
+
+		for (auto& mat : m_materials)
+		{
+			std::pair<std::string, void*> data("u_vp", (void*)&m_camera->getCamera()->getViewProjection()[0][0]);
+			ComponentMessage msg(ComponentMessageType::UniformSet, data);
+			mat->receiveMessage(msg);
+			m_renderer->submit(mat->getMaterial());
+		}
+
+		m_renderer->actionCommand(RenderCommand::setDepthTestLessCommand(false));
+		m_renderer->actionCommand(RenderCommand::setBackFaceCullingCommand(false));
 	}
 
 	void GameLayer::onEvent(Event& e)
 	{
-		LOG_CORE_INFO("GAME LAYER EVENT");
 		m_camera->onEvent(e);
+		for (auto& CGO : m_gameObjects) CGO->onEvent(e);
 	}
 
 }

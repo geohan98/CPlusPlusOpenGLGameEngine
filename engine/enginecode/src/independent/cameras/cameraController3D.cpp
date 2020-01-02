@@ -2,7 +2,6 @@
 #include "systems/log.h"
 #include "cameras/cameraController3D.h"
 #include "cameras/camera3D.h"
-#include "cameras/camera2D.h"
 #include "systems/inputPoller.h"
 #include "systems/ButtonCodes.h"
 namespace Engine

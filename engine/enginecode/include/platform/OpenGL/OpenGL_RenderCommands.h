@@ -110,4 +110,26 @@ namespace Engine
 		glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
 	}
 
+	class OpenGL_setBlendMode : public RenderCommand
+	{
+	private:
+		bool m_enabled;
+	public:
+		OpenGL_setBlendMode(bool enabled) : m_enabled(enabled) {};
+		void action() override;
+	};
+
+	void OpenGL_setBlendMode::action()
+	{
+		if (m_enabled)
+		{
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		}
+		else
+		{
+			glEnable(GL_BLEND);
+		}
+	}
+
 }
