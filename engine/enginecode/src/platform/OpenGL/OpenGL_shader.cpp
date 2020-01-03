@@ -24,7 +24,7 @@ namespace Engine
 			if (line.find("#region Geomatry") != std::string::npos) { region = NONE; continue; }
 			if (line.find("#region Tessalation") != std::string::npos) { region = NONE; continue; }
 
-			if (line.find(" in ") != std::string::npos)
+			if (line.find(" in ") != std::string::npos && region == VERTEX)
 			{
 				std::string x = line;
 				x = x.substr(x.find("in") + 3);

@@ -5,7 +5,6 @@
 
 namespace Engine
 {
-
 	void GameLayer::onAttach()
 	{
 		float FCvertices[6 * 24] = {
@@ -110,6 +109,88 @@ namespace Engine
 	{
 		m_camera->onEvent(e);
 		for (auto& CGO : m_gameObjects) CGO->onEvent(e);
+
+		EventDispatcher dispatcher(e);
+		dispatcher.dispatch<WindowResize>(std::bind(&GameLayer::onWindowResize, this, std::placeholders::_1));
+		dispatcher.dispatch<WindowClose>(std::bind(&GameLayer::onWindowClose, this, std::placeholders::_1));
+		dispatcher.dispatch<WindowMoved>(std::bind(&GameLayer::onWindowMoved, this, std::placeholders::_1));
+		dispatcher.dispatch<WindowLostFocus>(std::bind(&GameLayer::onWindowLostFocus, this, std::placeholders::_1));
+
+		dispatcher.dispatch<KeyPressed>(std::bind(&GameLayer::onKeyPressed, this, std::placeholders::_1));
+		dispatcher.dispatch<KeyReleased>(std::bind(&GameLayer::onKeyReleased, this, std::placeholders::_1));
+		dispatcher.dispatch<KeyTyped>(std::bind(&GameLayer::onKeyTyped, this, std::placeholders::_1));
+
+		dispatcher.dispatch<MouseMoved>(std::bind(&GameLayer::onMouseMove, this, std::placeholders::_1));
+		dispatcher.dispatch<MouseScrolled>(std::bind(&GameLayer::onMouseScrolled, this, std::placeholders::_1));
+		dispatcher.dispatch<MouseButtonPressed>(std::bind(&GameLayer::onMouseButtonPressed, this, std::placeholders::_1));
+		dispatcher.dispatch<MouseButtonReleased>(std::bind(&GameLayer::onMouseButtonReleased, this, std::placeholders::_1));
 	}
 
+
+	bool GameLayer::onWindowResize(WindowResize& e)
+	{
+		return true;
+	}
+
+	bool GameLayer::onWindowClose(WindowClose& e)
+	{
+		return true;
+	}
+
+	bool GameLayer::onWindowMoved(WindowMoved& e)
+	{
+		return true;
+	}
+
+	bool GameLayer::onWindowLostFocus(WindowLostFocus& e)
+	{
+		return true;
+	}
+
+	bool GameLayer::onKeyPressed(KeyPressed& e)
+	{
+		if (e.getButton() == KEY_1)
+		{
+			m_renderer->actionCommand(RenderCommand::setPolygonModeFill());
+		}
+		if (e.getButton() == KEY_2)
+		{
+			m_renderer->actionCommand(RenderCommand::setPolygonModeLine());
+		}
+		if (e.getButton() == KEY_3)
+		{
+			m_renderer->actionCommand(RenderCommand::setPolygonModePoint());
+		}
+		return true;
+	}
+
+	bool GameLayer::onKeyReleased(KeyReleased& e)
+	{
+		return true;
+	}
+
+	bool GameLayer::onKeyTyped(KeyTyped& e)
+	{
+		return true;
+	}
+
+	bool GameLayer::onMouseMove(MouseMoved& e)
+	{
+		return true;
+	}
+
+	bool GameLayer::onMouseScrolled(MouseScrolled& e)
+	{
+		return true;
+	}
+
+	bool GameLayer::onMouseButtonPressed(MouseButtonPressed& e)
+	{
+		return true;
+	}
+
+	bool GameLayer::onMouseButtonReleased(MouseButtonReleased& e)
+	{
+		return true;
+	}
 }

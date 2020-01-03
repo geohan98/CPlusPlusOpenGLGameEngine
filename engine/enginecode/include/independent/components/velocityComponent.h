@@ -18,7 +18,6 @@ namespace Engine
 		void onUpdate(float timestep) override
 		{
 			std::pair<glm::vec3, glm::vec3> data(m_linear * timestep, m_angular * timestep);
-			LOG_CORE_WARN("VEL COMP {0}", m_angular.y * timestep);
 			sendMessage(ComponentMessage(ComponentMessageType::PositionIntergrate, std::any(data)));
 		}
 
