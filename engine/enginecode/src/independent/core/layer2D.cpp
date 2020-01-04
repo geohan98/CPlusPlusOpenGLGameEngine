@@ -2,12 +2,17 @@
 #include "systems/log.h"
 #include "core/layer2D.h"
 #include "cameras/cameraController2D.h"
+#include "fileLoaders/textLoader.h"
 
 namespace Engine
 {
 
 	void Layer2D::onAttach()
 	{
+		TextModel mesh;
+		std::string filepath = "assets/models/fccube.txt";
+		TextLoader::loadModel(m_resourceManager, filepath, mesh);
+
 		m_resourceManager = std::shared_ptr<ResourceManager>(new ResourceManager());
 		m_resourceManager->start();
 		m_renderer = std::shared_ptr<Renderer>(Renderer::createBasic2D());

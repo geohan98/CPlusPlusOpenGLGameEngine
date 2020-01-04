@@ -8,7 +8,7 @@
 
 namespace Engine
 {
-	VertexBuffer* VertexBuffer::create(float* vertices, unsigned int size, VertexBufferLayout& layout)
+	VertexBuffer* VertexBuffer::create(float* vertices, unsigned int count, VertexBufferLayout& layout)
 	{
 		switch (RenderAPI::getAPI())
 		{
@@ -16,7 +16,7 @@ namespace Engine
 			LOG_CORE_CRITICAL("NO GRAPHICS API SELECTED");
 			break;
 		case RenderAPI::API::OpenGL:
-			return new OpenGL_VertexBuffer(vertices, size, layout);
+			return new OpenGL_VertexBuffer(vertices, count, layout);
 			break;
 		default:
 			LOG_CORE_CRITICAL("UNKNOWN GRAPHICS API");
