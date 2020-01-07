@@ -22,8 +22,8 @@ namespace Engine {
 		static Application* s_instance;
 		bool m_running = true;
 		static glm::ivec2 s_screenResolution;
-		static float s_timestep;
-		//Application Events
+		static float s_deltaTime;
+		//Window Events
 		bool onWindowResize(WindowResize& e);
 		bool onWindowClose(WindowClose& e);
 		bool onWindowMoved(WindowMoved& e);
@@ -40,7 +40,7 @@ namespace Engine {
 	public:
 		virtual ~Application();
 		inline static Application& getInstance() { return *s_instance; }
-		inline static float getTimestep() { return s_timestep; }
+		inline static float getdeltaTime() { return s_deltaTime; }
 		inline std::shared_ptr<Window> getWindow() { return m_window; }
 		void run(); //!< Main loop
 		void onEvent(Event& e);

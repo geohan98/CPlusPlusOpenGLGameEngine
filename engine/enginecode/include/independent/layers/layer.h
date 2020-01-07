@@ -20,8 +20,11 @@ namespace Engine
 		Layer(const std::string& name);
 		virtual void onAttach() = 0;
 		virtual void onDetach() = 0;
-		virtual void onUpdate(float timestep) = 0;
+		virtual void onUpdate(float deltaTime) = 0;
 		virtual void onEvent(Event& e) = 0;
-		inline std::string getName() const { return m_name; }
+		inline std::string& getName() { return m_name; }
+		inline std::shared_ptr<ResourceManager>& getResources() { return m_resourceManager; }
+		inline std::shared_ptr<Renderer>& getRenderer() { return m_renderer; }
+		inline std::shared_ptr<CameraController>& getCamera() { return m_camera; }
 	};
 };

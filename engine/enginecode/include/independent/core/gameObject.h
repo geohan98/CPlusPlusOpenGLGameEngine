@@ -11,7 +11,9 @@ namespace Engine
 		std::string m_name = "GameObject";
 		std::vector<std::shared_ptr<Component>> m_components;
 	public:
-		void onUpdate(float timestep);
+		GameObject();
+		GameObject(std::string& name) : m_name(name) {};
+		void onUpdate(float deltaTime);
 		void onEvent(Event& e);
 		void addComponent(const std::shared_ptr<Component>& comp);
 		void removeComponent(std::vector<std::shared_ptr<Component>>::iterator itt);

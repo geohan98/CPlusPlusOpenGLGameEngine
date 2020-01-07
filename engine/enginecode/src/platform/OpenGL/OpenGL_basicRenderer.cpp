@@ -8,8 +8,12 @@ namespace Engine
 
 	void OpenGL_BasicRenderer::actionCommand(RenderCommand* command)
 	{
+
 		command->action();
-		delete command;
+		if (!command->dontDestroyOnAction)
+		{
+			delete command;
+		}
 	}
 
 	void OpenGL_BasicRenderer::beginScene(const SceneData& sceneData)

@@ -26,7 +26,7 @@ namespace Engine {
 		virtual void init(const WindowProperties& properties) = 0;
 		virtual void close() = 0;
 		virtual ~Window() {};
-		virtual void onUpdate(float timestep) = 0;
+		virtual void onUpdate(float deltaTime) = 0;
 		virtual void onResize(unsigned int width, unsigned int height) = 0;
 		virtual void setVSync(bool VSync) = 0;
 		virtual void setEventCallback(const std::function<void(Event&)>& callback) = 0;

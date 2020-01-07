@@ -1,5 +1,5 @@
 #pragma once
-#include "core/layer.h"
+#include "layers/layer.h"
 #include "core/gameObject.h"
 #include "components/materialComponent.h"
 #include "components/PositionComponent.h"
@@ -17,7 +17,6 @@ namespace Engine
 		std::vector<std::shared_ptr<MaterialComponent>> m_materials;
 		std::vector<std::shared_ptr<PositionComponent>> m_positions;
 		std::vector<std::shared_ptr<VelocityComponent>> m_velocities;
-		SceneData m_sceneData;
 		//Application Events
 		bool onWindowResize(WindowResize& e);
 		bool onWindowClose(WindowClose& e);
@@ -36,7 +35,7 @@ namespace Engine
 		GameLayer(const std::string& name = "Game Layer") : Layer(name) {};
 		void onAttach() override;
 		void onDetach() override;
-		void onUpdate(float timestep) override;
+		void onUpdate(float deltaTime) override;
 		void onEvent(Event& e) override;
 	};
 }

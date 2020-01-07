@@ -5,11 +5,11 @@
 namespace Engine
 {
 
-	void GameObject::onUpdate(float timestep)
+	void GameObject::onUpdate(float deltaTime)
 	{
 		for (auto& it : m_components)
 		{
-			it->onUpdate(timestep);
+			it->onUpdate(deltaTime);
 		}
 	}
 

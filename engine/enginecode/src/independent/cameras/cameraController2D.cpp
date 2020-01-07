@@ -11,19 +11,8 @@ namespace Engine
 		m_camera = std::shared_ptr<Camera>(new Camera2D(a, b, c, d));
 	}
 
-	void CameraController2D::onUpdate(float timestep)
+	void CameraController2D::onUpdate(float deltaTime)
 	{
 		m_camera->update();
 	}
-
-	void CameraController2D::onEvent(Event& e)
-	{
-
-	}
-
-	void CameraController2D::onResize()
-	{
-
-	}
-
 }

@@ -7,7 +7,7 @@
 
 namespace Engine
 {
-	Engine::RenderCommand* RenderCommand::ClearDepthColourBufferCommand()
+	Engine::RenderCommand* RenderCommand::ClearDepthColourBufferCommand(bool destroy)
 	{
 		switch (RenderAPI::getAPI())
 		{
@@ -15,7 +15,7 @@ namespace Engine
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 			break;
 		case RenderAPI::API::OpenGL:
-			return new OpenGL_ClearDepthColourBufferCommand();
+			return new OpenGL_ClearDepthColourBufferCommand(destroy);
 			break;
 		default:
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
@@ -23,7 +23,7 @@ namespace Engine
 		}
 	}
 
-	Engine::RenderCommand* RenderCommand::setClearColourCommand(float r, float g, float b, float a)
+	Engine::RenderCommand* RenderCommand::setClearColourCommand(float r, float g, float b, float a, bool destroy)
 	{
 		switch (RenderAPI::getAPI())
 		{
@@ -31,7 +31,7 @@ namespace Engine
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 			break;
 		case RenderAPI::API::OpenGL:
-			return new OpenGL_setClearColourCommand(r, g, b, a);
+			return new OpenGL_setClearColourCommand(r, g, b, a, destroy);
 			break;
 		default:
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
@@ -39,7 +39,7 @@ namespace Engine
 		}
 	}
 
-	Engine::RenderCommand* RenderCommand::setDepthTestLessCommand(bool enabled)
+	Engine::RenderCommand* RenderCommand::setDepthTestLessCommand(bool enabled, bool destroy)
 	{
 		switch (RenderAPI::getAPI())
 		{
@@ -47,7 +47,7 @@ namespace Engine
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 			break;
 		case RenderAPI::API::OpenGL:
-			return new OpenGL_setDepthTestLessCommand(enabled);
+			return new OpenGL_setDepthTestLessCommand(enabled, destroy);
 			break;
 		default:
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
@@ -55,7 +55,7 @@ namespace Engine
 		}
 	}
 
-	Engine::RenderCommand* RenderCommand::setBackFaceCullingCommand(bool enabled)
+	Engine::RenderCommand* RenderCommand::setBackFaceCullingCommand(bool enabled, bool destroy)
 	{
 		switch (RenderAPI::getAPI())
 		{
@@ -63,14 +63,14 @@ namespace Engine
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 			break;
 		case RenderAPI::API::OpenGL:
-			return new OpenGL_setBackFaceCullingCommand(enabled);
+			return new OpenGL_setBackFaceCullingCommand(enabled, destroy);
 			break;
 		default:
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 			break;
 		}
 	}
-	RenderCommand* RenderCommand::setPolygonModeFill()
+	RenderCommand* RenderCommand::setPolygonModeFill(bool destroy)
 	{
 		switch (RenderAPI::getAPI())
 		{
@@ -78,14 +78,14 @@ namespace Engine
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 			break;
 		case RenderAPI::API::OpenGL:
-			return new OpenGL_setPolygonModeFill();
+			return new OpenGL_setPolygonModeFill(destroy);
 			break;
 		default:
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 			break;
 		}
 	}
-	RenderCommand* RenderCommand::setPolygonModeLine()
+	RenderCommand* RenderCommand::setPolygonModeLine(bool destroy)
 	{
 		switch (RenderAPI::getAPI())
 		{
@@ -93,14 +93,14 @@ namespace Engine
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 			break;
 		case RenderAPI::API::OpenGL:
-			return new OpenGL_setPolygonModeLine();
+			return new OpenGL_setPolygonModeLine(destroy);
 			break;
 		default:
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 			break;
 		}
 	}
-	RenderCommand* RenderCommand::setPolygonModePoint()
+	RenderCommand* RenderCommand::setPolygonModePoint(bool destroy)
 	{
 		switch (RenderAPI::getAPI())
 		{
@@ -108,14 +108,14 @@ namespace Engine
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 			break;
 		case RenderAPI::API::OpenGL:
-			return new OpenGL_setPolygonModePoint();
+			return new OpenGL_setPolygonModePoint(destroy);
 			break;
 		default:
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 			break;
 		}
 	}
-	RenderCommand* RenderCommand::setBlendMode(bool enbaled)
+	RenderCommand* RenderCommand::setBlendMode(bool enbaled, bool destroy)
 	{
 		switch (RenderAPI::getAPI())
 		{
@@ -123,7 +123,7 @@ namespace Engine
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 			break;
 		case RenderAPI::API::OpenGL:
-			return new OpenGL_setBlendMode(enbaled);
+			return new OpenGL_setBlendMode(enbaled, destroy);
 			break;
 		default:
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");

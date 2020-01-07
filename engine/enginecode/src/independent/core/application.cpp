@@ -16,7 +16,7 @@ namespace Engine {
 
 	std::shared_ptr<ResourceManager> Application::m_resourceManager;
 
-	float Application::s_timestep;
+	float Application::s_deltaTime;
 
 	Application::Application()
 	{
@@ -59,74 +59,78 @@ namespace Engine {
 
 	void Application::run()
 	{
+		//Engine Loop
 		while (m_running)
 		{
+			//Timer Tick
 			m_time->tick();
-			s_timestep = m_time->getDeltaTime();
-			LOG_CORE_INFO("FPS '{0}' , DeltaTime '{1}'", 1 / m_time->getDeltaTime(), m_time->getDeltaTime());
+			//Update Delta Time
+			s_deltaTime = m_time->getDeltaTime();
+			//LOG_CORE_INFO("APPLICATION: FPS '{0}' , DeltaTime '{1}'", 1 / m_time->getDeltaTime(), m_time->getDeltaTime());
 			for (auto it = m_layerStack->begin(); it != m_layerStack->end(); ++it)
 			{
-				(*it)->onUpdate(s_timestep);
+				(*it)->onUpdate(s_deltaTime);
 			}
 
-			m_window->onUpdate(s_timestep);
+			m_window->onUpdate(s_deltaTime);
 		}
 	}
 
 	void Application::onEvent(Event& e)
 	{
+		//Dispatch Event to Application
 		EventDispatcher dispatcher(e);
+		//Window Events
 		dispatcher.dispatch<WindowResize>(std::bind(&Application::onWindowResize, this, std::placeholders::_1));
 		dispatcher.dispatch<WindowClose>(std::bind(&Application::onWindowClose, this, std::placeholders::_1));
 		dispatcher.dispatch<WindowMoved>(std::bind(&Application::onWindowMoved, this, std::placeholders::_1));
 		dispatcher.dispatch<WindowLostFocus>(std::bind(&Application::onWindowLostFocus, this, std::placeholders::_1));
-
+		//Key Events
 		dispatcher.dispatch<KeyPressed>(std::bind(&Application::onKeyPressed, this, std::placeholders::_1));
 		dispatcher.dispatch<KeyReleased>(std::bind(&Application::onKeyReleased, this, std::placeholders::_1));
 		dispatcher.dispatch<KeyTyped>(std::bind(&Application::onKeyTyped, this, std::placeholders::_1));
-
+		//Mouse Events
 		dispatcher.dispatch<MouseMoved>(std::bind(&Application::onMouseMove, this, std::placeholders::_1));
 		dispatcher.dispatch<MouseScrolled>(std::bind(&Application::onMouseScrolled, this, std::placeholders::_1));
 		dispatcher.dispatch<MouseButtonPressed>(std::bind(&Application::onMouseButtonPressed, this, std::placeholders::_1));
 		dispatcher.dispatch<MouseButtonReleased>(std::bind(&Application::onMouseButtonReleased, this, std::placeholders::_1));
 
-
+		//Send Event to Layer Stack
 		for (auto it = m_layerStack->end(); it != m_layerStack->begin();)
 		{
 			(*--it)->onEvent(e);
-			if (e.handled()) break;
 		}
 	}
 
 	bool Application::onWindowResize(WindowResize& e)
 	{
-		LOG_CORE_INFO("WINDOW RESIZE '{0} x {1}'", e.getWidth(), e.getHeight());
+		LOG_CORE_INFO("APPLICATION: WINDOW RESIZE '{0} x {1}'", e.getWidth(), e.getHeight());
 		s_screenResolution = glm::ivec2(e.getWidth(), e.getHeight());
 		return true;
 	}
 
 	bool Application::onWindowClose(WindowClose& e)
 	{
-		LOG_CORE_INFO("CLOSING APPLICATION");
+		LOG_CORE_INFO("APPLICATION: CLOSING APPLICATION");
 		m_running = false;
 		return true;
 	}
 
 	bool Application::onWindowMoved(WindowMoved& e)
 	{
-		LOG_CORE_INFO("WINDOW MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
+		LOG_CORE_INFO("APPLICATION: WINDOW MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
 		return true;
 	}
 
 	bool Application::onWindowLostFocus(WindowLostFocus& e)
 	{
-		LOG_CORE_INFO("WINDOW LOST FOCUS '{0} , {1}'", e.getxPos(), e.getyPos());
+		LOG_CORE_INFO("APPLICATION: WINDOW LOST FOCUS '{0} , {1}'", e.getxPos(), e.getyPos());
 		return true;
 	}
 
 	bool Application::onKeyPressed(KeyPressed& e)
 	{
-		LOG_CORE_INFO("KEY PRESSED '{0}'", e.getButton());
+		LOG_CORE_INFO("APPLICATION: KEY PRESSED '{0}'", e.getButton());
 
 		if (e.getButton() == KEY_ESCAPE)
 		{
@@ -138,7 +142,7 @@ namespace Engine {
 
 	bool Application::onKeyReleased(KeyReleased& e)
 	{
-		LOG_CORE_INFO("KEY RELEASED '{0}'", e.getButton());
+		LOG_CORE_INFO("APPLICATION: KEY RELEASED '{0}'", e.getButton());
 
 		if (e.getButton() == KEY_ESCAPE)
 		{
@@ -150,31 +154,31 @@ namespace Engine {
 
 	bool Application::onKeyTyped(KeyTyped& e)
 	{
-		LOG_CORE_INFO("KEY TYPED '{0}'", e.getButton());
+		LOG_CORE_INFO("APPLICATION: KEY TYPED '{0}'", e.getButton());
 		return true;
 	}
 
 	bool Application::onMouseMove(MouseMoved& e)
 	{
-		LOG_CORE_INFO("MOUSE MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
+		LOG_CORE_INFO("APPLICATION: MOUSE MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
 		return true;
 	}
 
 	bool Application::onMouseScrolled(MouseScrolled& e)
 	{
-		LOG_CORE_INFO("MOUSE SCROLLED '{0} , {1}'", e.getxDelta(), e.getyDelta());
+		LOG_CORE_INFO("APPLICATION: MOUSE SCROLLED '{0} , {1}'", e.getxDelta(), e.getyDelta());
 		return true;
 	}
 
 	bool Application::onMouseButtonPressed(MouseButtonPressed& e)
 	{
-		LOG_CORE_INFO("MOUSE BUTTON PRESSED '{0}'", e.getButton());
+		LOG_CORE_INFO("APPLICATION: MOUSE BUTTON PRESSED '{0}'", e.getButton());
 		return true;
 	}
 
 	bool Application::onMouseButtonReleased(MouseButtonReleased& e)
 	{
-		LOG_CORE_INFO("MOUSE BUTTON RELEASED '{0}'", e.getButton());
+		LOG_CORE_INFO("APPLICATION: MOUSE BUTTON RELEASED '{0}'", e.getButton());
 		return true;
 	}
 

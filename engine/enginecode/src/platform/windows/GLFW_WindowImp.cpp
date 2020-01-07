@@ -138,7 +138,7 @@ namespace Engine
 	{
 	}
 
-	void GLFW_WindowImp::onUpdate(float timestep)
+	void GLFW_WindowImp::onUpdate(float deltaTime)
 	{
 		glfwPollEvents();
 		m_context->swapBuffers();

@@ -20,7 +20,7 @@ namespace Engine
 		GLFW_WindowImp(const WindowProperties& proeprties);
 		~GLFW_WindowImp();
 
-		void onUpdate(float timestep) override;
+		void onUpdate(float deltaTime) override;
 		void onResize(unsigned int width, unsigned int height) override;
 		void setVSync(bool VSync) override;
 		void setEventCallback(const std::function<void(Event&)>& callback) override;

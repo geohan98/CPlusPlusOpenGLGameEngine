@@ -48,7 +48,7 @@ namespace Engine
 			sendMessage(msg);
 		}
 
-		void onUpdate(float timestep) override
+		void onUpdate(float deltaTime) override
 		{
 			caclulateModel();
 			std::pair<std::string, void*> data("u_model", (void*)&m_model[0][0]);

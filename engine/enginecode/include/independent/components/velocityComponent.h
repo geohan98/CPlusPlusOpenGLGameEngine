@@ -15,9 +15,9 @@ namespace Engine
 	public:
 
 		VelocityComponent(glm::vec3 linear, glm::vec3 angular) : m_linear(linear), m_angular(angular) {}
-		void onUpdate(float timestep) override
+		void onUpdate(float deltaTime) override
 		{
-			std::pair<glm::vec3, glm::vec3> data(m_linear * timestep, m_angular * timestep);
+			std::pair<glm::vec3, glm::vec3> data(m_linear * deltaTime, m_angular * deltaTime);
 			sendMessage(ComponentMessage(ComponentMessageType::PositionIntergrate, std::any(data)));
 		}
 
