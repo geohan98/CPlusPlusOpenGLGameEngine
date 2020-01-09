@@ -8,6 +8,10 @@
 
 namespace Engine {
 
+
+	/**
+	 *  A test class. A more elaborate class description.
+	 */
 	class Application
 	{
 	protected:

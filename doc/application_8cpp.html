@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Engine: engine/enginecode/src/independent/application.cpp File Reference</title>
+<title>Engine: engine/enginecode/src/independent/core/application.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -39,24 +39,17 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_996f45160da62e1a3d7f6046fad68f51.html">engine</a></li><li class="navelem"><a class="el" href="dir_70491ddeac0f017cd7d72b515346fedb.html">enginecode</a></li><li class="navelem"><a class="el" href="dir_7a72d5834cde26c8c7749167f8bc3846.html">src</a></li><li class="navelem"><a class="el" href="dir_2199eb0040ae435c17850b58463fa4ad.html">independent</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_996f45160da62e1a3d7f6046fad68f51.html">engine</a></li><li class="navelem"><a class="el" href="dir_70491ddeac0f017cd7d72b515346fedb.html">enginecode</a></li><li class="navelem"><a class="el" href="dir_7a72d5834cde26c8c7749167f8bc3846.html">src</a></li><li class="navelem"><a class="el" href="dir_2199eb0040ae435c17850b58463fa4ad.html">independent</a></li><li class="navelem"><a class="el" href="dir_60e1c32bfe38ba889b70ca2e8d1f99e3.html">core</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
 <div class="title">application.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="engine__pch_8h_source.html">engine_pch.h</a>&quot;</code><br />
-<code>#include &lt;glad/glad.h&gt;</code><br />
-<code>#include &lt;gl/GL.h&gt;</code><br />
-<code>#include &lt;glm/glm.hpp&gt;</code><br />
-<code>#include &lt;glm/gtc/matrix_transform.hpp&gt;</code><br />
-<code>#include &lt;stb_image.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="application_8h_source.html">core/application.h</a>&quot;</code><br />
 </div>
 <p><a href="application_8cpp_source.html">Go to the source code of this file.</a></p>
@@ -65,36 +58,7 @@ $(function() {
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_engine"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_engine.html">Engine</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a18372412ad2fc3ce1e3240b3cf0efe78"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="application_8cpp.html#a18372412ad2fc3ce1e3240b3cf0efe78">STB_IMAGE_IMPLEMENTATION</a></td></tr>
-<tr class="separator:a18372412ad2fc3ce1e3240b3cf0efe78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a382bda476ab1d7af5f44d3e0cb0f7a8e"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_engine.html#a382bda476ab1d7af5f44d3e0cb0f7a8e">Engine::FCmodel</a></td></tr>
-<tr class="separator:a382bda476ab1d7af5f44d3e0cb0f7a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39b47216ab246d984ef4cc591833aafd"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_engine.html#a39b47216ab246d984ef4cc591833aafd">Engine::TPmodel</a></td></tr>
-<tr class="separator:a39b47216ab246d984ef4cc591833aafd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a18372412ad2fc3ce1e3240b3cf0efe78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18372412ad2fc3ce1e3240b3cf0efe78">&#9670;&nbsp;</a></span>STB_IMAGE_IMPLEMENTATION</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define STB_IMAGE_IMPLEMENTATION</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00013">13</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

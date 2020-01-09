@@ -47,6 +47,9 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_engine_1_1_application-members.html">List of all members</a>  </div>
@@ -60,112 +63,88 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa8a9745dbd56969a77cab6c81a16cdda"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#aa8a9745dbd56969a77cab6c81a16cdda">~Application</a> ()</td></tr>
-<tr class="memdesc:aa8a9745dbd56969a77cab6c81a16cdda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deconstructor.  <a href="class_engine_1_1_application.html#aa8a9745dbd56969a77cab6c81a16cdda">More...</a><br /></td></tr>
 <tr class="separator:aa8a9745dbd56969a77cab6c81a16cdda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c1529553ecb44cfb7f6bf53397b57be"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_window.html">Window</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a0c1529553ecb44cfb7f6bf53397b57be">getWindow</a> ()</td></tr>
 <tr class="separator:a0c1529553ecb44cfb7f6bf53397b57be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a715baf41602421143cd0bed7343493a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a715baf41602421143cd0bed7343493a6">onEvent</a> (<a class="el" href="class_engine_1_1_event.html">Event</a> &amp;e)</td></tr>
-<tr class="memdesc:a715baf41602421143cd0bed7343493a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when an event happens.  <a href="class_engine_1_1_application.html#a715baf41602421143cd0bed7343493a6">More...</a><br /></td></tr>
-<tr class="separator:a715baf41602421143cd0bed7343493a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a51e4285f90699965b5a5a49c22f69b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a3a51e4285f90699965b5a5a49c22f69b">onClose</a> (<a class="el" href="class_engine_1_1_window_close.html">WindowClose</a> &amp;e)</td></tr>
-<tr class="memdesc:a3a51e4285f90699965b5a5a49c22f69b"><td class="mdescLeft">&#160;</td><td class="mdescRight">On close event.  <a href="class_engine_1_1_application.html#a3a51e4285f90699965b5a5a49c22f69b">More...</a><br /></td></tr>
-<tr class="separator:a3a51e4285f90699965b5a5a49c22f69b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fa2527fc6fb550f773f02e6bf293fd4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a3fa2527fc6fb550f773f02e6bf293fd4">onResize</a> (<a class="el" href="class_engine_1_1_window_resize.html">WindowResize</a> &amp;e)</td></tr>
-<tr class="memdesc:a3fa2527fc6fb550f773f02e6bf293fd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">On resize event.  <a href="class_engine_1_1_application.html#a3fa2527fc6fb550f773f02e6bf293fd4">More...</a><br /></td></tr>
-<tr class="separator:a3fa2527fc6fb550f773f02e6bf293fd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b412b2b4787114f0ea507429ae14af3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a0b412b2b4787114f0ea507429ae14af3">onKeyPressed</a> (<a class="el" href="class_engine_1_1_key_pressed.html">KeyPressed</a> &amp;e)</td></tr>
-<tr class="memdesc:a0b412b2b4787114f0ea507429ae14af3"><td class="mdescLeft">&#160;</td><td class="mdescRight">On keypress event.  <a href="class_engine_1_1_application.html#a0b412b2b4787114f0ea507429ae14af3">More...</a><br /></td></tr>
-<tr class="separator:a0b412b2b4787114f0ea507429ae14af3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd1e0572c8f0ec3030f176606b256005"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#abd1e0572c8f0ec3030f176606b256005">run</a> ()</td></tr>
 <tr class="memdesc:abd1e0572c8f0ec3030f176606b256005"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main loop.  <a href="class_engine_1_1_application.html#abd1e0572c8f0ec3030f176606b256005">More...</a><br /></td></tr>
 <tr class="separator:abd1e0572c8f0ec3030f176606b256005"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a715baf41602421143cd0bed7343493a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a715baf41602421143cd0bed7343493a6">onEvent</a> (<a class="el" href="class_engine_1_1_event.html">Event</a> &amp;e)</td></tr>
+<tr class="separator:a715baf41602421143cd0bed7343493a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aa5d77d6feaafcbc72aa6433f74164902"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_application.html">Application</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#aa5d77d6feaafcbc72aa6433f74164902">getInstance</a> ()</td></tr>
-<tr class="memdesc:aa5d77d6feaafcbc72aa6433f74164902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance getter from singleton pattern.  <a href="class_engine_1_1_application.html#aa5d77d6feaafcbc72aa6433f74164902">More...</a><br /></td></tr>
 <tr class="separator:aa5d77d6feaafcbc72aa6433f74164902"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a11fe1572fdf966996c9df435b9a6d8"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a2a11fe1572fdf966996c9df435b9a6d8">getTimestep</a> ()</td></tr>
-<tr class="separator:a2a11fe1572fdf966996c9df435b9a6d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac746d2a500d132edd388cbd15d18d7ef"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#ac746d2a500d132edd388cbd15d18d7ef">getdeltaTime</a> ()</td></tr>
+<tr class="separator:ac746d2a500d132edd388cbd15d18d7ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:aafb4be83f26204bdebf131e261bbf4e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#aafb4be83f26204bdebf131e261bbf4e4">Application</a> ()</td></tr>
-<tr class="memdesc:aafb4be83f26204bdebf131e261bbf4e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_engine_1_1_application.html#aafb4be83f26204bdebf131e261bbf4e4">More...</a><br /></td></tr>
 <tr class="separator:aafb4be83f26204bdebf131e261bbf4e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a00d46bbebfcac8a29b79593384e76d28"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_log.html">Log</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a00d46bbebfcac8a29b79593384e76d28">m_log</a></td></tr>
+<tr class="separator:a00d46bbebfcac8a29b79593384e76d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb39a7a1b5592258852a1830a4aeeee9"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_time.html">Time</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#adb39a7a1b5592258852a1830a4aeeee9">m_time</a></td></tr>
+<tr class="separator:adb39a7a1b5592258852a1830a4aeeee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae60ea380ebc2413a91ff3eaafad80622"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_window_system.html">WindowSystem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#ae60ea380ebc2413a91ff3eaafad80622">m_windowSystem</a></td></tr>
+<tr class="separator:ae60ea380ebc2413a91ff3eaafad80622"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade3e07ac7c81646c3dedb2260e71c1e3"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_window.html">Window</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#ade3e07ac7c81646c3dedb2260e71c1e3">m_window</a></td></tr>
+<tr class="separator:ade3e07ac7c81646c3dedb2260e71c1e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a086e593f5c23243c99dfe9110affa226"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_layer_stack.html">LayerStack</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a086e593f5c23243c99dfe9110affa226">m_layerStack</a></td></tr>
+<tr class="separator:a086e593f5c23243c99dfe9110affa226"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:abd738faa90aa59e7d78c2bdf0f8d2369"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_resource_manager.html">ResourceManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#abd738faa90aa59e7d78c2bdf0f8d2369">m_resourceManager</a></td></tr>
+<tr class="separator:abd738faa90aa59e7d78c2bdf0f8d2369"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a5c4f797161e57cf1dd030ea267c295e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a5c4f797161e57cf1dd030ea267c295e0">onWindowResize</a> (<a class="el" href="class_engine_1_1_window_resize.html">WindowResize</a> &amp;e)</td></tr>
+<tr class="separator:a5c4f797161e57cf1dd030ea267c295e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88e71f33e0a60ec51d2911025b9308cc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a88e71f33e0a60ec51d2911025b9308cc">onWindowClose</a> (<a class="el" href="class_engine_1_1_window_close.html">WindowClose</a> &amp;e)</td></tr>
+<tr class="separator:a88e71f33e0a60ec51d2911025b9308cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af92f7105cdcf55bff562d4f4b4315168"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#af92f7105cdcf55bff562d4f4b4315168">onWindowMoved</a> (<a class="el" href="class_engine_1_1_window_moved.html">WindowMoved</a> &amp;e)</td></tr>
+<tr class="separator:af92f7105cdcf55bff562d4f4b4315168"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bf931a531b8ce86323dc4812774d6de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a4bf931a531b8ce86323dc4812774d6de">onWindowLostFocus</a> (<a class="el" href="class_engine_1_1_window_lost_focus.html">WindowLostFocus</a> &amp;e)</td></tr>
+<tr class="separator:a4bf931a531b8ce86323dc4812774d6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b412b2b4787114f0ea507429ae14af3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a0b412b2b4787114f0ea507429ae14af3">onKeyPressed</a> (<a class="el" href="class_engine_1_1_key_pressed.html">KeyPressed</a> &amp;e)</td></tr>
+<tr class="separator:a0b412b2b4787114f0ea507429ae14af3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c2c32920cb1ee32a212d8f08195020a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a4c2c32920cb1ee32a212d8f08195020a">onKeyReleased</a> (<a class="el" href="class_engine_1_1_key_released.html">KeyReleased</a> &amp;e)</td></tr>
+<tr class="separator:a4c2c32920cb1ee32a212d8f08195020a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ae17eb3eda59b4492efb3d6dba2b07a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a1ae17eb3eda59b4492efb3d6dba2b07a">onKeyTyped</a> (<a class="el" href="class_engine_1_1_key_typed.html">KeyTyped</a> &amp;e)</td></tr>
+<tr class="separator:a1ae17eb3eda59b4492efb3d6dba2b07a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bc1a27dfd1d8dab451012c54e13e370"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a1bc1a27dfd1d8dab451012c54e13e370">onMouseMove</a> (<a class="el" href="class_engine_1_1_mouse_moved.html">MouseMoved</a> &amp;e)</td></tr>
+<tr class="separator:a1bc1a27dfd1d8dab451012c54e13e370"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4ef15a7dcde753ae5220cc00df7753c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#af4ef15a7dcde753ae5220cc00df7753c">onMouseScrolled</a> (<a class="el" href="class_engine_1_1_mouse_scrolled.html">MouseScrolled</a> &amp;e)</td></tr>
+<tr class="separator:af4ef15a7dcde753ae5220cc00df7753c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6da0b1c8de808b7aec33f7508a925bcf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a6da0b1c8de808b7aec33f7508a925bcf">onMouseButtonPressed</a> (<a class="el" href="class_engine_1_1_mouse_button_pressed.html">MouseButtonPressed</a> &amp;e)</td></tr>
+<tr class="separator:a6da0b1c8de808b7aec33f7508a925bcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cecf6b4ceba17beb90a19426b1b5997"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a6cecf6b4ceba17beb90a19426b1b5997">onMouseButtonReleased</a> (<a class="el" href="class_engine_1_1_mouse_button_released.html">MouseButtonReleased</a> &amp;e)</td></tr>
+<tr class="separator:a6cecf6b4ceba17beb90a19426b1b5997"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a4ec1c874dda3d257fd4b4086ef86b633"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a4ec1c874dda3d257fd4b4086ef86b633">m_running</a> = true</td></tr>
-<tr class="memdesc:a4ec1c874dda3d257fd4b4086ef86b633"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the application running?  <a href="class_engine_1_1_application.html#a4ec1c874dda3d257fd4b4086ef86b633">More...</a><br /></td></tr>
 <tr class="separator:a4ec1c874dda3d257fd4b4086ef86b633"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade3e07ac7c81646c3dedb2260e71c1e3"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_window.html">Window</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#ade3e07ac7c81646c3dedb2260e71c1e3">m_window</a></td></tr>
-<tr class="memdesc:ade3e07ac7c81646c3dedb2260e71c1e3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_window.html">Window</a> (abstract)  <a href="class_engine_1_1_application.html#ade3e07ac7c81646c3dedb2260e71c1e3">More...</a><br /></td></tr>
-<tr class="separator:ade3e07ac7c81646c3dedb2260e71c1e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00d46bbebfcac8a29b79593384e76d28"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_log.html">Log</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a00d46bbebfcac8a29b79593384e76d28">m_log</a></td></tr>
-<tr class="memdesc:a00d46bbebfcac8a29b79593384e76d28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging system.  <a href="class_engine_1_1_application.html#a00d46bbebfcac8a29b79593384e76d28">More...</a><br /></td></tr>
-<tr class="separator:a00d46bbebfcac8a29b79593384e76d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf05f675203ea5f0f51d4f9f6ed47dbc"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_time.html">Time</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#adf05f675203ea5f0f51d4f9f6ed47dbc">m_timer</a></td></tr>
-<tr class="memdesc:adf05f675203ea5f0f51d4f9f6ed47dbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timing system.  <a href="class_engine_1_1_application.html#adf05f675203ea5f0f51d4f9f6ed47dbc">More...</a><br /></td></tr>
-<tr class="separator:adf05f675203ea5f0f51d4f9f6ed47dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54b58e56d2d2854fb3bea407d347a0d2"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_window_system.html">WindowSystem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a54b58e56d2d2854fb3bea407d347a0d2">m_windows</a></td></tr>
-<tr class="memdesc:a54b58e56d2d2854fb3bea407d347a0d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Windows system.  <a href="class_engine_1_1_application.html#a54b58e56d2d2854fb3bea407d347a0d2">More...</a><br /></td></tr>
-<tr class="separator:a54b58e56d2d2854fb3bea407d347a0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bec3924f172d91bb76c28dc1d136464"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_open_g_l___vertex_array.html">OpenGL_VertexArray</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a9bec3924f172d91bb76c28dc1d136464">vao</a></td></tr>
-<tr class="separator:a9bec3924f172d91bb76c28dc1d136464"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ad3ca43399d931655ad526e88c05ea9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_1_1_buffer_layout.html">BufferLayout</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a8ad3ca43399d931655ad526e88c05ea9">bl</a></td></tr>
-<tr class="separator:a8ad3ca43399d931655ad526e88c05ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8880e953ef67f1c912ff53326a1ff80"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_open_g_l___vertex_buffer.html">OpenGL_VertexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#ab8880e953ef67f1c912ff53326a1ff80">vbo</a></td></tr>
-<tr class="separator:ab8880e953ef67f1c912ff53326a1ff80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76d5d76b80f1c3b2ec596d09ec0ff01e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_open_g_l___index_buffer.html">OpenGL_IndexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a76d5d76b80f1c3b2ec596d09ec0ff01e">ibo</a></td></tr>
-<tr class="separator:a76d5d76b80f1c3b2ec596d09ec0ff01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18021189d39f89d3050d7f7b539ac8a1"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_open_g_l___vertex_array.html">OpenGL_VertexArray</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a18021189d39f89d3050d7f7b539ac8a1">vao1</a></td></tr>
-<tr class="separator:a18021189d39f89d3050d7f7b539ac8a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a093c729272ec47ff7149c855ea9c578f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_1_1_buffer_layout.html">BufferLayout</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a093c729272ec47ff7149c855ea9c578f">bl1</a></td></tr>
-<tr class="separator:a093c729272ec47ff7149c855ea9c578f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bdba6e00eafefb069e87eb96da4d30c"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_open_g_l___vertex_buffer.html">OpenGL_VertexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a0bdba6e00eafefb069e87eb96da4d30c">vbo1</a></td></tr>
-<tr class="separator:a0bdba6e00eafefb069e87eb96da4d30c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c042d1fed7c7548cae52d792ddb0cca"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_open_g_l___index_buffer.html">OpenGL_IndexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a8c042d1fed7c7548cae52d792ddb0cca">ibo1</a></td></tr>
-<tr class="separator:a8c042d1fed7c7548cae52d792ddb0cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7c6a7f1aadcb353ff9bb89b242d4e74"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_open_g_l___texture.html">OpenGL_Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#ae7c6a7f1aadcb353ff9bb89b242d4e74">tex</a></td></tr>
-<tr class="separator:ae7c6a7f1aadcb353ff9bb89b242d4e74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6374dcba658b77cedda6b9dd71d82215"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_open_g_l___texture.html">OpenGL_Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a6374dcba658b77cedda6b9dd71d82215">tex1</a></td></tr>
-<tr class="separator:a6374dcba658b77cedda6b9dd71d82215"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9947911a76ab280d7e98190e01448bed"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_open_g_l___shader.html">OpenGL_Shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a9947911a76ab280d7e98190e01448bed">prog</a></td></tr>
-<tr class="separator:a9947911a76ab280d7e98190e01448bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0cbb62ea32be379c5ee3aea7e4ed895"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_open_g_l___shader.html">OpenGL_Shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#ae0cbb62ea32be379c5ee3aea7e4ed895">prog1</a></td></tr>
-<tr class="separator:ae0cbb62ea32be379c5ee3aea7e4ed895"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96dbbe744820dbf9b936084af2096b0b"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a96dbbe744820dbf9b936084af2096b0b">m_FCprogram</a></td></tr>
-<tr class="separator:a96dbbe744820dbf9b936084af2096b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9566717ddbe5e73e6d118cce879b973f"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a9566717ddbe5e73e6d118cce879b973f">m_TPprogram</a></td></tr>
-<tr class="separator:a9566717ddbe5e73e6d118cce879b973f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa611a7ccb9b9c3669675435b1fb4e03c"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#aa611a7ccb9b9c3669675435b1fb4e03c">m_numberTexture</a></td></tr>
-<tr class="separator:aa611a7ccb9b9c3669675435b1fb4e03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e91715521a3e5361ad986ed75c7cef7"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a6e91715521a3e5361ad986ed75c7cef7">m_letterTexture</a></td></tr>
-<tr class="separator:a6e91715521a3e5361ad986ed75c7cef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbcfdf958223df37581eeefd26d94a21"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#acbcfdf958223df37581eeefd26d94a21">m_textureSlots</a> [2]</td></tr>
-<tr class="separator:acbcfdf958223df37581eeefd26d94a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20157f02cd94eb7092283c578b027d72"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a20157f02cd94eb7092283c578b027d72">m_goingUp</a> = false</td></tr>
-<tr class="separator:a20157f02cd94eb7092283c578b027d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9febcf6cb403642ff016820386f12a9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#ac9febcf6cb403642ff016820386f12a9">m_timeSummed</a> = 10.f</td></tr>
-<tr class="separator:ac9febcf6cb403642ff016820386f12a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:ae0e46a024a6a021a88a6b288ec61596f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_application.html">Application</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#ae0e46a024a6a021a88a6b288ec61596f">s_instance</a> = nullptr</td></tr>
-<tr class="memdesc:ae0e46a024a6a021a88a6b288ec61596f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton instance of the application.  <a href="class_engine_1_1_application.html#ae0e46a024a6a021a88a6b288ec61596f">More...</a><br /></td></tr>
 <tr class="separator:ae0e46a024a6a021a88a6b288ec61596f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03a3f70338566bd241a6e75c35671b46"><td class="memItemLeft" align="right" valign="top">static glm::ivec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a03a3f70338566bd241a6e75c35671b46">s_screenResolution</a> = glm::ivec2(0, 0)</td></tr>
-<tr class="memdesc:a03a3f70338566bd241a6e75c35671b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Screen res.  <a href="class_engine_1_1_application.html#a03a3f70338566bd241a6e75c35671b46">More...</a><br /></td></tr>
+<tr class="memitem:a03a3f70338566bd241a6e75c35671b46"><td class="memItemLeft" align="right" valign="top">static glm::ivec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#a03a3f70338566bd241a6e75c35671b46">s_screenResolution</a></td></tr>
 <tr class="separator:a03a3f70338566bd241a6e75c35671b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7d228e7584876bce24f46c60a9a59ba"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#ac7d228e7584876bce24f46c60a9a59ba">s_timestep</a> = 1.0f / 60.0f</td></tr>
-<tr class="memdesc:ac7d228e7584876bce24f46c60a9a59ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">last frame timestep  <a href="class_engine_1_1_application.html#ac7d228e7584876bce24f46c60a9a59ba">More...</a><br /></td></tr>
-<tr class="separator:ac7d228e7584876bce24f46c60a9a59ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad502ccaf5efb993e4cd0dd2b18eea73b"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_application.html#ad502ccaf5efb993e4cd0dd2b18eea73b">s_deltaTime</a></td></tr>
+<tr class="separator:ad502ccaf5efb993e4cd0dd2b18eea73b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Fundemental class of the engine. A singleton which runs the game loop infinitely. Provides ... </p>
+<div class="textblock"><p>A test class. A more elaborate class description. </p>
 
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00031">31</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00015">15</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aafb4be83f26204bdebf131e261bbf4e4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aafb4be83f26204bdebf131e261bbf4e4">&#9670;&nbsp;</a></span>Application()</h2>
@@ -190,9 +169,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructor. </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00034">34</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00021">21</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
 
 </div>
 </div>
@@ -219,13 +196,38 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Deconstructor. </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00399">399</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00050">50</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac746d2a500d132edd388cbd15d18d7ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac746d2a500d132edd388cbd15d18d7ef">&#9670;&nbsp;</a></span>getdeltaTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static float Engine::Application::getdeltaTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00047">47</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
+
+</div>
+</div>
 <a id="aa5d77d6feaafcbc72aa6433f74164902"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa5d77d6feaafcbc72aa6433f74164902">&#9670;&nbsp;</a></span>getInstance()</h2>
 
@@ -249,36 +251,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Instance getter from singleton pattern. </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00075">75</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="a2a11fe1572fdf966996c9df435b9a6d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a11fe1572fdf966996c9df435b9a6d8">&#9670;&nbsp;</a></span>getTimestep()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static float Engine::Application::getTimestep </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00076">76</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00046">46</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
 
 </div>
 </div>
@@ -305,29 +278,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00077">77</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="a3a51e4285f90699965b5a5a49c22f69b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a51e4285f90699965b5a5a49c22f69b">&#9670;&nbsp;</a></span>onClose()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Engine::Application::onClose </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_engine_1_1_window_close.html">WindowClose</a> &amp;&#160;</td>
-          <td class="paramname"><em>e</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>On close event. </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00416">416</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00048">48</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
 
 </div>
 </div>
@@ -347,9 +298,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Called when an event happens. </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00406">406</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00079">79</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
 
 </div>
 </div>
@@ -358,6 +307,9 @@ Static Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool Engine::Application::onKeyPressed </td>
@@ -367,33 +319,294 @@ Static Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>On keypress event. </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00429">429</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00131">131</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a3fa2527fc6fb550f773f02e6bf293fd4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fa2527fc6fb550f773f02e6bf293fd4">&#9670;&nbsp;</a></span>onResize()</h2>
+<a id="a4c2c32920cb1ee32a212d8f08195020a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c2c32920cb1ee32a212d8f08195020a">&#9670;&nbsp;</a></span>onKeyReleased()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Engine::Application::onResize </td>
+          <td class="memname">bool Engine::Application::onKeyReleased </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_key_released.html">KeyReleased</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00143">143</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1ae17eb3eda59b4492efb3d6dba2b07a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ae17eb3eda59b4492efb3d6dba2b07a">&#9670;&nbsp;</a></span>onKeyTyped()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::Application::onKeyTyped </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_key_typed.html">KeyTyped</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00155">155</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6da0b1c8de808b7aec33f7508a925bcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6da0b1c8de808b7aec33f7508a925bcf">&#9670;&nbsp;</a></span>onMouseButtonPressed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::Application::onMouseButtonPressed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_mouse_button_pressed.html">MouseButtonPressed</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00173">173</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6cecf6b4ceba17beb90a19426b1b5997"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cecf6b4ceba17beb90a19426b1b5997">&#9670;&nbsp;</a></span>onMouseButtonReleased()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::Application::onMouseButtonReleased </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_mouse_button_released.html">MouseButtonReleased</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00179">179</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1bc1a27dfd1d8dab451012c54e13e370"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bc1a27dfd1d8dab451012c54e13e370">&#9670;&nbsp;</a></span>onMouseMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::Application::onMouseMove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_mouse_moved.html">MouseMoved</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00161">161</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af4ef15a7dcde753ae5220cc00df7753c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4ef15a7dcde753ae5220cc00df7753c">&#9670;&nbsp;</a></span>onMouseScrolled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::Application::onMouseScrolled </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_mouse_scrolled.html">MouseScrolled</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00167">167</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a88e71f33e0a60ec51d2911025b9308cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88e71f33e0a60ec51d2911025b9308cc">&#9670;&nbsp;</a></span>onWindowClose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::Application::onWindowClose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_window_close.html">WindowClose</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00112">112</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4bf931a531b8ce86323dc4812774d6de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bf931a531b8ce86323dc4812774d6de">&#9670;&nbsp;</a></span>onWindowLostFocus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::Application::onWindowLostFocus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_window_lost_focus.html">WindowLostFocus</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00125">125</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af92f7105cdcf55bff562d4f4b4315168"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af92f7105cdcf55bff562d4f4b4315168">&#9670;&nbsp;</a></span>onWindowMoved()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::Application::onWindowMoved </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_window_moved.html">WindowMoved</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00119">119</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5c4f797161e57cf1dd030ea267c295e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c4f797161e57cf1dd030ea267c295e0">&#9670;&nbsp;</a></span>onWindowResize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::Application::onWindowResize </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_engine_1_1_window_resize.html">WindowResize</a> &amp;&#160;</td>
           <td class="paramname"><em>e</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>On resize event. </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00423">423</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00105">105</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
 
 </div>
 </div>
@@ -414,13 +627,13 @@ Static Private Attributes</h2></td></tr>
 
 <p>Main loop. </p>
 
-<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00444">444</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8cpp_source.html#l00060">60</a> of file <a class="el" href="application_8cpp_source.html">application.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a8ad3ca43399d931655ad526e88c05ea9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ad3ca43399d931655ad526e88c05ea9">&#9670;&nbsp;</a></span>bl</h2>
+<a id="a086e593f5c23243c99dfe9110affa226"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a086e593f5c23243c99dfe9110affa226">&#9670;&nbsp;</a></span>m_layerStack</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -429,161 +642,17 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_engine_1_1_buffer_layout.html">BufferLayout</a> Engine::Application::bl</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_layer_stack.html">LayerStack</a>&gt; Engine::Application::m_layerStack</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00051">51</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="a093c729272ec47ff7149c855ea9c578f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a093c729272ec47ff7149c855ea9c578f">&#9670;&nbsp;</a></span>bl1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_engine_1_1_buffer_layout.html">BufferLayout</a> Engine::Application::bl1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00056">56</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="a76d5d76b80f1c3b2ec596d09ec0ff01e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76d5d76b80f1c3b2ec596d09ec0ff01e">&#9670;&nbsp;</a></span>ibo</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_open_g_l___index_buffer.html">OpenGL_IndexBuffer</a>&gt; Engine::Application::ibo</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00053">53</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="a8c042d1fed7c7548cae52d792ddb0cca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c042d1fed7c7548cae52d792ddb0cca">&#9670;&nbsp;</a></span>ibo1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_open_g_l___index_buffer.html">OpenGL_IndexBuffer</a>&gt; Engine::Application::ibo1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00058">58</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="a96dbbe744820dbf9b936084af2096b0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96dbbe744820dbf9b936084af2096b0b">&#9670;&nbsp;</a></span>m_FCprogram</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int Engine::Application::m_FCprogram</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00064">64</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="a20157f02cd94eb7092283c578b027d72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20157f02cd94eb7092283c578b027d72">&#9670;&nbsp;</a></span>m_goingUp</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Engine::Application::m_goingUp = false</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00069">69</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="a6e91715521a3e5361ad986ed75c7cef7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e91715521a3e5361ad986ed75c7cef7">&#9670;&nbsp;</a></span>m_letterTexture</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int Engine::Application::m_letterTexture</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00067">67</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00024">24</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
 
 </div>
 </div>
@@ -602,19 +671,17 @@ Static Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Logging system. </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00041">41</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00019">19</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
 
 </div>
 </div>
-<a id="aa611a7ccb9b9c3669675435b1fb4e03c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa611a7ccb9b9c3669675435b1fb4e03c">&#9670;&nbsp;</a></span>m_numberTexture</h2>
+<a id="abd738faa90aa59e7d78c2bdf0f8d2369"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd738faa90aa59e7d78c2bdf0f8d2369">&#9670;&nbsp;</a></span>m_resourceManager</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -623,17 +690,17 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int Engine::Application::m_numberTexture</td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_resource_manager.html">ResourceManager</a> &gt; Engine::Application::m_resourceManager</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00066">66</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00023">23</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
 
 </div>
 </div>
@@ -657,14 +724,12 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Is the application running? </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00037">37</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00027">27</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
 
 </div>
 </div>
-<a id="acbcfdf958223df37581eeefd26d94a21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbcfdf958223df37581eeefd26d94a21">&#9670;&nbsp;</a></span>m_textureSlots</h2>
+<a id="adb39a7a1b5592258852a1830a4aeeee9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb39a7a1b5592258852a1830a4aeeee9">&#9670;&nbsp;</a></span>m_time</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -673,91 +738,17 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int Engine::Application::m_textureSlots[2]</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_time.html">Time</a>&gt; Engine::Application::m_time</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00068">68</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="adf05f675203ea5f0f51d4f9f6ed47dbc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf05f675203ea5f0f51d4f9f6ed47dbc">&#9670;&nbsp;</a></span>m_timer</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_time.html">Time</a>&gt; Engine::Application::m_timer</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Timing system. </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00042">42</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="ac9febcf6cb403642ff016820386f12a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9febcf6cb403642ff016820386f12a9">&#9670;&nbsp;</a></span>m_timeSummed</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Engine::Application::m_timeSummed = 10.f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00070">70</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="a9566717ddbe5e73e6d118cce879b973f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9566717ddbe5e73e6d118cce879b973f">&#9670;&nbsp;</a></span>m_TPprogram</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int Engine::Application::m_TPprogram</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00065">65</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00020">20</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
 
 </div>
 </div>
@@ -776,19 +767,17 @@ Static Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="class_engine_1_1_window.html">Window</a> (abstract) </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00038">38</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00022">22</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
 
 </div>
 </div>
-<a id="a54b58e56d2d2854fb3bea407d347a0d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54b58e56d2d2854fb3bea407d347a0d2">&#9670;&nbsp;</a></span>m_windows</h2>
+<a id="ae60ea380ebc2413a91ff3eaafad80622"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae60ea380ebc2413a91ff3eaafad80622">&#9670;&nbsp;</a></span>m_windowSystem</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -797,24 +786,22 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_window_system.html">WindowSystem</a>&gt; Engine::Application::m_windows</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_window_system.html">WindowSystem</a>&gt; Engine::Application::m_windowSystem</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Windows system. </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00043">43</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00021">21</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
 
 </div>
 </div>
-<a id="a9947911a76ab280d7e98190e01448bed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9947911a76ab280d7e98190e01448bed">&#9670;&nbsp;</a></span>prog</h2>
+<a id="ad502ccaf5efb993e4cd0dd2b18eea73b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad502ccaf5efb993e4cd0dd2b18eea73b">&#9670;&nbsp;</a></span>s_deltaTime</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -823,41 +810,17 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_open_g_l___shader.html">OpenGL_Shader</a>&gt; Engine::Application::prog</td>
+          <td class="memname">float Engine::Application::s_deltaTime</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00061">61</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="ae0cbb62ea32be379c5ee3aea7e4ed895"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0cbb62ea32be379c5ee3aea7e4ed895">&#9670;&nbsp;</a></span>prog1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_open_g_l___shader.html">OpenGL_Shader</a>&gt; Engine::Application::prog1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00062">62</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00029">29</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
 
 </div>
 </div>
@@ -881,9 +844,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Singleton instance of the application. </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00036">36</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00026">26</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
 
 </div>
 </div>
@@ -897,7 +858,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">glm::ivec2 Engine::Application::s_screenResolution = glm::ivec2(0, 0)</td>
+          <td class="memname">glm::ivec2 Engine::Application::s_screenResolution</td>
         </tr>
       </table>
   </td>
@@ -907,185 +868,13 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Screen res. </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00039">39</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="ac7d228e7584876bce24f46c60a9a59ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7d228e7584876bce24f46c60a9a59ba">&#9670;&nbsp;</a></span>s_timestep</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Engine::Application::s_timestep = 1.0f / 60.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>last frame timestep </p>
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00045">45</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="ae7c6a7f1aadcb353ff9bb89b242d4e74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7c6a7f1aadcb353ff9bb89b242d4e74">&#9670;&nbsp;</a></span>tex</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_open_g_l___texture.html">OpenGL_Texture</a>&gt; Engine::Application::tex</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00059">59</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="a6374dcba658b77cedda6b9dd71d82215"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6374dcba658b77cedda6b9dd71d82215">&#9670;&nbsp;</a></span>tex1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_open_g_l___texture.html">OpenGL_Texture</a>&gt; Engine::Application::tex1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00060">60</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="a9bec3924f172d91bb76c28dc1d136464"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bec3924f172d91bb76c28dc1d136464">&#9670;&nbsp;</a></span>vao</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_open_g_l___vertex_array.html">OpenGL_VertexArray</a>&gt; Engine::Application::vao</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00050">50</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="a18021189d39f89d3050d7f7b539ac8a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18021189d39f89d3050d7f7b539ac8a1">&#9670;&nbsp;</a></span>vao1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_open_g_l___vertex_array.html">OpenGL_VertexArray</a>&gt; Engine::Application::vao1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00055">55</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="ab8880e953ef67f1c912ff53326a1ff80"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8880e953ef67f1c912ff53326a1ff80">&#9670;&nbsp;</a></span>vbo</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_open_g_l___vertex_buffer.html">OpenGL_VertexBuffer</a>&gt; Engine::Application::vbo</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00052">52</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
-
-</div>
-</div>
-<a id="a0bdba6e00eafefb069e87eb96da4d30c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0bdba6e00eafefb069e87eb96da4d30c">&#9670;&nbsp;</a></span>vbo1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_open_g_l___vertex_buffer.html">OpenGL_VertexBuffer</a>&gt; Engine::Application::vbo1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00057">57</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="application_8h_source.html#l00028">28</a> of file <a class="el" href="application_8h_source.html">application.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>engine/enginecode/include/independent/core/<a class="el" href="application_8h_source.html">application.h</a></li>
-<li>engine/enginecode/src/independent/<a class="el" href="application_8cpp_source.html">application.cpp</a></li>
+<li>engine/enginecode/src/independent/core/<a class="el" href="application_8cpp_source.html">application.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

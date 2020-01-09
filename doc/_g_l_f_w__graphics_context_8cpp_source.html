@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Engine: engine/enginecode/src/platform/OpenGL/GLFW_graphicsContext.cpp Source File</title>
+<title>Engine: engine/enginecode/src/platform/windows/GLFW_graphicsContext.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -39,7 +39,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_996f45160da62e1a3d7f6046fad68f51.html">engine</a></li><li class="navelem"><a class="el" href="dir_70491ddeac0f017cd7d72b515346fedb.html">enginecode</a></li><li class="navelem"><a class="el" href="dir_7a72d5834cde26c8c7749167f8bc3846.html">src</a></li><li class="navelem"><a class="el" href="dir_0d4efd84dead298d80d59cb7c10ce50a.html">platform</a></li><li class="navelem"><a class="el" href="dir_536bec90587fd5d4e8cb0551ff59a661.html">OpenGL</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_996f45160da62e1a3d7f6046fad68f51.html">engine</a></li><li class="navelem"><a class="el" href="dir_70491ddeac0f017cd7d72b515346fedb.html">enginecode</a></li><li class="navelem"><a class="el" href="dir_7a72d5834cde26c8c7749167f8bc3846.html">src</a></li><li class="navelem"><a class="el" href="dir_0d4efd84dead298d80d59cb7c10ce50a.html">platform</a></li><li class="navelem"><a class="el" href="dir_6fd45345a59c3150bb50a6b2c285c65d.html">windows</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -48,7 +48,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="_g_l_f_w__graphics_context_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="engine__pch_8h.html">engine_pch.h</a>&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_g_l_f_w__graphics_context_8h.html">include/platform/OpenGL/GLFW_graphicsContext.h</a>&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_g_l_f_w__graphics_context_8h.html">include/platform/windows/GLFW_graphicsContext.h</a>&quot;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="log_8h.html">systems/log.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_engine.html">Engine</a></div>
@@ -64,11 +64,11 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordflow">if</span> (!result)</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <a class="code" href="log_8h.html#ad044ffeb9ff9b6e1968c05377a5a4a40">LOG_CORE_CRITICAL</a>(<span class="stringliteral">&quot;FAILED TO INITIALISE GLAD!&quot;</span>);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <a class="code" href="log_8h.html#ad044ffeb9ff9b6e1968c05377a5a4a40">LOG_CORE_CRITICAL</a>(<span class="stringliteral">&quot;FAILED TO INITIALISE GLAD&quot;</span>);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        }</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="log_8h.html#a8538cd92b0b576e168d19824a6fc866f">LOG_CORE_INFO</a>(<span class="stringliteral">&quot;GLAD INITALIZED&quot;</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="log_8h.html#a19d6681b2ffd31e5ea447610217965bf">LOG_CORE_WARN</a>(<span class="stringliteral">&quot;GLAD INITALIZED&quot;</span>);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            glEnable(GL_DEBUG_OUTPUT);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            glDebugMessageCallback([](GLenum source,</div>
@@ -78,8 +78,8 @@ $(function() {
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                GLsizei length,</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <span class="keyword">const</span> GLchar* message,</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">void</span>* userParam) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <a class="code" href="log_8h.html#a8538cd92b0b576e168d19824a6fc866f">LOG_CORE_INFO</a>(<span class="stringliteral">&quot;OpenGL Debug: [Type {0}] [ID {1}] [Severity {2}]; {3}&quot;</span>, type, <span class="keywordtype">id</span>, severity, message);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            }, 0);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                    <a class="code" href="log_8h.html#a8538cd92b0b576e168d19824a6fc866f">LOG_CORE_INFO</a>(<span class="stringliteral">&quot;OpenGL Debug: [Type {0}] [ID {1}] [Severity {2}]; {3}&quot;</span>, type, <span class="keywordtype">id</span>, severity, message);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                }, 0);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
@@ -92,11 +92,12 @@ $(function() {
 <div class="ttc" id="aclass_engine_1_1_g_l_f_w___graphics_context_html_a9fe4bf3c008f5e09a19bcd25bc5d5a16"><div class="ttname"><a href="class_engine_1_1_g_l_f_w___graphics_context.html#a9fe4bf3c008f5e09a19bcd25bc5d5a16">Engine::GLFW_GraphicsContext::init</a></div><div class="ttdeci">void init() override</div><div class="ttdef"><b>Definition:</b> <a href="_g_l_f_w__graphics_context_8cpp_source.html#l00011">GLFW_graphicsContext.cpp:11</a></div></div>
 <div class="ttc" id="a_g_l_f_w__graphics_context_8h_html"><div class="ttname"><a href="_g_l_f_w__graphics_context_8h.html">GLFW_graphicsContext.h</a></div></div>
 <div class="ttc" id="aclass_engine_1_1_g_l_f_w___graphics_context_html_ad54f738435f000bc835695767e39b4fe"><div class="ttname"><a href="class_engine_1_1_g_l_f_w___graphics_context.html#ad54f738435f000bc835695767e39b4fe">Engine::GLFW_GraphicsContext::GLFW_GraphicsContext</a></div><div class="ttdeci">GLFW_GraphicsContext(GLFWwindow *window)</div><div class="ttdef"><b>Definition:</b> <a href="_g_l_f_w__graphics_context_8cpp_source.html#l00007">GLFW_graphicsContext.cpp:7</a></div></div>
-<div class="ttc" id="anamespace_engine_html"><div class="ttname"><a href="namespace_engine.html">Engine</a></div><div class="ttdef"><b>Definition:</b> <a href="application_8h_source.html#l00023">application.h:23</a></div></div>
-<div class="ttc" id="aclass_engine_1_1_g_l_f_w___graphics_context_html_aa0ea880e1e45e539392fe5485c9235d9"><div class="ttname"><a href="class_engine_1_1_g_l_f_w___graphics_context.html#aa0ea880e1e45e539392fe5485c9235d9">Engine::GLFW_GraphicsContext::m_window</a></div><div class="ttdeci">GLFWwindow * m_window</div><div class="ttdef"><b>Definition:</b> <a href="_g_l_f_w__graphics_context_8h_source.html#l00017">GLFW_graphicsContext.h:17</a></div></div>
+<div class="ttc" id="anamespace_engine_html"><div class="ttname"><a href="namespace_engine.html">Engine</a></div><div class="ttdef"><b>Definition:</b> <a href="asset_manager_8h_source.html#l00008">assetManager.h:8</a></div></div>
+<div class="ttc" id="aclass_engine_1_1_g_l_f_w___graphics_context_html_aa0ea880e1e45e539392fe5485c9235d9"><div class="ttname"><a href="class_engine_1_1_g_l_f_w___graphics_context.html#aa0ea880e1e45e539392fe5485c9235d9">Engine::GLFW_GraphicsContext::m_window</a></div><div class="ttdeci">GLFWwindow * m_window</div><div class="ttdef"><b>Definition:</b> <a href="_g_l_f_w__graphics_context_8h_source.html#l00015">GLFW_graphicsContext.h:15</a></div></div>
 <div class="ttc" id="alog_8h_html_ad044ffeb9ff9b6e1968c05377a5a4a40"><div class="ttname"><a href="log_8h.html#ad044ffeb9ff9b6e1968c05377a5a4a40">LOG_CORE_CRITICAL</a></div><div class="ttdeci">#define LOG_CORE_CRITICAL(...)</div><div class="ttdef"><b>Definition:</b> <a href="log_8h_source.html#l00031">log.h:31</a></div></div>
 <div class="ttc" id="aclass_engine_1_1_g_l_f_w___graphics_context_html_aae5aa20a10be8a2f9e94e406fb9f1fb9"><div class="ttname"><a href="class_engine_1_1_g_l_f_w___graphics_context.html#aae5aa20a10be8a2f9e94e406fb9f1fb9">Engine::GLFW_GraphicsContext::swapBuffers</a></div><div class="ttdeci">void swapBuffers() override</div><div class="ttdef"><b>Definition:</b> <a href="_g_l_f_w__graphics_context_8cpp_source.html#l00037">GLFW_graphicsContext.cpp:37</a></div></div>
 <div class="ttc" id="alog_8h_html"><div class="ttname"><a href="log_8h.html">log.h</a></div></div>
+<div class="ttc" id="alog_8h_html_a19d6681b2ffd31e5ea447610217965bf"><div class="ttname"><a href="log_8h.html#a19d6681b2ffd31e5ea447610217965bf">LOG_CORE_WARN</a></div><div class="ttdeci">#define LOG_CORE_WARN(...)</div><div class="ttdef"><b>Definition:</b> <a href="log_8h_source.html#l00029">log.h:29</a></div></div>
 <div class="ttc" id="aengine__pch_8h_html"><div class="ttname"><a href="engine__pch_8h.html">engine_pch.h</a></div></div>
 <div class="ttc" id="alog_8h_html_a8538cd92b0b576e168d19824a6fc866f"><div class="ttname"><a href="log_8h.html#a8538cd92b0b576e168d19824a6fc866f">LOG_CORE_INFO</a></div><div class="ttdeci">#define LOG_CORE_INFO(...)</div><div class="ttdef"><b>Definition:</b> <a href="log_8h_source.html#l00028">log.h:28</a></div></div>
 <!-- start footer part -->

@@ -72,8 +72,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a38d3c1012c983e7f276a21cff4555426"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3723c9b47bc710f190d4cf022ce0c12"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#ab3723c9b47bc710f190d4cf022ce0c12">~Window</a> ()</td></tr>
 <tr class="separator:ab3723c9b47bc710f190d4cf022ce0c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdb4e0a16ec760470b68d2c88028bcc6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#abdb4e0a16ec760470b68d2c88028bcc6">onUpdate</a> (float timestep)=0</td></tr>
-<tr class="separator:abdb4e0a16ec760470b68d2c88028bcc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf939ef14eec09c497a7cb2ffda7c373"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#aaf939ef14eec09c497a7cb2ffda7c373">onUpdate</a> (float deltaTime)=0</td></tr>
+<tr class="separator:aaf939ef14eec09c497a7cb2ffda7c373"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7816915072123b15d1fda1601fb2c9d5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#a7816915072123b15d1fda1601fb2c9d5">onResize</a> (unsigned int width, unsigned int height)=0</td></tr>
 <tr class="separator:a7816915072123b15d1fda1601fb2c9d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab69e1de70ef657b3395452e571e61439"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#ab69e1de70ef657b3395452e571e61439">setVSync</a> (bool VSync)=0</td></tr>
@@ -103,7 +103,7 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00026">26</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00023">23</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab3723c9b47bc710f190d4cf022ce0c12"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab3723c9b47bc710f190d4cf022ce0c12">&#9670;&nbsp;</a></span>~Window()</h2>
@@ -128,7 +128,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00031">31</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00028">28</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
 
 </div>
 </div>
@@ -184,7 +184,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_l_f_w___window_imp_8cpp_source.html#l00171">171</a> of file <a class="el" href="_g_l_f_w___window_imp_8cpp_source.html">GLFW_WindowImp.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_l_f_w___window_imp_8cpp_source.html#l00169">169</a> of file <a class="el" href="_g_l_f_w___window_imp_8cpp_source.html">GLFW_WindowImp.cpp</a>.</p>
 
 </div>
 </div>
@@ -389,8 +389,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abdb4e0a16ec760470b68d2c88028bcc6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abdb4e0a16ec760470b68d2c88028bcc6">&#9670;&nbsp;</a></span>onUpdate()</h2>
+<a id="aaf939ef14eec09c497a7cb2ffda7c373"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf939ef14eec09c497a7cb2ffda7c373">&#9670;&nbsp;</a></span>onUpdate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -402,7 +402,7 @@ Protected Attributes</h2></td></tr>
           <td class="memname">virtual void Engine::Window::onUpdate </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>timestep</em></td><td>)</td>
+          <td class="paramname"><em>deltaTime</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -413,7 +413,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_engine_1_1_g_l_f_w___window_imp.html#aee87bc43deec1632844eac34b9dc282f">Engine::GLFW_WindowImp</a>.</p>
+<p>Implemented in <a class="el" href="class_engine_1_1_g_l_f_w___window_imp.html#a7a9e76d149659b08fe3ad6ddf6dc71bf">Engine::GLFW_WindowImp</a>.</p>
 
 </div>
 </div>
@@ -494,13 +494,13 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00044">44</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00041">41</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>engine/enginecode/include/independent/windows/<a class="el" href="window_8h_source.html">window.h</a></li>
-<li>engine/enginecode/src/platform/OpenGL/<a class="el" href="_g_l_f_w___window_imp_8cpp_source.html">GLFW_WindowImp.cpp</a></li>
+<li>engine/enginecode/src/platform/windows/<a class="el" href="_g_l_f_w___window_imp_8cpp_source.html">GLFW_WindowImp.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
