@@ -78,9 +78,4 @@ namespace Engine
 		m_camera->update();
 	}
 
-	void CameraController3D::onEvent(Event& e)
-	{
-
-	}
-
 }

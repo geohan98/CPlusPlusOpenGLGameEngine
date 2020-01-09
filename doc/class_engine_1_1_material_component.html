@@ -66,40 +66,51 @@ Inheritance diagram for Engine::MaterialComponent:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1fe9b5fbc218cc6fccaa189d4d706cc5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_material_component.html#a1fe9b5fbc218cc6fccaa189d4d706cc5">MaterialComponent</a> (const std::shared_ptr&lt; <a class="el" href="class_engine_1_1_material.html">Material</a> &gt; &amp;material)</td></tr>
+<tr class="memdesc:a1fe9b5fbc218cc6fccaa189d4d706cc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_engine_1_1_material_component.html#a1fe9b5fbc218cc6fccaa189d4d706cc5">More...</a><br /></td></tr>
 <tr class="separator:a1fe9b5fbc218cc6fccaa189d4d706cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6ccaed9c748224b3a7428f7776648e1"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_material.html">Material</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_material_component.html#af6ccaed9c748224b3a7428f7776648e1">getMaterial</a> ()</td></tr>
+<tr class="memdesc:af6ccaed9c748224b3a7428f7776648e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <a class="el" href="class_engine_1_1_material.html">Material</a>.  <a href="class_engine_1_1_material_component.html#af6ccaed9c748224b3a7428f7776648e1">More...</a><br /></td></tr>
 <tr class="separator:af6ccaed9c748224b3a7428f7776648e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a522c8f6b476120092dae22115dccf614"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_material_component.html#a522c8f6b476120092dae22115dccf614">receiveMessage</a> (const <a class="el" href="class_engine_1_1_component_message.html">ComponentMessage</a> &amp;msg) override</td></tr>
+<tr class="memdesc:a522c8f6b476120092dae22115dccf614"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; Override receive Message and deal with data, Sets <a class="el" href="class_engine_1_1_shader.html">Shader</a> Uniform  <a href="class_engine_1_1_material_component.html#a522c8f6b476120092dae22115dccf614">More...</a><br /></td></tr>
 <tr class="separator:a522c8f6b476120092dae22115dccf614"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
 <tr class="memitem:a3763284e3200f793704db96c5443a545 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a3763284e3200f793704db96c5443a545">onAttach</a> (<a class="el" href="class_engine_1_1_game_object.html">GameObject</a> *parent)</td></tr>
+<tr class="memdesc:a3763284e3200f793704db96c5443a545 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run When <a class="el" href="class_engine_1_1_component.html">Component</a> is added to <a class="el" href="class_engine_1_1_game_object.html">GameObject</a>.  <a href="class_engine_1_1_component.html#a3763284e3200f793704db96c5443a545">More...</a><br /></td></tr>
 <tr class="separator:a3763284e3200f793704db96c5443a545 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4790fd5e80d058c2db7314b91587cedf inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a4790fd5e80d058c2db7314b91587cedf">onDetach</a> ()</td></tr>
+<tr class="memdesc:a4790fd5e80d058c2db7314b91587cedf inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run When <a class="el" href="class_engine_1_1_component.html">Component</a> is Removed From Parent.  <a href="class_engine_1_1_component.html#a4790fd5e80d058c2db7314b91587cedf">More...</a><br /></td></tr>
 <tr class="separator:a4790fd5e80d058c2db7314b91587cedf inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5aaed6c6947f389b61f73a713d3589ed inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a5aaed6c6947f389b61f73a713d3589ed">onUpdate</a> (float deltaTime)</td></tr>
 <tr class="separator:a5aaed6c6947f389b61f73a713d3589ed inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa235f9b05864c178696b957fade68d20 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#aa235f9b05864c178696b957fade68d20">onEvent</a> (<a class="el" href="class_engine_1_1_event.html">Event</a> &amp;e)</td></tr>
+<tr class="memdesc:aa235f9b05864c178696b957fade68d20 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called Every Frame.  <a href="class_engine_1_1_component.html#aa235f9b05864c178696b957fade68d20">More...</a><br /></td></tr>
 <tr class="separator:aa235f9b05864c178696b957fade68d20 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a147f1f0197948de371dd214e55ca73f1"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_material.html">Material</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_material_component.html#a147f1f0197948de371dd214e55ca73f1">m_material</a></td></tr>
+<tr class="memdesc:a147f1f0197948de371dd214e55ca73f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Smart Pointer To <a class="el" href="class_engine_1_1_material.html">Material</a>.  <a href="class_engine_1_1_material_component.html#a147f1f0197948de371dd214e55ca73f1">More...</a><br /></td></tr>
 <tr class="separator:a147f1f0197948de371dd214e55ca73f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
 <tr class="memitem:a0c6542a1f65b105085e2ae392b5f4edf inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a0c6542a1f65b105085e2ae392b5f4edf">sendMessage</a> (const <a class="el" href="class_engine_1_1_component_message.html">ComponentMessage</a> &amp;msg)</td></tr>
+<tr class="memdesc:a0c6542a1f65b105085e2ae392b5f4edf inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send message to all Components of the Parent.  <a href="class_engine_1_1_component.html#a0c6542a1f65b105085e2ae392b5f4edf">More...</a><br /></td></tr>
 <tr class="separator:a0c6542a1f65b105085e2ae392b5f4edf inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
 <tr class="memitem:a1d356f487ba39c9911455ede881f0c0c inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a1d356f487ba39c9911455ede881f0c0c">m_name</a> = &quot;Component&quot;</td></tr>
+<tr class="memdesc:a1d356f487ba39c9911455ede881f0c0c inherit pro_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_component.html">Component</a> Name.  <a href="class_engine_1_1_component.html#a1d356f487ba39c9911455ede881f0c0c">More...</a><br /></td></tr>
 <tr class="separator:a1d356f487ba39c9911455ede881f0c0c inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace8d57252204eb3af7ee0e2b486a47c3 inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_1_1_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ace8d57252204eb3af7ee0e2b486a47c3">m_parent</a> = nullptr</td></tr>
+<tr class="memdesc:ace8d57252204eb3af7ee0e2b486a47c3 inherit pro_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_component.html">Component</a> Parent.  <a href="class_engine_1_1_component.html#ace8d57252204eb3af7ee0e2b486a47c3">More...</a><br /></td></tr>
 <tr class="separator:ace8d57252204eb3af7ee0e2b486a47c3 inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="material_component_8h_source.html#l00007">7</a> of file <a class="el" href="material_component_8h_source.html">materialComponent.h</a>.</p>
+<div class="textblock"><p><a class="el" href="class_engine_1_1_material.html">Material</a> <a class="el" href="class_engine_1_1_component.html">Component</a>, Holds <a class="el" href="class_engine_1_1_shader.html">Shader</a> and Geometry Data </p>
+
+<p class="definition">Definition at line <a class="el" href="material_component_8h_source.html#l00010">10</a> of file <a class="el" href="material_component_8h_source.html">materialComponent.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1fe9b5fbc218cc6fccaa189d4d706cc5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1fe9b5fbc218cc6fccaa189d4d706cc5">&#9670;&nbsp;</a></span>MaterialComponent()</h2>
@@ -125,7 +136,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="material_component_8h_source.html#l00012">12</a> of file <a class="el" href="material_component_8h_source.html">materialComponent.h</a>.</p>
+<p>Constructor. </p>
+
+<p class="definition">Definition at line <a class="el" href="material_component_8h_source.html#l00015">15</a> of file <a class="el" href="material_component_8h_source.html">materialComponent.h</a>.</p>
 
 </div>
 </div>
@@ -153,7 +166,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="material_component_8h_source.html#l00013">13</a> of file <a class="el" href="material_component_8h_source.html">materialComponent.h</a>.</p>
+<p>Return the <a class="el" href="class_engine_1_1_material.html">Material</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="material_component_8h_source.html#l00016">16</a> of file <a class="el" href="material_component_8h_source.html">materialComponent.h</a>.</p>
 
 </div>
 </div>
@@ -181,9 +196,11 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>&lt; Override receive Message and deal with data, Sets <a class="el" href="class_engine_1_1_shader.html">Shader</a> Uniform </p>
+
 <p>Implements <a class="el" href="class_engine_1_1_component.html#ae1a04e092fe4d1193d476d941b4a6288">Engine::Component</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="material_component_8h_source.html#l00014">14</a> of file <a class="el" href="material_component_8h_source.html">materialComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="material_component_8h_source.html#l00017">17</a> of file <a class="el" href="material_component_8h_source.html">materialComponent.h</a>.</p>
 
 </div>
 </div>
@@ -208,7 +225,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="material_component_8h_source.html#l00010">10</a> of file <a class="el" href="material_component_8h_source.html">materialComponent.h</a>.</p>
+<p>Smart Pointer To <a class="el" href="class_engine_1_1_material.html">Material</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="material_component_8h_source.html#l00013">13</a> of file <a class="el" href="material_component_8h_source.html">materialComponent.h</a>.</p>
 
 </div>
 </div>

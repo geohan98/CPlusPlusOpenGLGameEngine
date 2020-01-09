@@ -3,12 +3,15 @@
 
 namespace Engine
 {
+	/**
+	 *  Shader Data Type, Types of data in a shader
+	 */
 	enum class ShaderDataType
 	{
 		None = 0, Int, Int2, Int3, Int4, Float, Float2, Float3, Float4, Mat3, Mat4, Bool, Sampler2D
 	};
 
-	static unsigned int ShaderDataTypeSize(ShaderDataType type)
+	static unsigned int ShaderDataTypeSize(ShaderDataType type) ///< Get the Size of a data type
 	{
 		switch (type)
 		{
@@ -27,7 +30,7 @@ namespace Engine
 		}
 	}
 
-	static unsigned int ShaderDataTypeToOpenGL(ShaderDataType type)
+	static unsigned int ShaderDataTypeToOpenGL(ShaderDataType type) ///< Convert shader data type to GL Type
 	{
 		switch (type)
 		{
@@ -45,7 +48,7 @@ namespace Engine
 		}
 	}
 
-	static ShaderDataType GLSLStrToSDT(const std::string& glslSrc)
+	static ShaderDataType GLSLStrToSDT(const std::string& glslSrc) ///< Convert String to Shader data type
 	{
 		ShaderDataType result = ShaderDataType::None;
 		if (glslSrc == "bool") result = ShaderDataType::Bool;
@@ -64,7 +67,7 @@ namespace Engine
 		return result;
 	}
 
-	static unsigned int ShaderDataTypeComponentCount(ShaderDataType type)
+	static unsigned int ShaderDataTypeComponentCount(ShaderDataType type) ///< Return the number of values in a data type
 	{
 		switch (type)
 		{

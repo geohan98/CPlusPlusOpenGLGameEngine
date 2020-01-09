@@ -66,20 +66,25 @@ Inheritance diagram for Engine::IndexBuffer:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9a485cb86362a032f0835828c7f1d4b4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_index_buffer.html#a9a485cb86362a032f0835828c7f1d4b4">bind</a> ()=0</td></tr>
+<tr class="memdesc:a9a485cb86362a032f0835828c7f1d4b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make this the active buffer.  <a href="class_engine_1_1_index_buffer.html#a9a485cb86362a032f0835828c7f1d4b4">More...</a><br /></td></tr>
 <tr class="separator:a9a485cb86362a032f0835828c7f1d4b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76a10aa350988cbdb1551dc0105693bb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_index_buffer.html#a76a10aa350988cbdb1551dc0105693bb">unbind</a> ()=0</td></tr>
+<tr class="memdesc:a76a10aa350988cbdb1551dc0105693bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make this not the active buffer.  <a href="class_engine_1_1_index_buffer.html#a76a10aa350988cbdb1551dc0105693bb">More...</a><br /></td></tr>
 <tr class="separator:a76a10aa350988cbdb1551dc0105693bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b7e9f0a054b72f263153e2185472248"><td class="memItemLeft" align="right" valign="top">virtual unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_index_buffer.html#a4b7e9f0a054b72f263153e2185472248">getCount</a> () const =0</td></tr>
+<tr class="memdesc:a4b7e9f0a054b72f263153e2185472248"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of indices.  <a href="class_engine_1_1_index_buffer.html#a4b7e9f0a054b72f263153e2185472248">More...</a><br /></td></tr>
 <tr class="separator:a4b7e9f0a054b72f263153e2185472248"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a8a59ffb41c6f7eb6f41fbec976435e2c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_index_buffer.html">IndexBuffer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_index_buffer.html#a8a59ffb41c6f7eb6f41fbec976435e2c">create</a> (unsigned int *indices, unsigned int count)</td></tr>
+<tr class="memdesc:a8a59ffb41c6f7eb6f41fbec976435e2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create API Specific Object.  <a href="class_engine_1_1_index_buffer.html#a8a59ffb41c6f7eb6f41fbec976435e2c">More...</a><br /></td></tr>
 <tr class="separator:a8a59ffb41c6f7eb6f41fbec976435e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="index_buffer_8h_source.html#l00005">5</a> of file <a class="el" href="index_buffer_8h_source.html">indexBuffer.h</a>.</p>
+<div class="textblock"><p>Index Buffer </p>
+
+<p class="definition">Definition at line <a class="el" href="index_buffer_8h_source.html#l00008">8</a> of file <a class="el" href="index_buffer_8h_source.html">indexBuffer.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9a485cb86362a032f0835828c7f1d4b4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9a485cb86362a032f0835828c7f1d4b4">&#9670;&nbsp;</a></span>bind()</h2>
@@ -103,6 +108,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Make this the active buffer. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l___index_buffer.html#a3b80d3b1dcb03395feb937dd402b75fe">Engine::OpenGL_IndexBuffer</a>.</p>
 
@@ -142,6 +149,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Create API Specific Object. </p>
+
 <p class="definition">Definition at line <a class="el" href="index_buffer_8cpp_source.html#l00010">10</a> of file <a class="el" href="index_buffer_8cpp_source.html">indexBuffer.cpp</a>.</p>
 
 </div>
@@ -169,6 +178,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Return the number of indices. </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l___index_buffer.html#aa674c2d97ad4095e589bfb331587aa20">Engine::OpenGL_IndexBuffer</a>.</p>
 
 </div>
@@ -195,6 +206,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Make this not the active buffer. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l___index_buffer.html#ae789b32ee32337f89a299c9e48c116dc">Engine::OpenGL_IndexBuffer</a>.</p>
 

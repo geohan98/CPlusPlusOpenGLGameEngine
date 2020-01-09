@@ -61,40 +61,47 @@ Inheritance diagram for Engine::Component:</div>
   <img src="class_engine_1_1_component.png" usemap="#Engine::Component_map" alt=""/>
   <map id="Engine::Component_map" name="Engine::Component_map">
 <area href="class_engine_1_1_material_component.html" alt="Engine::MaterialComponent" shape="rect" coords="0,56,166,80"/>
-<area href="class_engine_1_1_mesh_component.html" alt="Engine::MeshComponent" shape="rect" coords="176,56,342,80"/>
-<area href="class_engine_1_1_position_component.html" alt="Engine::PositionComponent" shape="rect" coords="352,56,518,80"/>
-<area href="class_engine_1_1_velocity_component.html" alt="Engine::VelocityComponent" shape="rect" coords="528,56,694,80"/>
+<area href="class_engine_1_1_position_component.html" alt="Engine::PositionComponent" shape="rect" coords="176,56,342,80"/>
+<area href="class_engine_1_1_velocity_component.html" alt="Engine::VelocityComponent" shape="rect" coords="352,56,518,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3763284e3200f793704db96c5443a545"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a3763284e3200f793704db96c5443a545">onAttach</a> (<a class="el" href="class_engine_1_1_game_object.html">GameObject</a> *parent)</td></tr>
+<tr class="memdesc:a3763284e3200f793704db96c5443a545"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run When <a class="el" href="class_engine_1_1_component.html">Component</a> is added to <a class="el" href="class_engine_1_1_game_object.html">GameObject</a>.  <a href="class_engine_1_1_component.html#a3763284e3200f793704db96c5443a545">More...</a><br /></td></tr>
 <tr class="separator:a3763284e3200f793704db96c5443a545"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4790fd5e80d058c2db7314b91587cedf"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a4790fd5e80d058c2db7314b91587cedf">onDetach</a> ()</td></tr>
+<tr class="memdesc:a4790fd5e80d058c2db7314b91587cedf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run When <a class="el" href="class_engine_1_1_component.html">Component</a> is Removed From Parent.  <a href="class_engine_1_1_component.html#a4790fd5e80d058c2db7314b91587cedf">More...</a><br /></td></tr>
 <tr class="separator:a4790fd5e80d058c2db7314b91587cedf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5aaed6c6947f389b61f73a713d3589ed"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a5aaed6c6947f389b61f73a713d3589ed">onUpdate</a> (float deltaTime)</td></tr>
 <tr class="separator:a5aaed6c6947f389b61f73a713d3589ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa235f9b05864c178696b957fade68d20"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#aa235f9b05864c178696b957fade68d20">onEvent</a> (<a class="el" href="class_engine_1_1_event.html">Event</a> &amp;e)</td></tr>
+<tr class="memdesc:aa235f9b05864c178696b957fade68d20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called Every Frame.  <a href="class_engine_1_1_component.html#aa235f9b05864c178696b957fade68d20">More...</a><br /></td></tr>
 <tr class="separator:aa235f9b05864c178696b957fade68d20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1a04e092fe4d1193d476d941b4a6288"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ae1a04e092fe4d1193d476d941b4a6288">receiveMessage</a> (const <a class="el" href="class_engine_1_1_component_message.html">ComponentMessage</a> &amp;msg)=0</td></tr>
+<tr class="memdesc:ae1a04e092fe4d1193d476d941b4a6288"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive a message from another component.  <a href="class_engine_1_1_component.html#ae1a04e092fe4d1193d476d941b4a6288">More...</a><br /></td></tr>
 <tr class="separator:ae1a04e092fe4d1193d476d941b4a6288"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a0c6542a1f65b105085e2ae392b5f4edf"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a0c6542a1f65b105085e2ae392b5f4edf">sendMessage</a> (const <a class="el" href="class_engine_1_1_component_message.html">ComponentMessage</a> &amp;msg)</td></tr>
+<tr class="memdesc:a0c6542a1f65b105085e2ae392b5f4edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send message to all Components of the Parent.  <a href="class_engine_1_1_component.html#a0c6542a1f65b105085e2ae392b5f4edf">More...</a><br /></td></tr>
 <tr class="separator:a0c6542a1f65b105085e2ae392b5f4edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a1d356f487ba39c9911455ede881f0c0c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a1d356f487ba39c9911455ede881f0c0c">m_name</a> = &quot;Component&quot;</td></tr>
+<tr class="memdesc:a1d356f487ba39c9911455ede881f0c0c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_component.html">Component</a> Name.  <a href="class_engine_1_1_component.html#a1d356f487ba39c9911455ede881f0c0c">More...</a><br /></td></tr>
 <tr class="separator:a1d356f487ba39c9911455ede881f0c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace8d57252204eb3af7ee0e2b486a47c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_1_1_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ace8d57252204eb3af7ee0e2b486a47c3">m_parent</a> = nullptr</td></tr>
+<tr class="memdesc:ace8d57252204eb3af7ee0e2b486a47c3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_component.html">Component</a> Parent.  <a href="class_engine_1_1_component.html#ace8d57252204eb3af7ee0e2b486a47c3">More...</a><br /></td></tr>
 <tr class="separator:ace8d57252204eb3af7ee0e2b486a47c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00026">26</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+<div class="textblock"><p><a class="el" href="class_engine_1_1_camera.html">Camera</a>, Abstract Virtual Class, Handles Projection and View Matrix Calculation </p>
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00036">36</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3763284e3200f793704db96c5443a545"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3763284e3200f793704db96c5443a545">&#9670;&nbsp;</a></span>onAttach()</h2>
@@ -120,9 +127,11 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Run When <a class="el" href="class_engine_1_1_component.html">Component</a> is added to <a class="el" href="class_engine_1_1_game_object.html">GameObject</a>. </p>
+
 <p>Reimplemented in <a class="el" href="class_engine_1_1_position_component.html#ab03d5796d13b8dcc3cfcad19deb536cf">Engine::PositionComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00033">33</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00043">43</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
 
 </div>
 </div>
@@ -149,7 +158,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00034">34</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+<p>Run When <a class="el" href="class_engine_1_1_component.html">Component</a> is Removed From Parent. </p>
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00044">44</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
 
 </div>
 </div>
@@ -177,7 +188,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00036">36</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+<p>Called Every Frame. </p>
+<p>Called on an <a class="el" href="class_engine_1_1_event.html">Event</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00046">46</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
 
 </div>
 </div>
@@ -207,7 +221,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_engine_1_1_position_component.html#ac8e0ed6a643d153a2e126eb2fb30cfe4">Engine::PositionComponent</a>, and <a class="el" href="class_engine_1_1_velocity_component.html#a6dcef2f9e288a90f5ab504ab0927e554">Engine::VelocityComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00035">35</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00045">45</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
 
 </div>
 </div>
@@ -234,6 +248,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Receive a message from another component. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_position_component.html#a966dc23d55f4b7ebbca7c935aa708083">Engine::PositionComponent</a>, <a class="el" href="class_engine_1_1_velocity_component.html#aded212e35fd0912d502bf0d714e73861">Engine::VelocityComponent</a>, and <a class="el" href="class_engine_1_1_material_component.html#a522c8f6b476120092dae22115dccf614">Engine::MaterialComponent</a>.</p>
 
@@ -263,6 +279,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Send message to all Components of the Parent. </p>
+
 <p class="definition">Definition at line <a class="el" href="component_8cpp_source.html#l00008">8</a> of file <a class="el" href="component_8cpp_source.html">component.cpp</a>.</p>
 
 </div>
@@ -288,7 +306,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00029">29</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+<p><a class="el" href="class_engine_1_1_component.html">Component</a> Name. </p>
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00039">39</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
 
 </div>
 </div>
@@ -312,7 +332,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00030">30</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+<p><a class="el" href="class_engine_1_1_component.html">Component</a> Parent. </p>
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00040">40</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
 
 </div>
 </div>

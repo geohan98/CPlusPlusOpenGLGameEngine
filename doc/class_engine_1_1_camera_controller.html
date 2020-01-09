@@ -67,22 +67,28 @@ Inheritance diagram for Engine::CameraController:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa94a4ffe3360546c9e5f6115162e531f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_camera_controller.html#aa94a4ffe3360546c9e5f6115162e531f">init</a> (float a, float b, float c, float d)=0</td></tr>
+<tr class="memdesc:aa94a4ffe3360546c9e5f6115162e531f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the <a class="el" href="class_engine_1_1_camera.html">Camera</a> and assigns it to the pointer.  <a href="class_engine_1_1_camera_controller.html#aa94a4ffe3360546c9e5f6115162e531f">More...</a><br /></td></tr>
 <tr class="separator:aa94a4ffe3360546c9e5f6115162e531f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a066f9a3dcd0d5f69ae921d7be18c7f9d"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="class_engine_1_1_camera.html">Camera</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_camera_controller.html#a066f9a3dcd0d5f69ae921d7be18c7f9d">getCamera</a> ()</td></tr>
+<tr class="memdesc:a066f9a3dcd0d5f69ae921d7be18c7f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the camera pointer.  <a href="class_engine_1_1_camera_controller.html#a066f9a3dcd0d5f69ae921d7be18c7f9d">More...</a><br /></td></tr>
 <tr class="separator:a066f9a3dcd0d5f69ae921d7be18c7f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ed9c60ab85c5bef69c47a39db0e5496"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_camera_controller.html#a1ed9c60ab85c5bef69c47a39db0e5496">onUpdate</a> (float deltaTime)=0</td></tr>
+<tr class="memdesc:a1ed9c60ab85c5bef69c47a39db0e5496"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called Every Frame.  <a href="class_engine_1_1_camera_controller.html#a1ed9c60ab85c5bef69c47a39db0e5496">More...</a><br /></td></tr>
 <tr class="separator:a1ed9c60ab85c5bef69c47a39db0e5496"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a870928a7fc29c0727d5d0701bd0679da"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_camera_controller.html#a870928a7fc29c0727d5d0701bd0679da">onEvent</a> (<a class="el" href="class_engine_1_1_event.html">Event</a> &amp;e)=0</td></tr>
+<tr class="memdesc:a870928a7fc29c0727d5d0701bd0679da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called On an <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_camera_controller.html#a870928a7fc29c0727d5d0701bd0679da">More...</a><br /></td></tr>
 <tr class="separator:a870928a7fc29c0727d5d0701bd0679da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:ad87fc0c34b2cd4560e87242149a58b5e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_camera.html">Camera</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_camera_controller.html#ad87fc0c34b2cd4560e87242149a58b5e">m_camera</a></td></tr>
+<tr class="memdesc:ad87fc0c34b2cd4560e87242149a58b5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Smart Pointer to <a class="el" href="class_engine_1_1_camera.html">Camera</a> Class.  <a href="class_engine_1_1_camera_controller.html#ad87fc0c34b2cd4560e87242149a58b5e">More...</a><br /></td></tr>
 <tr class="separator:ad87fc0c34b2cd4560e87242149a58b5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="camera_controller_8h_source.html#l00008">8</a> of file <a class="el" href="camera_controller_8h_source.html">cameraController.h</a>.</p>
+<div class="textblock"><p><a class="el" href="class_engine_1_1_camera3_d.html">Camera3D</a>, Handles events and updates for the <a class="el" href="class_engine_1_1_camera.html">Camera</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="camera_controller_8h_source.html#l00011">11</a> of file <a class="el" href="camera_controller_8h_source.html">cameraController.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a066f9a3dcd0d5f69ae921d7be18c7f9d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a066f9a3dcd0d5f69ae921d7be18c7f9d">&#9670;&nbsp;</a></span>getCamera()</h2>
@@ -107,7 +113,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="camera_controller_8h_source.html#l00014">14</a> of file <a class="el" href="camera_controller_8h_source.html">cameraController.h</a>.</p>
+<p>Returns the camera pointer. </p>
+
+<p class="definition">Definition at line <a class="el" href="camera_controller_8h_source.html#l00017">17</a> of file <a class="el" href="camera_controller_8h_source.html">cameraController.h</a>.</p>
 
 </div>
 </div>
@@ -157,6 +165,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Create the <a class="el" href="class_engine_1_1_camera.html">Camera</a> and assigns it to the pointer. </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_camera_controller2_d.html#aec3a1d8d131fbc6915014b97e371bf31">Engine::CameraController2D</a>, and <a class="el" href="class_engine_1_1_camera_controller3_d.html#a2611617127fe15a751c4ab9601a3eac3">Engine::CameraController3D</a>.</p>
 
 </div>
@@ -184,6 +194,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Called On an <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_camera_controller2_d.html#a5f7305dd3d2b39893ceedb7636265907">Engine::CameraController2D</a>, and <a class="el" href="class_engine_1_1_camera_controller3_d.html#a07efef50ec8d8899670f6f39a83e5d11">Engine::CameraController3D</a>.</p>
 
@@ -213,6 +225,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Called Every Frame. </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_camera_controller2_d.html#a75fa47ba4b124d2db0e09169ba7a4294">Engine::CameraController2D</a>, and <a class="el" href="class_engine_1_1_camera_controller3_d.html#a59c3d102e7f097a56f29c16620161651">Engine::CameraController3D</a>.</p>
 
 </div>
@@ -238,7 +252,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="camera_controller_8h_source.html#l00011">11</a> of file <a class="el" href="camera_controller_8h_source.html">cameraController.h</a>.</p>
+<p>Smart Pointer to <a class="el" href="class_engine_1_1_camera.html">Camera</a> Class. </p>
+
+<p class="definition">Definition at line <a class="el" href="camera_controller_8h_source.html#l00014">14</a> of file <a class="el" href="camera_controller_8h_source.html">cameraController.h</a>.</p>
 
 </div>
 </div>

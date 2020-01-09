@@ -5,21 +5,24 @@
 
 namespace Engine
 {
+	/**
+	 *  GameObject, handles Components
+	 */
 	class GameObject
 	{
 	protected:
-		std::string m_name = "GameObject";
-		std::vector<std::shared_ptr<Component>> m_components;
+		std::string m_name = "GameObject"; ///< Game object Name
+		std::vector<std::shared_ptr<Component>> m_components; ///< Vector of Components
 	public:
-		GameObject();
-		GameObject(std::string& name) : m_name(name) {};
-		void onUpdate(float deltaTime);
-		void onEvent(Event& e);
-		void addComponent(const std::shared_ptr<Component>& comp);
-		void removeComponent(std::vector<std::shared_ptr<Component>>::iterator itt);
+		GameObject(); ///< Default Constructor
+		GameObject(std::string& name) : m_name(name) {}; ///< Constructor
+		void onUpdate(float deltaTime); ///< Called Every Frame
+		void onEvent(Event& e); ///< Called on an Event
+		void addComponent(const std::shared_ptr<Component>& comp); ///< Add a new Component To the Game object
+		void removeComponent(std::vector<std::shared_ptr<Component>>::iterator itt); ///< Removes a Component From the Game object
 
 		template<typename G>
-		std::vector<std::shared_ptr<Component>>::iterator getComponent()
+		std::vector<std::shared_ptr<Component>>::iterator getComponent() ///< Returns a Component
 		{
 			auto result = m_components.end();
 			for (auto it = m_components.begin(); it != m_components.end(); ++it)
@@ -30,7 +33,7 @@ namespace Engine
 			return result;
 		}
 
-		inline std::vector<std::shared_ptr<Component>>::iterator begin() { return m_components.begin(); }
-		inline std::vector<std::shared_ptr<Component>>::iterator end() { return m_components.end(); }
+		inline std::vector<std::shared_ptr<Component>>::iterator begin() { return m_components.begin(); } ///< Component Begin Iterator
+		inline std::vector<std::shared_ptr<Component>>::iterator end() { return m_components.end(); } ///< Component End Iterator
 	};
 }

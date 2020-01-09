@@ -67,26 +67,34 @@ Inheritance diagram for Engine::Renderer:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a08b134cdb60c14ab8712b6aac7b74825"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_renderer.html#a08b134cdb60c14ab8712b6aac7b74825">actionCommand</a> (<a class="el" href="class_engine_1_1_render_command.html">RenderCommand</a> *command)=0</td></tr>
+<tr class="memdesc:a08b134cdb60c14ab8712b6aac7b74825"><td class="mdescLeft">&#160;</td><td class="mdescRight">Action a render command.  <a href="class_engine_1_1_renderer.html#a08b134cdb60c14ab8712b6aac7b74825">More...</a><br /></td></tr>
 <tr class="separator:a08b134cdb60c14ab8712b6aac7b74825"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01506d67e6825ecc1e8918011caddcb7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_renderer.html#a01506d67e6825ecc1e8918011caddcb7">beginScene</a> (const <a class="el" href="namespace_engine.html#aca9416107541cb949ca38b0df5c32c4a">SceneData</a> &amp;sceneData)=0</td></tr>
+<tr class="memdesc:a01506d67e6825ecc1e8918011caddcb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin Scene, apply scene data.  <a href="class_engine_1_1_renderer.html#a01506d67e6825ecc1e8918011caddcb7">More...</a><br /></td></tr>
 <tr class="separator:a01506d67e6825ecc1e8918011caddcb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c1955ca3e67b6712917aa9f9be17fb8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_renderer.html#a6c1955ca3e67b6712917aa9f9be17fb8">endScene</a> ()=0</td></tr>
+<tr class="memdesc:a6c1955ca3e67b6712917aa9f9be17fb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">End Scene Clean Up.  <a href="class_engine_1_1_renderer.html#a6c1955ca3e67b6712917aa9f9be17fb8">More...</a><br /></td></tr>
 <tr class="separator:a6c1955ca3e67b6712917aa9f9be17fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a892459b270a2645af382dc7303418ca3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_renderer.html#a892459b270a2645af382dc7303418ca3">submit</a> (const std::shared_ptr&lt; <a class="el" href="class_engine_1_1_material.html">Material</a> &gt; &amp;materials)=0</td></tr>
+<tr class="memdesc:a892459b270a2645af382dc7303418ca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submit a material to be rendered.  <a href="class_engine_1_1_renderer.html#a892459b270a2645af382dc7303418ca3">More...</a><br /></td></tr>
 <tr class="separator:a892459b270a2645af382dc7303418ca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac64e2e87d33c3b7db7659de67c186e65"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_renderer.html#ac64e2e87d33c3b7db7659de67c186e65">flush</a> ()=0</td></tr>
+<tr class="memdesc:ac64e2e87d33c3b7db7659de67c186e65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Not Implemented, used for bath rendering.  <a href="class_engine_1_1_renderer.html#ac64e2e87d33c3b7db7659de67c186e65">More...</a><br /></td></tr>
 <tr class="separator:ac64e2e87d33c3b7db7659de67c186e65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a2807548e2dac3623d757de6377b7cd26"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_renderer.html">Renderer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_renderer.html#a2807548e2dac3623d757de6377b7cd26">createBasic3D</a> ()</td></tr>
+<tr class="memdesc:a2807548e2dac3623d757de6377b7cd26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create API Specific 3D <a class="el" href="class_engine_1_1_renderer.html">Renderer</a>.  <a href="class_engine_1_1_renderer.html#a2807548e2dac3623d757de6377b7cd26">More...</a><br /></td></tr>
 <tr class="separator:a2807548e2dac3623d757de6377b7cd26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a676e6eecc2f96f0081fd4f74ae587fe9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_renderer.html">Renderer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_renderer.html#a676e6eecc2f96f0081fd4f74ae587fe9">createBasic2D</a> ()</td></tr>
+<tr class="memdesc:a676e6eecc2f96f0081fd4f74ae587fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create API Specific 2D <a class="el" href="class_engine_1_1_renderer.html">Renderer</a>.  <a href="class_engine_1_1_renderer.html#a676e6eecc2f96f0081fd4f74ae587fe9">More...</a><br /></td></tr>
 <tr class="separator:a676e6eecc2f96f0081fd4f74ae587fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="renderer_8h_source.html#l00013">13</a> of file <a class="el" href="renderer_8h_source.html">renderer.h</a>.</p>
+<div class="textblock"><p><a class="el" href="class_engine_1_1_renderer.html">Renderer</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="renderer_8h_source.html#l00015">15</a> of file <a class="el" href="renderer_8h_source.html">renderer.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a08b134cdb60c14ab8712b6aac7b74825"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a08b134cdb60c14ab8712b6aac7b74825">&#9670;&nbsp;</a></span>actionCommand()</h2>
@@ -111,6 +119,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Action a render command. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l__2_d_renderer.html#a9795c96c2eed3ae866cf74fffb879095">Engine::OpenGL_2DRenderer</a>, and <a class="el" href="class_engine_1_1_open_g_l___basic_renderer.html#a15493d4f4a11ce0ea2e12d55ecbc8c6c">Engine::OpenGL_BasicRenderer</a>.</p>
 
@@ -140,6 +150,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Begin Scene, apply scene data. </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l__2_d_renderer.html#a348b53e1b3387c289e9b6297e9a3ef0b">Engine::OpenGL_2DRenderer</a>, and <a class="el" href="class_engine_1_1_open_g_l___basic_renderer.html#a36a441d173c44c4d548513bc4087fd46">Engine::OpenGL_BasicRenderer</a>.</p>
 
 </div>
@@ -166,6 +178,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Create API Specific 2D <a class="el" href="class_engine_1_1_renderer.html">Renderer</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="renderer_8cpp_source.html#l00026">26</a> of file <a class="el" href="renderer_8cpp_source.html">renderer.cpp</a>.</p>
 
@@ -194,6 +208,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Create API Specific 3D <a class="el" href="class_engine_1_1_renderer.html">Renderer</a>. </p>
+
 <p class="definition">Definition at line <a class="el" href="renderer_8cpp_source.html#l00011">11</a> of file <a class="el" href="renderer_8cpp_source.html">renderer.cpp</a>.</p>
 
 </div>
@@ -220,6 +236,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>End Scene Clean Up. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l__2_d_renderer.html#a794b93400462e4920ba08c13eb38e845">Engine::OpenGL_2DRenderer</a>, and <a class="el" href="class_engine_1_1_open_g_l___basic_renderer.html#ae01d1c663ea6333685bcc51559cd5975">Engine::OpenGL_BasicRenderer</a>.</p>
 
@@ -248,6 +266,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Not Implemented, used for bath rendering. </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l__2_d_renderer.html#a76433d7edba4527846991435a050854b">Engine::OpenGL_2DRenderer</a>, and <a class="el" href="class_engine_1_1_open_g_l___basic_renderer.html#a9cd2464e85d0314b9f252ab8f18ad852">Engine::OpenGL_BasicRenderer</a>.</p>
 
 </div>
@@ -275,6 +295,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Submit a material to be rendered. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l__2_d_renderer.html#a799e16bbe02b88a87f4e06f44b4c2bcf">Engine::OpenGL_2DRenderer</a>, and <a class="el" href="class_engine_1_1_open_g_l___basic_renderer.html#a446311efc456563ceec0340a9412f122">Engine::OpenGL_BasicRenderer</a>.</p>
 

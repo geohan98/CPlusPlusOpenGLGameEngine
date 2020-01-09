@@ -4,24 +4,26 @@
 
 namespace Engine
 {
-
+	/**
+	 *  Velocity Component, Handles movement
+	 */
 	class VelocityComponent : public Component
 	{
 	private:
 
-		glm::vec3 m_linear;
-		glm::vec3 m_angular;
+		glm::vec3 m_linear; ///< Liner Velocity of the game object
+		glm::vec3 m_angular; ///< Angular velocity of the game object
 
 	public:
 
-		VelocityComponent(glm::vec3 linear, glm::vec3 angular) : m_linear(linear), m_angular(angular) {}
-		void onUpdate(float deltaTime) override
+		VelocityComponent(glm::vec3 linear, glm::vec3 angular) : m_linear(linear), m_angular(angular) {} ///< Constructor
+		void onUpdate(float deltaTime) override ///< Called every frame, sends velocity data to other components
 		{
 			std::pair<glm::vec3, glm::vec3> data(m_linear * deltaTime, m_angular * deltaTime);
 			sendMessage(ComponentMessage(ComponentMessageType::PositionIntergrate, std::any(data)));
 		}
 
-		void receiveMessage(const ComponentMessage& msg) override
+		void receiveMessage(const ComponentMessage& msg) override ///< Receive message from other components, update velocity data
 		{
 			switch (msg.m_msgType)
 			{

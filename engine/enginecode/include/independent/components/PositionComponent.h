@@ -7,20 +7,22 @@
 
 namespace Engine
 {
-
+	/**
+	 *  Position Component, Handles Positioning and Matrix Calculation
+	 */
 	class PositionComponent : public Component
 	{
 	private:
 
-		glm::mat4 m_model;
-		glm::mat4 m_translation;
-		glm::mat4 m_rotation;
-		glm::mat4 m_scale;
-		glm::vec3 m_transVec;
-		glm::vec3 m_rotVec;
-		glm::vec3 m_scaleVec;
+		glm::mat4 m_model; ///< Model Matrix
+		glm::mat4 m_translation; ///<Translation Matrix
+		glm::mat4 m_rotation; ///< Rotation Matrix
+		glm::mat4 m_scale; ///< Scale Matrix
+		glm::vec3 m_transVec; ///< Position Vector
+		glm::vec3 m_rotVec; ///< Rotation Vector
+		glm::vec3 m_scaleVec; ///< Scale Vector
 
-		inline void caclulateModel()
+		inline void caclulateModel() ///< Calculate All Matrices
 		{
 			m_translation = glm::translate(glm::mat4(1.0f), m_transVec);
 			m_rotation = glm::toMat4(glm::quat(m_rotVec));
@@ -30,7 +32,7 @@ namespace Engine
 
 	public:
 
-		PositionComponent(glm::vec3 trans, glm::vec3 rot, glm::vec3 scale) : m_transVec(trans), m_rotVec(rot), m_scaleVec(scale), m_model(glm::mat4(1.0f))
+		PositionComponent(glm::vec3 trans, glm::vec3 rot, glm::vec3 scale) : m_transVec(trans), m_rotVec(rot), m_scaleVec(scale), m_model(glm::mat4(1.0f)) ///< Constructor
 		{
 			m_rotVec.x = glm::radians(m_rotVec.x);
 			m_rotVec.y = glm::radians(m_rotVec.y);
@@ -38,9 +40,9 @@ namespace Engine
 			caclulateModel();
 		}
 
-		inline std::shared_ptr<glm::mat4> getTransform() { return std::make_shared<glm::mat4>(m_model); }
+		inline std::shared_ptr<glm::mat4> getTransform() { return std::make_shared<glm::mat4>(m_model); } ///< Return the model matrix
 
-		void onAttach(GameObject* parent) override
+		void onAttach(GameObject* parent) override ///< Called when Added to Parent
 		{
 			m_parent = parent;
 			std::pair<std::string, void*> data("u_model", (void*)&m_model[0][0]);
@@ -48,7 +50,7 @@ namespace Engine
 			sendMessage(msg);
 		}
 
-		void onUpdate(float deltaTime) override
+		void onUpdate(float deltaTime) override ///< Called Every Frame, Sends model matrix to other Components
 		{
 			caclulateModel();
 			std::pair<std::string, void*> data("u_model", (void*)&m_model[0][0]);
@@ -56,7 +58,7 @@ namespace Engine
 			sendMessage(msg);
 		}
 
-		void receiveMessage(const ComponentMessage& msg) override
+		void receiveMessage(const ComponentMessage& msg) override ///< Receive a message from other components
 		{
 			switch (msg.m_msgType)
 			{

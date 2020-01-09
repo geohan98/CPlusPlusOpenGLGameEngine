@@ -4,14 +4,17 @@
 
 namespace Engine
 {
+	/**
+	 *  Material Component, Holds Shader and Geometry Data
+	 */
 	class MaterialComponent : public Component
 	{
 	private:
-		std::shared_ptr<Material> m_material;
+		std::shared_ptr<Material> m_material; ///< Smart Pointer To Material
 	public:
-		MaterialComponent(const std::shared_ptr<Material>& material) : m_material(material) {}
-		inline std::shared_ptr<Material> getMaterial() { return m_material; }
-		void receiveMessage(const ComponentMessage& msg) override
+		MaterialComponent(const std::shared_ptr<Material>& material) : m_material(material) {} ///< Constructor
+		inline std::shared_ptr<Material> getMaterial() { return m_material; } ///< Return the Material
+		void receiveMessage(const ComponentMessage& msg) override ///< Override receive Message and deal with data, Sets Shader Uniform
 		{
 			switch (msg.m_msgType)
 			{
