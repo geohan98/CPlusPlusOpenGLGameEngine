@@ -34,6 +34,8 @@ namespace Engine {
 		m_time = std::shared_ptr<Time>(new Time());
 		m_time->start();
 
+
+
 #ifdef NG_PLATFORM_WINDOWS
 		m_windowSystem = std::shared_ptr<WindowSystem>(new GLFW_WindowSys());
 #endif // NG_PLATFORM_WINDOWS
@@ -66,7 +68,7 @@ namespace Engine {
 			m_time->tick();
 			//Update Delta Time
 			s_deltaTime = m_time->getDeltaTime();
-			//LOG_CORE_INFO("APPLICATION: FPS '{0}' , DeltaTime '{1}'", 1 / m_time->getDeltaTime(), m_time->getDeltaTime());
+			LOG_CORE_INFO("APPLICATION: FPS '{0}' , DeltaTime '{1}'", 1 / m_time->getDeltaTime(), m_time->getDeltaTime());
 			for (auto it = m_layerStack->begin(); it != m_layerStack->end(); ++it)
 			{
 				(*it)->onUpdate(s_deltaTime);
@@ -104,33 +106,43 @@ namespace Engine {
 
 	bool Application::onWindowResize(WindowResize& e)
 	{
+
 		LOG_CORE_INFO("APPLICATION: WINDOW RESIZE '{0} x {1}'", e.getWidth(), e.getHeight());
+
 		s_screenResolution = glm::ivec2(e.getWidth(), e.getHeight());
 		return true;
 	}
 
 	bool Application::onWindowClose(WindowClose& e)
 	{
+
 		LOG_CORE_INFO("APPLICATION: CLOSING APPLICATION");
+
 		m_running = false;
 		return true;
 	}
 
 	bool Application::onWindowMoved(WindowMoved& e)
 	{
+
 		LOG_CORE_INFO("APPLICATION: WINDOW MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
+
 		return true;
 	}
 
 	bool Application::onWindowLostFocus(WindowLostFocus& e)
 	{
+
 		LOG_CORE_INFO("APPLICATION: WINDOW LOST FOCUS '{0} , {1}'", e.getxPos(), e.getyPos());
+
 		return true;
 	}
 
 	bool Application::onKeyPressed(KeyPressed& e)
 	{
+
 		LOG_CORE_INFO("APPLICATION: KEY PRESSED '{0}'", e.getButton());
+
 
 		if (e.getButton() == KEY_ESCAPE)
 		{
@@ -142,7 +154,9 @@ namespace Engine {
 
 	bool Application::onKeyReleased(KeyReleased& e)
 	{
+
 		LOG_CORE_INFO("APPLICATION: KEY RELEASED '{0}'", e.getButton());
+
 
 		if (e.getButton() == KEY_ESCAPE)
 		{
@@ -154,31 +168,41 @@ namespace Engine {
 
 	bool Application::onKeyTyped(KeyTyped& e)
 	{
+
 		LOG_CORE_INFO("APPLICATION: KEY TYPED '{0}'", e.getButton());
+
 		return true;
 	}
 
 	bool Application::onMouseMove(MouseMoved& e)
 	{
+
 		LOG_CORE_INFO("APPLICATION: MOUSE MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
+
 		return true;
 	}
 
 	bool Application::onMouseScrolled(MouseScrolled& e)
 	{
+
 		LOG_CORE_INFO("APPLICATION: MOUSE SCROLLED '{0} , {1}'", e.getxDelta(), e.getyDelta());
+
 		return true;
 	}
 
 	bool Application::onMouseButtonPressed(MouseButtonPressed& e)
 	{
+
 		LOG_CORE_INFO("APPLICATION: MOUSE BUTTON PRESSED '{0}'", e.getButton());
+
 		return true;
 	}
 
 	bool Application::onMouseButtonReleased(MouseButtonReleased& e)
 	{
+
 		LOG_CORE_INFO("APPLICATION: MOUSE BUTTON RELEASED '{0}'", e.getButton());
+
 		return true;
 	}
 

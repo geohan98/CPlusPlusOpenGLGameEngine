@@ -2,8 +2,8 @@
 
 #include <gtest/gtest.h>
 
-#include "systems/events/event.h"
-#include "systems/events/applicationEvents.h"
+#include "events/event.h"
+#include "events/applicationEvents.h"
 
 bool onResizeTrue(Engine::WindowResize& e)
 {

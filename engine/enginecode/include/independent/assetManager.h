@@ -7,15 +7,18 @@
 
 namespace Engine
 {
+	/**
+	 * Asset Manager, template class for handling a single type
+	 */
 	template<class G>
 	class AssetManager
 	{
 	private:
-		std::map<std::string, std::shared_ptr<G>> m_container;
+		std::map<std::string, std::shared_ptr<G>> m_container; ///< string and template data type map
 	public:
-		bool contains(const std::string& key);
-		void add(const std::string key, std::shared_ptr<G>& element);
-		std::shared_ptr<G> get(const std::string& key);
+		bool contains(const std::string& key); ///< is an item in the asset manager
+		void add(const std::string key, std::shared_ptr<G>& element); ///< add an item to the asset manager
+		std::shared_ptr<G> get(const std::string& key); ///< return an element by name
 	};
 
 	template<class G>

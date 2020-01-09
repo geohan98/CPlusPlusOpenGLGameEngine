@@ -22,7 +22,9 @@ namespace Engine
 		{
 			std::fstream handle(filepath, std::ios::in);
 			if (!handle.is_open()) {
+
 				LOG_CORE_WARN("Could not open file: {0}", filepath);
+
 			}
 			nlohmann::json layerJSON;
 			handle >> layerJSON;
@@ -36,7 +38,9 @@ namespace Engine
 					for (auto& filepath : layerJSON["Asyncload"]["shaders"])
 					{
 						if (filepath.count("filepath") > 0) layer.getResources()->addShader(filepath["filepath"].get<std::string>());
+
 						LOG_CORE_WARN("JSON Loader: Loading Shader '{0}'", filepath);
+
 					}
 				}
 				if (layerJSON["Asyncload"].count("textures") > 0)
@@ -44,7 +48,9 @@ namespace Engine
 					for (auto& filepath : layerJSON["Asyncload"]["textures"])
 					{
 						if (filepath.count("filepath") > 0) layer.getResources()->addTexture(filepath["filepath"].get<std::string>());
+
 						LOG_CORE_WARN("JSON Loader: Loading Texture '{0}'", filepath);
+
 					}
 				}
 				/*if (layerJSON["Asyncload"].count("fonts") > 0)
@@ -63,7 +69,9 @@ namespace Engine
 				std::string type = layerJSON["camera"]["type"].get<std::string>();
 				if (type.compare("3D") == 0)
 				{
+
 					LOG_CORE_WARN("JSON Loader: Adding 3D Camera");
+
 					layer.getCamera().reset(new CameraController3D());
 					float fov = layerJSON["camera"]["fov"].get<float>();
 					float aspectRatio = layerJSON["camera"]["aspectRatio"].get<float>();
@@ -73,7 +81,9 @@ namespace Engine
 				}
 				else if (type.compare("2D") == 0)
 				{
+
 					LOG_CORE_WARN("JSON Loader: Adding 2D Camera");
+
 					layer.getCamera().reset(new CameraController2D());
 					float top = layerJSON["camera"]["top"].get<float>();
 					float left = layerJSON["camera"]["left"].get<float>();
@@ -88,7 +98,9 @@ namespace Engine
 				std::string type = layerJSON["renderer"]["type"].get<std::string>();
 				if (type.compare("Basic3D") == 0)
 				{
+
 					LOG_CORE_WARN("JSON Loader: Adding 3D Renderer");
+
 					layer.getRenderer().reset(Renderer::createBasic3D());
 				}
 				if (type.compare("Basic2D") == 0)

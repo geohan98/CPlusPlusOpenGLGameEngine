@@ -13,12 +13,12 @@ namespace Engine
 	class VertexBufferElement
 	{
 	public:
-		ShaderDataType m_dataType; ///<
-		unsigned int m_size;	   ///<
-		unsigned int m_offset;	   ///<
-		bool m_normalized;		   ///<
+		ShaderDataType m_dataType; ///< Data Type 
+		unsigned int m_size;	   ///<	Size of the data block
+		unsigned int m_offset;	   ///<	offset from last data block
+		bool m_normalized;		   ///<	is it normalized
 
-		VertexBufferElement(ShaderDataType dataType, bool normalized = false) : m_dataType(dataType), m_size(ShaderDataTypeSize(dataType)), m_offset(0), m_normalized(normalized) {}
+		VertexBufferElement(ShaderDataType dataType, bool normalized = false) : m_dataType(dataType), m_size(ShaderDataTypeSize(dataType)), m_offset(0), m_normalized(normalized) {} ///< Constructor
 	};
 	/**
 	 *  Vertex Buffer Layout

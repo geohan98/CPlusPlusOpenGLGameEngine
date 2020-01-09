@@ -19,11 +19,11 @@
     "type": "Basic3D"
   },
   "MemoryInfo": {
-    "gameObjects": 1,
-    "materials": 1,
-    "position": 1,
-    "velocity": 1,
-    "controllers": 1
+    "gameObjects": 2,
+    "materials": 2,
+    "position": 2,
+    "velocity": 2,
+    "controllers": 2
   },
   "GameObjects": [
     {
@@ -59,6 +59,42 @@
           "x": 0.0,
           "y": 20.0,
           "z": 0.0
+        }
+      }
+    },
+    {
+      "name": "FCCube2",
+      "material": {
+        "model": "assets/models/fccube.txt",
+        "shader": "assets/shaders/flatColor.shader"
+      },
+      "position": {
+        "trans": {
+          "x": -1.5,
+          "y": 3.0,
+          "z": 1.0
+        },
+        "rot": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "scale": {
+          "x": 0.5,
+          "y": 1.0,
+          "z": 0.5
+        }
+      },
+      "velocity": {
+        "linear": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "angular": {
+          "x": 20.0,
+          "y": 0.0,
+          "z": 20.0
         }
       }
     }

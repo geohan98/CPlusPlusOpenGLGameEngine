@@ -7,19 +7,22 @@
 
 namespace Engine {
 
+	/**
+	 * Log, Allows printing to the console
+	 */
 	class Log : public System
 	{
 	private:
-		static std::shared_ptr<spdlog::logger> s_coreLogger;
-		static std::shared_ptr<spdlog::logger> s_clientLogger;
-		static bool s_loggerActive;
+		static std::shared_ptr<spdlog::logger> s_coreLogger;											///< logger for the engine
+		static std::shared_ptr<spdlog::logger> s_clientLogger;											///< logger for the clien/app
+		static bool s_loggerActive;																		///< is the logger running
 	public:
-		void start(SystemSignal init = SystemSignal::None, ...);
-		void stop(SystemSignal close = SystemSignal::None, ...);
+		void start(SystemSignal init = SystemSignal::None, ...);										///< start the logger
+		void stop(SystemSignal close = SystemSignal::None, ...);										///< stop the logger
 
-		inline static std::shared_ptr<spdlog::logger>& getCoreLogger() { return s_coreLogger; };
-		inline static std::shared_ptr<spdlog::logger>& getClientLogger() { return s_clientLogger; };
-		inline static bool getLoggerStatus() { return s_loggerActive; };
+		inline static std::shared_ptr<spdlog::logger>& getCoreLogger() { return s_coreLogger; };		///<  return the engine logger
+		inline static std::shared_ptr<spdlog::logger>& getClientLogger() { return s_clientLogger; };	///< return the client logger
+		inline static bool getLoggerStatus() { return s_loggerActive; };								///< return the status of the logger
 	};
 }
 

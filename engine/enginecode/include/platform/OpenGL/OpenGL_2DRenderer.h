@@ -3,14 +3,17 @@
 
 namespace Engine
 {
+	/**
+	 * GL 2D Renderer
+	 */
 	class OpenGL_2DRenderer : public Renderer
 	{
 	private:
 	public:
-		void actionCommand(RenderCommand* command) override;
-		void beginScene(const SceneData& sceneData) override {};
-		void endScene() override {};
-		void submit(const std::shared_ptr<Material>& materials) override;
-		void flush() override {};
+		void actionCommand(RenderCommand* command) override; ///< Action render command
+		void beginScene(const SceneData& sceneData) override {}; ///< Not Implemented
+		void endScene() override {}; ///< ///< Not Implemented
+		void submit(const std::shared_ptr<Material>& materials) override; ///< submit a materail for rendering
+		void flush() override {}; ///< ///< Not Implemented
 	};
 }

@@ -16,7 +16,7 @@ namespace Engine
 		VelocityIntergrate, VelocitySetLinear, VelocitySetAngular,
 		AccelerationSet,
 		KeyPressed, KeyReleased, MouseButton, MouseScroll, MouseMoved,
-		UniformSet, TextureSet
+		UniformSet, TextureSet, TextureBind
 	};
 
 	/**

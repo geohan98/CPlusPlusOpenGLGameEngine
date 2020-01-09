@@ -9,13 +9,16 @@
 
 namespace Engine
 {
+	/**
+	 * GL Vertex Buffer
+	 */
 	class GLFW_GraphicsContext : public GraphicsContext
 	{
 	private:
-		GLFWwindow* m_window;
+		GLFWwindow* m_window; ///< A GLFW window
 	public:
-		GLFW_GraphicsContext(GLFWwindow* window);
-		void init() override;
-		void swapBuffers() override;
+		GLFW_GraphicsContext(GLFWwindow* window); ///< Constructor
+		void init() override; ///< initialize the graphics context
+		void swapBuffers() override; ///< swap buffer, display new frame to window
 	};
 }

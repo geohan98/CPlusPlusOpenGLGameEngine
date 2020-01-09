@@ -40,7 +40,7 @@ namespace Engine
 		m_materials.push_back(std::shared_ptr<MaterialComponent>(new MaterialComponent(m_resourceManager->getMaterial("TEXT"))));
 		m_positions.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(400.0f, 75.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f))));
 		m_velocities.push_back(std::shared_ptr<VelocityComponent>(new VelocityComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 90.0f))));
-		m_gameObjects.push_back(std::shared_ptr<GameObject>(new GameObject()));
+		m_gameObjects.push_back(std::shared_ptr<GameObject>(new GameObject));
 		m_gameObjects.back()->addComponent(m_materials.back());
 		m_gameObjects.back()->addComponent(m_positions.back());
 		m_gameObjects.back()->addComponent(m_velocities.back());

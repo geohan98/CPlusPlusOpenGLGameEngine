@@ -9,9 +9,9 @@
 
 engineApp::engineApp()
 {
-	//m_layerStack->push(std::shared_ptr<Engine::GameLayer>(new Engine::GameLayer()));
-	//m_layerStack->push(std::shared_ptr<Engine::Layer2D>(new Engine::Layer2D()));
 	m_layerStack->push(std::shared_ptr<Engine::JSONLayer>(new Engine::JSONLayer("assets/levels/cubeLevel.json")));
+	//m_layerStack->push(std::shared_ptr<Engine::GameLayer>(new Engine::GameLayer()));
+	m_layerStack->push(std::shared_ptr<Engine::Layer2D>(new Engine::Layer2D()));
 }
 
 engineApp::~engineApp()
