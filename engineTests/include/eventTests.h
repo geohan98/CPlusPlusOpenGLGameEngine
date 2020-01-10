@@ -4,6 +4,9 @@
 
 #include "events/event.h"
 #include "events/applicationEvents.h"
+#include "events/keyEvents.h"
+#include "events/mouseEvents.h"
+#include "systems/ButtonCodes.h"
 
 bool onResizeTrue(Engine::WindowResize& e)
 {
@@ -14,3 +17,4 @@ bool onResizeFalse(Engine::WindowResize& e)
 {
 	return false;
 }
+
