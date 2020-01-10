@@ -64,42 +64,48 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordflow">if</span> (!result)</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <a class="code" href="log_8h.html#ad044ffeb9ff9b6e1968c05377a5a4a40">LOG_CORE_CRITICAL</a>(<span class="stringliteral">&quot;FAILED TO INITIALISE GLAD&quot;</span>);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="log_8h.html#a19d6681b2ffd31e5ea447610217965bf">LOG_CORE_WARN</a>(<span class="stringliteral">&quot;GLAD INITALIZED&quot;</span>);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            glEnable(GL_DEBUG_OUTPUT);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            glDebugMessageCallback([](GLenum source,</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                GLenum type,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                GLuint <span class="keywordtype">id</span>,</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                GLenum severity,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                GLsizei length,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <span class="keyword">const</span> GLchar* message,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">void</span>* userParam) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                    <a class="code" href="log_8h.html#a8538cd92b0b576e168d19824a6fc866f">LOG_CORE_INFO</a>(<span class="stringliteral">&quot;OpenGL Debug: [Type {0}] [ID {1}] [Severity {2}]; {3}&quot;</span>, type, <span class="keywordtype">id</span>, severity, message);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                }, 0);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_engine_1_1_g_l_f_w___graphics_context.html#aae5aa20a10be8a2f9e94e406fb9f1fb9">   37</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_g_l_f_w___graphics_context.html#aae5aa20a10be8a2f9e94e406fb9f1fb9">GLFW_GraphicsContext::swapBuffers</a>()</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        glfwSwapBuffers(<a class="code" href="class_engine_1_1_g_l_f_w___graphics_context.html#aa0ea880e1e45e539392fe5485c9235d9">m_window</a>);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifdef NG_DEBUG</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <a class="code" href="log_8h.html#ad044ffeb9ff9b6e1968c05377a5a4a40">LOG_CORE_CRITICAL</a>(<span class="stringliteral">&quot;FAILED TO INITIALISE GLAD&quot;</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif // NG_DEBUG</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#ifdef NG_DEBUG</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <a class="code" href="log_8h.html#a19d6681b2ffd31e5ea447610217965bf">LOG_CORE_WARN</a>(<span class="stringliteral">&quot;GLAD INITALIZED&quot;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif // NG_DEBUG</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            glEnable(GL_DEBUG_OUTPUT);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            glDebugMessageCallback([](GLenum source,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                GLenum type,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                GLuint <span class="keywordtype">id</span>,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                GLenum severity,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                GLsizei length,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keyword">const</span> GLchar* message,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">void</span>* userParam) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifdef NG_DEBUG</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    <a class="code" href="log_8h.html#a8538cd92b0b576e168d19824a6fc866f">LOG_CORE_INFO</a>(<span class="stringliteral">&quot;OpenGL DEBUG: [Type {0}] [ID {1}] [Severity {2}]; {3}&quot;</span>, type, <span class="keywordtype">id</span>, severity, message);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif // NG_DEBUG</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }, 0);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_engine_1_1_g_l_f_w___graphics_context.html#aae5aa20a10be8a2f9e94e406fb9f1fb9">   43</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_g_l_f_w___graphics_context.html#aae5aa20a10be8a2f9e94e406fb9f1fb9">GLFW_GraphicsContext::swapBuffers</a>()</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        glfwSwapBuffers(<a class="code" href="class_engine_1_1_g_l_f_w___graphics_context.html#aa0ea880e1e45e539392fe5485c9235d9">m_window</a>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_engine_1_1_g_l_f_w___graphics_context_html_a9fe4bf3c008f5e09a19bcd25bc5d5a16"><div class="ttname"><a href="class_engine_1_1_g_l_f_w___graphics_context.html#a9fe4bf3c008f5e09a19bcd25bc5d5a16">Engine::GLFW_GraphicsContext::init</a></div><div class="ttdeci">void init() override</div><div class="ttdef"><b>Definition:</b> <a href="_g_l_f_w__graphics_context_8cpp_source.html#l00011">GLFW_graphicsContext.cpp:11</a></div></div>
+<div class="ttc" id="aclass_engine_1_1_g_l_f_w___graphics_context_html_a9fe4bf3c008f5e09a19bcd25bc5d5a16"><div class="ttname"><a href="class_engine_1_1_g_l_f_w___graphics_context.html#a9fe4bf3c008f5e09a19bcd25bc5d5a16">Engine::GLFW_GraphicsContext::init</a></div><div class="ttdeci">void init() override</div><div class="ttdoc">initialize the graphics context</div><div class="ttdef"><b>Definition:</b> <a href="_g_l_f_w__graphics_context_8cpp_source.html#l00011">GLFW_graphicsContext.cpp:11</a></div></div>
 <div class="ttc" id="a_g_l_f_w__graphics_context_8h_html"><div class="ttname"><a href="_g_l_f_w__graphics_context_8h.html">GLFW_graphicsContext.h</a></div></div>
-<div class="ttc" id="aclass_engine_1_1_g_l_f_w___graphics_context_html_ad54f738435f000bc835695767e39b4fe"><div class="ttname"><a href="class_engine_1_1_g_l_f_w___graphics_context.html#ad54f738435f000bc835695767e39b4fe">Engine::GLFW_GraphicsContext::GLFW_GraphicsContext</a></div><div class="ttdeci">GLFW_GraphicsContext(GLFWwindow *window)</div><div class="ttdef"><b>Definition:</b> <a href="_g_l_f_w__graphics_context_8cpp_source.html#l00007">GLFW_graphicsContext.cpp:7</a></div></div>
+<div class="ttc" id="aclass_engine_1_1_g_l_f_w___graphics_context_html_ad54f738435f000bc835695767e39b4fe"><div class="ttname"><a href="class_engine_1_1_g_l_f_w___graphics_context.html#ad54f738435f000bc835695767e39b4fe">Engine::GLFW_GraphicsContext::GLFW_GraphicsContext</a></div><div class="ttdeci">GLFW_GraphicsContext(GLFWwindow *window)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> <a href="_g_l_f_w__graphics_context_8cpp_source.html#l00007">GLFW_graphicsContext.cpp:7</a></div></div>
 <div class="ttc" id="anamespace_engine_html"><div class="ttname"><a href="namespace_engine.html">Engine</a></div><div class="ttdef"><b>Definition:</b> <a href="asset_manager_8h_source.html#l00008">assetManager.h:8</a></div></div>
-<div class="ttc" id="aclass_engine_1_1_g_l_f_w___graphics_context_html_aa0ea880e1e45e539392fe5485c9235d9"><div class="ttname"><a href="class_engine_1_1_g_l_f_w___graphics_context.html#aa0ea880e1e45e539392fe5485c9235d9">Engine::GLFW_GraphicsContext::m_window</a></div><div class="ttdeci">GLFWwindow * m_window</div><div class="ttdef"><b>Definition:</b> <a href="_g_l_f_w__graphics_context_8h_source.html#l00015">GLFW_graphicsContext.h:15</a></div></div>
-<div class="ttc" id="alog_8h_html_ad044ffeb9ff9b6e1968c05377a5a4a40"><div class="ttname"><a href="log_8h.html#ad044ffeb9ff9b6e1968c05377a5a4a40">LOG_CORE_CRITICAL</a></div><div class="ttdeci">#define LOG_CORE_CRITICAL(...)</div><div class="ttdef"><b>Definition:</b> <a href="log_8h_source.html#l00031">log.h:31</a></div></div>
-<div class="ttc" id="aclass_engine_1_1_g_l_f_w___graphics_context_html_aae5aa20a10be8a2f9e94e406fb9f1fb9"><div class="ttname"><a href="class_engine_1_1_g_l_f_w___graphics_context.html#aae5aa20a10be8a2f9e94e406fb9f1fb9">Engine::GLFW_GraphicsContext::swapBuffers</a></div><div class="ttdeci">void swapBuffers() override</div><div class="ttdef"><b>Definition:</b> <a href="_g_l_f_w__graphics_context_8cpp_source.html#l00037">GLFW_graphicsContext.cpp:37</a></div></div>
+<div class="ttc" id="aclass_engine_1_1_g_l_f_w___graphics_context_html_aa0ea880e1e45e539392fe5485c9235d9"><div class="ttname"><a href="class_engine_1_1_g_l_f_w___graphics_context.html#aa0ea880e1e45e539392fe5485c9235d9">Engine::GLFW_GraphicsContext::m_window</a></div><div class="ttdeci">GLFWwindow * m_window</div><div class="ttdoc">A GLFW window.</div><div class="ttdef"><b>Definition:</b> <a href="_g_l_f_w__graphics_context_8h_source.html#l00018">GLFW_graphicsContext.h:18</a></div></div>
+<div class="ttc" id="alog_8h_html_ad044ffeb9ff9b6e1968c05377a5a4a40"><div class="ttname"><a href="log_8h.html#ad044ffeb9ff9b6e1968c05377a5a4a40">LOG_CORE_CRITICAL</a></div><div class="ttdeci">#define LOG_CORE_CRITICAL(...)</div><div class="ttdef"><b>Definition:</b> <a href="log_8h_source.html#l00034">log.h:34</a></div></div>
+<div class="ttc" id="aclass_engine_1_1_g_l_f_w___graphics_context_html_aae5aa20a10be8a2f9e94e406fb9f1fb9"><div class="ttname"><a href="class_engine_1_1_g_l_f_w___graphics_context.html#aae5aa20a10be8a2f9e94e406fb9f1fb9">Engine::GLFW_GraphicsContext::swapBuffers</a></div><div class="ttdeci">void swapBuffers() override</div><div class="ttdoc">swap buffer, display new frame to window</div><div class="ttdef"><b>Definition:</b> <a href="_g_l_f_w__graphics_context_8cpp_source.html#l00043">GLFW_graphicsContext.cpp:43</a></div></div>
 <div class="ttc" id="alog_8h_html"><div class="ttname"><a href="log_8h.html">log.h</a></div></div>
-<div class="ttc" id="alog_8h_html_a19d6681b2ffd31e5ea447610217965bf"><div class="ttname"><a href="log_8h.html#a19d6681b2ffd31e5ea447610217965bf">LOG_CORE_WARN</a></div><div class="ttdeci">#define LOG_CORE_WARN(...)</div><div class="ttdef"><b>Definition:</b> <a href="log_8h_source.html#l00029">log.h:29</a></div></div>
+<div class="ttc" id="alog_8h_html_a19d6681b2ffd31e5ea447610217965bf"><div class="ttname"><a href="log_8h.html#a19d6681b2ffd31e5ea447610217965bf">LOG_CORE_WARN</a></div><div class="ttdeci">#define LOG_CORE_WARN(...)</div><div class="ttdef"><b>Definition:</b> <a href="log_8h_source.html#l00032">log.h:32</a></div></div>
 <div class="ttc" id="aengine__pch_8h_html"><div class="ttname"><a href="engine__pch_8h.html">engine_pch.h</a></div></div>
-<div class="ttc" id="alog_8h_html_a8538cd92b0b576e168d19824a6fc866f"><div class="ttname"><a href="log_8h.html#a8538cd92b0b576e168d19824a6fc866f">LOG_CORE_INFO</a></div><div class="ttdeci">#define LOG_CORE_INFO(...)</div><div class="ttdef"><b>Definition:</b> <a href="log_8h_source.html#l00028">log.h:28</a></div></div>
+<div class="ttc" id="alog_8h_html_a8538cd92b0b576e168d19824a6fc866f"><div class="ttname"><a href="log_8h.html#a8538cd92b0b576e168d19824a6fc866f">LOG_CORE_INFO</a></div><div class="ttdeci">#define LOG_CORE_INFO(...)</div><div class="ttdef"><b>Definition:</b> <a href="log_8h_source.html#l00031">log.h:31</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

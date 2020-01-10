@@ -45,6 +45,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_engine_1_1_j_s_o_n_layer-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -78,7 +79,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa6cea0f6e44714ae9cf856d59045f2cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run every frame.  <a href="class_engine_1_1_j_s_o_n_layer.html#aa6cea0f6e44714ae9cf856d59045f2cc">More...</a><br /></td></tr>
 <tr class="separator:aa6cea0f6e44714ae9cf856d59045f2cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e707814728760215fc751205d325883"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_j_s_o_n_layer.html#a7e707814728760215fc751205d325883">onEvent</a> (<a class="el" href="class_engine_1_1_event.html">Event</a> &amp;e) override</td></tr>
-<tr class="memdesc:a7e707814728760215fc751205d325883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ru on an <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_j_s_o_n_layer.html#a7e707814728760215fc751205d325883">More...</a><br /></td></tr>
+<tr class="memdesc:a7e707814728760215fc751205d325883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run on an <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_j_s_o_n_layer.html#a7e707814728760215fc751205d325883">More...</a><br /></td></tr>
 <tr class="separator:a7e707814728760215fc751205d325883"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e29cccebe324d2f827d915eb5d5825a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_j_s_o_n_layer.html#a9e29cccebe324d2f827d915eb5d5825a">getGameObjects</a> ()</td></tr>
 <tr class="memdesc:a9e29cccebe324d2f827d915eb5d5825a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return all the game objects.  <a href="class_engine_1_1_j_s_o_n_layer.html#a9e29cccebe324d2f827d915eb5d5825a">More...</a><br /></td></tr>
@@ -123,6 +124,42 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2476e4bdf5e54802ea3c380adce70458 inherit pub_methods_class_engine_1_1_layer"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_camera_controller.html">CameraController</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_layer.html#a2476e4bdf5e54802ea3c380adce70458">getCamera</a> ()</td></tr>
 <tr class="memdesc:a2476e4bdf5e54802ea3c380adce70458 inherit pub_methods_class_engine_1_1_layer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <a class="el" href="class_engine_1_1_camera.html">Camera</a> controller.  <a href="class_engine_1_1_layer.html#a2476e4bdf5e54802ea3c380adce70458">More...</a><br /></td></tr>
 <tr class="separator:a2476e4bdf5e54802ea3c380adce70458 inherit pub_methods_class_engine_1_1_layer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a5f3760516e226cee0dd4510aec8ab89e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_j_s_o_n_layer.html#a5f3760516e226cee0dd4510aec8ab89e">onWindowResize</a> (<a class="el" href="class_engine_1_1_window_resize.html">WindowResize</a> &amp;e)</td></tr>
+<tr class="memdesc:a5f3760516e226cee0dd4510aec8ab89e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_window.html">Window</a> Resize <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_j_s_o_n_layer.html#a5f3760516e226cee0dd4510aec8ab89e">More...</a><br /></td></tr>
+<tr class="separator:a5f3760516e226cee0dd4510aec8ab89e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8d2ad9fb04121f5097eea7eedec9d0d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_j_s_o_n_layer.html#ad8d2ad9fb04121f5097eea7eedec9d0d">onWindowClose</a> (<a class="el" href="class_engine_1_1_window_close.html">WindowClose</a> &amp;e)</td></tr>
+<tr class="memdesc:ad8d2ad9fb04121f5097eea7eedec9d0d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_window.html">Window</a> Close <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_j_s_o_n_layer.html#ad8d2ad9fb04121f5097eea7eedec9d0d">More...</a><br /></td></tr>
+<tr class="separator:ad8d2ad9fb04121f5097eea7eedec9d0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab18c74277cc1d40ade37d4ef55f3a0fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_j_s_o_n_layer.html#ab18c74277cc1d40ade37d4ef55f3a0fc">onWindowMoved</a> (<a class="el" href="class_engine_1_1_window_moved.html">WindowMoved</a> &amp;e)</td></tr>
+<tr class="memdesc:ab18c74277cc1d40ade37d4ef55f3a0fc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_window.html">Window</a> Move <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_j_s_o_n_layer.html#ab18c74277cc1d40ade37d4ef55f3a0fc">More...</a><br /></td></tr>
+<tr class="separator:ab18c74277cc1d40ade37d4ef55f3a0fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a41f815decfdc4a9ace4d20671023a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_j_s_o_n_layer.html#a6a41f815decfdc4a9ace4d20671023a5">onWindowLostFocus</a> (<a class="el" href="class_engine_1_1_window_lost_focus.html">WindowLostFocus</a> &amp;e)</td></tr>
+<tr class="memdesc:a6a41f815decfdc4a9ace4d20671023a5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_window.html">Window</a> Lost Focus <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_j_s_o_n_layer.html#a6a41f815decfdc4a9ace4d20671023a5">More...</a><br /></td></tr>
+<tr class="separator:a6a41f815decfdc4a9ace4d20671023a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a097fa380e32bf90ebafb04bb989c24e4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_j_s_o_n_layer.html#a097fa380e32bf90ebafb04bb989c24e4">onKeyPressed</a> (<a class="el" href="class_engine_1_1_key_pressed.html">KeyPressed</a> &amp;e)</td></tr>
+<tr class="memdesc:a097fa380e32bf90ebafb04bb989c24e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Key Press <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_j_s_o_n_layer.html#a097fa380e32bf90ebafb04bb989c24e4">More...</a><br /></td></tr>
+<tr class="separator:a097fa380e32bf90ebafb04bb989c24e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d6194b351533687847b5f02515728fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_j_s_o_n_layer.html#a5d6194b351533687847b5f02515728fa">onKeyReleased</a> (<a class="el" href="class_engine_1_1_key_released.html">KeyReleased</a> &amp;e)</td></tr>
+<tr class="memdesc:a5d6194b351533687847b5f02515728fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Key Release <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_j_s_o_n_layer.html#a5d6194b351533687847b5f02515728fa">More...</a><br /></td></tr>
+<tr class="separator:a5d6194b351533687847b5f02515728fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe7861554a875b4e8baa76ab5e9eb312"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_j_s_o_n_layer.html#abe7861554a875b4e8baa76ab5e9eb312">onKeyTyped</a> (<a class="el" href="class_engine_1_1_key_typed.html">KeyTyped</a> &amp;e)</td></tr>
+<tr class="memdesc:abe7861554a875b4e8baa76ab5e9eb312"><td class="mdescLeft">&#160;</td><td class="mdescRight">Key Type <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_j_s_o_n_layer.html#abe7861554a875b4e8baa76ab5e9eb312">More...</a><br /></td></tr>
+<tr class="separator:abe7861554a875b4e8baa76ab5e9eb312"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b66f89200f07e9a6be549ebfaff604e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_j_s_o_n_layer.html#a9b66f89200f07e9a6be549ebfaff604e">onMouseMove</a> (<a class="el" href="class_engine_1_1_mouse_moved.html">MouseMoved</a> &amp;e)</td></tr>
+<tr class="memdesc:a9b66f89200f07e9a6be549ebfaff604e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouse Move <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_j_s_o_n_layer.html#a9b66f89200f07e9a6be549ebfaff604e">More...</a><br /></td></tr>
+<tr class="separator:a9b66f89200f07e9a6be549ebfaff604e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d98e3a11825b4940b65799e6c5fed4f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_j_s_o_n_layer.html#a7d98e3a11825b4940b65799e6c5fed4f">onMouseScrolled</a> (<a class="el" href="class_engine_1_1_mouse_scrolled.html">MouseScrolled</a> &amp;e)</td></tr>
+<tr class="memdesc:a7d98e3a11825b4940b65799e6c5fed4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouse Scrolled <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_j_s_o_n_layer.html#a7d98e3a11825b4940b65799e6c5fed4f">More...</a><br /></td></tr>
+<tr class="separator:a7d98e3a11825b4940b65799e6c5fed4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61007e90d9fdb3db5d40675a9690e2bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_j_s_o_n_layer.html#a61007e90d9fdb3db5d40675a9690e2bb">onMouseButtonPressed</a> (<a class="el" href="class_engine_1_1_mouse_button_pressed.html">MouseButtonPressed</a> &amp;e)</td></tr>
+<tr class="memdesc:a61007e90d9fdb3db5d40675a9690e2bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouse Button Press <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_j_s_o_n_layer.html#a61007e90d9fdb3db5d40675a9690e2bb">More...</a><br /></td></tr>
+<tr class="separator:a61007e90d9fdb3db5d40675a9690e2bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a919ddda34d3ef92f3a550bfa44b386cc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_j_s_o_n_layer.html#a919ddda34d3ef92f3a550bfa44b386cc">onMouseButtonReleased</a> (<a class="el" href="class_engine_1_1_mouse_button_released.html">MouseButtonReleased</a> &amp;e)</td></tr>
+<tr class="memdesc:a919ddda34d3ef92f3a550bfa44b386cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouse Button Release <a class="el" href="class_engine_1_1_event.html">Event</a>.  <a href="class_engine_1_1_j_s_o_n_layer.html#a919ddda34d3ef92f3a550bfa44b386cc">More...</a><br /></td></tr>
+<tr class="separator:a919ddda34d3ef92f3a550bfa44b386cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -176,7 +213,7 @@ Protected Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>JSON <a class="el" href="class_engine_1_1_layer.html">Layer</a>, Create Game objects From a JSON File </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00023">23</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00026">26</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7cbf02716788805f9693ea96f9336e47"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7cbf02716788805f9693ea96f9336e47">&#9670;&nbsp;</a></span>JSONLayer()</h2>
@@ -214,7 +251,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00040">40</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00058">58</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -244,7 +281,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Return the List of void pointer data. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00057">57</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00075">75</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -273,7 +310,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Return all the Exit Render Commands. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00055">55</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00073">73</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -302,7 +339,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Return all the game objects. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00047">47</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00065">65</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -331,7 +368,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Return all the Init Render Commands. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00052">52</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00070">70</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -360,7 +397,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Return all the material components. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00048">48</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00066">66</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -389,7 +426,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Return all the position components. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00049">49</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00067">67</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -418,7 +455,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Return all the PostDraw Render Commands. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00054">54</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00072">72</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -447,7 +484,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Return all the PreDraw Render Commands. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00053">53</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00071">71</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -476,7 +513,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Return all the velocity components. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00050">50</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00068">68</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -566,11 +603,221 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Ru on an <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
+<p>Run on an <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
 
 <p>Implements <a class="el" href="class_engine_1_1_layer.html#a36047705029a6d5236c4b2e668060d02">Engine::Layer</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8cpp_source.html#l00069">69</a> of file <a class="el" href="_j_s_o_n_layer_8cpp_source.html">JSONLayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a097fa380e32bf90ebafb04bb989c24e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a097fa380e32bf90ebafb04bb989c24e4">&#9670;&nbsp;</a></span>onKeyPressed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::JSONLayer::onKeyPressed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_key_pressed.html">KeyPressed</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Key Press <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8cpp_source.html#l00111">111</a> of file <a class="el" href="_j_s_o_n_layer_8cpp_source.html">JSONLayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5d6194b351533687847b5f02515728fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d6194b351533687847b5f02515728fa">&#9670;&nbsp;</a></span>onKeyReleased()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::JSONLayer::onKeyReleased </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_key_released.html">KeyReleased</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Key Release <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8cpp_source.html#l00119">119</a> of file <a class="el" href="_j_s_o_n_layer_8cpp_source.html">JSONLayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="abe7861554a875b4e8baa76ab5e9eb312"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe7861554a875b4e8baa76ab5e9eb312">&#9670;&nbsp;</a></span>onKeyTyped()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::JSONLayer::onKeyTyped </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_key_typed.html">KeyTyped</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Key Type <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8cpp_source.html#l00155">155</a> of file <a class="el" href="_j_s_o_n_layer_8cpp_source.html">JSONLayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a61007e90d9fdb3db5d40675a9690e2bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61007e90d9fdb3db5d40675a9690e2bb">&#9670;&nbsp;</a></span>onMouseButtonPressed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::JSONLayer::onMouseButtonPressed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_mouse_button_pressed.html">MouseButtonPressed</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mouse Button Press <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8cpp_source.html#l00180">180</a> of file <a class="el" href="_j_s_o_n_layer_8cpp_source.html">JSONLayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a919ddda34d3ef92f3a550bfa44b386cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a919ddda34d3ef92f3a550bfa44b386cc">&#9670;&nbsp;</a></span>onMouseButtonReleased()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::JSONLayer::onMouseButtonReleased </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_mouse_button_released.html">MouseButtonReleased</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mouse Button Release <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8cpp_source.html#l00188">188</a> of file <a class="el" href="_j_s_o_n_layer_8cpp_source.html">JSONLayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9b66f89200f07e9a6be549ebfaff604e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b66f89200f07e9a6be549ebfaff604e">&#9670;&nbsp;</a></span>onMouseMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::JSONLayer::onMouseMove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_mouse_moved.html">MouseMoved</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mouse Move <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8cpp_source.html#l00164">164</a> of file <a class="el" href="_j_s_o_n_layer_8cpp_source.html">JSONLayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7d98e3a11825b4940b65799e6c5fed4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d98e3a11825b4940b65799e6c5fed4f">&#9670;&nbsp;</a></span>onMouseScrolled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::JSONLayer::onMouseScrolled </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_mouse_scrolled.html">MouseScrolled</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mouse Scrolled <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8cpp_source.html#l00172">172</a> of file <a class="el" href="_j_s_o_n_layer_8cpp_source.html">JSONLayer.cpp</a>.</p>
 
 </div>
 </div>
@@ -606,6 +853,126 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ad8d2ad9fb04121f5097eea7eedec9d0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8d2ad9fb04121f5097eea7eedec9d0d">&#9670;&nbsp;</a></span>onWindowClose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::JSONLayer::onWindowClose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_window_close.html">WindowClose</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_engine_1_1_window.html">Window</a> Close <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8cpp_source.html#l00087">87</a> of file <a class="el" href="_j_s_o_n_layer_8cpp_source.html">JSONLayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6a41f815decfdc4a9ace4d20671023a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a41f815decfdc4a9ace4d20671023a5">&#9670;&nbsp;</a></span>onWindowLostFocus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::JSONLayer::onWindowLostFocus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_window_lost_focus.html">WindowLostFocus</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_engine_1_1_window.html">Window</a> Lost Focus <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8cpp_source.html#l00103">103</a> of file <a class="el" href="_j_s_o_n_layer_8cpp_source.html">JSONLayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab18c74277cc1d40ade37d4ef55f3a0fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab18c74277cc1d40ade37d4ef55f3a0fc">&#9670;&nbsp;</a></span>onWindowMoved()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::JSONLayer::onWindowMoved </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_window_moved.html">WindowMoved</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_engine_1_1_window.html">Window</a> Move <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8cpp_source.html#l00095">95</a> of file <a class="el" href="_j_s_o_n_layer_8cpp_source.html">JSONLayer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5f3760516e226cee0dd4510aec8ab89e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f3760516e226cee0dd4510aec8ab89e">&#9670;&nbsp;</a></span>onWindowResize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::JSONLayer::onWindowResize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_window_resize.html">WindowResize</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_engine_1_1_window.html">Window</a> Resize <a class="el" href="class_engine_1_1_event.html">Event</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8cpp_source.html#l00079">79</a> of file <a class="el" href="_j_s_o_n_layer_8cpp_source.html">JSONLayer.cpp</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a4a831e3d8d25d6f2a4c05a4c5e71e469"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4a831e3d8d25d6f2a4c05a4c5e71e469">&#9670;&nbsp;</a></span>m_data</h2>
@@ -629,7 +996,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Lits of void pointer data. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00037">37</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00040">40</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -655,7 +1022,7 @@ Protected Attributes</h2></td></tr>
 
 <p>List of all Exit Render Commands. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00034">34</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00037">37</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -681,7 +1048,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Filepath of Level File. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00038">38</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00041">41</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -707,7 +1074,7 @@ Protected Attributes</h2></td></tr>
 
 <p>List Of All Game objects. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00026">26</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00029">29</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -733,7 +1100,7 @@ Protected Attributes</h2></td></tr>
 
 <p>List of all Init Render Commands. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00031">31</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00034">34</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -759,7 +1126,7 @@ Protected Attributes</h2></td></tr>
 
 <p>List of all <a class="el" href="class_engine_1_1_material.html">Material</a> Components. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00027">27</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00030">30</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -785,7 +1152,7 @@ Protected Attributes</h2></td></tr>
 
 <p>List of all Position Components. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00028">28</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00031">31</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -811,7 +1178,7 @@ Protected Attributes</h2></td></tr>
 
 <p>List of all PostDraw Render Commands. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00033">33</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00036">36</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -837,7 +1204,7 @@ Protected Attributes</h2></td></tr>
 
 <p>List of all PreDraw Render Commands. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00032">32</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00035">35</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -863,7 +1230,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Uniform Scene Data. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00036">36</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00039">39</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>
@@ -889,7 +1256,7 @@ Protected Attributes</h2></td></tr>
 
 <p>List of all Velocity Components. </p>
 
-<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00029">29</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_j_s_o_n_layer_8h_source.html#l00032">32</a> of file <a class="el" href="_j_s_o_n_layer_8h_source.html">JSONLayer.h</a>.</p>
 
 </div>
 </div>

@@ -66,18 +66,21 @@ Inheritance diagram for Engine::LayerStack:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a069586dc14c26c08d49d3509637e9cef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_layer_stack.html#a069586dc14c26c08d49d3509637e9cef">start</a> (<a class="el" href="namespace_engine.html#a3779187ef31b30930abda7fbea542e17">SystemSignal</a> init=<a class="el" href="namespace_engine.html#a3779187ef31b30930abda7fbea542e17a6adf97f83acf6453d4a6a4b1070f3754">SystemSignal::None</a>,...) override</td></tr>
-<tr class="memdesc:a069586dc14c26c08d49d3509637e9cef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the system.  <a href="class_engine_1_1_layer_stack.html#a069586dc14c26c08d49d3509637e9cef">More...</a><br /></td></tr>
+<tr class="memdesc:a069586dc14c26c08d49d3509637e9cef"><td class="mdescLeft">&#160;</td><td class="mdescRight">start the layer stack  <a href="class_engine_1_1_layer_stack.html#a069586dc14c26c08d49d3509637e9cef">More...</a><br /></td></tr>
 <tr class="separator:a069586dc14c26c08d49d3509637e9cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8250caf70531299857500d304cbd2ff6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_layer_stack.html#a8250caf70531299857500d304cbd2ff6">stop</a> (<a class="el" href="namespace_engine.html#a3779187ef31b30930abda7fbea542e17">SystemSignal</a> close=<a class="el" href="namespace_engine.html#a3779187ef31b30930abda7fbea542e17a6adf97f83acf6453d4a6a4b1070f3754">SystemSignal::None</a>,...) override</td></tr>
-<tr class="memdesc:a8250caf70531299857500d304cbd2ff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the system.  <a href="class_engine_1_1_layer_stack.html#a8250caf70531299857500d304cbd2ff6">More...</a><br /></td></tr>
+<tr class="memdesc:a8250caf70531299857500d304cbd2ff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">stop the layer stack  <a href="class_engine_1_1_layer_stack.html#a8250caf70531299857500d304cbd2ff6">More...</a><br /></td></tr>
 <tr class="separator:a8250caf70531299857500d304cbd2ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3592f2d91118a28a764e541a1356cc5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_layer_stack.html#a3592f2d91118a28a764e541a1356cc5f">push</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_layer.html">Layer</a> &gt; layer)</td></tr>
+<tr class="memdesc:a3592f2d91118a28a764e541a1356cc5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a layer to the stack  <a href="class_engine_1_1_layer_stack.html#a3592f2d91118a28a764e541a1356cc5f">More...</a><br /></td></tr>
 <tr class="separator:a3592f2d91118a28a764e541a1356cc5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9740735b7228b05cb72d8e36e9164281"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_layer_stack.html#a9740735b7228b05cb72d8e36e9164281">pop</a> ()</td></tr>
+<tr class="memdesc:a9740735b7228b05cb72d8e36e9164281"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove the last layer in the stack  <a href="class_engine_1_1_layer_stack.html#a9740735b7228b05cb72d8e36e9164281">More...</a><br /></td></tr>
 <tr class="separator:a9740735b7228b05cb72d8e36e9164281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6b7bb1bdb8270625aad1e644ee3f096"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_layer.html">Layer</a> &gt; &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_layer_stack.html#ac6b7bb1bdb8270625aad1e644ee3f096">begin</a> ()</td></tr>
 <tr class="separator:ac6b7bb1bdb8270625aad1e644ee3f096"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2230124b76567c73e8b35eb1311b7517"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_layer.html">Layer</a> &gt; &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_layer_stack.html#a2230124b76567c73e8b35eb1311b7517">end</a> ()</td></tr>
+<tr class="memdesc:a2230124b76567c73e8b35eb1311b7517"><td class="mdescLeft">&#160;</td><td class="mdescRight">layer stack begin iterator  <a href="class_engine_1_1_layer_stack.html#a2230124b76567c73e8b35eb1311b7517">More...</a><br /></td></tr>
 <tr class="separator:a2230124b76567c73e8b35eb1311b7517"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_engine_1_1_system"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_1_1_system')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_1_1_system.html">Engine::System</a></td></tr>
 <tr class="memitem:a4ed810746929ee960ea5fa6648230c48 inherit pub_methods_class_engine_1_1_system"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_system.html#a4ed810746929ee960ea5fa6648230c48">~System</a> ()</td></tr>
@@ -86,11 +89,13 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:adca4ddaf89a790363a1bcfe57f3263b2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_layer.html">Layer</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_layer_stack.html#adca4ddaf89a790363a1bcfe57f3263b2">m_layers</a></td></tr>
+<tr class="memdesc:adca4ddaf89a790363a1bcfe57f3263b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of layers.  <a href="class_engine_1_1_layer_stack.html#adca4ddaf89a790363a1bcfe57f3263b2">More...</a><br /></td></tr>
 <tr class="separator:adca4ddaf89a790363a1bcfe57f3263b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="layer_stack_8h_source.html#l00008">8</a> of file <a class="el" href="layer_stack_8h_source.html">layerStack.h</a>.</p>
+<div class="textblock"><p><a class="el" href="class_engine_1_1_layer.html">Layer</a> Stack, Allow ordering of game layers </p>
+
+<p class="definition">Definition at line <a class="el" href="layer_stack_8h_source.html#l00011">11</a> of file <a class="el" href="layer_stack_8h_source.html">layerStack.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac6b7bb1bdb8270625aad1e644ee3f096"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac6b7bb1bdb8270625aad1e644ee3f096">&#9670;&nbsp;</a></span>begin()</h2>
@@ -115,7 +120,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="layer_stack_8h_source.html#l00017">17</a> of file <a class="el" href="layer_stack_8h_source.html">layerStack.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="layer_stack_8h_source.html#l00020">20</a> of file <a class="el" href="layer_stack_8h_source.html">layerStack.h</a>.</p>
 
 </div>
 </div>
@@ -142,7 +147,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="layer_stack_8h_source.html#l00018">18</a> of file <a class="el" href="layer_stack_8h_source.html">layerStack.h</a>.</p>
+<p>layer stack begin iterator </p>
+
+<p class="definition">Definition at line <a class="el" href="layer_stack_8h_source.html#l00021">21</a> of file <a class="el" href="layer_stack_8h_source.html">layerStack.h</a>.</p>
 
 </div>
 </div>
@@ -160,6 +167,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>remove the last layer in the stack </p>
 
 <p class="definition">Definition at line <a class="el" href="layer_stack_8cpp_source.html#l00024">24</a> of file <a class="el" href="layer_stack_8cpp_source.html">layerStack.cpp</a>.</p>
 
@@ -180,6 +189,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>add a layer to the stack </p>
 
 <p class="definition">Definition at line <a class="el" href="layer_stack_8cpp_source.html#l00018">18</a> of file <a class="el" href="layer_stack_8cpp_source.html">layerStack.cpp</a>.</p>
 
@@ -219,7 +230,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Start the system. </p>
+<p>start the layer stack </p>
 
 <p>Implements <a class="el" href="class_engine_1_1_system.html#a7020561bd617d4237e7e5841f56216c8">Engine::System</a>.</p>
 
@@ -261,7 +272,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Stop the system. </p>
+<p>stop the layer stack </p>
 
 <p>Implements <a class="el" href="class_engine_1_1_system.html#a42c92dca4ba99d16bc5f117460d712a1">Engine::System</a>.</p>
 
@@ -290,7 +301,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="layer_stack_8h_source.html#l00011">11</a> of file <a class="el" href="layer_stack_8h_source.html">layerStack.h</a>.</p>
+<p>Vector of layers. </p>
+
+<p class="definition">Definition at line <a class="el" href="layer_stack_8h_source.html#l00014">14</a> of file <a class="el" href="layer_stack_8h_source.html">layerStack.h</a>.</p>
 
 </div>
 </div>

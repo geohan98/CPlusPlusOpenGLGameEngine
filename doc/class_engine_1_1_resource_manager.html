@@ -67,10 +67,10 @@ Inheritance diagram for Engine::ResourceManager:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aee5fff1286534e12b92a9ad1518b2ebf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#aee5fff1286534e12b92a9ad1518b2ebf">start</a> (<a class="el" href="namespace_engine.html#a3779187ef31b30930abda7fbea542e17">SystemSignal</a> init=<a class="el" href="namespace_engine.html#a3779187ef31b30930abda7fbea542e17a6adf97f83acf6453d4a6a4b1070f3754">SystemSignal::None</a>,...) override</td></tr>
-<tr class="memdesc:aee5fff1286534e12b92a9ad1518b2ebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the system.  <a href="class_engine_1_1_resource_manager.html#aee5fff1286534e12b92a9ad1518b2ebf">More...</a><br /></td></tr>
+<tr class="memdesc:aee5fff1286534e12b92a9ad1518b2ebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the Resource Manager.  <a href="class_engine_1_1_resource_manager.html#aee5fff1286534e12b92a9ad1518b2ebf">More...</a><br /></td></tr>
 <tr class="separator:aee5fff1286534e12b92a9ad1518b2ebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac326c0dd1bc86e0134f0a91e951a27c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#ac326c0dd1bc86e0134f0a91e951a27c8">stop</a> (<a class="el" href="namespace_engine.html#a3779187ef31b30930abda7fbea542e17">SystemSignal</a> close=<a class="el" href="namespace_engine.html#a3779187ef31b30930abda7fbea542e17a6adf97f83acf6453d4a6a4b1070f3754">SystemSignal::None</a>,...) override</td></tr>
-<tr class="memdesc:ac326c0dd1bc86e0134f0a91e951a27c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the system.  <a href="class_engine_1_1_resource_manager.html#ac326c0dd1bc86e0134f0a91e951a27c8">More...</a><br /></td></tr>
+<tr class="memdesc:ac326c0dd1bc86e0134f0a91e951a27c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the Resource Manager.  <a href="class_engine_1_1_resource_manager.html#ac326c0dd1bc86e0134f0a91e951a27c8">More...</a><br /></td></tr>
 <tr class="separator:ac326c0dd1bc86e0134f0a91e951a27c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_engine_1_1_system"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_1_1_system')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_1_1_system.html">Engine::System</a></td></tr>
 <tr class="memitem:a4ed810746929ee960ea5fa6648230c48 inherit pub_methods_class_engine_1_1_system"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_system.html#a4ed810746929ee960ea5fa6648230c48">~System</a> ()</td></tr>
@@ -79,64 +79,91 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aecf6d572a4e644624b39bbf2a6cebbf0"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#aecf6d572a4e644624b39bbf2a6cebbf0">parseFilePath</a> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:aecf6d572a4e644624b39bbf2a6cebbf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all but the file name.  <a href="class_engine_1_1_resource_manager.html#aecf6d572a4e644624b39bbf2a6cebbf0">More...</a><br /></td></tr>
 <tr class="separator:aecf6d572a4e644624b39bbf2a6cebbf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17da9824a5694466df31e209a73587ec"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_index_buffer.html">IndexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a17da9824a5694466df31e209a73587ec">addIndexBuffer</a> (const std::string &amp;name, unsigned int *indices, unsigned int count)</td></tr>
+<tr class="memdesc:a17da9824a5694466df31e209a73587ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a index buffer to the asset manager  <a href="class_engine_1_1_resource_manager.html#a17da9824a5694466df31e209a73587ec">More...</a><br /></td></tr>
 <tr class="separator:a17da9824a5694466df31e209a73587ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a2bd9670a66a3bdbbe4efd8b7ca3850"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_index_buffer.html">IndexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a1a2bd9670a66a3bdbbe4efd8b7ca3850">getIndexBuffer</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a1a2bd9670a66a3bdbbe4efd8b7ca3850"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a index buffer from the asset manager  <a href="class_engine_1_1_resource_manager.html#a1a2bd9670a66a3bdbbe4efd8b7ca3850">More...</a><br /></td></tr>
 <tr class="separator:a1a2bd9670a66a3bdbbe4efd8b7ca3850"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3b545cce01795d4a2f75b82cf9be1b5"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#ad3b545cce01795d4a2f75b82cf9be1b5">doesIndexBufferExist</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:ad3b545cce01795d4a2f75b82cf9be1b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">does a index buffer already exist with that name  <a href="class_engine_1_1_resource_manager.html#ad3b545cce01795d4a2f75b82cf9be1b5">More...</a><br /></td></tr>
 <tr class="separator:ad3b545cce01795d4a2f75b82cf9be1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0df2d487df6b05fbaa06435551e20882"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a0df2d487df6b05fbaa06435551e20882">addShader</a> (const std::string &amp;filepath)</td></tr>
+<tr class="memdesc:a0df2d487df6b05fbaa06435551e20882"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a shader to the asset manager  <a href="class_engine_1_1_resource_manager.html#a0df2d487df6b05fbaa06435551e20882">More...</a><br /></td></tr>
 <tr class="separator:a0df2d487df6b05fbaa06435551e20882"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a841b258fd0bc456d4815cd20ab1f9f69"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a841b258fd0bc456d4815cd20ab1f9f69">getShader</a> (const std::string &amp;filepath)</td></tr>
+<tr class="memdesc:a841b258fd0bc456d4815cd20ab1f9f69"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a shader from the asset manager  <a href="class_engine_1_1_resource_manager.html#a841b258fd0bc456d4815cd20ab1f9f69">More...</a><br /></td></tr>
 <tr class="separator:a841b258fd0bc456d4815cd20ab1f9f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a251df303de4696974e93ab52b217cfb3"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a251df303de4696974e93ab52b217cfb3">doesShaderExist</a> (const std::string &amp;filepath)</td></tr>
+<tr class="memdesc:a251df303de4696974e93ab52b217cfb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">does a shader already exist with that name  <a href="class_engine_1_1_resource_manager.html#a251df303de4696974e93ab52b217cfb3">More...</a><br /></td></tr>
 <tr class="separator:a251df303de4696974e93ab52b217cfb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a3886b6a15bb0cd9f7cd6c59449bcf9"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a2a3886b6a15bb0cd9f7cd6c59449bcf9">addTexture</a> (const std::string &amp;filepath)</td></tr>
+<tr class="memdesc:a2a3886b6a15bb0cd9f7cd6c59449bcf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a <a class="el" href="class_engine_1_1_texture.html">Texture</a> to the asset manager  <a href="class_engine_1_1_resource_manager.html#a2a3886b6a15bb0cd9f7cd6c59449bcf9">More...</a><br /></td></tr>
 <tr class="separator:a2a3886b6a15bb0cd9f7cd6c59449bcf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af721de08bed20df4c110236b5020f3fc"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#af721de08bed20df4c110236b5020f3fc">addTexture</a> (const std::string &amp;name, unsigned int width, unsigned int height, unsigned int channels, unsigned char *texData)</td></tr>
+<tr class="memdesc:af721de08bed20df4c110236b5020f3fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a <a class="el" href="class_engine_1_1_texture.html">Texture</a> to the asset manager  <a href="class_engine_1_1_resource_manager.html#af721de08bed20df4c110236b5020f3fc">More...</a><br /></td></tr>
 <tr class="separator:af721de08bed20df4c110236b5020f3fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3093927d502e738a3a73a6d77694836"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#ad3093927d502e738a3a73a6d77694836">getTexture</a> (const std::string &amp;filepath)</td></tr>
+<tr class="memdesc:ad3093927d502e738a3a73a6d77694836"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a <a class="el" href="class_engine_1_1_texture.html">Texture</a> from the asset manager  <a href="class_engine_1_1_resource_manager.html#ad3093927d502e738a3a73a6d77694836">More...</a><br /></td></tr>
 <tr class="separator:ad3093927d502e738a3a73a6d77694836"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adae4b0fa04ebc06740c132dcdf414620"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#adae4b0fa04ebc06740c132dcdf414620">doesTextureExist</a> (const std::string &amp;filepath)</td></tr>
+<tr class="memdesc:adae4b0fa04ebc06740c132dcdf414620"><td class="mdescLeft">&#160;</td><td class="mdescRight">does a <a class="el" href="class_engine_1_1_texture.html">Texture</a> already exist with that name  <a href="class_engine_1_1_resource_manager.html#adae4b0fa04ebc06740c132dcdf414620">More...</a><br /></td></tr>
 <tr class="separator:adae4b0fa04ebc06740c132dcdf414620"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69088102ca87bc447b81785e34952a79"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_vertex_array.html">VertexArray</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a69088102ca87bc447b81785e34952a79">addVertexArray</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a69088102ca87bc447b81785e34952a79"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a vertex buffer to the asset manager  <a href="class_engine_1_1_resource_manager.html#a69088102ca87bc447b81785e34952a79">More...</a><br /></td></tr>
 <tr class="separator:a69088102ca87bc447b81785e34952a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e977b12981e70ce03b4e8b9e995b51f"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_vertex_array.html">VertexArray</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a1e977b12981e70ce03b4e8b9e995b51f">getVertexArray</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a1e977b12981e70ce03b4e8b9e995b51f"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a vertex buffer from the asset manager  <a href="class_engine_1_1_resource_manager.html#a1e977b12981e70ce03b4e8b9e995b51f">More...</a><br /></td></tr>
 <tr class="separator:a1e977b12981e70ce03b4e8b9e995b51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f59028ed007887cc852668904fc940f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a8f59028ed007887cc852668904fc940f">doesVertexArrayExist</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a8f59028ed007887cc852668904fc940f"><td class="mdescLeft">&#160;</td><td class="mdescRight">does a vertex buffer already exist with that name  <a href="class_engine_1_1_resource_manager.html#a8f59028ed007887cc852668904fc940f">More...</a><br /></td></tr>
 <tr class="separator:a8f59028ed007887cc852668904fc940f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31051ceaea321ef1e3fab0eb0cfb00e8"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a31051ceaea321ef1e3fab0eb0cfb00e8">addVertexBuffer</a> (const std::string &amp;name, float *vertices, unsigned int size, <a class="el" href="class_engine_1_1_vertex_buffer_layout.html">VertexBufferLayout</a> &amp;layout)</td></tr>
+<tr class="memdesc:a31051ceaea321ef1e3fab0eb0cfb00e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a index buffer to the asset manager  <a href="class_engine_1_1_resource_manager.html#a31051ceaea321ef1e3fab0eb0cfb00e8">More...</a><br /></td></tr>
 <tr class="separator:a31051ceaea321ef1e3fab0eb0cfb00e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57843d5c9819dfecb590b7e6f8ca5d84"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a57843d5c9819dfecb590b7e6f8ca5d84">getVertexBuffer</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a57843d5c9819dfecb590b7e6f8ca5d84"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a vertex buffer from the asset manager  <a href="class_engine_1_1_resource_manager.html#a57843d5c9819dfecb590b7e6f8ca5d84">More...</a><br /></td></tr>
 <tr class="separator:a57843d5c9819dfecb590b7e6f8ca5d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47717d16c2b96e473c1cc0899a163346"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a47717d16c2b96e473c1cc0899a163346">doesVertexBufferExist</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a47717d16c2b96e473c1cc0899a163346"><td class="mdescLeft">&#160;</td><td class="mdescRight">does a vertex buffer already exist with that name  <a href="class_engine_1_1_resource_manager.html#a47717d16c2b96e473c1cc0899a163346">More...</a><br /></td></tr>
 <tr class="separator:a47717d16c2b96e473c1cc0899a163346"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8099818a92ec9896b85b9b1e6b5acc91"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_material.html">Material</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a8099818a92ec9896b85b9b1e6b5acc91">addMaterial</a> (const std::string &amp;name, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shader.html">Shader</a> &gt; shader, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_vertex_array.html">VertexArray</a> &gt; vertexArray)</td></tr>
+<tr class="memdesc:a8099818a92ec9896b85b9b1e6b5acc91"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a material buffer to the asset manager  <a href="class_engine_1_1_resource_manager.html#a8099818a92ec9896b85b9b1e6b5acc91">More...</a><br /></td></tr>
 <tr class="separator:a8099818a92ec9896b85b9b1e6b5acc91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fd4b91db6cb94c85f7b1d8a397454f2"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_engine_1_1_material.html">Material</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a3fd4b91db6cb94c85f7b1d8a397454f2">getMaterial</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a3fd4b91db6cb94c85f7b1d8a397454f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a material buffer from the asset manager  <a href="class_engine_1_1_resource_manager.html#a3fd4b91db6cb94c85f7b1d8a397454f2">More...</a><br /></td></tr>
 <tr class="separator:a3fd4b91db6cb94c85f7b1d8a397454f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a112d30bfbbe381f212c7cee47795085e"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a112d30bfbbe381f212c7cee47795085e">doesMaterialExist</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a112d30bfbbe381f212c7cee47795085e"><td class="mdescLeft">&#160;</td><td class="mdescRight">does a material buffer already exist with that name  <a href="class_engine_1_1_resource_manager.html#a112d30bfbbe381f212c7cee47795085e">More...</a><br /></td></tr>
 <tr class="separator:a112d30bfbbe381f212c7cee47795085e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a6fdc04441c472be42b057393abf197a8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_asset_manager.html">AssetManager</a>&lt; <a class="el" href="class_engine_1_1_index_buffer.html">IndexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a6fdc04441c472be42b057393abf197a8">m_indexBuffersObjects</a></td></tr>
+<tr class="memdesc:a6fdc04441c472be42b057393abf197a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index Buffer Asset Manager.  <a href="class_engine_1_1_resource_manager.html#a6fdc04441c472be42b057393abf197a8">More...</a><br /></td></tr>
 <tr class="separator:a6fdc04441c472be42b057393abf197a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8be895b9420ef9df58302e9ef8dcd339"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_asset_manager.html">AssetManager</a>&lt; <a class="el" href="class_engine_1_1_shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a8be895b9420ef9df58302e9ef8dcd339">m_shaders</a></td></tr>
+<tr class="memdesc:a8be895b9420ef9df58302e9ef8dcd339"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_shader.html">Shader</a> Asset Manager.  <a href="class_engine_1_1_resource_manager.html#a8be895b9420ef9df58302e9ef8dcd339">More...</a><br /></td></tr>
 <tr class="separator:a8be895b9420ef9df58302e9ef8dcd339"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a601f4023c68256b0f3ea1e46e5ead192"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_asset_manager.html">AssetManager</a>&lt; <a class="el" href="class_engine_1_1_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a601f4023c68256b0f3ea1e46e5ead192">m_textures</a></td></tr>
+<tr class="memdesc:a601f4023c68256b0f3ea1e46e5ead192"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_texture.html">Texture</a> Asset Manager.  <a href="class_engine_1_1_resource_manager.html#a601f4023c68256b0f3ea1e46e5ead192">More...</a><br /></td></tr>
 <tr class="separator:a601f4023c68256b0f3ea1e46e5ead192"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae057e96b9aaaa88bf3648d288e7d58ab"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_asset_manager.html">AssetManager</a>&lt; <a class="el" href="class_engine_1_1_vertex_array.html">VertexArray</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#ae057e96b9aaaa88bf3648d288e7d58ab">m_vertexArrayObjects</a></td></tr>
+<tr class="memdesc:ae057e96b9aaaa88bf3648d288e7d58ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vertex Array Asset Manager.  <a href="class_engine_1_1_resource_manager.html#ae057e96b9aaaa88bf3648d288e7d58ab">More...</a><br /></td></tr>
 <tr class="separator:ae057e96b9aaaa88bf3648d288e7d58ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16dda34375a213bb7bebd72a8798a107"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_asset_manager.html">AssetManager</a>&lt; <a class="el" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a16dda34375a213bb7bebd72a8798a107">m_vertexBufferObjects</a></td></tr>
+<tr class="memdesc:a16dda34375a213bb7bebd72a8798a107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vertex Buffer Asset Manager.  <a href="class_engine_1_1_resource_manager.html#a16dda34375a213bb7bebd72a8798a107">More...</a><br /></td></tr>
 <tr class="separator:a16dda34375a213bb7bebd72a8798a107"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23475a304aaf198fe5f9239bfd9541d9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_asset_manager.html">AssetManager</a>&lt; <a class="el" href="class_engine_1_1_material.html">Material</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#a23475a304aaf198fe5f9239bfd9541d9">m_materials</a></td></tr>
+<tr class="memdesc:a23475a304aaf198fe5f9239bfd9541d9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_material.html">Material</a> Asset Manager.  <a href="class_engine_1_1_resource_manager.html#a23475a304aaf198fe5f9239bfd9541d9">More...</a><br /></td></tr>
 <tr class="separator:a23475a304aaf198fe5f9239bfd9541d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00015">15</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
+<div class="textblock"><p>Resource Manger, Handles resources for the engine </p>
+
+<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00018">18</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a17da9824a5694466df31e209a73587ec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a17da9824a5694466df31e209a73587ec">&#9670;&nbsp;</a></span>addIndexBuffer()</h2>
@@ -177,6 +204,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>add a index buffer to the asset manager </p>
 
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00035">35</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
@@ -222,6 +251,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>add a material buffer to the asset manager </p>
+
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00131">131</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
 </div>
@@ -250,6 +281,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>add a shader to the asset manager </p>
+
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00053">53</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
 </div>
@@ -277,6 +310,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>add a <a class="el" href="class_engine_1_1_texture.html">Texture</a> to the asset manager </p>
 
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00071">71</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
@@ -334,6 +369,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>add a <a class="el" href="class_engine_1_1_texture.html">Texture</a> to the asset manager </p>
+
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00077">77</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
 </div>
@@ -361,6 +398,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>add a vertex buffer to the asset manager </p>
 
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00095">95</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
@@ -412,6 +451,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>add a index buffer to the asset manager </p>
+
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00113">113</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
 </div>
@@ -439,6 +480,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>does a index buffer already exist with that name </p>
 
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00046">46</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
@@ -468,6 +511,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>does a material buffer already exist with that name </p>
+
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00142">142</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
 </div>
@@ -495,6 +540,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>does a shader already exist with that name </p>
 
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00064">64</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
@@ -524,6 +571,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>does a <a class="el" href="class_engine_1_1_texture.html">Texture</a> already exist with that name </p>
+
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00088">88</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
 </div>
@@ -551,6 +600,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>does a vertex buffer already exist with that name </p>
 
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00106">106</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
@@ -580,6 +631,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>does a vertex buffer already exist with that name </p>
+
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00124">124</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
 </div>
@@ -607,6 +660,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>get a index buffer from the asset manager </p>
 
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00041">41</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
@@ -636,6 +691,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>get a material buffer from the asset manager </p>
+
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00137">137</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
 </div>
@@ -663,6 +720,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>get a shader from the asset manager </p>
 
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00059">59</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
@@ -692,6 +751,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>get a <a class="el" href="class_engine_1_1_texture.html">Texture</a> from the asset manager </p>
+
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00083">83</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
 </div>
@@ -719,6 +780,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>get a vertex buffer from the asset manager </p>
 
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00101">101</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
@@ -748,6 +811,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>get a vertex buffer from the asset manager </p>
+
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00119">119</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
 </div>
@@ -775,6 +840,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Remove all but the file name. </p>
 
 <p class="definition">Definition at line <a class="el" href="resource_manager_8cpp_source.html#l00015">15</a> of file <a class="el" href="resource_manager_8cpp_source.html">resourceManager.cpp</a>.</p>
 
@@ -814,7 +881,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Start the system. </p>
+<p>Start the Resource Manager. </p>
 
 <p>Implements <a class="el" href="class_engine_1_1_system.html#a7020561bd617d4237e7e5841f56216c8">Engine::System</a>.</p>
 
@@ -856,7 +923,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Stop the system. </p>
+<p>Stop the Resource Manager. </p>
 
 <p>Implements <a class="el" href="class_engine_1_1_system.html#a42c92dca4ba99d16bc5f117460d712a1">Engine::System</a>.</p>
 
@@ -885,7 +952,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00018">18</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
+<p>Index Buffer Asset Manager. </p>
+
+<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00021">21</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
 
 </div>
 </div>
@@ -909,7 +978,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00023">23</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
+<p><a class="el" href="class_engine_1_1_material.html">Material</a> Asset Manager. </p>
+
+<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00026">26</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
 
 </div>
 </div>
@@ -933,7 +1004,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00019">19</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
+<p><a class="el" href="class_engine_1_1_shader.html">Shader</a> Asset Manager. </p>
+
+<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00022">22</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
 
 </div>
 </div>
@@ -957,7 +1030,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00020">20</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
+<p><a class="el" href="class_engine_1_1_texture.html">Texture</a> Asset Manager. </p>
+
+<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00023">23</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
 
 </div>
 </div>
@@ -981,7 +1056,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00021">21</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
+<p>Vertex Array Asset Manager. </p>
+
+<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00024">24</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
 
 </div>
 </div>
@@ -1005,7 +1082,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00022">22</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
+<p>Vertex Buffer Asset Manager. </p>
+
+<p class="definition">Definition at line <a class="el" href="resource_manager_8h_source.html#l00025">25</a> of file <a class="el" href="resource_manager_8h_source.html">resourceManager.h</a>.</p>
 
 </div>
 </div>

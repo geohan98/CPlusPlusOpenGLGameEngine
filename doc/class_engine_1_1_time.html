@@ -67,12 +67,13 @@ Inheritance diagram for Engine::Time:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a57a41e038893cf3190da93a1f953115a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_time.html#a57a41e038893cf3190da93a1f953115a">start</a> (<a class="el" href="namespace_engine.html#a3779187ef31b30930abda7fbea542e17">SystemSignal</a> init=<a class="el" href="namespace_engine.html#a3779187ef31b30930abda7fbea542e17a6adf97f83acf6453d4a6a4b1070f3754">SystemSignal::None</a>,...)</td></tr>
-<tr class="memdesc:a57a41e038893cf3190da93a1f953115a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the system.  <a href="class_engine_1_1_time.html#a57a41e038893cf3190da93a1f953115a">More...</a><br /></td></tr>
+<tr class="memdesc:a57a41e038893cf3190da93a1f953115a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the <a class="el" href="class_engine_1_1_time.html">Time</a> <a class="el" href="class_engine_1_1_system.html">System</a>.  <a href="class_engine_1_1_time.html#a57a41e038893cf3190da93a1f953115a">More...</a><br /></td></tr>
 <tr class="separator:a57a41e038893cf3190da93a1f953115a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeebdc6430735631fed03ebd4921edb84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_time.html#aeebdc6430735631fed03ebd4921edb84">stop</a> (<a class="el" href="namespace_engine.html#a3779187ef31b30930abda7fbea542e17">SystemSignal</a> close=<a class="el" href="namespace_engine.html#a3779187ef31b30930abda7fbea542e17a6adf97f83acf6453d4a6a4b1070f3754">SystemSignal::None</a>,...)</td></tr>
-<tr class="memdesc:aeebdc6430735631fed03ebd4921edb84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the system.  <a href="class_engine_1_1_time.html#aeebdc6430735631fed03ebd4921edb84">More...</a><br /></td></tr>
+<tr class="memdesc:aeebdc6430735631fed03ebd4921edb84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the time <a class="el" href="class_engine_1_1_system.html">System</a>.  <a href="class_engine_1_1_time.html#aeebdc6430735631fed03ebd4921edb84">More...</a><br /></td></tr>
 <tr class="separator:aeebdc6430735631fed03ebd4921edb84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbe36593dfc2265e3da03ae442a379d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_time.html#adbe36593dfc2265e3da03ae442a379d0">tick</a> ()</td></tr>
+<tr class="memdesc:adbe36593dfc2265e3da03ae442a379d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update Delta <a class="el" href="class_engine_1_1_time.html">Time</a>.  <a href="class_engine_1_1_time.html#adbe36593dfc2265e3da03ae442a379d0">More...</a><br /></td></tr>
 <tr class="separator:adbe36593dfc2265e3da03ae442a379d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_engine_1_1_system"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_1_1_system')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_1_1_system.html">Engine::System</a></td></tr>
 <tr class="memitem:a4ed810746929ee960ea5fa6648230c48 inherit pub_methods_class_engine_1_1_system"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_system.html#a4ed810746929ee960ea5fa6648230c48">~System</a> ()</td></tr>
@@ -81,32 +82,43 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a82712337fbd2a07c0f7464cc48f0492f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_time.html#a82712337fbd2a07c0f7464cc48f0492f">setTimeScale</a> (float t)</td></tr>
+<tr class="memdesc:a82712337fbd2a07c0f7464cc48f0492f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set <a class="el" href="class_engine_1_1_time.html">Time</a> Scale.  <a href="class_engine_1_1_time.html#a82712337fbd2a07c0f7464cc48f0492f">More...</a><br /></td></tr>
 <tr class="separator:a82712337fbd2a07c0f7464cc48f0492f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cc1e30bfc35c814b94beb6ae7b92aa9"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_time.html#a9cc1e30bfc35c814b94beb6ae7b92aa9">getTimeScale</a> ()</td></tr>
+<tr class="memdesc:a9cc1e30bfc35c814b94beb6ae7b92aa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return <a class="el" href="class_engine_1_1_time.html">Time</a> Scale.  <a href="class_engine_1_1_time.html#a9cc1e30bfc35c814b94beb6ae7b92aa9">More...</a><br /></td></tr>
 <tr class="separator:a9cc1e30bfc35c814b94beb6ae7b92aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac16d1a0dad77b80abaaacaa918fde981"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_time.html#ac16d1a0dad77b80abaaacaa918fde981">getDeltaTime</a> ()</td></tr>
+<tr class="memdesc:ac16d1a0dad77b80abaaacaa918fde981"><td class="mdescLeft">&#160;</td><td class="mdescRight">get Delta <a class="el" href="class_engine_1_1_time.html">Time</a>  <a href="class_engine_1_1_time.html#ac16d1a0dad77b80abaaacaa918fde981">More...</a><br /></td></tr>
 <tr class="separator:ac16d1a0dad77b80abaaacaa918fde981"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a522cd79729f3115ee865fe35cdfe2d6b"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_time.html#a522cd79729f3115ee865fe35cdfe2d6b">getAppStart</a> ()</td></tr>
+<tr class="memdesc:a522cd79729f3115ee865fe35cdfe2d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">get App Start  <a href="class_engine_1_1_time.html#a522cd79729f3115ee865fe35cdfe2d6b">More...</a><br /></td></tr>
 <tr class="separator:a522cd79729f3115ee865fe35cdfe2d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c489647c6e7a0b20de772e5db415053"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_time.html#a1c489647c6e7a0b20de772e5db415053">getTimerStatus</a> ()</td></tr>
+<tr class="memdesc:a1c489647c6e7a0b20de772e5db415053"><td class="mdescLeft">&#160;</td><td class="mdescRight">return is the timer active  <a href="class_engine_1_1_time.html#a1c489647c6e7a0b20de772e5db415053">More...</a><br /></td></tr>
 <tr class="separator:a1c489647c6e7a0b20de772e5db415053"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:aea06cdf816a01ff8f9a2098ac6b431bb"><td class="memItemLeft" align="right" valign="top">static std::chrono::high_resolution_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_time.html#aea06cdf816a01ff8f9a2098ac6b431bb">s_appStart</a></td></tr>
+<tr class="memdesc:aea06cdf816a01ff8f9a2098ac6b431bb"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_time.html">Time</a> point for start of app.  <a href="class_engine_1_1_time.html#aea06cdf816a01ff8f9a2098ac6b431bb">More...</a><br /></td></tr>
 <tr class="separator:aea06cdf816a01ff8f9a2098ac6b431bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf0656b369daac1b341944a0f6355bbb"><td class="memItemLeft" align="right" valign="top">static std::chrono::high_resolution_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_time.html#aaf0656b369daac1b341944a0f6355bbb">s_frameStart</a></td></tr>
+<tr class="memdesc:aaf0656b369daac1b341944a0f6355bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_time.html">Time</a> point for start of frame.  <a href="class_engine_1_1_time.html#aaf0656b369daac1b341944a0f6355bbb">More...</a><br /></td></tr>
 <tr class="separator:aaf0656b369daac1b341944a0f6355bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9df66c2006d87eb8943612e9924be1aa"><td class="memItemLeft" align="right" valign="top">static std::chrono::duration&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_time.html#a9df66c2006d87eb8943612e9924be1aa">s_deltaTime</a></td></tr>
+<tr class="memdesc:a9df66c2006d87eb8943612e9924be1aa"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_time.html">Time</a> Since Last Frame.  <a href="class_engine_1_1_time.html#a9df66c2006d87eb8943612e9924be1aa">More...</a><br /></td></tr>
 <tr class="separator:a9df66c2006d87eb8943612e9924be1aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49995b12f5c787307e3635364ccb0201"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_time.html#a49995b12f5c787307e3635364ccb0201">s_timeScale</a></td></tr>
+<tr class="memdesc:a49995b12f5c787307e3635364ccb0201"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine_1_1_time.html">Time</a> Scale.  <a href="class_engine_1_1_time.html#a49995b12f5c787307e3635364ccb0201">More...</a><br /></td></tr>
 <tr class="separator:a49995b12f5c787307e3635364ccb0201"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa846579783480842c6a13e99d3053485"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_time.html#aa846579783480842c6a13e99d3053485">s_timeActive</a> = false</td></tr>
+<tr class="memdesc:aa846579783480842c6a13e99d3053485"><td class="mdescLeft">&#160;</td><td class="mdescRight">is the timer active  <a href="class_engine_1_1_time.html#aa846579783480842c6a13e99d3053485">More...</a><br /></td></tr>
 <tr class="separator:aa846579783480842c6a13e99d3053485"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00007">7</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+<div class="textblock"><p><a class="el" href="class_engine_1_1_time.html">Time</a>, Allow time keeping </p>
+
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00010">10</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a522cd79729f3115ee865fe35cdfe2d6b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a522cd79729f3115ee865fe35cdfe2d6b">&#9670;&nbsp;</a></span>getAppStart()</h2>
@@ -131,7 +143,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00023">23</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+<p>get App Start </p>
+
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00026">26</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
 
 </div>
 </div>
@@ -158,7 +172,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00022">22</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+<p>get Delta <a class="el" href="class_engine_1_1_time.html">Time</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00025">25</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
 
 </div>
 </div>
@@ -185,7 +201,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00024">24</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+<p>return is the timer active </p>
+
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00027">27</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
 
 </div>
 </div>
@@ -212,7 +230,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00021">21</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+<p>Return <a class="el" href="class_engine_1_1_time.html">Time</a> Scale. </p>
+
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00024">24</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
 
 </div>
 </div>
@@ -240,7 +260,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00020">20</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+<p>Set <a class="el" href="class_engine_1_1_time.html">Time</a> Scale. </p>
+
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00023">23</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
 
 </div>
 </div>
@@ -278,7 +300,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Start the system. </p>
+<p>Start the <a class="el" href="class_engine_1_1_time.html">Time</a> <a class="el" href="class_engine_1_1_system.html">System</a>. </p>
 
 <p>Implements <a class="el" href="class_engine_1_1_system.html#a7020561bd617d4237e7e5841f56216c8">Engine::System</a>.</p>
 
@@ -320,7 +342,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Stop the system. </p>
+<p>Stop the time <a class="el" href="class_engine_1_1_system.html">System</a>. </p>
 
 <p>Implements <a class="el" href="class_engine_1_1_system.html#a42c92dca4ba99d16bc5f117460d712a1">Engine::System</a>.</p>
 
@@ -342,6 +364,8 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Update Delta <a class="el" href="class_engine_1_1_time.html">Time</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="time_8cpp_source.html#l00025">25</a> of file <a class="el" href="time_8cpp_source.html">time.cpp</a>.</p>
 
@@ -368,7 +392,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00009">9</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+<p><a class="el" href="class_engine_1_1_time.html">Time</a> point for start of app. </p>
+
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00012">12</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
 
 </div>
 </div>
@@ -392,7 +418,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00011">11</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+<p><a class="el" href="class_engine_1_1_time.html">Time</a> Since Last Frame. </p>
+
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00014">14</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
 
 </div>
 </div>
@@ -416,7 +444,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00010">10</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+<p><a class="el" href="class_engine_1_1_time.html">Time</a> point for start of frame. </p>
+
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00013">13</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
 
 </div>
 </div>
@@ -440,7 +470,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00013">13</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+<p>is the timer active </p>
+
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00016">16</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
 
 </div>
 </div>
@@ -464,7 +496,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00012">12</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+<p><a class="el" href="class_engine_1_1_time.html">Time</a> Scale. </p>
+
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00015">15</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
 
 </div>
 </div>
