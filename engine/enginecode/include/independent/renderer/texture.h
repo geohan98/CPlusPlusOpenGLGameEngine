@@ -17,7 +17,7 @@ namespace Engine
 		static Texture* createFromFile(const std::string& filepath); ///< Create API Specific Object
 		static Texture* createFromRawData(unsigned int width, unsigned int height, unsigned int channels, unsigned char* texData); ///< Create API Specific Object
 
-		virtual void bind() const = 0; ///< Make this the active texture
+		virtual void bind(int slot = 0) const = 0; ///< Make this the active texture
 		virtual void unbind() const = 0; ///< Make this not the active texture
 	};
 }

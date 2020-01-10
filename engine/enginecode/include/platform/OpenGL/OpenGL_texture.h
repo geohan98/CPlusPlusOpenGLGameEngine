@@ -27,7 +27,7 @@ namespace Engine
 		unsigned int getChannels() const override { return m_channels; }; ///< return the number of channels for the texture
 		unsigned int getSlot() const override; ///< return the texture slot 
 
-		void bind() const; ///< bind the texture
-		void unbind() const; ///< bind the texture
+		void bind(int slot) const override; ///< bind the texture
+		void unbind() const override; ///< bind the texture
 	};
 }

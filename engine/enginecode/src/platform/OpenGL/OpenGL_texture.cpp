@@ -68,9 +68,9 @@ namespace Engine
 		return 0;
 	}
 
-	void OpenGL_Texture::bind() const
+	void OpenGL_Texture::bind(int slot) const
 	{
-		glActiveTexture(GL_TEXTURE0 + m_slot);
+		glActiveTexture(GL_TEXTURE0 + slot);
 		glBindTexture(GL_TEXTURE_2D, m_id);
 	}
 

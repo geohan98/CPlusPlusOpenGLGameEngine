@@ -8,6 +8,9 @@
 #include "components/materialComponent.h"
 #include "components/PositionComponent.h"
 #include "components/velocityComponent.h"
+#include "events/keyEvents.h"
+#include "events/applicationEvents.h"
+#include "events/mouseEvents.h"
 
 namespace Engine
 {
@@ -36,13 +39,28 @@ namespace Engine
 		SceneData m_sceneData; ///< Uniform Scene Data
 		std::list<void*> m_data; ///< Lits of void pointer data
 		std::string m_filepath; ///< Filepath of Level File
+
+		//Application Events
+		bool onWindowResize(WindowResize& e);				///< Window Resize Event
+		bool onWindowClose(WindowClose& e);					///< Window Close Event
+		bool onWindowMoved(WindowMoved& e);					///< Window Move Event
+		bool onWindowLostFocus(WindowLostFocus& e);			///< Window Lost Focus Event
+		//Key Events
+		bool onKeyPressed(KeyPressed& e);					///< Key Press Event
+		bool onKeyReleased(KeyReleased& e);					///< Key Release Event
+		bool onKeyTyped(KeyTyped& e);						///< Key Type Event
+		//Mouse Events
+		bool onMouseMove(MouseMoved& e);					///< Mouse Move Event
+		bool onMouseScrolled(MouseScrolled& e);				///< Mouse Scrolled Event
+		bool onMouseButtonPressed(MouseButtonPressed& e);	///< Mouse Button Press Event
+		bool onMouseButtonReleased(MouseButtonReleased& e);	///< Mouse Button Release Event
 	public:
 		JSONLayer(const std::string& filepath, const std::string& name = "Layer") : Layer(name), m_filepath(filepath) {} ///< Constructor
 
 		virtual void onAttach() override; ///< Run on layer stack attach
 		virtual void onDetach() override; ///< Run on layer stack removal
 		virtual void onUpdate(float deltaTime) override; ///< Run every frame
-		virtual void onEvent(Event& e) override; ///< Ru on an Event
+		virtual void onEvent(Event& e) override; ///< Run on an Event
 
 		inline std::vector<std::shared_ptr<GameObject>>& getGameObjects() { return m_gameObjects; }					///< Return all the game objects
 		inline std::vector<std::shared_ptr<MaterialComponent>>& getMaterials() { return m_materials; }				///< Return all the material components

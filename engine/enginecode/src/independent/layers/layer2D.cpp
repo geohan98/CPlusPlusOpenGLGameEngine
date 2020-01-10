@@ -66,10 +66,10 @@ namespace Engine
 		ComponentMessage msg(ComponentMessageType::UniformSet, data);
 		m_materials.back()->receiveMessage(msg);
 
-		unsigned int texSlot = 0;
+		unsigned int texSlot = 1;
+		m_resourceManager->getTexture("assets/textures/face.png")->bind(texSlot);
 		m_materials.back()->getMaterial()->setDataElement("u_texData", (void*)&texSlot);
 		glm::mat4 model = glm::mat4(1.0f);
-		//m_materials.back()->getMaterial()->setDataElement("u_model", (void*)&model[0][0]);
 		m_resourceManager->getTexture("assets/textures/face.png")->bind();
 
 		m_renderer->submit(m_materials.back()->getMaterial());
