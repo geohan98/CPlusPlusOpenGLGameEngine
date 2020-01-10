@@ -14,12 +14,16 @@ namespace Engine
 		m_nativeWindow = glfwCreateWindow(m_properties.m_width, m_properties.m_height, m_properties.m_title.c_str(), NULL, NULL);
 		if (!m_nativeWindow)
 		{
+#ifdef NG_DEBUG
 			LOG_CORE_CRITICAL("FAILED TO CREATE GLFW WINDOW");
+#endif // NG_DEBUG
 			return;
 		}
 		else
 		{
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("GLFW WINDOW CREATED");
+#endif // NG_DEBUG
 		}
 
 		m_context = std::unique_ptr<GraphicsContext>(new GLFW_GraphicsContext(m_nativeWindow));
@@ -125,7 +129,9 @@ namespace Engine
 	void GLFW_WindowImp::close()
 	{
 		m_context.release();
+#ifdef NG_DEBUG
 		LOG_CORE_WARN("DESTROYING GLFW WINDOW");
+#endif // NG_DEBUG
 		glfwDestroyWindow(m_nativeWindow);
 	}
 

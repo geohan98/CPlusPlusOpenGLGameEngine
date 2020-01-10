@@ -40,7 +40,9 @@ namespace Engine
 		{
 			return m_container[key];
 		}
+#ifdef NG_DEBUG
 		LOG_CORE_ERROR("UNABLE TO FIND '{0}'", key);
+#endif // NG_DEBUG
 		return std::shared_ptr<G>(nullptr);
 	}
 }

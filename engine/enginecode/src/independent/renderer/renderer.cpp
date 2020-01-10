@@ -13,13 +13,17 @@ namespace Engine
 		switch (RenderAPI::getAPI())
 		{
 		case RenderAPI::API::None:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO RENDER API SELECTED");
+#endif // NG_DEBUG
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGL_BasicRenderer();
 			break;
 		default:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO RENDER API SELECTED");
+#endif // NG_DEBUG
 			break;
 		}
 	}
@@ -28,13 +32,17 @@ namespace Engine
 		switch (RenderAPI::getAPI())
 		{
 		case RenderAPI::API::None:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO RENDER API SELECTED");
+#endif // NG_DEBUG
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGL_2DRenderer();
 			break;
 		default:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO RENDER API SELECTED");
+#endif // NG_DEBUG
 			break;
 		}
 	}

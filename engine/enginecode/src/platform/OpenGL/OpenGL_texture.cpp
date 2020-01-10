@@ -13,7 +13,9 @@ namespace Engine
 		unsigned char* localBuffer = stbi_load(m_filePath.c_str(), &m_width, &m_height, &m_channels, 0);
 		if (!localBuffer)
 		{
+#ifdef NG_DEBUG
 			LOG_CORE_ERROR("UNABLE TO LOAD TEXTURE {0}", m_filePath.c_str());
+#endif // NG_DEBUG
 		}
 
 		glGenTextures(1, &m_id);
@@ -74,6 +76,8 @@ namespace Engine
 
 	void OpenGL_Texture::unbind() const
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("NO TEXTURE UNBIND FUNCTION SET");
+#endif // NG_DEBUG
 	}
 }

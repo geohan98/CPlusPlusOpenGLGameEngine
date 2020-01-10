@@ -23,7 +23,9 @@ namespace Engine
 			std::fstream handle(filepath, std::ios::in);
 			if (!handle.is_open()) {
 
+#ifdef NG_DEBUG
 				LOG_CORE_WARN("Could not open file: {0}", filepath);
+#endif // NG_DEBUG
 
 			}
 			nlohmann::json layerJSON;
@@ -38,8 +40,9 @@ namespace Engine
 					for (auto& filepath : layerJSON["Asyncload"]["shaders"])
 					{
 						if (filepath.count("filepath") > 0) layer.getResources()->addShader(filepath["filepath"].get<std::string>());
-
+#ifdef NG_DEBUG
 						LOG_CORE_WARN("JSON Loader: Loading Shader '{0}'", filepath);
+#endif // NG_DEBUG
 
 					}
 				}
@@ -48,8 +51,9 @@ namespace Engine
 					for (auto& filepath : layerJSON["Asyncload"]["textures"])
 					{
 						if (filepath.count("filepath") > 0) layer.getResources()->addTexture(filepath["filepath"].get<std::string>());
-
+#ifdef NG_DEBUG
 						LOG_CORE_WARN("JSON Loader: Loading Texture '{0}'", filepath);
+#endif // NG_DEBUG
 
 					}
 				}
@@ -69,8 +73,9 @@ namespace Engine
 				std::string type = layerJSON["camera"]["type"].get<std::string>();
 				if (type.compare("3D") == 0)
 				{
-
+#ifdef NG_DEBUG
 					LOG_CORE_WARN("JSON Loader: Adding 3D Camera");
+#endif // NG_DEBUG
 
 					layer.getCamera().reset(new CameraController3D());
 					float fov = layerJSON["camera"]["fov"].get<float>();
@@ -81,8 +86,9 @@ namespace Engine
 				}
 				else if (type.compare("2D") == 0)
 				{
-
+#ifdef NG_DEBUG
 					LOG_CORE_WARN("JSON Loader: Adding 2D Camera");
+#endif // NG_DEBUG
 
 					layer.getCamera().reset(new CameraController2D());
 					float top = layerJSON["camera"]["top"].get<float>();
@@ -98,21 +104,26 @@ namespace Engine
 				std::string type = layerJSON["renderer"]["type"].get<std::string>();
 				if (type.compare("Basic3D") == 0)
 				{
-
+#ifdef NG_DEBUG
 					LOG_CORE_WARN("JSON Loader: Adding 3D Renderer");
+#endif // NG_DEBUG
 
 					layer.getRenderer().reset(Renderer::createBasic3D());
 				}
 				if (type.compare("Basic2D") == 0)
 				{
+#ifdef NG_DEBUG
 					LOG_CORE_WARN("JSON Loader: Adding 3D Renderer");
+#endif // NG_DEBUG
 					layer.getRenderer().reset(Renderer::createBasic2D());
 				}
 			}
 
 			if (layerJSON.count("MemoryInfo") > 0)
 			{
+#ifdef NG_DEBUG
 				LOG_CORE_WARN("JSON Loader: Setting up Memory Info");
+#endif // NG_DEBUG
 				layer.getGameObjects().resize(layerJSON["MemoryInfo"]["gameObjects"].get<int>());
 				layer.getMaterials().resize(layerJSON["MemoryInfo"]["materials"].get<int>());
 				layer.getPositions().resize(layerJSON["MemoryInfo"]["position"].get<int>());
@@ -123,7 +134,9 @@ namespace Engine
 
 			if (layerJSON.count("GameObjects") > 0)
 			{
+#ifdef NG_DEBUG
 				LOG_CORE_WARN("JSON Loader: Adding Gameobject");
+#endif // NG_DEBUG
 				int goIndex = 0;
 				int materialsIndex = 0;
 				int positionsIndex = 0;
@@ -212,7 +225,12 @@ namespace Engine
 					}*/
 				}
 			}
-			else LOG_CORE_INFO("None");
+			else
+			{
+#ifdef NG_DEBUG
+				LOG_CORE_INFO("None");
+#endif // NG_DEBUG
+			}
 
 			/*if (layerJSON.count("UBOs") > 0)
 			{
@@ -267,7 +285,9 @@ namespace Engine
 
 			if (layerJSON.count("RendererCommands") > 0)
 			{
+#ifdef NG_DEBUG
 				LOG_CORE_WARN("JSON Loader: Adding Render Commands");
+#endif // NG_DEBUG
 				std::string stages[4] = { "init", "predraw", "postdraw", "exit" };
 				for (int i = 0; i < 4; i++)
 				{
@@ -283,13 +303,17 @@ namespace Engine
 
 							if (type.compare("ClearDepthColourBuffer") == 0)
 							{
+#ifdef NG_DEBUG
 								LOG_CORE_WARN("JSON Loader: Adding ClearDepthColourBuffer Render Command");
+#endif // NG_DEBUG
 								command.reset(RenderCommand::ClearDepthColourBufferCommand(keepAlive));
 							}
 
 							if (type.compare("SetClearColour") == 0)
 							{
+#ifdef NG_DEBUG
 								LOG_CORE_WARN("JSON Loader: Adding SetClearColour Render Command");
+#endif // NG_DEBUG
 								float r = object["r"].get<float>();
 								float g = object["g"].get<float>();
 								float b = object["b"].get<float>();
@@ -299,21 +323,27 @@ namespace Engine
 
 							if (type.compare("SetDepthTestLess") == 0)
 							{
+#ifdef NG_DEBUG
 								LOG_CORE_WARN("JSON Loader: Adding SetDepthTestLess Render Command");
+#endif // NG_DEBUG
 								bool enabled = object["enabled"].get<bool>();
 								command.reset(RenderCommand::setDepthTestLessCommand(enabled, keepAlive));
 							}
 
 							if (type.compare("SetBackfaceCulling") == 0)
 							{
+#ifdef NG_DEBUG
 								LOG_CORE_WARN("JSON Loader: Adding SetBackfaceCulling Render Command");
+#endif // NG_DEBUG
 								bool enabled = object["enabled"].get<bool>();
 								command.reset(RenderCommand::setBackFaceCullingCommand(enabled, keepAlive));
 							}
 
 							if (type.compare("SetOneMinusAlphaBlending") == 0)
 							{
+#ifdef NG_DEBUG
 								LOG_CORE_WARN("JSON Loader: Adding SetOneMinusAlphaBlending Render Command");
+#endif // NG_DEBUG
 								bool enabled = object["enabled"].get<bool>();
 								command.reset(RenderCommand::setBlendMode(enabled, keepAlive));
 							}
@@ -322,10 +352,10 @@ namespace Engine
 							if (i == 1) layer.getPredrawCommands().push_back(command);
 							if (i == 2) layer.getPostdrawCommands().push_back(command);
 							if (i == 3) layer.getExitCommands().push_back(command);
+							}
+							}
+							}
 						}
 					}
-				}
+				};
 			}
-		}
-	};
-}

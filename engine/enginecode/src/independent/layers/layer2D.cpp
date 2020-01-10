@@ -99,67 +99,89 @@ namespace Engine
 
 	bool Layer2D::onWindowResize(WindowResize& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: WINDOW RESIZE '{0} x {1}'", e.getWidth(), e.getHeight());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool Layer2D::onWindowClose(WindowClose& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: CLOSING APPLICATION");
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool Layer2D::onWindowMoved(WindowMoved& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: WINDOW MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool Layer2D::onWindowLostFocus(WindowLostFocus& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: WINDOW LOST FOCUS '{0} , {1}'", e.getxPos(), e.getyPos());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool Layer2D::onKeyPressed(KeyPressed& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: KEY PRESSED '{0}'", e.getButton());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool Layer2D::onKeyReleased(KeyReleased& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: KEY RELEASED '{0}'", e.getButton());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool Layer2D::onKeyTyped(KeyTyped& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: KEY TYPED '{0}'", e.getButton());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool Layer2D::onMouseMove(MouseMoved& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: MOUSE MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool Layer2D::onMouseScrolled(MouseScrolled& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: MOUSE SCROLLED '{0} , {1}'", e.getxDelta(), e.getyDelta());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool Layer2D::onMouseButtonPressed(MouseButtonPressed& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: MOUSE BUTTON PRESSED '{0}'", e.getButton());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool Layer2D::onMouseButtonReleased(MouseButtonReleased& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: MOUSE BUTTON RELEASED '{0}'", e.getButton());
+#endif // NG_DEBUG
 		return true;
 	}
 

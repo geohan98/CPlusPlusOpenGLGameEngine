@@ -15,6 +15,7 @@ namespace Engine
 		{
 			std::fstream handle(filepath, std::ios::in);
 			if (!handle.is_open()) {
+
 				LOG_CORE_WARN("Could not open level: {0}", filepath);
 			}
 			nlohmann::json layerJSON;

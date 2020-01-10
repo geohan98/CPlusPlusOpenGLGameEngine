@@ -38,7 +38,9 @@ namespace Engine
 
 	void OpenGL_Material::setVertexData(float* vertices, unsigned int size, unsigned int offset)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("FUNCTION NOT IMPLIMENTED, setVertexData(float* vertices, unsigned int size, unsigned int offset)");
+#endif // NG_DEBUG
 	}
 
 }

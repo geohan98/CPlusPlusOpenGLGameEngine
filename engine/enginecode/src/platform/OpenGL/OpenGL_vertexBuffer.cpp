@@ -25,7 +25,9 @@ namespace Engine
 
 	void OpenGL_VertexBuffer::edit(float* vertices, unsigned int size, unsigned int offset)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_WARN("FUNCTION NOT IMPLIMENTED: 'OpenGL_VertexBuffer::edit(float* vertices, unsigned int size, unsigned int offset)'");
+#endif // NG_DEBUG
 	}
 
 	const VertexBufferLayout& OpenGL_VertexBuffer::getLayout() const

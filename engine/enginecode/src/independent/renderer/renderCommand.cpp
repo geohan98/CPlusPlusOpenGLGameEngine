@@ -12,13 +12,17 @@ namespace Engine
 		switch (RenderAPI::getAPI())
 		{
 		case RenderAPI::API::None:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGL_ClearDepthColourBufferCommand(destroy);
 			break;
 		default:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		}
 	}
@@ -28,13 +32,17 @@ namespace Engine
 		switch (RenderAPI::getAPI())
 		{
 		case RenderAPI::API::None:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGL_setClearColourCommand(r, g, b, a, destroy);
 			break;
 		default:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		}
 	}
@@ -44,13 +52,17 @@ namespace Engine
 		switch (RenderAPI::getAPI())
 		{
 		case RenderAPI::API::None:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGL_setDepthTestLessCommand(enabled, destroy);
 			break;
 		default:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		}
 	}
@@ -60,13 +72,17 @@ namespace Engine
 		switch (RenderAPI::getAPI())
 		{
 		case RenderAPI::API::None:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGL_setBackFaceCullingCommand(enabled, destroy);
 			break;
 		default:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		}
 	}
@@ -75,13 +91,17 @@ namespace Engine
 		switch (RenderAPI::getAPI())
 		{
 		case RenderAPI::API::None:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGL_setPolygonModeFill(destroy);
 			break;
 		default:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		}
 	}
@@ -90,13 +110,17 @@ namespace Engine
 		switch (RenderAPI::getAPI())
 		{
 		case RenderAPI::API::None:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGL_setPolygonModeLine(destroy);
 			break;
 		default:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		}
 	}
@@ -105,13 +129,17 @@ namespace Engine
 		switch (RenderAPI::getAPI())
 		{
 		case RenderAPI::API::None:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGL_setPolygonModePoint(destroy);
 			break;
 		default:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		}
 	}
@@ -120,13 +148,17 @@ namespace Engine
 		switch (RenderAPI::getAPI())
 		{
 		case RenderAPI::API::None:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGL_setBlendMode(enbaled, destroy);
 			break;
 		default:
+#ifdef NG_DEBUG
 			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
 			break;
 		}
 	}

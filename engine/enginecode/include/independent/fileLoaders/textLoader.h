@@ -31,7 +31,9 @@ namespace Engine
 	public:
 		static bool loadModel(std::shared_ptr<ResourceManager> res, const std::string& filepath, TextModel& model)
 		{
+#ifdef NG_DEBUG
 			LOG_CORE_INFO("MODEL LOADER: LOADING MODEL '{0}'", filepath);
+#endif // NG_DEBUG
 			std::fstream handle(filepath, std::ios::in);
 			if (!handle.is_open()) return false;
 
@@ -50,7 +52,9 @@ namespace Engine
 
 			// Set up vertex array
 			model.vertices = new float[model.verticesSize];
+#ifdef NG_DEBUG
 			LOG_CORE_INFO("MODEL LOADER: NUMBER OF VERTS '{0}'", model.verticesSize);
+#endif // NG_DEBUG
 
 			// read vertex data
 			getline(handle, line);
@@ -82,7 +86,9 @@ namespace Engine
 
 			// Set up array
 			model.indices = new unsigned int[model.indicesSize];
+#ifdef NG_DEBUG
 			LOG_CORE_INFO("MODEL LOADER: NUMBER OF INDICES '{0}'", model.indicesSize);
+#endif // NG_DEBUG
 
 			// read data
 			getline(handle, line);
@@ -103,7 +109,9 @@ namespace Engine
 			if (line.compare("NULL") != 0)
 			{
 				model.shader = res->addShader(line);
+#ifdef NG_DEBUG
 				LOG_CORE_INFO("MODEL LOADER: USING SHADER '{0}'", line);
+#endif // NG_DEBUG
 			}
 			else model.texture = nullptr;
 
@@ -112,10 +120,14 @@ namespace Engine
 			if (line.compare("NULL") != 0)
 			{
 				model.texture = res->addTexture(line);
+#ifdef NG_DEBUG
 				LOG_CORE_INFO("MODEL LOADER: USING TEXTURE '{0}'", line);
+#endif // NG_DEBUG
 			}
 			else model.texture = nullptr;
+#ifdef NG_DEBUG
 			LOG_CORE_INFO("MODEL LOADER: SUCCESSFULLY LOADED MODEL '{0}'", filepath);
+#endif // NG_DEBUG
 		}
 	};
 }

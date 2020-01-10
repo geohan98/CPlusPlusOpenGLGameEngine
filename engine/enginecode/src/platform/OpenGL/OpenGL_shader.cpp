@@ -13,7 +13,12 @@ namespace Engine
 	{
 		std::fstream handle(filepath, std::ios::in);
 		enum { NONE = -1, VERTEX = 0, FRAGMENT } region;
-		if (!handle.is_open()) LOG_CORE_ERROR("COULD NOT OPEN SHADER FILE '{0}'", filepath);
+		if (!handle.is_open())
+		{
+#ifdef NG_DEBUG
+			LOG_CORE_ERROR("COULD NOT OPEN SHADER FILE '{0}'", filepath);
+#endif // NG_DEBUG
+		}
 
 		std::string line, src[2];
 
@@ -76,7 +81,9 @@ namespace Engine
 
 			std::vector<GLchar> infoLog(maxLength);
 			glGetShaderInfoLog(VS, maxLength, &maxLength, &infoLog[0]);
+#ifdef NG_DEBUG
 			LOG_CORE_ERROR("SHADER COMPILE ERROR: {0}", std::string(infoLog.begin(), infoLog.end()));
+#endif // NG_DEBUG
 
 			glDeleteShader(VS);
 			return;
@@ -97,7 +104,9 @@ namespace Engine
 
 			std::vector<GLchar> infoLog(maxLength);
 			glGetShaderInfoLog(FS, maxLength, &maxLength, &infoLog[0]);
+#ifdef NG_DEBUG
 			LOG_CORE_ERROR("SHADER COMPILE ERROR: {0}", std::string(infoLog.begin(), infoLog.end()));
+#endif // NG_DEBUG
 
 			glDeleteShader(FS);
 			glDeleteShader(VS);
@@ -120,7 +129,9 @@ namespace Engine
 
 			std::vector<GLchar> infoLog(maxLength);
 			glGetProgramInfoLog(m_program_ID, maxLength, &maxLength, &infoLog[0]);
+#ifdef NG_DEBUG
 			LOG_CORE_ERROR("SHADER LINKING ERROR: {0}", std::string(infoLog.begin(), infoLog.end()));
+#endif // NG_DEBUG
 
 			glDeleteProgram(m_program_ID);
 			glDeleteShader(VS);
@@ -144,10 +155,14 @@ namespace Engine
 			if (it->second.second == -1)
 			{
 				it->second.second = glGetUniformLocation(m_program_ID, it->first.c_str());
+#ifdef NG_DEBUG
 				LOG_CORE_TRACE("UNIFORM CACHED, '{0}', TYPE == '{1}', LOCATION == '{2}'", it->first, it->second.first, it->second.second);
+#endif // NG_DEBUG
 				if (it->second.second == -1)
 				{
+#ifdef NG_DEBUG
 					LOG_CORE_ERROR("UNIFORM '{0}', DOES NOT EXSIST", it->first);
+#endif // NG_DEBUG
 				}
 			}
 		}
@@ -163,7 +178,9 @@ namespace Engine
 		switch (type)
 		{
 		case Engine::ShaderDataType::None:
+#ifdef NG_DEBUG
 			LOG_CORE_ERROR("UNIFORM TYPE NOT SPECIFIED");
+#endif // NG_DEBUG
 			break;
 		case Engine::ShaderDataType::Int:
 			valueInt = *(int*)data;

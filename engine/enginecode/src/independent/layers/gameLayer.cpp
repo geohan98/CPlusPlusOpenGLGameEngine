@@ -98,40 +98,54 @@ namespace Engine
 
 	bool GameLayer::onWindowResize(WindowResize& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: WINDOW RESIZE '{0} x {1}'", e.getWidth(), e.getHeight());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool GameLayer::onWindowClose(WindowClose& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: CLOSING APPLICATION");
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool GameLayer::onWindowMoved(WindowMoved& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: WINDOW MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool GameLayer::onWindowLostFocus(WindowLostFocus& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: WINDOW LOST FOCUS '{0} , {1}'", e.getxPos(), e.getyPos());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool GameLayer::onKeyPressed(KeyPressed& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: KEY PRESSED '{0}'", e.getButton());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool GameLayer::onKeyReleased(KeyReleased& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: KEY RELEASED '{0}'", e.getButton());
+#endif // NG_DEBUG
 		if (e.getButton() == KEY_R)
 		{
+#ifdef NG_DEBUG
 			LOG_CORE_INFO("GAME LAYER: RESET CAMERA");
+#endif // NG_DEBUG
 			m_camera->init(80.0f, 800.0f / 600.0f, 0.1, 100.0f);
 		}
 		return true;
@@ -139,31 +153,42 @@ namespace Engine
 
 	bool GameLayer::onKeyTyped(KeyTyped& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: KEY TYPED '{0}'", e.getButton());
+#endif // NG_DEBUG
+
 		return true;
 	}
 
 	bool GameLayer::onMouseMove(MouseMoved& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: MOUSE MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool GameLayer::onMouseScrolled(MouseScrolled& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: MOUSE SCROLLED '{0} , {1}'", e.getxDelta(), e.getyDelta());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool GameLayer::onMouseButtonPressed(MouseButtonPressed& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: MOUSE BUTTON PRESSED '{0}'", e.getButton());
+#endif // NG_DEBUG
 		return true;
 	}
 
 	bool GameLayer::onMouseButtonReleased(MouseButtonReleased& e)
 	{
+#ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: MOUSE BUTTON RELEASED '{0}'", e.getButton());
+#endif // NG_DEBUG
 		return true;
 	}
 }
