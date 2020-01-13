@@ -1,6 +1,6 @@
 workspace "Engine"
 	architecture "x64"
-	startproject "Sandbox"
+	startproject "Game"
 
 	configurations
 	{
@@ -74,8 +74,58 @@ project "Engine"
 		runtime "Release"
 		optimize "On"
 
-project "Sandbox"
-	location "sandbox"
+project "Game"
+	location "game"
+	kind "ConsoleApp"
+	language "C++"
+	staticruntime "off"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("build/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/include/**.h",
+		"%{prj.name}/src/**.cpp",
+	}
+
+	includedirs
+	{
+		"%{prj.name}/include",
+		"engine/enginecode/",
+		"engine/enginecode/include/independent",
+		"engine/precompiled/",
+		"vendor/spdlog/include",
+		"vendor/glm/",
+		"vendor/json/single_include/nlohmann"
+	}
+
+	links
+	{
+		"Engine"
+	}
+
+	filter "system:windows"
+		cppdialect "C++17"
+		systemversion "latest"
+
+		defines
+		{
+			"NG_PLATFORM_WINDOWS"
+		}
+
+	filter "configurations:Debug"
+		defines "NG_DEBUG"
+		runtime "Debug"
+		symbols "On"
+
+	filter "configurations:Release"
+		defines "NG_RELEASE"
+		runtime "Release"
+		optimize "On"
+		
+	project "Level Editor"
+	location "levelEditor"
 	kind "ConsoleApp"
 	language "C++"
 	staticruntime "off"
