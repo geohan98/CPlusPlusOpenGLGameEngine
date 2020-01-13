@@ -124,7 +124,7 @@ project "Game"
 		runtime "Release"
 		optimize "On"
 		
-	project "Level Editor"
+	project "LevelEditor"
 	location "levelEditor"
 	kind "ConsoleApp"
 	language "C++"

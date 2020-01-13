@@ -68,7 +68,7 @@ namespace Engine {
 			m_time->tick();
 			//Update Delta Time
 			s_deltaTime = m_time->getDeltaTime();
-			LOG_CORE_INFO("APPLICATION: FPS '{0}' , DeltaTime '{1}'", 1 / m_time->getDeltaTime(), m_time->getDeltaTime());
+			//LOG_CORE_INFO("APPLICATION: FPS '{0}' , DeltaTime '{1}'", 1 / m_time->getDeltaTime(), m_time->getDeltaTime());
 #ifdef NG_DEBUG
 #endif // NG_DEBUG
 
