@@ -26,9 +26,9 @@ namespace Engine
 #endif // NG_DEBUG
 		}
 
+
 		m_context = std::unique_ptr<GraphicsContext>(new GLFW_GraphicsContext(m_nativeWindow));
 		m_context->init();
-
 		glfwSetWindowUserPointer(m_nativeWindow, &m_callBack);
 
 		//Application Event Callbacks
