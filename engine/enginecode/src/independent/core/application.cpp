@@ -38,7 +38,7 @@ namespace Engine {
 		m_windowSystem = std::shared_ptr<WindowSystem>(new GLFW_WindowSys());
 #endif // NG_PLATFORM_WINDOWS
 		m_windowSystem->start();
-		WindowProperties prop = WindowProperties("Engine App", 1920, 1080, false);
+		WindowProperties prop = WindowProperties("Engine App", 1280, 720, false);
 		m_window = std::shared_ptr<Window>(Window::create(prop));
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
 	}
@@ -61,8 +61,8 @@ namespace Engine {
 			m_time->tick();
 			//Update Delta Time
 			s_deltaTime = m_time->getDeltaTime();
-			//LOG_CORE_INFO("APPLICATION: FPS '{0}' , DeltaTime '{1}'", 1 / m_time->getDeltaTime(), m_time->getDeltaTime());
 #ifdef NG_DEBUG
+			LOG_CORE_INFO("APPLICATION: FPS '{0}' , DeltaTime '{1}'", 1 / m_time->getDeltaTime(), m_time->getDeltaTime());
 #endif // NG_DEBUG
 
 			m_window->onUpdate(s_deltaTime);
@@ -92,25 +92,33 @@ namespace Engine {
 	bool Application::onWindowResize(WindowResize& e)
 	{
 #ifdef NG_DEBUG
+
 		LOG_CORE_INFO("APPLICATION: WINDOW RESIZE '{0} x {1}'", e.getWidth(), e.getHeight());
+
 #endif // NG_DEBUG
+
 		return true;
 	}
 
 	bool Application::onWindowClose(WindowClose& e)
 	{
 #ifdef NG_DEBUG
+
 		LOG_CORE_INFO("APPLICATION: CLOSING APPLICATION");
+
 #endif // NG_DEBUG
 
 		m_running = false;
+
 		return true;
 	}
 
 	bool Application::onWindowMoved(WindowMoved& e)
 	{
 #ifdef NG_DEBUG
+
 		LOG_CORE_INFO("APPLICATION: WINDOW MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
+
 #endif // NG_DEBUG
 
 		return true;
@@ -119,7 +127,9 @@ namespace Engine {
 	bool Application::onWindowLostFocus(WindowLostFocus& e)
 	{
 #ifdef NG_DEBUG
+
 		LOG_CORE_INFO("APPLICATION: WINDOW LOST FOCUS '{0} , {1}'", e.getxPos(), e.getyPos());
+
 #endif // NG_DEBUG
 
 		return true;
@@ -128,9 +138,10 @@ namespace Engine {
 	bool Application::onKeyPressed(KeyPressed& e)
 	{
 #ifdef NG_DEBUG
-		LOG_CORE_INFO("APPLICATION: KEY PRESSED '{0}'", e.getButton());
-#endif // NG_DEBUG
 
+		LOG_CORE_INFO("APPLICATION: KEY PRESSED '{0}'", e.getButton());
+
+#endif // NG_DEBUG
 
 		if (e.getButton() == KEY_ESCAPE)
 		{
@@ -143,9 +154,10 @@ namespace Engine {
 	bool Application::onKeyReleased(KeyReleased& e)
 	{
 #ifdef NG_DEBUG
-		LOG_CORE_INFO("APPLICATION: KEY RELEASED '{0}'", e.getButton());
-#endif // NG_DEBUG
 
+		LOG_CORE_INFO("APPLICATION: KEY RELEASED '{0}'", e.getButton());
+
+#endif // NG_DEBUG
 
 		if (e.getButton() == KEY_ESCAPE)
 		{
@@ -158,7 +170,9 @@ namespace Engine {
 	bool Application::onKeyTyped(KeyTyped& e)
 	{
 #ifdef NG_DEBUG
+
 		LOG_CORE_INFO("APPLICATION: KEY TYPED '{0}'", e.getButton());
+
 #endif // NG_DEBUG
 
 		return true;
@@ -166,8 +180,10 @@ namespace Engine {
 
 	bool Application::onMouseMove(MouseMoved& e)
 	{
-#ifdef NG_DEBU
+#ifdef NG_DEBUG
+
 		LOG_CORE_INFO("APPLICATION: MOUSE MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
+
 #endif // NG_DEBUG
 
 		return true;
@@ -176,7 +192,9 @@ namespace Engine {
 	bool Application::onMouseScrolled(MouseScrolled& e)
 	{
 #ifdef NG_DEBUG
+
 		LOG_CORE_INFO("APPLICATION: MOUSE SCROLLED '{0} , {1}'", e.getxDelta(), e.getyDelta());
+
 #endif // NG_DEBUG
 
 		return true;
@@ -185,7 +203,9 @@ namespace Engine {
 	bool Application::onMouseButtonPressed(MouseButtonPressed& e)
 	{
 #ifdef NG_DEBUG
+
 		LOG_CORE_INFO("APPLICATION: MOUSE BUTTON PRESSED '{0}'", e.getButton());
+
 #endif // NG_DEBUG
 
 		return true;
@@ -194,7 +214,9 @@ namespace Engine {
 	bool Application::onMouseButtonReleased(MouseButtonReleased& e)
 	{
 #ifdef NG_DEBUG
+
 		LOG_CORE_INFO("APPLICATION: MOUSE BUTTON RELEASED '{0}'", e.getButton());
+
 #endif // NG_DEBUG
 
 		return true;
