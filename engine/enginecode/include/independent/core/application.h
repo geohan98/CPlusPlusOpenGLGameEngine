@@ -4,6 +4,7 @@
 #include "windows/windowSystem.h"
 #include "windows/window.h"
 #include "systems/resourceManager.h"
+#include "systems/layerStack.h"
 
 namespace Engine {
 
@@ -20,9 +21,11 @@ namespace Engine {
 		std::shared_ptr<WindowSystem> m_windowSystem; ///< Window System
 		std::shared_ptr<Window> m_window; ///< Window
 		static std::shared_ptr<ResourceManager> m_resourceManager; ///< Resource Manager System
+		std::shared_ptr<LayerStack> m_layerStack; ///< Layer Stack
 	private:
 		static Application* s_instance; ///< Pointer to this application
 		bool m_running = true; ///< Should the update loop run
+		static glm::ivec2 s_screenResolution; ///< Window Resolution
 		static float s_deltaTime; ///< Time Since Last Frame
 		//Window Events
 		bool onWindowResize(WindowResize& e);				///< Window Resize Event

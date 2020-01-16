@@ -12,6 +12,8 @@ namespace Engine {
 
 	Application* Application::s_instance = nullptr;
 
+	glm::ivec2 Application::s_screenResolution;
+
 	std::shared_ptr<ResourceManager> Application::m_resourceManager;
 
 	float Application::s_deltaTime;
@@ -38,13 +40,18 @@ namespace Engine {
 		m_windowSystem = std::shared_ptr<WindowSystem>(new GLFW_WindowSys());
 #endif // NG_PLATFORM_WINDOWS
 		m_windowSystem->start();
-		WindowProperties prop = WindowProperties("Engine App", 1920, 1080, false);
-		m_window = std::shared_ptr<Window>(Window::create(prop));
+
+		m_window = std::shared_ptr<Window>(Window::create());
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
+		s_screenResolution = glm::ivec2(m_window->getWidth(), m_window->getHeight());
+
+		m_layerStack = std::shared_ptr<LayerStack>(new LayerStack());
+		m_layerStack->start();
 	}
 
 	Application::~Application()
 	{
+		m_layerStack->stop();
 		m_window->close();
 		m_windowSystem->stop();
 		m_time->stop();
@@ -64,6 +71,11 @@ namespace Engine {
 			//LOG_CORE_INFO("APPLICATION: FPS '{0}' , DeltaTime '{1}'", 1 / m_time->getDeltaTime(), m_time->getDeltaTime());
 #ifdef NG_DEBUG
 #endif // NG_DEBUG
+
+			for (auto it = m_layerStack->begin(); it != m_layerStack->end(); ++it)
+			{
+				(*it)->onUpdate(s_deltaTime);
+			}
 
 			m_window->onUpdate(s_deltaTime);
 		}
@@ -87,6 +99,12 @@ namespace Engine {
 		dispatcher.dispatch<MouseScrolled>(std::bind(&Application::onMouseScrolled, this, std::placeholders::_1));
 		dispatcher.dispatch<MouseButtonPressed>(std::bind(&Application::onMouseButtonPressed, this, std::placeholders::_1));
 		dispatcher.dispatch<MouseButtonReleased>(std::bind(&Application::onMouseButtonReleased, this, std::placeholders::_1));
+
+		//Send Event to Layer Stack
+		for (auto it = m_layerStack->end(); it != m_layerStack->begin();)
+		{
+			(*--it)->onEvent(e);
+		}
 	}
 
 	bool Application::onWindowResize(WindowResize& e)
@@ -94,6 +112,8 @@ namespace Engine {
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("APPLICATION: WINDOW RESIZE '{0} x {1}'", e.getWidth(), e.getHeight());
 #endif // NG_DEBUG
+
+		s_screenResolution = glm::ivec2(e.getWidth(), e.getHeight());
 		return true;
 	}
 
