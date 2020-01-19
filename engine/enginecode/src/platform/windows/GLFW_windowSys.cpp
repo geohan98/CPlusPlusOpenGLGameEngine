@@ -5,7 +5,7 @@
 
 namespace Engine
 {
-	void GLFW_WindowSys::start(SystemSignal init, ...)
+	void Systems::GLFW_WindowSys::start(SystemSignal init, ...)
 	{
 		if (!glfwInit())
 		{
@@ -20,7 +20,7 @@ namespace Engine
 #endif // NG_DEBUG
 		}
 	}
-	void GLFW_WindowSys::stop(SystemSignal close, ...)
+	void Systems::GLFW_WindowSys::stop(SystemSignal close, ...)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_WARN("TERMINATING GLFW");

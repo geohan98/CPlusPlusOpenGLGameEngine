@@ -16,7 +16,7 @@ namespace Engine {
 
 	glm::ivec2 Application::s_screenResolution;
 
-	std::shared_ptr<ResourceManager> Application::m_resourceManager;
+	std::shared_ptr<Systems::ResourceManager> Application::m_resourceManager;
 
 	float Application::s_deltaTime;
 
@@ -27,19 +27,19 @@ namespace Engine {
 			s_instance = this;
 		}
 
-		m_log = std::shared_ptr<Log>(new Log());
+		m_log = std::shared_ptr<Systems::Log>(new Systems::Log());
 		m_log->start();
 
-		m_resourceManager = std::shared_ptr<ResourceManager>(new ResourceManager());
+		m_resourceManager = std::shared_ptr<Systems::ResourceManager>(new Systems::ResourceManager());
 		m_resourceManager->start();
 
-		m_time = std::shared_ptr<Time>(new Time());
+		m_time = std::shared_ptr<Systems::Time>(new Systems::Time());
 		m_time->start();
 
 
 
 #ifdef NG_PLATFORM_WINDOWS
-		m_windowSystem = std::shared_ptr<WindowSystem>(new GLFW_WindowSys());
+		m_windowSystem = std::shared_ptr<Systems::WindowSystem>(new Systems::GLFW_WindowSys());
 #endif // NG_PLATFORM_WINDOWS
 		m_windowSystem->start();
 
@@ -47,7 +47,7 @@ namespace Engine {
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
 		s_screenResolution = glm::ivec2(m_window->getWidth(), m_window->getHeight());
 
-		m_layerStack = std::shared_ptr<LayerStack>(new LayerStack());
+		m_layerStack = std::shared_ptr<Systems::LayerStack>(new Systems::LayerStack());
 		m_layerStack->start();
 	}
 

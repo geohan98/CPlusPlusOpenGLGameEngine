@@ -11,14 +11,16 @@
 */
 
 namespace Engine {
+	namespace Systems {
 
-	enum class SystemSignal { None = 0 };
+		enum class SystemSignal { None = 0 };
 
-	class System
-	{
-	public:
-		virtual ~System() {};
-		virtual void start(SystemSignal init = SystemSignal::None, ...) = 0; //!< Start the system
-		virtual void stop(SystemSignal close = SystemSignal::None, ...) = 0; //!< Stop the system
-	};
+		class System
+		{
+		public:
+			virtual ~System() {};
+			virtual void start(SystemSignal init = SystemSignal::None, ...) = 0; //!< Start the system
+			virtual void stop(SystemSignal close = SystemSignal::None, ...) = 0; //!< Stop the system
+		};
+	}
 }

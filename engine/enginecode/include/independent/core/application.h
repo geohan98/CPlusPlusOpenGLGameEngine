@@ -16,12 +16,12 @@ namespace Engine {
 	{
 	protected:
 		Application(); ///< Constructor
-		std::shared_ptr<Log> m_log; ///< Logger System
-		std::shared_ptr<Time> m_time; ///< Timer System
-		std::shared_ptr<WindowSystem> m_windowSystem; ///< Window System
+		std::shared_ptr<Systems::Log> m_log; ///< Logger System
+		std::shared_ptr<Systems::Time> m_time; ///< Timer System
+		std::shared_ptr<Systems::WindowSystem> m_windowSystem; ///< Window System
 		std::shared_ptr<Window> m_window; ///< Window
-		static std::shared_ptr<ResourceManager> m_resourceManager; ///< Resource Manager System
-		std::shared_ptr<LayerStack> m_layerStack; ///< Layer Stack
+		static std::shared_ptr<Systems::ResourceManager> m_resourceManager; ///< Resource Manager System
+		std::shared_ptr<Systems::LayerStack> m_layerStack; ///< Layer Stack
 	private:
 		static Application* s_instance; ///< Pointer to this application
 		bool m_running = true; ///< Should the update loop run

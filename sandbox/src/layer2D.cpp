@@ -9,7 +9,7 @@ namespace Engine
 
 	void Layer2D::onAttach()
 	{
-		m_resourceManager = std::shared_ptr<ResourceManager>(new ResourceManager());
+		m_resourceManager = std::shared_ptr<Systems::ResourceManager>(new Systems::ResourceManager());
 		m_resourceManager->start();
 		m_renderer = std::shared_ptr<Renderer>(Renderer::createBasic2D());
 		m_renderer->actionCommand(RenderCommand::setClearColourCommand(0.9, 0.9, 0.9, 1.0f));

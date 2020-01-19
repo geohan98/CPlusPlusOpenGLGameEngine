@@ -29,7 +29,7 @@ namespace Engine
 	class TextLoader
 	{
 	public:
-		static bool loadModel(std::shared_ptr<ResourceManager> res, const std::string& filepath, TextModel& model)
+		static bool loadModel(std::shared_ptr<Systems::ResourceManager> res, const std::string& filepath, TextModel& model)
 		{
 #ifdef NG_DEBUG
 			LOG_CORE_INFO("MODEL LOADER: LOADING MODEL '{0}'", filepath);

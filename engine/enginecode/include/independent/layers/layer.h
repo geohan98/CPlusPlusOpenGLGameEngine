@@ -16,7 +16,7 @@ namespace Engine
 	{
 	protected:
 		std::string m_name; ///< Layer Name
-		std::shared_ptr<ResourceManager> m_resourceManager; ///< Pointer to resource manager
+		std::shared_ptr<Systems::ResourceManager> m_resourceManager; ///< Pointer to resource manager
 		std::shared_ptr<Renderer> m_renderer; ///< Pointer to renderer
 		std::shared_ptr<CameraController> m_camera; ///< Pointer to camera controller
 	public:
@@ -26,7 +26,7 @@ namespace Engine
 		virtual void onUpdate(float deltaTime) = 0; ///< Run every frame
 		virtual void onEvent(Events::Event& e) = 0; ///< Run on an Event
 		inline std::string& getName() { return m_name; } ///< Return the layer name
-		inline std::shared_ptr<ResourceManager>& getResources() { return m_resourceManager; } ///< Return the resource manager
+		inline std::shared_ptr<Systems::ResourceManager>& getResources() { return m_resourceManager; } ///< Return the resource manager
 		inline std::shared_ptr<Renderer>& getRenderer() { return m_renderer; } ///< Return the renderer
 		inline std::shared_ptr<CameraController>& getCamera() { return m_camera; } ///< Return the Camera controller
 	};

@@ -13,7 +13,7 @@ namespace Engine
 		std::string filepath = "assets/models/fccube.txt";
 		TextLoader::loadModel(m_resourceManager, filepath, mesh);
 
-		m_resourceManager = std::shared_ptr<ResourceManager>(new ResourceManager());
+		m_resourceManager = std::shared_ptr<Systems::ResourceManager>(new Systems::ResourceManager());
 		m_resourceManager->start();
 		m_renderer = std::shared_ptr<Renderer>(Renderer::createBasic3D());
 		m_renderer->actionCommand(RenderCommand::setClearColourCommand(0.9, 0.9, 0.9, 1.0f));
