@@ -8,6 +8,8 @@
 #include "include/platform/windows/GLFW_inputPoller.h"
 #endif // NG_PLATFORM_WINDOWS
 
+#include "systems/profiler.h"
+
 namespace Engine {
 
 	Application* Application::s_instance = nullptr;
