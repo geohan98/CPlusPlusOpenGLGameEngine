@@ -27,6 +27,11 @@ namespace Engine
 		m_resourceManager->getVertexArray("VAO1")->setIndexBuffer(m_resourceManager->getIndexBuffer("Index1"));
 		m_resourceManager->addMaterial("FC_CUBE", mesh.shader, m_resourceManager->getVertexArray("VAO1"));
 
+
+
+
+
+
 		m_materials.push_back(std::shared_ptr<MaterialComponent>(new MaterialComponent(m_resourceManager->getMaterial("FC_CUBE"))));
 		m_positions.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f))));
 		m_velocities.push_back(std::shared_ptr<VelocityComponent>(new VelocityComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 45.0f, 0.0f))));
@@ -36,9 +41,6 @@ namespace Engine
 		m_gameObjects.back()->addComponent(m_materials.back());
 		m_gameObjects.back()->addComponent(m_positions.back());
 		m_gameObjects.back()->addComponent(m_velocities.back());
-
-
-		JSONLoaderLog::load("assets/levels/cubeLevel.json");
 
 	}
 

@@ -36,9 +36,9 @@ namespace Engine
 		bool onMouseButtonReleased(MouseButtonReleased& e);	///< Mouse Button Release Event
 	public:
 		GameLayer(const std::string& name = "Game Layer") : Layer(name) {}; ///< Constructor
-		void onAttach() override;					///< Run on layer Attach
-		void onDetach() override;					///< Run on Layer remove from layer stack
-		void onUpdate(float deltaTime) override;	///< Run every Frame
-		void onEvent(Event& e) override;			///< Run on an Event
+		void onAttach() override;							///< Run on layer Attach
+		void onDetach() override;							///< Run on Layer remove from layer stack
+		void onUpdate(float deltaTime) override;			///< Run every Frame
+		void onEvent(Event& e) override;					///< Run on an Event
 	};
 }

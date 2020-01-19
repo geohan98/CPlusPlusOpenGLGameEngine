@@ -11,6 +11,7 @@ namespace Engine
 	AssetManager<VertexArray> ResourceManager::m_vertexArrayObjects;
 	AssetManager<VertexBuffer> ResourceManager::m_vertexBufferObjects;
 	AssetManager<Material> ResourceManager::m_materials;
+	AssetManager<UniformBuffer> ResourceManager::m_uniformBuffers;
 
 	std::string ResourceManager::parseFilePath(const std::string& str)
 	{
@@ -142,6 +143,22 @@ namespace Engine
 	bool ResourceManager::doesMaterialExist(const std::string& name)
 	{
 		return m_materials.contains(name);
+	}
+
+	std::shared_ptr<Engine::UniformBuffer> ResourceManager::addUniformBuffer(const std::string& name, unsigned int size, UniformBufferLayout& layout)
+	{
+		m_uniformBuffers.add(name, std::shared_ptr<UniformBuffer>(UniformBuffer::create(size, layout)));
+		return m_uniformBuffers.get(name);
+	}
+
+	std::shared_ptr<Engine::UniformBuffer> ResourceManager::getUniformBuffer(const std::string& name)
+	{
+		return m_uniformBuffers.get(name);
+	}
+
+	bool ResourceManager::doesUniformBufferExist(const std::string& name)
+	{
+		return m_uniformBuffers.contains(name);
 	}
 
 }

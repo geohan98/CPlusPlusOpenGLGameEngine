@@ -10,7 +10,7 @@ namespace Engine
 	{
 		glGenBuffers(1, &m_id);
 		glBindBuffer(GL_UNIFORM_BUFFER, m_id);
-		glBufferData(GL_UNIFORM_BUFFER, size, NULL, GL_DYNAMIC_DRAW);
+		glBufferData(GL_UNIFORM_BUFFER, size, NULL, GL_STATIC_DRAW);
 		glBindBufferRange(GL_UNIFORM_BUFFER, m_bindingPoint, m_id, 0, size);
 	}
 
@@ -27,6 +27,10 @@ namespace Engine
 	void OpenGL_UniformBuffer::attachShaderBlock(const std::shared_ptr<Shader>& shader, const std::string& blockName)
 	{
 		unsigned int uniformBlockIndex = glGetUniformBlockIndex(shader->id(), blockName.c_str());
+#ifdef NG_DEBUG
+		LOG_CORE_INFO("UNIFORM BUFFER: ATTACH SHADER BLOCK INDEX {0}", uniformBlockIndex);
+#endif // NG_DEBUG
+
 		glUniformBlockBinding(shader->id(), uniformBlockIndex, m_bindingPoint);
 	}
 
