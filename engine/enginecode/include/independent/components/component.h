@@ -43,7 +43,7 @@ namespace Engine
 		virtual void onAttach(GameObject* parent) { m_parent = parent; } ///< Run When Component is added to GameObject
 		virtual void onDetach() { m_parent = nullptr; } ///< Run When Component is Removed From Parent
 		virtual void onUpdate(float deltaTime) {}; ///< Called Every Frame
-		virtual void onEvent(Event& e) {} ///< Called on an Event
+		virtual void onEvent(Events::Event& e) {} ///< Called on an Event
 		virtual void receiveMessage(const ComponentMessage& msg) = 0; ///< Receive a message from another component
 	};
 

@@ -21,24 +21,24 @@ namespace Engine
 		std::vector<std::shared_ptr<PositionComponent>> m_positions;	///< All the position Components
 		std::vector<std::shared_ptr<VelocityComponent>> m_velocities;	///< All the velocity Components
 		//Application Events
-		bool onWindowResize(WindowResize& e);				///< Window Resize Event
-		bool onWindowClose(WindowClose& e);					///< Window Close Event
-		bool onWindowMoved(WindowMoved& e);					///< Window Move Event
-		bool onWindowLostFocus(WindowLostFocus& e);			///< Window Lost Focus Event
+		bool onWindowResize(Events::WindowResize& e);				///< Window Resize Event
+		bool onWindowClose(Events::WindowClose& e);					///< Window Close Event
+		bool onWindowMoved(Events::WindowMoved& e);					///< Window Move Event
+		bool onWindowLostFocus(Events::WindowLostFocus& e);			///< Window Lost Focus Event
 		//Key Events
-		bool onKeyPressed(KeyPressed& e);					///< Key Press Event
-		bool onKeyReleased(KeyReleased& e);					///< Key Release Event
-		bool onKeyTyped(KeyTyped& e);						///< Key Type Event
+		bool onKeyPressed(Events::KeyPressed& e);					///< Key Press Event
+		bool onKeyReleased(Events::KeyReleased& e);					///< Key Release Event
+		bool onKeyTyped(Events::KeyTyped& e);						///< Key Type Event
 		//Mouse Events
-		bool onMouseMove(MouseMoved& e);					///< Mouse Move Event
-		bool onMouseScrolled(MouseScrolled& e);				///< Mouse Scrolled Event
-		bool onMouseButtonPressed(MouseButtonPressed& e);	///< Mouse Button Press Event
-		bool onMouseButtonReleased(MouseButtonReleased& e);	///< Mouse Button Release Event
+		bool onMouseMove(Events::MouseMoved& e);					///< Mouse Move Event
+		bool onMouseScrolled(Events::MouseScrolled& e);				///< Mouse Scrolled Event
+		bool onMouseButtonPressed(Events::MouseButtonPressed& e);	///< Mouse Button Press Event
+		bool onMouseButtonReleased(Events::MouseButtonReleased& e);	///< Mouse Button Release Event
 	public:
 		GameLayer(const std::string& name = "Game Layer") : Layer(name) {}; ///< Constructor
 		void onAttach() override;							///< Run on layer Attach
 		void onDetach() override;							///< Run on Layer remove from layer stack
 		void onUpdate(float deltaTime) override;			///< Run every Frame
-		void onEvent(Event& e) override;					///< Run on an Event
+		void onEvent(Events::Event& e) override;					///< Run on an Event
 	};
 }

@@ -16,6 +16,6 @@ namespace Engine
 		virtual void init(float a, float b, float c, float d) = 0; ///< Create the Camera and assigns it to the pointer
 		virtual std::shared_ptr<Camera> getCamera() { return m_camera; } ///< Returns the camera pointer
 		virtual void onUpdate(float deltaTime) = 0; ///< Called Every Frame
-		virtual void onEvent(Event& e) = 0; ///< Called On an Event
+		virtual void onEvent(Events::Event& e) = 0; ///< Called On an Event
 	};
 }

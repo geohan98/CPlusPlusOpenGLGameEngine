@@ -34,16 +34,16 @@ namespace Engine
 		//Application Event Callbacks
 		glfwSetWindowCloseCallback(m_nativeWindow, [](GLFWwindow* window)
 			{
-				std::function<void(Event&)>& callback = *(std::function<void(Event&)>*)glfwGetWindowUserPointer(window);
-				WindowClose event;
+				std::function<void(Events::Event&)>& callback = *(std::function<void(Events::Event&)>*)glfwGetWindowUserPointer(window);
+				Events::WindowClose event;
 				callback(event);
 			}
 		);
 
 		glfwSetWindowSizeCallback(m_nativeWindow, [](GLFWwindow* window, int width, int height)
 			{
-				std::function<void(Event&)>& callback = *(std::function<void(Event&)>*)glfwGetWindowUserPointer(window);
-				WindowResize event(width, height);
+				std::function<void(Events::Event&)>& callback = *(std::function<void(Events::Event&)>*)glfwGetWindowUserPointer(window);
+				Events::WindowResize event(width, height);
 				callback(event);
 			}
 		);
@@ -51,25 +51,25 @@ namespace Engine
 		//Keyboard Event Callbacks
 		glfwSetKeyCallback(m_nativeWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
-				std::function<void(Event&)>& callback = *(std::function<void(Event&)>*)glfwGetWindowUserPointer(window);
+				std::function<void(Events::Event&)>& callback = *(std::function<void(Events::Event&)>*)glfwGetWindowUserPointer(window);
 
 				switch (action)
 				{
 				case GLFW_PRESS:
 				{
-					KeyPressed event(key, 0);
+					Events::KeyPressed event(key, 0);
 					callback(event);
 				}
 				break;
 				case  GLFW_REPEAT:
 				{
-					KeyPressed event(key, 1);
+					Events::KeyPressed event(key, 1);
 					callback(event);
 				}
 				break;
 				case GLFW_RELEASE:
 				{
-					KeyReleased event(key);
+					Events::KeyReleased event(key);
 					callback(event);
 				}
 				break;
@@ -79,8 +79,8 @@ namespace Engine
 
 		glfwSetCharCallback(m_nativeWindow, [](GLFWwindow* window, unsigned int unicodeCodepoint)
 			{
-				std::function<void(Event&)>& callback = *(std::function<void(Event&)>*)glfwGetWindowUserPointer(window);
-				KeyTyped event(unicodeCodepoint);
+				std::function<void(Events::Event&)>& callback = *(std::function<void(Events::Event&)>*)glfwGetWindowUserPointer(window);
+				Events::KeyTyped event(unicodeCodepoint);
 				callback(event);
 			}
 		);
@@ -88,27 +88,27 @@ namespace Engine
 		//Mouse Event Callbacks
 		glfwSetCursorPosCallback(m_nativeWindow, [](GLFWwindow* window, double xPos, double yPos)
 			{
-				std::function<void(Event&)>& callback = *(std::function<void(Event&)>*)glfwGetWindowUserPointer(window);
-				MouseMoved event(xPos, yPos);
+				std::function<void(Events::Event&)>& callback = *(std::function<void(Events::Event&)>*)glfwGetWindowUserPointer(window);
+				Events::MouseMoved event(xPos, yPos);
 				callback(event);
 			}
 		);
 
 		glfwSetMouseButtonCallback(m_nativeWindow, [](GLFWwindow* window, int button, int action, int mods)
 			{
-				std::function<void(Event&)>& callback = *(std::function<void(Event&)>*)glfwGetWindowUserPointer(window);
+				std::function<void(Events::Event&)>& callback = *(std::function<void(Events::Event&)>*)glfwGetWindowUserPointer(window);
 
 				switch (action)
 				{
 				case GLFW_PRESS:
 				{
-					MouseButtonPressed event(button);
+					Events::MouseButtonPressed event(button);
 					callback(event);
 				}
 				break;
 				case GLFW_RELEASE:
 				{
-					MouseButtonReleased event(button);
+					Events::MouseButtonReleased event(button);
 					callback(event);
 				}
 				break;
@@ -118,8 +118,8 @@ namespace Engine
 
 		glfwSetScrollCallback(m_nativeWindow, [](GLFWwindow* window, double xDelta, double yDelta)
 			{
-				std::function<void(Event&)>& callback = *(std::function<void(Event&)>*)glfwGetWindowUserPointer(window);
-				MouseScrolled event(xDelta, yDelta);
+				std::function<void(Events::Event&)>& callback = *(std::function<void(Events::Event&)>*)glfwGetWindowUserPointer(window);
+				Events::MouseScrolled event(xDelta, yDelta);
 				callback(event);
 			}
 		);
@@ -167,7 +167,7 @@ namespace Engine
 
 		m_properties.m_isVSync = VSync;
 	}
-	void GLFW_WindowImp::setEventCallback(const std::function<void(Event&)>& callback)
+	void GLFW_WindowImp::setEventCallback(const std::function<void(Events::Event&)>& callback)
 	{
 		m_callBack = callback;
 	}

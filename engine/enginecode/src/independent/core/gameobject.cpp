@@ -13,7 +13,7 @@ namespace Engine
 		}
 	}
 
-	void GameObject::onEvent(Event& e)
+	void GameObject::onEvent(Events::Event& e)
 	{
 		for (auto& it : m_components)
 		{

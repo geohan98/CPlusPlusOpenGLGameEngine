@@ -62,42 +62,42 @@ namespace Engine
 		m_renderer->actionCommand(RenderCommand::setDepthTestLessCommand(false));
 		m_renderer->actionCommand(RenderCommand::setBackFaceCullingCommand(false));
 
-		std::pair<std::string, void*> data("u_vp", (void*)&m_camera->getCamera()->getViewProjection()[0][0]);
+		std::pair<std::string, void*> data("u_vp", (void*)& m_camera->getCamera()->getViewProjection()[0][0]);
 		ComponentMessage msg(ComponentMessageType::UniformSet, data);
 		m_materials.back()->receiveMessage(msg);
 
 		unsigned int texSlot = 1;
 		m_resourceManager->getTexture("assets/textures/face.png")->bind(texSlot);
-		m_materials.back()->getMaterial()->setDataElement("u_texData", (void*)&texSlot);
+		m_materials.back()->getMaterial()->setDataElement("u_texData", (void*)& texSlot);
 		glm::mat4 model = glm::mat4(1.0f);
 		m_resourceManager->getTexture("assets/textures/face.png")->bind();
 
 		m_renderer->submit(m_materials.back()->getMaterial());
 	}
 
-	void Layer2D::onEvent(Event& e)
+	void Layer2D::onEvent(Events::Event& e)
 	{
 		m_camera->onEvent(e);
 
 		//Dispatch Event to Game Layer
-		EventDispatcher dispatcher(e);
+		Events::EventDispatcher dispatcher(e);
 		//Application Events
-		dispatcher.dispatch<WindowResize>(std::bind(&Layer2D::onWindowResize, this, std::placeholders::_1));
-		dispatcher.dispatch<WindowClose>(std::bind(&Layer2D::onWindowClose, this, std::placeholders::_1));
-		dispatcher.dispatch<WindowMoved>(std::bind(&Layer2D::onWindowMoved, this, std::placeholders::_1));
-		dispatcher.dispatch<WindowLostFocus>(std::bind(&Layer2D::onWindowLostFocus, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowResize>(std::bind(&Layer2D::onWindowResize, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowClose>(std::bind(&Layer2D::onWindowClose, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowMoved>(std::bind(&Layer2D::onWindowMoved, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowLostFocus>(std::bind(&Layer2D::onWindowLostFocus, this, std::placeholders::_1));
 		//Key Events
-		dispatcher.dispatch<KeyPressed>(std::bind(&Layer2D::onKeyPressed, this, std::placeholders::_1));
-		dispatcher.dispatch<KeyReleased>(std::bind(&Layer2D::onKeyReleased, this, std::placeholders::_1));
-		dispatcher.dispatch<KeyTyped>(std::bind(&Layer2D::onKeyTyped, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::KeyPressed>(std::bind(&Layer2D::onKeyPressed, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::KeyReleased>(std::bind(&Layer2D::onKeyReleased, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::KeyTyped>(std::bind(&Layer2D::onKeyTyped, this, std::placeholders::_1));
 		//Mouse Events
-		dispatcher.dispatch<MouseMoved>(std::bind(&Layer2D::onMouseMove, this, std::placeholders::_1));
-		dispatcher.dispatch<MouseScrolled>(std::bind(&Layer2D::onMouseScrolled, this, std::placeholders::_1));
-		dispatcher.dispatch<MouseButtonPressed>(std::bind(&Layer2D::onMouseButtonPressed, this, std::placeholders::_1));
-		dispatcher.dispatch<MouseButtonReleased>(std::bind(&Layer2D::onMouseButtonReleased, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::MouseMoved>(std::bind(&Layer2D::onMouseMove, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::MouseScrolled>(std::bind(&Layer2D::onMouseScrolled, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::MouseButtonPressed>(std::bind(&Layer2D::onMouseButtonPressed, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::MouseButtonReleased>(std::bind(&Layer2D::onMouseButtonReleased, this, std::placeholders::_1));
 	}
 
-	bool Layer2D::onWindowResize(WindowResize& e)
+	bool Layer2D::onWindowResize(Events::WindowResize& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: WINDOW RESIZE '{0} x {1}'", e.getWidth(), e.getHeight());
@@ -105,7 +105,7 @@ namespace Engine
 		return true;
 	}
 
-	bool Layer2D::onWindowClose(WindowClose& e)
+	bool Layer2D::onWindowClose(Events::WindowClose& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: CLOSING APPLICATION");
@@ -113,7 +113,7 @@ namespace Engine
 		return true;
 	}
 
-	bool Layer2D::onWindowMoved(WindowMoved& e)
+	bool Layer2D::onWindowMoved(Events::WindowMoved& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: WINDOW MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
@@ -121,7 +121,7 @@ namespace Engine
 		return true;
 	}
 
-	bool Layer2D::onWindowLostFocus(WindowLostFocus& e)
+	bool Layer2D::onWindowLostFocus(Events::WindowLostFocus& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: WINDOW LOST FOCUS '{0} , {1}'", e.getxPos(), e.getyPos());
@@ -129,7 +129,7 @@ namespace Engine
 		return true;
 	}
 
-	bool Layer2D::onKeyPressed(KeyPressed& e)
+	bool Layer2D::onKeyPressed(Events::KeyPressed& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: KEY PRESSED '{0}'", e.getButton());
@@ -137,7 +137,7 @@ namespace Engine
 		return true;
 	}
 
-	bool Layer2D::onKeyReleased(KeyReleased& e)
+	bool Layer2D::onKeyReleased(Events::KeyReleased& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: KEY RELEASED '{0}'", e.getButton());
@@ -145,7 +145,7 @@ namespace Engine
 		return true;
 	}
 
-	bool Layer2D::onKeyTyped(KeyTyped& e)
+	bool Layer2D::onKeyTyped(Events::KeyTyped& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: KEY TYPED '{0}'", e.getButton());
@@ -153,7 +153,7 @@ namespace Engine
 		return true;
 	}
 
-	bool Layer2D::onMouseMove(MouseMoved& e)
+	bool Layer2D::onMouseMove(Events::MouseMoved& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: MOUSE MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
@@ -161,7 +161,7 @@ namespace Engine
 		return true;
 	}
 
-	bool Layer2D::onMouseScrolled(MouseScrolled& e)
+	bool Layer2D::onMouseScrolled(Events::MouseScrolled& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: MOUSE SCROLLED '{0} , {1}'", e.getxDelta(), e.getyDelta());
@@ -169,7 +169,7 @@ namespace Engine
 		return true;
 	}
 
-	bool Layer2D::onMouseButtonPressed(MouseButtonPressed& e)
+	bool Layer2D::onMouseButtonPressed(Events::MouseButtonPressed& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: MOUSE BUTTON PRESSED '{0}'", e.getButton());
@@ -177,7 +177,7 @@ namespace Engine
 		return true;
 	}
 
-	bool Layer2D::onMouseButtonReleased(MouseButtonReleased& e)
+	bool Layer2D::onMouseButtonReleased(Events::MouseButtonReleased& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: MOUSE BUTTON RELEASED '{0}'", e.getButton());

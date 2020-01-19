@@ -8,12 +8,12 @@
 #include "events/mouseEvents.h"
 #include "systems/ButtonCodes.h"
 
-bool onResizeTrue(Engine::WindowResize& e)
+bool onResizeTrue(Engine::Events::WindowResize& e)
 {
 	return true;
 }
 
-bool onResizeFalse(Engine::WindowResize& e)
+bool onResizeFalse(Engine::Events::WindowResize& e)
 {
 	return false;
 }

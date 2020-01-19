@@ -83,24 +83,24 @@ namespace Engine {
 		}
 	}
 
-	void Application::onEvent(Event& e)
+	void Application::onEvent(Events::Event& e)
 	{
 		//Dispatch Event to Application
-		EventDispatcher dispatcher(e);
+		Events::EventDispatcher dispatcher(e);
 		//Window Events
-		dispatcher.dispatch<WindowResize>(std::bind(&Application::onWindowResize, this, std::placeholders::_1));
-		dispatcher.dispatch<WindowClose>(std::bind(&Application::onWindowClose, this, std::placeholders::_1));
-		dispatcher.dispatch<WindowMoved>(std::bind(&Application::onWindowMoved, this, std::placeholders::_1));
-		dispatcher.dispatch<WindowLostFocus>(std::bind(&Application::onWindowLostFocus, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowResize>(std::bind(&Application::onWindowResize, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowClose>(std::bind(&Application::onWindowClose, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowMoved>(std::bind(&Application::onWindowMoved, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowLostFocus>(std::bind(&Application::onWindowLostFocus, this, std::placeholders::_1));
 		//Key Events
-		dispatcher.dispatch<KeyPressed>(std::bind(&Application::onKeyPressed, this, std::placeholders::_1));
-		dispatcher.dispatch<KeyReleased>(std::bind(&Application::onKeyReleased, this, std::placeholders::_1));
-		dispatcher.dispatch<KeyTyped>(std::bind(&Application::onKeyTyped, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::KeyPressed>(std::bind(&Application::onKeyPressed, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::KeyReleased>(std::bind(&Application::onKeyReleased, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::KeyTyped>(std::bind(&Application::onKeyTyped, this, std::placeholders::_1));
 		//Mouse Events
-		dispatcher.dispatch<MouseMoved>(std::bind(&Application::onMouseMove, this, std::placeholders::_1));
-		dispatcher.dispatch<MouseScrolled>(std::bind(&Application::onMouseScrolled, this, std::placeholders::_1));
-		dispatcher.dispatch<MouseButtonPressed>(std::bind(&Application::onMouseButtonPressed, this, std::placeholders::_1));
-		dispatcher.dispatch<MouseButtonReleased>(std::bind(&Application::onMouseButtonReleased, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::MouseMoved>(std::bind(&Application::onMouseMove, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::MouseScrolled>(std::bind(&Application::onMouseScrolled, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::MouseButtonPressed>(std::bind(&Application::onMouseButtonPressed, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::MouseButtonReleased>(std::bind(&Application::onMouseButtonReleased, this, std::placeholders::_1));
 
 		//Send Event to Layer Stack
 		for (auto it = m_layerStack->end(); it != m_layerStack->begin();)
@@ -109,7 +109,7 @@ namespace Engine {
 		}
 	}
 
-	bool Application::onWindowResize(WindowResize& e)
+	bool Application::onWindowResize(Events::WindowResize& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("APPLICATION: WINDOW RESIZE '{0} x {1}'", e.getWidth(), e.getHeight());
@@ -119,7 +119,7 @@ namespace Engine {
 		return true;
 	}
 
-	bool Application::onWindowClose(WindowClose& e)
+	bool Application::onWindowClose(Events::WindowClose& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("APPLICATION: CLOSING APPLICATION");
@@ -129,7 +129,7 @@ namespace Engine {
 		return true;
 	}
 
-	bool Application::onWindowMoved(WindowMoved& e)
+	bool Application::onWindowMoved(Events::WindowMoved& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("APPLICATION: WINDOW MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
@@ -138,7 +138,7 @@ namespace Engine {
 		return true;
 	}
 
-	bool Application::onWindowLostFocus(WindowLostFocus& e)
+	bool Application::onWindowLostFocus(Events::WindowLostFocus& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("APPLICATION: WINDOW LOST FOCUS '{0} , {1}'", e.getxPos(), e.getyPos());
@@ -147,7 +147,7 @@ namespace Engine {
 		return true;
 	}
 
-	bool Application::onKeyPressed(KeyPressed& e)
+	bool Application::onKeyPressed(Events::KeyPressed& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("APPLICATION: KEY PRESSED '{0}'", e.getButton());
@@ -162,7 +162,7 @@ namespace Engine {
 		return true;
 	}
 
-	bool Application::onKeyReleased(KeyReleased& e)
+	bool Application::onKeyReleased(Events::KeyReleased& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("APPLICATION: KEY RELEASED '{0}'", e.getButton());
@@ -177,7 +177,7 @@ namespace Engine {
 		return true;
 	}
 
-	bool Application::onKeyTyped(KeyTyped& e)
+	bool Application::onKeyTyped(Events::KeyTyped& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("APPLICATION: KEY TYPED '{0}'", e.getButton());
@@ -186,7 +186,7 @@ namespace Engine {
 		return true;
 	}
 
-	bool Application::onMouseMove(MouseMoved& e)
+	bool Application::onMouseMove(Events::MouseMoved& e)
 	{
 #ifdef NG_DEBU
 		LOG_CORE_INFO("APPLICATION: MOUSE MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
@@ -195,7 +195,7 @@ namespace Engine {
 		return true;
 	}
 
-	bool Application::onMouseScrolled(MouseScrolled& e)
+	bool Application::onMouseScrolled(Events::MouseScrolled& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("APPLICATION: MOUSE SCROLLED '{0} , {1}'", e.getxDelta(), e.getyDelta());
@@ -204,7 +204,7 @@ namespace Engine {
 		return true;
 	}
 
-	bool Application::onMouseButtonPressed(MouseButtonPressed& e)
+	bool Application::onMouseButtonPressed(Events::MouseButtonPressed& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("APPLICATION: MOUSE BUTTON PRESSED '{0}'", e.getButton());
@@ -213,7 +213,7 @@ namespace Engine {
 		return true;
 	}
 
-	bool Application::onMouseButtonReleased(MouseButtonReleased& e)
+	bool Application::onMouseButtonReleased(Events::MouseButtonReleased& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("APPLICATION: MOUSE BUTTON RELEASED '{0}'", e.getButton());

@@ -41,26 +41,26 @@ namespace Engine
 		std::string m_filepath; ///< Filepath of Level File
 
 		//Application Events
-		bool onWindowResize(WindowResize& e);				///< Window Resize Event
-		bool onWindowClose(WindowClose& e);					///< Window Close Event
-		bool onWindowMoved(WindowMoved& e);					///< Window Move Event
-		bool onWindowLostFocus(WindowLostFocus& e);			///< Window Lost Focus Event
+		bool onWindowResize(Events::WindowResize& e);				///< Window Resize Event
+		bool onWindowClose(Events::WindowClose& e);					///< Window Close Event
+		bool onWindowMoved(Events::WindowMoved& e);					///< Window Move Event
+		bool onWindowLostFocus(Events::WindowLostFocus& e);			///< Window Lost Focus Event
 		//Key Events
-		bool onKeyPressed(KeyPressed& e);					///< Key Press Event
-		bool onKeyReleased(KeyReleased& e);					///< Key Release Event
-		bool onKeyTyped(KeyTyped& e);						///< Key Type Event
+		bool onKeyPressed(Events::KeyPressed& e);					///< Key Press Event
+		bool onKeyReleased(Events::KeyReleased& e);					///< Key Release Event
+		bool onKeyTyped(Events::KeyTyped& e);						///< Key Type Event
 		//Mouse Events
-		bool onMouseMove(MouseMoved& e);					///< Mouse Move Event
-		bool onMouseScrolled(MouseScrolled& e);				///< Mouse Scrolled Event
-		bool onMouseButtonPressed(MouseButtonPressed& e);	///< Mouse Button Press Event
-		bool onMouseButtonReleased(MouseButtonReleased& e);	///< Mouse Button Release Event
+		bool onMouseMove(Events::MouseMoved& e);					///< Mouse Move Event
+		bool onMouseScrolled(Events::MouseScrolled& e);				///< Mouse Scrolled Event
+		bool onMouseButtonPressed(Events::MouseButtonPressed& e);	///< Mouse Button Press Event
+		bool onMouseButtonReleased(Events::MouseButtonReleased& e);	///< Mouse Button Release Event
 	public:
 		JSONLayer(const std::string& filepath, const std::string& name = "Layer") : Layer(name), m_filepath(filepath) {} ///< Constructor
 
 		virtual void onAttach() override; ///< Run on layer stack attach
 		virtual void onDetach() override; ///< Run on layer stack removal
 		virtual void onUpdate(float deltaTime) override; ///< Run every frame
-		virtual void onEvent(Event& e) override; ///< Run on an Event
+		virtual void onEvent(Events::Event& e) override; ///< Run on an Event
 
 		inline std::vector<std::shared_ptr<GameObject>>& getGameObjects() { return m_gameObjects; }					///< Return all the game objects
 		inline std::vector<std::shared_ptr<MaterialComponent>>& getMaterials() { return m_materials; }				///< Return all the material components

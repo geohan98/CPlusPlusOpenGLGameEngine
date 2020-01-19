@@ -39,7 +39,7 @@ namespace Engine
 
 		for (auto& mat : m_materials)
 		{
-			std::pair<std::string, void*> data("u_vp", (void*)&m_camera->getCamera()->getViewProjection()[0][0]);
+			std::pair<std::string, void*> data("u_vp", (void*)& m_camera->getCamera()->getViewProjection()[0][0]);
 			ComponentMessage msg(ComponentMessageType::UniformSet, data);
 			mat->receiveMessage(msg);
 			m_renderer->submit(mat->getMaterial());
@@ -66,17 +66,17 @@ namespace Engine
 		}
 	}
 
-	void JSONLayer::onEvent(Event& e)
+	void JSONLayer::onEvent(Events::Event& e)
 	{
 		m_camera->onEvent(e);
 		for (auto& CGO : m_gameObjects) CGO->onEvent(e);
 
 		//Dispatch Event to JSONLayer
-		EventDispatcher dispatcher(e);
-		dispatcher.dispatch<KeyReleased>(std::bind(&JSONLayer::onKeyReleased, this, std::placeholders::_1));
+		Events::EventDispatcher dispatcher(e);
+		dispatcher.dispatch<Events::KeyReleased>(std::bind(&JSONLayer::onKeyReleased, this, std::placeholders::_1));
 	}
 
-	bool JSONLayer::onWindowResize(WindowResize& e)
+	bool JSONLayer::onWindowResize(Events::WindowResize& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("JSONLayer: WINDOW RESIZE '{0} x {1}'", e.getWidth(), e.getHeight());
@@ -84,7 +84,7 @@ namespace Engine
 		return true;
 	}
 
-	bool JSONLayer::onWindowClose(WindowClose& e)
+	bool JSONLayer::onWindowClose(Events::WindowClose& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("JSONLayer: CLOSING APPLICATION");
@@ -92,7 +92,7 @@ namespace Engine
 		return true;
 	}
 
-	bool JSONLayer::onWindowMoved(WindowMoved& e)
+	bool JSONLayer::onWindowMoved(Events::WindowMoved& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("JSONLayer: WINDOW MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
@@ -100,7 +100,7 @@ namespace Engine
 		return true;
 	}
 
-	bool JSONLayer::onWindowLostFocus(WindowLostFocus& e)
+	bool JSONLayer::onWindowLostFocus(Events::WindowLostFocus& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("JSONLayer: WINDOW LOST FOCUS '{0} , {1}'", e.getxPos(), e.getyPos());
@@ -108,7 +108,7 @@ namespace Engine
 		return true;
 	}
 
-	bool JSONLayer::onKeyPressed(KeyPressed& e)
+	bool JSONLayer::onKeyPressed(Events::KeyPressed& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("JSONLayer: KEY PRESSED '{0}'", e.getButton());
@@ -116,7 +116,7 @@ namespace Engine
 		return true;
 	}
 
-	bool JSONLayer::onKeyReleased(KeyReleased& e)
+	bool JSONLayer::onKeyReleased(Events::KeyReleased& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("JSONLayer: KEY RELEASED '{0}'", e.getButton());
@@ -152,7 +152,7 @@ namespace Engine
 		return true;
 	}
 
-	bool JSONLayer::onKeyTyped(KeyTyped& e)
+	bool JSONLayer::onKeyTyped(Events::KeyTyped& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("JSONLayer: KEY TYPED '{0}'", e.getButton());
@@ -161,7 +161,7 @@ namespace Engine
 		return true;
 	}
 
-	bool JSONLayer::onMouseMove(MouseMoved& e)
+	bool JSONLayer::onMouseMove(Events::MouseMoved& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("JSONLayer: MOUSE MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
@@ -169,7 +169,7 @@ namespace Engine
 		return true;
 	}
 
-	bool JSONLayer::onMouseScrolled(MouseScrolled& e)
+	bool JSONLayer::onMouseScrolled(Events::MouseScrolled& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("JSONLayer: MOUSE SCROLLED '{0} , {1}'", e.getxDelta(), e.getyDelta());
@@ -177,7 +177,7 @@ namespace Engine
 		return true;
 	}
 
-	bool JSONLayer::onMouseButtonPressed(MouseButtonPressed& e)
+	bool JSONLayer::onMouseButtonPressed(Events::MouseButtonPressed& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("JSONLayer: MOUSE BUTTON PRESSED '{0}'", e.getButton());
@@ -185,7 +185,7 @@ namespace Engine
 		return true;
 	}
 
-	bool JSONLayer::onMouseButtonReleased(MouseButtonReleased& e)
+	bool JSONLayer::onMouseButtonReleased(Events::MouseButtonReleased& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("JSONLayer: MOUSE BUTTON RELEASED '{0}'", e.getButton());
@@ -194,3 +194,4 @@ namespace Engine
 	}
 
 }
+

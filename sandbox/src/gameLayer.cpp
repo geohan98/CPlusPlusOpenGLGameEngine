@@ -63,7 +63,7 @@ namespace Engine
 
 		for (auto& mat : m_materials)
 		{
-			std::pair<std::string, void*> data("u_vp", (void*)&m_camera->getCamera()->getViewProjection()[0][0]);
+			std::pair<std::string, void*> data("u_vp", (void*)& m_camera->getCamera()->getViewProjection()[0][0]);
 			ComponentMessage msg(ComponentMessageType::UniformSet, data);
 			mat->receiveMessage(msg);
 			m_renderer->submit(mat->getMaterial());
@@ -72,7 +72,7 @@ namespace Engine
 
 	}
 
-	void GameLayer::onEvent(Event& e)
+	void GameLayer::onEvent(Events::Event& e)
 	{
 		//Send Event to Camera Controller
 		m_camera->onEvent(e);
@@ -80,25 +80,25 @@ namespace Engine
 		for (auto& CGO : m_gameObjects) CGO->onEvent(e);
 
 		//Dispatch Event to Game Layer
-		EventDispatcher dispatcher(e);
+		Events::EventDispatcher dispatcher(e);
 		//Application Events
-		dispatcher.dispatch<WindowResize>(std::bind(&GameLayer::onWindowResize, this, std::placeholders::_1));
-		dispatcher.dispatch<WindowClose>(std::bind(&GameLayer::onWindowClose, this, std::placeholders::_1));
-		dispatcher.dispatch<WindowMoved>(std::bind(&GameLayer::onWindowMoved, this, std::placeholders::_1));
-		dispatcher.dispatch<WindowLostFocus>(std::bind(&GameLayer::onWindowLostFocus, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowResize>(std::bind(&GameLayer::onWindowResize, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowClose>(std::bind(&GameLayer::onWindowClose, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowMoved>(std::bind(&GameLayer::onWindowMoved, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowLostFocus>(std::bind(&GameLayer::onWindowLostFocus, this, std::placeholders::_1));
 		//Key Events
-		dispatcher.dispatch<KeyPressed>(std::bind(&GameLayer::onKeyPressed, this, std::placeholders::_1));
-		dispatcher.dispatch<KeyReleased>(std::bind(&GameLayer::onKeyReleased, this, std::placeholders::_1));
-		dispatcher.dispatch<KeyTyped>(std::bind(&GameLayer::onKeyTyped, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::KeyPressed>(std::bind(&GameLayer::onKeyPressed, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::KeyReleased>(std::bind(&GameLayer::onKeyReleased, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::KeyTyped>(std::bind(&GameLayer::onKeyTyped, this, std::placeholders::_1));
 		//Mouse Events
-		dispatcher.dispatch<MouseMoved>(std::bind(&GameLayer::onMouseMove, this, std::placeholders::_1));
-		dispatcher.dispatch<MouseScrolled>(std::bind(&GameLayer::onMouseScrolled, this, std::placeholders::_1));
-		dispatcher.dispatch<MouseButtonPressed>(std::bind(&GameLayer::onMouseButtonPressed, this, std::placeholders::_1));
-		dispatcher.dispatch<MouseButtonReleased>(std::bind(&GameLayer::onMouseButtonReleased, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::MouseMoved>(std::bind(&GameLayer::onMouseMove, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::MouseScrolled>(std::bind(&GameLayer::onMouseScrolled, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::MouseButtonPressed>(std::bind(&GameLayer::onMouseButtonPressed, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::MouseButtonReleased>(std::bind(&GameLayer::onMouseButtonReleased, this, std::placeholders::_1));
 	}
 
 
-	bool GameLayer::onWindowResize(WindowResize& e)
+	bool GameLayer::onWindowResize(Events::WindowResize& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: WINDOW RESIZE '{0} x {1}'", e.getWidth(), e.getHeight());
@@ -106,7 +106,7 @@ namespace Engine
 		return true;
 	}
 
-	bool GameLayer::onWindowClose(WindowClose& e)
+	bool GameLayer::onWindowClose(Events::WindowClose& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: CLOSING APPLICATION");
@@ -114,7 +114,7 @@ namespace Engine
 		return true;
 	}
 
-	bool GameLayer::onWindowMoved(WindowMoved& e)
+	bool GameLayer::onWindowMoved(Events::WindowMoved& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: WINDOW MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
@@ -122,7 +122,7 @@ namespace Engine
 		return true;
 	}
 
-	bool GameLayer::onWindowLostFocus(WindowLostFocus& e)
+	bool GameLayer::onWindowLostFocus(Events::WindowLostFocus& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: WINDOW LOST FOCUS '{0} , {1}'", e.getxPos(), e.getyPos());
@@ -130,7 +130,7 @@ namespace Engine
 		return true;
 	}
 
-	bool GameLayer::onKeyPressed(KeyPressed& e)
+	bool GameLayer::onKeyPressed(Events::KeyPressed& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: KEY PRESSED '{0}'", e.getButton());
@@ -138,7 +138,7 @@ namespace Engine
 		return true;
 	}
 
-	bool GameLayer::onKeyReleased(KeyReleased& e)
+	bool GameLayer::onKeyReleased(Events::KeyReleased& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: KEY RELEASED '{0}'", e.getButton());
@@ -153,7 +153,7 @@ namespace Engine
 		return true;
 	}
 
-	bool GameLayer::onKeyTyped(KeyTyped& e)
+	bool GameLayer::onKeyTyped(Events::KeyTyped& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: KEY TYPED '{0}'", e.getButton());
@@ -162,7 +162,7 @@ namespace Engine
 		return true;
 	}
 
-	bool GameLayer::onMouseMove(MouseMoved& e)
+	bool GameLayer::onMouseMove(Events::MouseMoved& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: MOUSE MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
@@ -170,7 +170,7 @@ namespace Engine
 		return true;
 	}
 
-	bool GameLayer::onMouseScrolled(MouseScrolled& e)
+	bool GameLayer::onMouseScrolled(Events::MouseScrolled& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: MOUSE SCROLLED '{0} , {1}'", e.getxDelta(), e.getyDelta());
@@ -178,7 +178,7 @@ namespace Engine
 		return true;
 	}
 
-	bool GameLayer::onMouseButtonPressed(MouseButtonPressed& e)
+	bool GameLayer::onMouseButtonPressed(Events::MouseButtonPressed& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: MOUSE BUTTON PRESSED '{0}'", e.getButton());
@@ -186,7 +186,7 @@ namespace Engine
 		return true;
 	}
 
-	bool GameLayer::onMouseButtonReleased(MouseButtonReleased& e)
+	bool GameLayer::onMouseButtonReleased(Events::MouseButtonReleased& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("GAME LAYER: MOUSE BUTTON RELEASED '{0}'", e.getButton());

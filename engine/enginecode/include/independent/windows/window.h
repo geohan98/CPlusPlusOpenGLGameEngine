@@ -35,7 +35,7 @@ namespace Engine {
 		virtual void onUpdate(float deltaTime) = 0;										///< runs every frame
 		virtual void onResize(unsigned int width, unsigned int height) = 0;				///< on resize event
 		virtual void setVSync(bool VSync) = 0;											///< set is vsync
-		virtual void setEventCallback(const std::function<void(Event&)>& callback) = 0;	///< set the event callback function
+		virtual void setEventCallback(const std::function<void(Events::Event&)>& callback) = 0;	///< set the event callback function
 		virtual unsigned int getWidth() const = 0;										///< return the window width
 		virtual unsigned int getHeight() const = 0;										///< return window height
 		virtual void* getNativeWindow() const = 0;										///< get the native window

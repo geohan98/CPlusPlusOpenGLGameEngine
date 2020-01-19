@@ -28,26 +28,26 @@ namespace Engine {
 		static glm::ivec2 s_screenResolution; ///< Window Resolution
 		static float s_deltaTime; ///< Time Since Last Frame
 		//Window Events
-		bool onWindowResize(WindowResize& e);				///< Window Resize Event
-		bool onWindowClose(WindowClose& e);					///< Window Close Event
-		bool onWindowMoved(WindowMoved& e);					///< Window Move Event
-		bool onWindowLostFocus(WindowLostFocus& e);			///< Window Lost Focus Event
+		bool onWindowResize(Events::WindowResize& e);				///< Window Resize Event
+		bool onWindowClose(Events::WindowClose& e);					///< Window Close Event
+		bool onWindowMoved(Events::WindowMoved& e);					///< Window Move Event
+		bool onWindowLostFocus(Events::WindowLostFocus& e);			///< Window Lost Focus Event
 		//Key Events
-		bool onKeyPressed(KeyPressed& e);					///< Key Press Event
-		bool onKeyReleased(KeyReleased& e);					///< Key Release Event
-		bool onKeyTyped(KeyTyped& e);						///< Key Type Event
+		bool onKeyPressed(Events::KeyPressed& e);					///< Key Press Event
+		bool onKeyReleased(Events::KeyReleased& e);					///< Key Release Event
+		bool onKeyTyped(Events::KeyTyped& e);						///< Key Type Event
 		//Mouse Events
-		bool onMouseMove(MouseMoved& e);					///< Mouse Move Event
-		bool onMouseScrolled(MouseScrolled& e);				///< Mouse Scrolled Event
-		bool onMouseButtonPressed(MouseButtonPressed& e);	///< Mouse Button Press Event
-		bool onMouseButtonReleased(MouseButtonReleased& e);	///< Mouse Button Release Event
+		bool onMouseMove(Events::MouseMoved& e);					///< Mouse Move Event
+		bool onMouseScrolled(Events::MouseScrolled& e);				///< Mouse Scrolled Event
+		bool onMouseButtonPressed(Events::MouseButtonPressed& e);	///< Mouse Button Press Event
+		bool onMouseButtonReleased(Events::MouseButtonReleased& e);	///< Mouse Button Release Event
 	public:
 		virtual ~Application(); ///< Deconstructor
 		inline static Application& getInstance() { return *s_instance; } ///< Return an Application Pointer
 		inline static float getdeltaTime() { return s_deltaTime; } ///< Returns Time Since Last Frame
 		inline std::shared_ptr<Window> getWindow() { return m_window; } ///< Returns The Window
 		void run(); ///< Update Loop
-		void onEvent(Event& e); ///< Called On an Event
+		void onEvent(Events::Event& e); ///< Called On an Event
 	};
 
 	Application* startApplication();

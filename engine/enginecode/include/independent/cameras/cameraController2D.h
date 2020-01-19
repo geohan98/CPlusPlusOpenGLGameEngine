@@ -14,6 +14,6 @@ namespace Engine
 	public:
 		void init(float a, float b, float c, float d) override; ///< Creates a 2D Camera
 		void onUpdate(float deltaTime) override; ///< Called Every Frame
-		void onEvent(Event& e) override {}; ///< Called on Event
+		void onEvent(Events::Event& e) override {}; ///< Called on Event
 	};
 }

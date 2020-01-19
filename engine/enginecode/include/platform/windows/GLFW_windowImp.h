@@ -17,7 +17,7 @@ namespace Engine
 		void init(const WindowProperties& properties)override; ///< Initialize the window
 		void close();  ///<  close the window
 		WindowProperties m_properties; ///< window properties
-		std::function<void(Event&)> m_callBack; ///< callback to event in application
+		std::function<void(Events::Event&)> m_callBack; ///< callback to event in application
 		float m_aspectRatio; ///< Aspect ratio of the window
 	public:
 		GLFW_WindowImp(const WindowProperties& proeprties); ///< Constructor
@@ -26,7 +26,7 @@ namespace Engine
 		void onUpdate(float deltaTime) override; ///< Called Every Frame
 		void onResize(unsigned int width, unsigned int height) override; ///< Resize the window
 		void setVSync(bool VSync) override; ///< Set Vsync
-		void setEventCallback(const std::function<void(Event&)>& callback) override; ///< set Event Callback
+		void setEventCallback(const std::function<void(Events::Event&)>& callback) override; ///< set Event Callback
 
 		inline unsigned int getWidth() const override { return m_properties.m_width; } ///< Return the window width
 		inline unsigned int getHeight() const override { return m_properties.m_height; } ///< Return the Window Height
