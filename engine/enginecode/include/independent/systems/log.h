@@ -34,8 +34,8 @@ namespace Engine {
 #define LOG_CORE_CRITICAL(...) Log::getCoreLogger()->critical(__VA_ARGS__)
 
 // Client log macros
-#define LOG_TRACE(...)         Log::getClientLogger()->trace(__VA_ARGS__)
-#define LOG_INFO(...)          Log::getClientLogger()->info(__VA_ARGS__)
-#define LOG_WARN(...)          Log::getClientLogger()->warn(__VA_ARGS__)
-#define LOG_ERROR(...)         Log::getClientLogger()->error(__VA_ARGS__)
-#define LOG_CRITICAL(...)      Log::getClientLogger()->critical(__VA_ARGS__)
+#define LOG_TRACE(...)         Engine::Log::getClientLogger()->trace(__VA_ARGS__)
+#define LOG_INFO(...)          Engine::Log::getClientLogger()->info(__VA_ARGS__)
+#define LOG_WARN(...)          Engine::Log::getClientLogger()->warn(__VA_ARGS__)
+#define LOG_ERROR(...)         Engine::Log::getClientLogger()->error(__VA_ARGS__)
+#define LOG_CRITICAL(...)      Engine::Log::getClientLogger()->critical(__VA_ARGS__)

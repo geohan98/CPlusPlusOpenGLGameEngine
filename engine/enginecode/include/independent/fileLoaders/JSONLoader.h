@@ -3,7 +3,7 @@
 #include <fstream>
 
 #include "json.hpp"
-#include "layers/JSONlayer.h"
+#include "JSONlayer.h"
 #include "cameras/cameraController2D.h"
 #include "cameras/cameraController3D.h"
 
@@ -352,10 +352,10 @@ namespace Engine
 							if (i == 1) layer.getPredrawCommands().push_back(command);
 							if (i == 2) layer.getPostdrawCommands().push_back(command);
 							if (i == 3) layer.getExitCommands().push_back(command);
-							}
-							}
-							}
 						}
 					}
-				};
+				}
 			}
+		}
+	};
+}
