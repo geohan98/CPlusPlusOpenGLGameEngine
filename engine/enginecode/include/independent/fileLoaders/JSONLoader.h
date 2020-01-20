@@ -108,14 +108,14 @@ namespace Engine
 					LOG_CORE_WARN("JSON Loader: Adding 3D Renderer");
 #endif // NG_DEBUG
 
-					layer.getRenderer().reset(Renderer::createBasic3D());
+					layer.getRenderer().reset(Renderer::Renderer::createBasic3D());
 				}
 				if (type.compare("Basic2D") == 0)
 				{
 #ifdef NG_DEBUG
 					LOG_CORE_WARN("JSON Loader: Adding 3D Renderer");
 #endif // NG_DEBUG
-					layer.getRenderer().reset(Renderer::createBasic2D());
+					layer.getRenderer().reset(Renderer::Renderer::createBasic2D());
 				}
 			}
 
@@ -158,10 +158,10 @@ namespace Engine
 						{
 							TextModel model;
 							if (!TextLoader::loadModel(layer.getResources(), object["material"]["model"], model)) exit(0);
-							std::shared_ptr<VertexArray> VAO = layer.getResources()->addVertexArray(name);
+							std::shared_ptr<Renderer::VertexArray> VAO = layer.getResources()->addVertexArray(name);
 							VAO->setVertexBuffer(layer.getResources()->addVertexBuffer(name, model.vertices, sizeof(float) * model.verticesSize, model.shader->getBufferLayout()));
 							VAO->setIndexBuffer(layer.getResources()->addIndexBuffer(name, model.indices, model.indicesSize));
-							std::shared_ptr<Material> mat = layer.getResources()->addMaterial(name, model.shader, VAO);
+							std::shared_ptr<Renderer::Material> mat = layer.getResources()->addMaterial(name, model.shader, VAO);
 							if (model.texture != nullptr)
 							{
 								layer.getData().push_back((void*)new int(model.texture->getSlot()));
@@ -297,7 +297,7 @@ namespace Engine
 						{
 							std::string type = object["type"].get<std::string>();
 
-							std::shared_ptr<RenderCommand> command;
+							std::shared_ptr<Renderer::RenderCommand> command;
 
 							bool keepAlive = true; // Adding to shared ptrs to leave deletion to the smart ptr
 
@@ -306,7 +306,7 @@ namespace Engine
 #ifdef NG_DEBUG
 								LOG_CORE_WARN("JSON Loader: Adding ClearDepthColourBuffer Render Command");
 #endif // NG_DEBUG
-								command.reset(RenderCommand::ClearDepthColourBufferCommand(keepAlive));
+								command.reset(Renderer::RenderCommand::ClearDepthColourBufferCommand(keepAlive));
 							}
 
 							if (type.compare("SetClearColour") == 0)
@@ -318,7 +318,7 @@ namespace Engine
 								float g = object["g"].get<float>();
 								float b = object["b"].get<float>();
 								float a = object["a"].get<float>();
-								command.reset(RenderCommand::setClearColourCommand(r, g, b, a, keepAlive));
+								command.reset(Renderer::RenderCommand::setClearColourCommand(r, g, b, a, keepAlive));
 							}
 
 							if (type.compare("SetDepthTestLess") == 0)
@@ -327,7 +327,7 @@ namespace Engine
 								LOG_CORE_WARN("JSON Loader: Adding SetDepthTestLess Render Command");
 #endif // NG_DEBUG
 								bool enabled = object["enabled"].get<bool>();
-								command.reset(RenderCommand::setDepthTestLessCommand(enabled, keepAlive));
+								command.reset(Renderer::RenderCommand::setDepthTestLessCommand(enabled, keepAlive));
 							}
 
 							if (type.compare("SetBackfaceCulling") == 0)
@@ -336,7 +336,7 @@ namespace Engine
 								LOG_CORE_WARN("JSON Loader: Adding SetBackfaceCulling Render Command");
 #endif // NG_DEBUG
 								bool enabled = object["enabled"].get<bool>();
-								command.reset(RenderCommand::setBackFaceCullingCommand(enabled, keepAlive));
+								command.reset(Renderer::RenderCommand::setBackFaceCullingCommand(enabled, keepAlive));
 							}
 
 							if (type.compare("SetOneMinusAlphaBlending") == 0)
@@ -345,7 +345,7 @@ namespace Engine
 								LOG_CORE_WARN("JSON Loader: Adding SetOneMinusAlphaBlending Render Command");
 #endif // NG_DEBUG
 								bool enabled = object["enabled"].get<bool>();
-								command.reset(RenderCommand::setBlendMode(enabled, keepAlive));
+								command.reset(Renderer::RenderCommand::setBlendMode(enabled, keepAlive));
 							}
 
 							if (i == 0) layer.getInitCommands().push_back(command);

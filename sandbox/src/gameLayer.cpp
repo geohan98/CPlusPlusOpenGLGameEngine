@@ -15,8 +15,8 @@ namespace Engine
 
 		m_resourceManager = std::shared_ptr<Systems::ResourceManager>(new Systems::ResourceManager());
 		m_resourceManager->start();
-		m_renderer = std::shared_ptr<Renderer>(Renderer::createBasic3D());
-		m_renderer->actionCommand(RenderCommand::setClearColourCommand(0.9, 0.9, 0.9, 1.0f));
+		m_renderer = std::shared_ptr<Renderer::Renderer>(Renderer::Renderer::createBasic3D());
+		m_renderer->actionCommand(Renderer::RenderCommand::setClearColourCommand(0.9, 0.9, 0.9, 1.0f));
 		m_camera = std::shared_ptr<CameraController3D>(new CameraController3D);
 		m_camera->init(80.0f, 800.0f / 600.0f, 0.1, 100.0f);
 
@@ -57,9 +57,9 @@ namespace Engine
 			CGO->onUpdate(deltaTime);
 		}
 
-		m_renderer->actionCommand(RenderCommand::setDepthTestLessCommand(true));
-		m_renderer->actionCommand(RenderCommand::setBackFaceCullingCommand(true));
-		m_renderer->actionCommand(RenderCommand::ClearDepthColourBufferCommand());
+		m_renderer->actionCommand(Renderer::RenderCommand::setDepthTestLessCommand(true));
+		m_renderer->actionCommand(Renderer::RenderCommand::setBackFaceCullingCommand(true));
+		m_renderer->actionCommand(Renderer::RenderCommand::ClearDepthColourBufferCommand());
 
 		for (auto& mat : m_materials)
 		{

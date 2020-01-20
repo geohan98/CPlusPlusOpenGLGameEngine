@@ -7,159 +7,161 @@
 
 namespace Engine
 {
-	Engine::RenderCommand* RenderCommand::ClearDepthColourBufferCommand(bool destroy)
-	{
-		switch (RenderAPI::getAPI())
+	namespace Renderer {
+		RenderCommand* RenderCommand::ClearDepthColourBufferCommand(bool destroy)
 		{
-		case RenderAPI::API::None:
+			switch (RenderAPI::getAPI())
+			{
+			case RenderAPI::API::None:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
-		case RenderAPI::API::OpenGL:
-			return new OpenGL_ClearDepthColourBufferCommand(destroy);
-			break;
-		default:
+				break;
+			case RenderAPI::API::OpenGL:
+				return new OpenGL_ClearDepthColourBufferCommand(destroy);
+				break;
+			default:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
+				break;
+			}
 		}
-	}
 
-	Engine::RenderCommand* RenderCommand::setClearColourCommand(float r, float g, float b, float a, bool destroy)
-	{
-		switch (RenderAPI::getAPI())
+		RenderCommand* RenderCommand::setClearColourCommand(float r, float g, float b, float a, bool destroy)
 		{
-		case RenderAPI::API::None:
+			switch (RenderAPI::getAPI())
+			{
+			case RenderAPI::API::None:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
-		case RenderAPI::API::OpenGL:
-			return new OpenGL_setClearColourCommand(r, g, b, a, destroy);
-			break;
-		default:
+				break;
+			case RenderAPI::API::OpenGL:
+				return new OpenGL_setClearColourCommand(r, g, b, a, destroy);
+				break;
+			default:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
+				break;
+			}
 		}
-	}
 
-	Engine::RenderCommand* RenderCommand::setDepthTestLessCommand(bool enabled, bool destroy)
-	{
-		switch (RenderAPI::getAPI())
+		RenderCommand* RenderCommand::setDepthTestLessCommand(bool enabled, bool destroy)
 		{
-		case RenderAPI::API::None:
+			switch (RenderAPI::getAPI())
+			{
+			case RenderAPI::API::None:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
-		case RenderAPI::API::OpenGL:
-			return new OpenGL_setDepthTestLessCommand(enabled, destroy);
-			break;
-		default:
+				break;
+			case RenderAPI::API::OpenGL:
+				return new OpenGL_setDepthTestLessCommand(enabled, destroy);
+				break;
+			default:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
+				break;
+			}
 		}
-	}
 
-	Engine::RenderCommand* RenderCommand::setBackFaceCullingCommand(bool enabled, bool destroy)
-	{
-		switch (RenderAPI::getAPI())
+		RenderCommand* RenderCommand::setBackFaceCullingCommand(bool enabled, bool destroy)
 		{
-		case RenderAPI::API::None:
+			switch (RenderAPI::getAPI())
+			{
+			case RenderAPI::API::None:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
-		case RenderAPI::API::OpenGL:
-			return new OpenGL_setBackFaceCullingCommand(enabled, destroy);
-			break;
-		default:
+				break;
+			case RenderAPI::API::OpenGL:
+				return new OpenGL_setBackFaceCullingCommand(enabled, destroy);
+				break;
+			default:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
+				break;
+			}
 		}
-	}
-	RenderCommand* RenderCommand::setPolygonModeFill(bool destroy)
-	{
-		switch (RenderAPI::getAPI())
+		RenderCommand* RenderCommand::setPolygonModeFill(bool destroy)
 		{
-		case RenderAPI::API::None:
+			switch (RenderAPI::getAPI())
+			{
+			case RenderAPI::API::None:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
-		case RenderAPI::API::OpenGL:
-			return new OpenGL_setPolygonModeFill(destroy);
-			break;
-		default:
+				break;
+			case RenderAPI::API::OpenGL:
+				return new OpenGL_setPolygonModeFill(destroy);
+				break;
+			default:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
+				break;
+			}
 		}
-	}
-	RenderCommand* RenderCommand::setPolygonModeLine(bool destroy)
-	{
-		switch (RenderAPI::getAPI())
+		RenderCommand* RenderCommand::setPolygonModeLine(bool destroy)
 		{
-		case RenderAPI::API::None:
+			switch (RenderAPI::getAPI())
+			{
+			case RenderAPI::API::None:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
-		case RenderAPI::API::OpenGL:
-			return new OpenGL_setPolygonModeLine(destroy);
-			break;
-		default:
+				break;
+			case RenderAPI::API::OpenGL:
+				return new OpenGL_setPolygonModeLine(destroy);
+				break;
+			default:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
+				break;
+			}
 		}
-	}
-	RenderCommand* RenderCommand::setPolygonModePoint(bool destroy)
-	{
-		switch (RenderAPI::getAPI())
+		RenderCommand* RenderCommand::setPolygonModePoint(bool destroy)
 		{
-		case RenderAPI::API::None:
+			switch (RenderAPI::getAPI())
+			{
+			case RenderAPI::API::None:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
-		case RenderAPI::API::OpenGL:
-			return new OpenGL_setPolygonModePoint(destroy);
-			break;
-		default:
+				break;
+			case RenderAPI::API::OpenGL:
+				return new OpenGL_setPolygonModePoint(destroy);
+				break;
+			default:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
+				break;
+			}
 		}
-	}
-	RenderCommand* RenderCommand::setBlendMode(bool enbaled, bool destroy)
-	{
-		switch (RenderAPI::getAPI())
+		RenderCommand* RenderCommand::setBlendMode(bool enbaled, bool destroy)
 		{
-		case RenderAPI::API::None:
+			switch (RenderAPI::getAPI())
+			{
+			case RenderAPI::API::None:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
-		case RenderAPI::API::OpenGL:
-			return new OpenGL_setBlendMode(enbaled, destroy);
-			break;
-		default:
+				break;
+			case RenderAPI::API::OpenGL:
+				return new OpenGL_setBlendMode(enbaled, destroy);
+				break;
+			default:
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
+				break;
+			}
 		}
 	}
 }

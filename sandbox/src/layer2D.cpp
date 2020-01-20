@@ -11,9 +11,9 @@ namespace Engine
 	{
 		m_resourceManager = std::shared_ptr<Systems::ResourceManager>(new Systems::ResourceManager());
 		m_resourceManager->start();
-		m_renderer = std::shared_ptr<Renderer>(Renderer::createBasic2D());
-		m_renderer->actionCommand(RenderCommand::setClearColourCommand(0.9, 0.9, 0.9, 1.0f));
-		m_renderer->actionCommand(RenderCommand::setBlendMode(true));
+		m_renderer = std::shared_ptr<Renderer::Renderer>(Renderer::Renderer::createBasic2D());
+		m_renderer->actionCommand(Renderer::RenderCommand::setClearColourCommand(0.9, 0.9, 0.9, 1.0f));
+		m_renderer->actionCommand(Renderer::RenderCommand::setBlendMode(true));
 		m_camera = std::shared_ptr<CameraController2D>(new CameraController2D);
 		m_camera->init(0.0f, 800.0f, 600.0f, 0.0f);
 
@@ -59,8 +59,8 @@ namespace Engine
 			CGO->onUpdate(deltaTime);
 		}
 
-		m_renderer->actionCommand(RenderCommand::setDepthTestLessCommand(false));
-		m_renderer->actionCommand(RenderCommand::setBackFaceCullingCommand(false));
+		m_renderer->actionCommand(Renderer::RenderCommand::setDepthTestLessCommand(false));
+		m_renderer->actionCommand(Renderer::RenderCommand::setBackFaceCullingCommand(false));
 
 		std::pair<std::string, void*> data("u_vp", (void*)& m_camera->getCamera()->getViewProjection()[0][0]);
 		ComponentMessage msg(ComponentMessageType::UniformSet, data);

@@ -4,26 +4,27 @@
 
 namespace Engine
 {
-	/**
-	 *  Material Component, Holds Shader and Geometry Data
-	 */
-	class MaterialComponent : public Component
-	{
-	private:
-		std::shared_ptr<Material> m_material; ///< Smart Pointer To Material
-	public:
-		MaterialComponent(const std::shared_ptr<Material>& material) : m_material(material) {} ///< Constructor
-		inline std::shared_ptr<Material> getMaterial() { return m_material; } ///< Return the Material
-		void receiveMessage(const ComponentMessage& msg) override ///< Override receive Message and deal with data, Sets Shader Uniform
+	
+		/**
+		 *  Material Component, Holds Shader and Geometry Data
+		 */
+		class MaterialComponent : public Component
 		{
-			switch (msg.m_msgType)
+		private:
+			std::shared_ptr<Renderer::Material> m_material; ///< Smart Pointer To Material
+		public:
+			MaterialComponent(const std::shared_ptr<Renderer::Material>& material) : m_material(material) {} ///< Constructor
+			inline std::shared_ptr<Renderer::Material> getMaterial() { return m_material; } ///< Return the Material
+			void receiveMessage(const ComponentMessage& msg) override ///< Override receive Message and deal with data, Sets Shader Uniform
 			{
-			case ComponentMessageType::UniformSet:
-				std::pair<std::string, void*> data = std::any_cast<std::pair<std::string, void*>>(msg.m_msgData);
-				m_material->setDataElement(data.first, data.second);
-				return;
+				switch (msg.m_msgType)
+				{
+				case ComponentMessageType::UniformSet:
+					std::pair<std::string, void*> data = std::any_cast<std::pair<std::string, void*>>(msg.m_msgData);
+					m_material->setDataElement(data.first, data.second);
+					return;
+				}
 			}
-		}
 
-	};
-}
+		};
+	}

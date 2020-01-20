@@ -6,43 +6,45 @@
 
 namespace Engine
 {
-	UniformBuffer* UniformBuffer::create(unsigned int size, UniformBufferLayout& layout)
-	{
-		switch (RenderAPI::getAPI())
+	namespace Renderer {
+		UniformBuffer* UniformBuffer::create(unsigned int size, UniformBufferLayout& layout)
 		{
-		case RenderAPI::API::None:
+			switch (RenderAPI::getAPI())
+			{
+			case RenderAPI::API::None:
 #ifdef NG_DEBUG
-			LOG_CORE_CRITICAL("NO GRAPHICS API SELECTED");
+				LOG_CORE_CRITICAL("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
-		case RenderAPI::API::OpenGL:
-			return new OpenGL_UniformBuffer(size, layout);
-			break;
-		default:
+				break;
+			case RenderAPI::API::OpenGL:
+				return new OpenGL_UniformBuffer(size, layout);
+				break;
+			default:
 #ifdef NG_DEBUG
-			LOG_CORE_CRITICAL("UNKNOWN GRAPHICS API");
+				LOG_CORE_CRITICAL("UNKNOWN GRAPHICS API");
 #endif // NG_DEBUG
-			break;
+				break;
+			}
 		}
-	}
 
-	UniformBuffer* UniformBuffer::create(unsigned int size, unsigned int rangeStart, unsigned int rangeEnd, UniformBufferLayout& layout)
-	{
-		switch (RenderAPI::getAPI())
+		UniformBuffer* UniformBuffer::create(unsigned int size, unsigned int rangeStart, unsigned int rangeEnd, UniformBufferLayout& layout)
 		{
-		case RenderAPI::API::None:
+			switch (RenderAPI::getAPI())
+			{
+			case RenderAPI::API::None:
 #ifdef NG_DEBUG
-			LOG_CORE_CRITICAL("NO GRAPHICS API SELECTED");
+				LOG_CORE_CRITICAL("NO GRAPHICS API SELECTED");
 #endif // NG_DEBUG
-			break;
-		case RenderAPI::API::OpenGL:
-			return nullptr;
-			break;
-		default:
+				break;
+			case RenderAPI::API::OpenGL:
+				return nullptr;
+				break;
+			default:
 #ifdef NG_DEBUG
-			LOG_CORE_CRITICAL("UNKNOWN GRAPHICS API");
+				LOG_CORE_CRITICAL("UNKNOWN GRAPHICS API");
 #endif // NG_DEBUG
-			break;
+				break;
+			}
 		}
 	}
 }

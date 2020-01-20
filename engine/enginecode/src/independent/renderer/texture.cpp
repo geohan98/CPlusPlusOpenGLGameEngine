@@ -5,20 +5,22 @@
 
 namespace Engine
 {
-	Texture* Texture::createFromFile(const std::string& filepath)
-	{
-		switch (RenderAPI::getAPI())
+	namespace Renderer {
+		Texture* Texture::createFromFile(const std::string& filepath)
 		{
-		case RenderAPI::API::None: return nullptr;
-		case RenderAPI::API::OpenGL: return new OpenGL_Texture(filepath);
+			switch (RenderAPI::getAPI())
+			{
+			case RenderAPI::API::None: return nullptr;
+			case RenderAPI::API::OpenGL: return new OpenGL_Texture(filepath);
+			}
 		}
-	}
-	Texture* Texture::createFromRawData(unsigned int width, unsigned int height, unsigned int channels, unsigned char* texData)
-	{
-		switch (RenderAPI::getAPI())
+		Texture* Texture::createFromRawData(unsigned int width, unsigned int height, unsigned int channels, unsigned char* texData)
 		{
-		case RenderAPI::API::None: return nullptr;
-		case RenderAPI::API::OpenGL: return new OpenGL_Texture(width, height, channels, texData);
+			switch (RenderAPI::getAPI())
+			{
+			case RenderAPI::API::None: return nullptr;
+			case RenderAPI::API::OpenGL: return new OpenGL_Texture(width, height, channels, texData);
+			}
 		}
 	}
 }

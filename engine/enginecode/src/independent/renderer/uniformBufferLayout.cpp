@@ -4,28 +4,29 @@
 
 namespace Engine
 {
-
-	void UniformBufferLayout::calcStrideAndOffset()
-	{
-		unsigned int previousOffset = 0;
-
-		for (unsigned i = 0; i < m_elements.size(); i++)
+	namespace Renderer {
+		void UniformBufferLayout::calcStrideAndOffset()
 		{
-			m_elements[i].m_offset = previousOffset;
-			previousOffset += ShaderDataTypeSize(m_elements[i].m_dataType);
+			unsigned int previousOffset = 0;
 
-			int remainder = previousOffset % 64;
-			if (remainder != 0)
+			for (unsigned i = 0; i < m_elements.size(); i++)
 			{
-				previousOffset = previousOffset + 64 - remainder;
+				m_elements[i].m_offset = previousOffset;
+				previousOffset += ShaderDataTypeSize(m_elements[i].m_dataType);
+
+				int remainder = previousOffset % 64;
+				if (remainder != 0)
+				{
+					previousOffset = previousOffset + 64 - remainder;
+				}
 			}
+			m_stride = previousOffset;
 		}
-		m_stride = previousOffset;
-	}
 
-	UniformBufferLayout::UniformBufferLayout(const std::initializer_list<UniformBufferElement>& elements) : m_elements(elements)
-	{
-		calcStrideAndOffset();
-	}
+		UniformBufferLayout::UniformBufferLayout(const std::initializer_list<UniformBufferElement>& elements) : m_elements(elements)
+		{
+			calcStrideAndOffset();
+		}
 
+	}
 }

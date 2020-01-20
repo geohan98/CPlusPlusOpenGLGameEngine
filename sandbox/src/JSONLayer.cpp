@@ -133,21 +133,21 @@ namespace Engine
 #ifdef NG_DEBUG
 			LOG_CORE_INFO("JSONLayer: Fill Render Mode");
 #endif // NG_DEBUG
-			m_renderer->actionCommand(RenderCommand::setPolygonModeFill());
+			m_renderer->actionCommand(Renderer::RenderCommand::setPolygonModeFill());
 		}
 		if (e.getButton() == KEY_2)
 		{
 #ifdef NG_DEBUG
 			LOG_CORE_INFO("JSONLayer: Line Render ModeA");
 #endif // NG_DEBUG
-			m_renderer->actionCommand(RenderCommand::setPolygonModeLine());
+			m_renderer->actionCommand(Renderer::RenderCommand::setPolygonModeLine());
 		}
 		if (e.getButton() == KEY_3)
 		{
 #ifdef NG_DEBUG
 			LOG_CORE_INFO("JSONLayer: Point Render Mode");
 #endif // NG_DEBUG
-			m_renderer->actionCommand(RenderCommand::setPolygonModePoint());
+			m_renderer->actionCommand(Renderer::RenderCommand::setPolygonModePoint());
 		}
 		return true;
 	}

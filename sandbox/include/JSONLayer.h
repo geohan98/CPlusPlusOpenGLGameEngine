@@ -18,7 +18,7 @@ namespace Engine
 	class MaterialComponent;
 	class PositionComponent;
 	class VelocityComponent;
-	class RenderCommand;
+	class Renderer::RenderCommand;
 
 	/**
 	 *  JSON Layer, Create Game objects From a JSON File
@@ -31,12 +31,12 @@ namespace Engine
 		std::vector<std::shared_ptr<PositionComponent>> m_positions;	///< List of all Position Components
 		std::vector<std::shared_ptr<VelocityComponent>> m_velocities;	///< List of all Velocity Components
 
-		std::vector<std::shared_ptr<RenderCommand>> m_initCommands;		///< List of all Init Render Commands
-		std::vector<std::shared_ptr<RenderCommand>> m_predrawCommands;	///< List of all PreDraw Render Commands
-		std::vector<std::shared_ptr<RenderCommand>> m_postdrawCommands;	///< List of all PostDraw Render Commands
-		std::vector<std::shared_ptr<RenderCommand>> m_exitCommands;		///< List of all Exit Render Commands
+		std::vector<std::shared_ptr<Renderer::RenderCommand>> m_initCommands;		///< List of all Init Render Commands
+		std::vector<std::shared_ptr<Renderer::RenderCommand>> m_predrawCommands;	///< List of all PreDraw Render Commands
+		std::vector<std::shared_ptr<Renderer::RenderCommand>> m_postdrawCommands;	///< List of all PostDraw Render Commands
+		std::vector<std::shared_ptr<Renderer::RenderCommand>> m_exitCommands;		///< List of all Exit Render Commands
 
-		SceneData m_sceneData; ///< Uniform Scene Data
+		Renderer::SceneData m_sceneData; ///< Uniform Scene Data
 		std::list<void*> m_data; ///< Lits of void pointer data
 		std::string m_filepath; ///< Filepath of Level File
 
@@ -67,10 +67,10 @@ namespace Engine
 		inline std::vector<std::shared_ptr<PositionComponent>>& getPositions() { return m_positions; }				///< Return all the position components
 		inline std::vector<std::shared_ptr<VelocityComponent>>& getVelocities() { return m_velocities; }			///< Return all the velocity components
 
-		inline std::vector<std::shared_ptr<RenderCommand>>& getInitCommands() { return m_initCommands; }			///< Return all the Init Render Commands
-		inline std::vector<std::shared_ptr<RenderCommand>>& getPredrawCommands() { return m_predrawCommands; }		///< Return all the	PreDraw Render Commands
-		inline std::vector<std::shared_ptr<RenderCommand>>& getPostdrawCommands() { return m_postdrawCommands; }	///< Return all the	PostDraw Render Commands
-		inline std::vector<std::shared_ptr<RenderCommand>>& getExitCommands() { return m_exitCommands; }			///< Return all the	Exit Render Commands
+		inline std::vector<std::shared_ptr<Renderer::RenderCommand>>& getInitCommands() { return m_initCommands; }			///< Return all the Init Render Commands
+		inline std::vector<std::shared_ptr<Renderer::RenderCommand>>& getPredrawCommands() { return m_predrawCommands; }		///< Return all the	PreDraw Render Commands
+		inline std::vector<std::shared_ptr<Renderer::RenderCommand>>& getPostdrawCommands() { return m_postdrawCommands; }	///< Return all the	PostDraw Render Commands
+		inline std::vector<std::shared_ptr<Renderer::RenderCommand>>& getExitCommands() { return m_exitCommands; }			///< Return all the	Exit Render Commands
 
 		inline std::list<void*>& getData() { return m_data; }  ///< Return the List of void pointer data
 	};

@@ -22,8 +22,8 @@ namespace Engine
 		unsigned int* indices;
 		unsigned int verticesSize;
 		unsigned int indicesSize;
-		std::shared_ptr<Shader> shader;
-		std::shared_ptr<Texture> texture;
+		std::shared_ptr<Renderer::Shader> shader;
+		std::shared_ptr<Renderer::Texture> texture;
 	};
 
 	class TextLoader

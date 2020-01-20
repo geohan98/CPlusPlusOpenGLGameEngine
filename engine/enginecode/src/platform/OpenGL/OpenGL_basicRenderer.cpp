@@ -5,60 +5,62 @@
 
 namespace Engine
 {
-
-	void OpenGL_BasicRenderer::actionCommand(RenderCommand* command)
-	{
-
-		command->action();
-		if (!command->dontDestroyOnAction)
+	namespace Renderer {
+		void OpenGL_BasicRenderer::actionCommand(RenderCommand* command)
 		{
-			delete command;
-		}
-	}
 
-	void OpenGL_BasicRenderer::beginScene(const SceneData& sceneData)
-	{
-		for (auto uboPair : sceneData)
-		{
-			unsigned int offset = 0;
-			unsigned int size;
-			int i = 0;
-
-			UniformBufferLayout layout = uboPair.first->getLayout();
-
-			for (auto bufferElement : layout)
+			command->action();
+			if (!command->dontDestroyOnAction)
 			{
-				uboPair.first->setData(bufferElement.m_offset, bufferElement.m_size, uboPair.second[i]);
-				i++;
+				delete command;
 			}
 		}
-	}
 
-	void OpenGL_BasicRenderer::endScene()
-	{
-
-	}
-
-	void OpenGL_BasicRenderer::submit(const std::shared_ptr<Material>& materials)
-	{
-		auto shader = materials->getShader();
-		shader->bind();
-
-		auto geometry = std::get<std::shared_ptr<VertexArray>>(materials->getGeometry());
-		geometry->bind();
-
-		auto perDrawData = materials->getData();
-		for (auto dataPair : perDrawData)
+		void OpenGL_BasicRenderer::beginScene(const SceneData& sceneData)
 		{
-			shader->uploadData(dataPair.first, dataPair.second);
+			for (auto uboPair : sceneData)
+			{
+				unsigned int offset = 0;
+				unsigned int size;
+				int i = 0;
+
+				UniformBufferLayout layout = uboPair.first->getLayout();
+
+				for (auto bufferElement : layout)
+				{
+					uboPair.first->setData(bufferElement.m_offset, bufferElement.m_size, uboPair.second[i]);
+					i++;
+				}
+			}
 		}
 
-		glDrawElements(GL_TRIANGLES, geometry->getDrawCount(), GL_UNSIGNED_INT, nullptr);
+		void OpenGL_BasicRenderer::endScene()
+		{
+
+		}
+
+		void OpenGL_BasicRenderer::submit(const std::shared_ptr<Material>& materials)
+		{
+			auto shader = materials->getShader();
+			shader->bind();
+
+			auto geometry = std::get<std::shared_ptr<VertexArray>>(materials->getGeometry());
+			geometry->bind();
+
+			auto perDrawData = materials->getData();
+			for (auto dataPair : perDrawData)
+			{
+				shader->uploadData(dataPair.first, dataPair.second);
+			}
+
+			glDrawElements(GL_TRIANGLES, geometry->getDrawCount(), GL_UNSIGNED_INT, nullptr);
+		}
+
+		void OpenGL_BasicRenderer::flush()
+		{
+
+		}
+
 	}
-
-	void OpenGL_BasicRenderer::flush()
-	{
-
-	}
-
 }
+	
