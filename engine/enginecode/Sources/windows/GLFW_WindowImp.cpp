@@ -1,7 +1,7 @@
 #include "engine_pch.h"
-#include "include/platform/windows/GLFW_windowImp.h"
-#include "include/platform/windows/GLFW_graphicsContext.h"
-#include "systems/log.h"
+#include "../enginecode/Headers/windows/GLFW_windowImp.h"
+#include "../enginecode/Headers/windows/GLFW_graphicsContext.h"
+#include "../enginecode/Headers/systems/log.h"
 
 #include <GLFW/glfw3.h>
 
