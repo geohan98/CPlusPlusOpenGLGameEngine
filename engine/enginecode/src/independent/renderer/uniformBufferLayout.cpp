@@ -14,10 +14,10 @@ namespace Engine
 				m_elements[i].m_offset = previousOffset;
 				previousOffset += ShaderDataTypeSize(m_elements[i].m_dataType);
 
-				int remainder = previousOffset % 64;
+				int remainder = previousOffset % 16;
 				if (remainder != 0)
 				{
-					previousOffset = previousOffset + 64 - remainder;
+					previousOffset = previousOffset + 16 - remainder;
 				}
 			}
 			m_stride = previousOffset;

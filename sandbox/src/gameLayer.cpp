@@ -27,20 +27,24 @@ namespace Engine
 		m_resourceManager->getVertexArray("VAO1")->setIndexBuffer(m_resourceManager->getIndexBuffer("Index1"));
 		m_resourceManager->addMaterial("FC_CUBE", mesh.shader, m_resourceManager->getVertexArray("VAO1"));
 
-
-
-
-
-
 		m_materials.push_back(std::shared_ptr<MaterialComponent>(new MaterialComponent(m_resourceManager->getMaterial("FC_CUBE"))));
 		m_positions.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f))));
 		m_velocities.push_back(std::shared_ptr<VelocityComponent>(new VelocityComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 45.0f, 0.0f))));
-
 
 		m_gameObjects.push_back(std::shared_ptr<GameObject>(new GameObject()));
 		m_gameObjects.back()->addComponent(m_materials.back());
 		m_gameObjects.back()->addComponent(m_positions.back());
 		m_gameObjects.back()->addComponent(m_velocities.back());
+
+
+		Renderer::UniformBufferLayout layout = { Renderer::ShaderDataType::Mat4,Renderer::ShaderDataType::Mat4 };
+		m_uniformBuffer = std::shared_ptr<Renderer::UniformBuffer>(Renderer::UniformBuffer::create(2 * sizeof(glm::mat4), layout));
+
+		m_uniformBuffer->attachShaderBlock(m_resourceManager->getMaterial("FC_CUBE")->getShader(), "Matrices");
+		std::vector<void*> sceneData(2);
+		sceneData[0] = (void*)&m_camera->getCamera()->getProjection();
+		sceneData[1] = (void*)&m_camera->getCamera()->getView();
+		m_sceneData[m_uniformBuffer] = sceneData;
 
 	}
 
@@ -51,6 +55,8 @@ namespace Engine
 
 	void GameLayer::onUpdate(float deltaTime)
 	{
+		m_renderer->beginScene(m_sceneData);
+
 		m_camera->onUpdate(deltaTime);
 		for (auto& CGO : m_gameObjects)
 		{
@@ -63,12 +69,11 @@ namespace Engine
 
 		for (auto& mat : m_materials)
 		{
-			std::pair<std::string, void*> data("u_vp", (void*)& m_camera->getCamera()->getViewProjection()[0][0]);
+			/*std::pair<std::string, void*> data("u_vp", (void*)& m_camera->getCamera()->getViewProjection()[0][0]);
 			ComponentMessage msg(ComponentMessageType::UniformSet, data);
-			mat->receiveMessage(msg);
+			mat->receiveMessage(msg);*/
 			m_renderer->submit(mat->getMaterial());
 		}
-
 
 	}
 

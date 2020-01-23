@@ -20,8 +20,6 @@ namespace Engine
 		{
 			for (auto uboPair : sceneData)
 			{
-				unsigned int offset = 0;
-				unsigned int size;
 				int i = 0;
 
 				UniformBufferLayout layout = uboPair.first->getLayout();

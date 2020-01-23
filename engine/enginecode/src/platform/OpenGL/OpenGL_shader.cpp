@@ -39,10 +39,8 @@ namespace Engine
 					m_bufferlayout.addElement(GLSLStrToSDT(x));
 				}
 
-				if (line.find("uniform ") != std::string::npos)
+				if (line.find("uniform ") != std::string::npos && line.find("layout") == std::string::npos)
 				{
-					if (line.find("layout") != std::string::npos) continue;
-
 					std::string x = line;
 					x = x.substr(x.find("uniform") + 8);
 					std::string y = x;
