@@ -1,7 +1,7 @@
 #include "engine_pch.h"
-#include "systems/log.h"
+#include "../enginecode/Headers/systems/log.h"
 #include "JSONLayer.h"
-#include "fileLoaders/JSONLoader.h"
+#include "../enginecode/Headers/fileLoaders/JSONLoader.h"
 
 namespace Engine
 {

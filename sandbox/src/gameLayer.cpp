@@ -1,9 +1,9 @@
 #include "engine_pch.h"
-#include "systems/log.h"
+#include "../enginecode/Headers/systems/log.h"
 #include "gameLayer.h"
-#include "cameras/cameraController3D.h"
-#include "fileLoaders/textLoader.h"
-#include "fileLoaders/JSONLoaderLog.h"
+#include "../enginecode/Headers/cameras/cameraController3D.h"
+#include "../enginecode/Headers/fileLoaders/textLoader.h"
+#include "../enginecode/Headers/fileLoaders/JSONLoaderLog.h"
 
 namespace Engine
 {
