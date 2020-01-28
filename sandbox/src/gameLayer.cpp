@@ -5,6 +5,8 @@
 #include "../enginecode/Headers/fileLoaders/textLoader.h"
 #include "../enginecode/Headers/fileLoaders/JSONLoaderLog.h"
 
+#include "../imgui/imgui.h"
+
 namespace Engine
 {
 	void GameLayer::onAttach()
@@ -74,7 +76,6 @@ namespace Engine
 			mat->receiveMessage(msg);*/
 			m_renderer->submit(mat->getMaterial());
 		}
-
 	}
 
 	void GameLayer::onEvent(Events::Event& e)
@@ -101,7 +102,6 @@ namespace Engine
 		dispatcher.dispatch<Events::MouseButtonPressed>(std::bind(&GameLayer::onMouseButtonPressed, this, std::placeholders::_1));
 		dispatcher.dispatch<Events::MouseButtonReleased>(std::bind(&GameLayer::onMouseButtonReleased, this, std::placeholders::_1));
 	}
-
 
 	bool GameLayer::onWindowResize(Events::WindowResize& e)
 	{
