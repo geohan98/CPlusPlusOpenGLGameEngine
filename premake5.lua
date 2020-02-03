@@ -45,14 +45,12 @@ project "Engine"
 		"vendor/stb_image",
 		"vendor/freetype2/include",
 		"vendor/json/single_include/nlohmann",
-		"vendor/imgui/include" 
 	}
 	
 	links 
 	{
 		"GLFW",
 		"Glad",
-		"ImGUI",
 		"Freetype",
 		"assimp"
 	}
@@ -231,4 +229,3 @@ group "Vendor"
 	include "vendor/zlib"
 	include "vendor/IrrXML"
 	include "vendor/assimp"
-	include "vendor/imgui"

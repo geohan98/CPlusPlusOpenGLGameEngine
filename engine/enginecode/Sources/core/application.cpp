@@ -67,12 +67,6 @@ namespace Engine {
 
 	void Application::run()
 	{
-		
-		// IMGUI: initialization
-		ImGui::CreateContext();
-		ImGui_ImplGlfwGL3_Init(static_cast<GLFWwindow*>(m_window->getNativeWindow()), true);
-		ImGui::StyleColorsDark();
-
 		bool show_demo_window = true;
 		bool show_another_window = false;
 		ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
@@ -80,9 +74,6 @@ namespace Engine {
 		//Engine Loop
 		while (m_running)
 		{
-			// IMGUI: ImGui loop
-			ImGui_ImplGlfwGL3_NewFrame();
-
 			//Timer Tick
 			m_time->tick();
 			//Update Delta Time
@@ -96,33 +87,8 @@ namespace Engine {
 				(*it)->onUpdate(s_deltaTime);
 			}
 
-			// IMGUI: Simple ImGui Window
-			static float f = 0.0f;
-			static int counter = 0;
-			ImGui::Text("Spencer Jonathan Deane");                           // Display some text 
-			ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f    
-			ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-
-			ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our windows open/close state
-			ImGui::Checkbox("Another Window", &show_another_window);
-
-			if (ImGui::Button("Button"))                            // Buttons return true when clicked (NB: most widgets return true when edited/activated)
-				counter++;
-			ImGui::SameLine();
-			ImGui::Text("counter = %d", counter);
-
-			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-
-			// IMGUI: More ImGui rendering
-			ImGui::Render();
-			ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
-
 			m_window->onUpdate(s_deltaTime);
 		}
-
-		// IMGUI: ImGui Termination
-		ImGui_ImplGlfwGL3_Shutdown();
-		ImGui::DestroyContext();
 	}
 
 	void Application::onEvent(Events::Event& e)
@@ -263,5 +229,4 @@ namespace Engine {
 
 		return true;
 	}
-
 }
