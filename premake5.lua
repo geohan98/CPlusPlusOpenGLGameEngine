@@ -194,6 +194,12 @@ project "Spike"
 		"vendor/glm/",
 		"vendor/assimp/include",
 		"vendor/Glad/include",
+		"vendor/bullet3-2.89/src"
+	}
+	
+	libdirs 
+	{
+	"vendor/bullet3-2.89/bin"
 	}
 	
 	links 
