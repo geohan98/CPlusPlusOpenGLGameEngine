@@ -45,6 +45,12 @@ project "Engine"
 		"vendor/stb_image",
 		"vendor/freetype2/include",
 		"vendor/json/single_include/nlohmann",
+		"vendor/bullet3-2.89/src"
+	}
+	
+	libdirs 
+	{
+		"vendor/bullet3-2.89/bin"
 	}
 	
 	links 
@@ -65,7 +71,7 @@ project "Engine"
 		}
 
 	filter "configurations:Debug"
-		defines "NG_DEBUG"
+		defines { "NG_DEBUG", "_DEBUG=1" }
 		runtime "Debug"
 		symbols "On"
 
@@ -100,6 +106,11 @@ project "Sandbox"
 		"vendor/json/single_include/nlohmann"
 	}
 
+	libdirs 
+	{
+		"vendor/bullet3-2.89/bin"
+	}
+
 	links
 	{
 		"Engine"
@@ -115,7 +126,7 @@ project "Sandbox"
 		}
 
 	filter "configurations:Debug"
-		defines "NG_DEBUG"
+		defines { "NG_DEBUG", "_DEBUG=1" }
 		runtime "Debug"
 		symbols "On"
 
@@ -199,14 +210,17 @@ project "Spike"
 	
 	libdirs 
 	{
-	"vendor/bullet3-2.89/bin"
+		"vendor/bullet3-2.89/bin"
 	}
 	
 	links 
 	{
 		"Freetype",
 		"assimp",
-		"Glad"
+		"Glad",
+		"BulletDynamics_vs2010_x64_debug",
+		"BulletCollision_vs2010_x64_debug",
+		"LinearMath_vs2010_x64_debug"
 	}
 	
 
@@ -219,6 +233,7 @@ project "Spike"
 		}
 
 	filter "configurations:Debug"
+		defines { "NG_DEBUG", "_DEBUG=1" }
 		runtime "Debug"
 		symbols "On"
 
