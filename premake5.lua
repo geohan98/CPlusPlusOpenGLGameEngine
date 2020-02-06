@@ -16,7 +16,7 @@ project "Engine"
 	location "engine"
 	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("build/" .. outputdir .. "/%{prj.name}")
@@ -84,7 +84,7 @@ project "Sandbox"
 	location "sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("build/" .. outputdir .. "/%{prj.name}")
@@ -139,7 +139,7 @@ project "Sandbox"
 		location "engineTests"
         kind "ConsoleApp"
         language "C++"
-		staticruntime "off"
+		staticruntime "on"
 		systemversion "latest"
 
 		targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -185,7 +185,7 @@ project "Spike"
 	location "spike"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("build/" .. outputdir .. "/%{prj.name}")
@@ -223,6 +223,8 @@ project "Spike"
 		"LinearMath_vs2010_x64_debug"
 	}
 	
+
+	defines { "BT_THREADSAFE=1", "BT_USE_DOUBLE_PRECISION" }
 
 	filter "system:windows"
 		cppdialect "C++17"
