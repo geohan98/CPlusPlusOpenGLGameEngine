@@ -16,7 +16,7 @@ project "Engine"
 	location "engine"
 	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("build/" .. outputdir .. "/%{prj.name}")
@@ -45,6 +45,12 @@ project "Engine"
 		"vendor/stb_image",
 		"vendor/freetype2/include",
 		"vendor/json/single_include/nlohmann",
+		"vendor/bullet3-2.89/src"
+	}
+	
+	libdirs 
+	{
+		"vendor/bullet3-2.89/bin"
 	}
 	
 	links 
@@ -65,7 +71,7 @@ project "Engine"
 		}
 
 	filter "configurations:Debug"
-		defines "NG_DEBUG"
+		defines { "NG_DEBUG", "_DEBUG=1" }
 		runtime "Debug"
 		symbols "On"
 
@@ -78,7 +84,7 @@ project "Sandbox"
 	location "sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("build/" .. outputdir .. "/%{prj.name}")
@@ -100,6 +106,11 @@ project "Sandbox"
 		"vendor/json/single_include/nlohmann"
 	}
 
+	libdirs 
+	{
+		"vendor/bullet3-2.89/bin"
+	}
+
 	links
 	{
 		"Engine"
@@ -115,7 +126,7 @@ project "Sandbox"
 		}
 
 	filter "configurations:Debug"
-		defines "NG_DEBUG"
+		defines { "NG_DEBUG", "_DEBUG=1" }
 		runtime "Debug"
 		symbols "On"
 
@@ -128,7 +139,7 @@ project "Sandbox"
 		location "engineTests"
         kind "ConsoleApp"
         language "C++"
-		staticruntime "off"
+		staticruntime "on"
 		systemversion "latest"
 
 		targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -174,7 +185,7 @@ project "Spike"
 	location "spike"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("build/" .. outputdir .. "/%{prj.name}")
@@ -194,15 +205,26 @@ project "Spike"
 		"vendor/glm/",
 		"vendor/assimp/include",
 		"vendor/Glad/include",
+		"vendor/bullet3-2.89/src"
+	}
+	
+	libdirs 
+	{
+		"vendor/bullet3-2.89/bin"
 	}
 	
 	links 
 	{
 		"Freetype",
 		"assimp",
-		"Glad"
+		"Glad",
+		"BulletDynamics_vs2010_x64_debug",
+		"BulletCollision_vs2010_x64_debug",
+		"LinearMath_vs2010_x64_debug"
 	}
 	
+
+	defines { "BT_THREADSAFE=1", "BT_USE_DOUBLE_PRECISION" }
 
 	filter "system:windows"
 		cppdialect "C++17"
@@ -213,6 +235,7 @@ project "Spike"
 		}
 
 	filter "configurations:Debug"
+		defines { "NG_DEBUG", "_DEBUG=1" }
 		runtime "Debug"
 		symbols "On"
 
