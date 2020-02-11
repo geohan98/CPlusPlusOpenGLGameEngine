@@ -82,7 +82,7 @@ namespace Engine
 			glAttachShader(m_program_ID, VS);
 #pragma endregion
 
-#pragma region GEOMETRY SHADER
+#pragma region GEOMATRY SHADER
 			unsigned int GS;
 			if (!geomatry.empty())
 			{
@@ -98,6 +98,7 @@ namespace Engine
 					glDeleteProgram(m_program_ID);
 					return;
 				}
+				LOG_CORE_INFO("GEOMATRY SHADER COMPILED");
 				glAttachShader(m_program_ID, GS);
 			}
 #pragma endregion
