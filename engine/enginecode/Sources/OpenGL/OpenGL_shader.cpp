@@ -13,7 +13,7 @@ namespace Engine
 		void OpenGL_Shader::parseSource(const std::string& filepath)
 		{
 			std::fstream handle(filepath, std::ios::in);
-			enum { NONE = -1, VERTEX = 0, FRAGMENT } region;
+			enum { NONE = -1, VERTEX = 0, FRAGMENT, GEOMATRY, TESSALATION_CONTROL, TESSALATION_EVALUATION } region;
 			if (!handle.is_open())
 			{
 #ifdef NG_DEBUG
@@ -21,14 +21,15 @@ namespace Engine
 #endif // NG_DEBUG
 			}
 
-			std::string line, src[2];
+			std::string line, src[5];
 
 			while (getline(handle, line))
 			{
 				if (line.find("#region Vertex") != std::string::npos) { region = VERTEX; continue; }
 				if (line.find("#region Fragment") != std::string::npos) { region = FRAGMENT; continue; }
-				if (line.find("#region Geomatry") != std::string::npos) { region = NONE; continue; }
-				if (line.find("#region Tessalation") != std::string::npos) { region = NONE; continue; }
+				if (line.find("#region Geomatry") != std::string::npos) { region = GEOMATRY; continue; }
+				if (line.find("#region Tessalation_Control") != std::string::npos) { region = TESSALATION_CONTROL; continue; }
+				if (line.find("#region Tessalation_Evaluation") != std::string::npos) { region = TESSALATION_EVALUATION; continue; }
 
 				if (line.find(" in ") != std::string::npos && region == VERTEX)
 				{
@@ -60,89 +61,176 @@ namespace Engine
 
 			handle.close();
 
-			compileAndLink(src[VERTEX], src[FRAGMENT]);
+			compileAndLink(src[VERTEX], src[FRAGMENT], src[GEOMATRY], src[TESSALATION_CONTROL], src[TESSALATION_EVALUATION]);
 		}
 
-		void OpenGL_Shader::compileAndLink(std::string& vertex, std::string& fragment)
+		void OpenGL_Shader::compileAndLink(std::string& vertex, std::string& fragment, std::string& geomatry, std::string& tessalationControl, std::string& tessalationEvaluation)
 		{
-			//VERTEX SHADER
+			m_program_ID = glCreateProgram();
+
+#pragma region VERTEX SHADER
 			unsigned int VS = glCreateShader(GL_VERTEX_SHADER);
 			const char* src = vertex.c_str();
-			glShaderSource(VS, 1, &src, 0);
+			glShaderSource(VS, 1, &src, NULL);
 			glCompileShader(VS);
-
-			int result = 0;
-			glGetShaderiv(VS, GL_COMPILE_STATUS, &result);
-			if (result == GL_FALSE)
+			if (!checkCompileErrors(VS, false))
 			{
-				int maxLength = 0;
-				glGetShaderiv(VS, GL_INFO_LOG_LENGTH, &maxLength);
-
-				std::vector<GLchar> infoLog(maxLength);
-				glGetShaderInfoLog(VS, maxLength, &maxLength, &infoLog[0]);
-#ifdef NG_DEBUG
-				LOG_CORE_ERROR("SHADER COMPILE ERROR: {0}", std::string(infoLog.begin(), infoLog.end()));
-#endif // NG_DEBUG
-
 				glDeleteShader(VS);
+				glDeleteProgram(m_program_ID);
 				return;
 			}
+			glAttachShader(m_program_ID, VS);
+#pragma endregion
 
+#pragma region GEOMETRY SHADER
+			unsigned int GS;
+			if (!geomatry.empty())
+			{
+				GS = glCreateShader(GL_GEOMETRY_SHADER);
+				src = geomatry.c_str();
+				glShaderSource(GS, 1, &src, NULL);
+				glCompileShader(GS);
+				if (!checkCompileErrors(GS, false))
+				{
 
-			//FRAGMENT SHADER
+					glDeleteShader(VS);
+					glDeleteShader(GS);
+					glDeleteProgram(m_program_ID);
+					return;
+				}
+				glAttachShader(m_program_ID, GS);
+			}
+#pragma endregion
+
+#pragma region TESSALTION CONTROL SHADER
+			unsigned int TC;
+			if (!tessalationControl.empty())
+			{
+				TC = glCreateShader(GL_TESS_CONTROL_SHADER);
+				src = geomatry.c_str();
+				glShaderSource(TC, 1, &src, NULL);
+				glCompileShader(TC);
+				if (!checkCompileErrors(TC, false))
+				{
+					glDeleteShader(VS);
+					if (!geomatry.empty())
+					{
+						glDeleteShader(GS);
+					}
+					glDeleteShader(TC);
+					glDeleteProgram(m_program_ID);
+					return;
+				}
+				glAttachShader(m_program_ID, TC);
+			}
+#pragma endregion
+
+#pragma region TESSALATION EVALUATION SHADER
+			unsigned int TE;
+			if (!tessalationEvaluation.empty())
+			{
+				TE = glCreateShader(GL_TESS_EVALUATION_SHADER);
+				src = geomatry.c_str();
+				glShaderSource(TE, 1, &src, NULL);
+				glCompileShader(TE);
+				if (!checkCompileErrors(TE, false))
+				{
+					glDeleteShader(VS);
+					if (!geomatry.empty())
+					{
+						glDeleteShader(GS);
+					}
+					if (!tessalationControl.empty())
+					{
+						glDeleteShader(TC);
+					}
+					glDeleteShader(TE);
+					glDeleteProgram(m_program_ID);
+					return;
+				}
+				glAttachShader(m_program_ID, TE);
+			}
+#pragma endregion
+
+#pragma region FRAGMENT SHADER
 			unsigned int FS = glCreateShader(GL_FRAGMENT_SHADER);
 			src = fragment.c_str();
-			glShaderSource(FS, 1, &src, 0);
+			glShaderSource(FS, 1, &src, NULL);
 			glCompileShader(FS);
-
-			glGetShaderiv(FS, GL_COMPILE_STATUS, &result);
-			if (result == GL_FALSE)
+			if (!checkCompileErrors(FS, false))
 			{
-				int maxLength = 0;
-				glGetShaderiv(FS, GL_INFO_LOG_LENGTH, &maxLength);
-
-				std::vector<GLchar> infoLog(maxLength);
-				glGetShaderInfoLog(FS, maxLength, &maxLength, &infoLog[0]);
-#ifdef NG_DEBUG
-				LOG_CORE_ERROR("SHADER COMPILE ERROR: {0}", std::string(infoLog.begin(), infoLog.end()));
-#endif // NG_DEBUG
-
-				glDeleteShader(FS);
 				glDeleteShader(VS);
-
+				if (!geomatry.empty())
+				{
+					glDeleteShader(GS);
+				}
+				if (!tessalationControl.empty())
+				{
+					glDeleteShader(TC);
+				}
+				if (!tessalationControl.empty())
+				{
+					glDeleteShader(TE);
+				}
+				glDeleteShader(FS);
+				glDeleteProgram(m_program_ID);
 				return;
 			}
-
-			//SHADER PROGRAM
-			m_program_ID = glCreateProgram();
-			glAttachShader(m_program_ID, VS);
 			glAttachShader(m_program_ID, FS);
+#pragma endregion
+
+#pragma region PROGRAME LINKING
 			glLinkProgram(m_program_ID);
 
-			int isLinked = 0;
-			glGetProgramiv(m_program_ID, GL_LINK_STATUS, (int*)&isLinked);
-			if (isLinked == GL_FALSE)
+			glDeleteShader(VS);
+			glDeleteShader(FS);
+			if (!geomatry.empty())
 			{
-				GLint maxLength = 0;
-				glGetProgramiv(m_program_ID, GL_INFO_LOG_LENGTH, &maxLength);
-
-				std::vector<GLchar> infoLog(maxLength);
-				glGetProgramInfoLog(m_program_ID, maxLength, &maxLength, &infoLog[0]);
-#ifdef NG_DEBUG
-				LOG_CORE_ERROR("SHADER LINKING ERROR: {0}", std::string(infoLog.begin(), infoLog.end()));
-#endif // NG_DEBUG
-
+				glDeleteShader(GS);
+			}
+			if (!tessalationControl.empty())
+			{
+				glDeleteShader(TC);
+			}
+			if (!tessalationEvaluation.empty())
+			{
+				glDeleteShader(TE);
+			}
+			if (!checkCompileErrors(m_program_ID, true))
+			{
 				glDeleteProgram(m_program_ID);
-				glDeleteShader(VS);
-				glDeleteShader(FS);
-
 				return;
 			}
-
-			glDetachShader(m_program_ID, VS);
-			glDetachShader(m_program_ID, FS);
+#pragma endregion
 
 			setUniformLocations();
+		}
+
+		bool OpenGL_Shader::checkCompileErrors(unsigned int shader, bool program)
+		{
+			int success;
+			char info[1024];
+			if (program)
+			{
+				glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+				if (!success)
+				{
+					glGetShaderInfoLog(shader, 1024, NULL, info);
+					LOG_CORE_ERROR("OPEN_GL: SHADER LINKING ERROR: {0}", info);
+					return false;
+				}
+			}
+			else
+			{
+				glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+				if (!success)
+				{
+					glGetShaderInfoLog(shader, 1024, NULL, info);
+					LOG_CORE_ERROR("OPEN_GL: SHADER COMPILE ERROR: {0}", info);
+					return  false;
+				}
+			}
+			return true;
 		}
 
 		void OpenGL_Shader::setUniformLocations()

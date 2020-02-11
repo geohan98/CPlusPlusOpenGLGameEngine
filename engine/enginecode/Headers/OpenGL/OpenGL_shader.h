@@ -17,7 +17,8 @@ namespace Engine
 			UniformLayout m_uniformLayout; ///< A uniform Layout
 			std::map<std::string, std::pair<ShaderDataType, int>> m_uniformLocationCache; ///< string void pointer pairs
 			void parseSource(const std::string& filepath); ///< parse the source file into strings
-			void compileAndLink(std::string& vertex, std::string& fragment); ///< Create Shader Program
+			void compileAndLink(std::string& vertex, std::string& fragment, std::string& geomatry, std::string& tessalationControl, std::string& tessalationEvaluation); ///< Create Shader Program
+			bool checkCompileErrors(unsigned int shader, bool program);
 			void setUniformLocations(); ///< Set the location of the uniforms in the cache
 			void dispatchUniformUpload(ShaderDataType type, unsigned int location, void* data); ///< Sends a uniform to the shader
 		public:
