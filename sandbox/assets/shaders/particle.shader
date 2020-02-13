@@ -46,7 +46,13 @@ void main() {
 
 layout(location = 0) out vec4 colour;
 in vec3 g_FragColour;
+
+layout (std140) uniform Lights
+{
+	vec3 u_Colour;
+};
+
 void main()
 {
-	colour = vec4(g_FragColour, 1.0);
+	colour = vec4(u_Colour, 1.0);
 }

@@ -13,6 +13,7 @@ namespace Engine
 			unsigned int m_id; ///< Object Id
 			UniformBufferLayout m_layout; ///< Uniform Buffer Layout
 			unsigned int m_bindingPoint; ///< Binding Point
+			static unsigned int s_bindingPoint; ///< Binding Point Counter
 		public:
 			OpenGL_UniformBuffer(unsigned int size, UniformBufferLayout& layout); ///< Constructor
 			void bind() override; ///< Bind the uniform buffer
