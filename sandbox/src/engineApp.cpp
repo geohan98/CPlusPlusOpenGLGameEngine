@@ -10,7 +10,7 @@ engineApp::engineApp()
 {
 	LOG_INFO("ENGINE APP: START");
 	m_layerStack->push(std::shared_ptr<Engine::GameLayer>(new Engine::GameLayer()));
-	m_layerStack->push(std::shared_ptr<Engine::ImGUILayer>(new Engine::ImGUILayer()));
+	//m_layerStack->push(std::shared_ptr<Engine::ImGUILayer>(new Engine::ImGUILayer()));
 }
 
 engineApp::~engineApp()

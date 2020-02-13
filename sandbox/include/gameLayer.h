@@ -22,7 +22,6 @@ namespace Engine
 		std::vector<std::shared_ptr<MaterialComponent>> m_materials;	///< All the material Components
 		std::vector<std::shared_ptr<PositionComponent>> m_positions;	///< All the position Components
 		std::vector<std::shared_ptr<VelocityComponent>> m_velocities;	///< All the velocity Components
-		std::shared_ptr<Renderer::UniformBuffer> m_uniformBuffer;
 		Renderer::SceneData m_sceneData;
 		//Application Events
 		bool onWindowResize(Events::WindowResize& e);				///< Window Resize Event

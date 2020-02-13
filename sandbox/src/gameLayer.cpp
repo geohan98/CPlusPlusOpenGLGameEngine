@@ -39,15 +39,22 @@ namespace Engine
 		m_gameObjects.back()->addComponent(m_velocities.back());
 
 
-		Renderer::UniformBufferLayout layout = { Renderer::ShaderDataType::Mat4,Renderer::ShaderDataType::Mat4 };
-		m_uniformBuffer = std::shared_ptr<Renderer::UniformBuffer>(Renderer::UniformBuffer::create(2 * sizeof(glm::mat4), layout));
+		Renderer::UniformBufferLayout cameraUniformLayout = { Renderer::ShaderDataType::Mat4,Renderer::ShaderDataType::Mat4 };
+		auto cameraUniformBuffer = std::shared_ptr<Renderer::UniformBuffer>(Renderer::UniformBuffer::create(cameraUniformLayout.getStride(), cameraUniformLayout));
 
-		m_uniformBuffer->attachShaderBlock(m_resourceManager->getMaterial("FC_CUBE")->getShader(), "Matrices");
-		std::vector<void*> sceneData(2);
-		sceneData[0] = (void*)&m_camera->getCamera()->getProjection();
-		sceneData[1] = (void*)&m_camera->getCamera()->getView();
-		m_sceneData[m_uniformBuffer] = sceneData;
+		cameraUniformBuffer->attachShaderBlock(m_resourceManager->getMaterial("FC_CUBE")->getShader(), "Matrices");
+		std::vector<void*> cameraSceneData(2);
+		cameraSceneData[0] = (void*)&m_camera->getCamera()->getProjection();
+		cameraSceneData[1] = (void*)&m_camera->getCamera()->getView();
 
+		m_sceneData[cameraUniformBuffer] = cameraSceneData;
+
+		Renderer::UniformBufferLayout LightUniformLayout = { Renderer::ShaderDataType::Float3 };
+		auto lightUniformBuffer = std::shared_ptr<Renderer::UniformBuffer>(Renderer::UniformBuffer::create(LightUniformLayout.getStride(), LightUniformLayout));
+
+		//lightUniformBuffer->attachShaderBlock(m_resourceManager->getMaterial("FC_CUBE")->getShader(), "Matrices");
+		//std::vector<void*> lightSceneData(1);
+		//m_sceneData[lightUniformBuffer] = lightSceneData;
 	}
 
 	void GameLayer::onDetach()
