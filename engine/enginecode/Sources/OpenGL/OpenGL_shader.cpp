@@ -79,6 +79,7 @@ namespace Engine
 				glDeleteProgram(m_program_ID);
 				return;
 			}
+			LOG_CORE_INFO("VERTEX SHADER COMPILED");
 			glAttachShader(m_program_ID, VS);
 #pragma endregion
 
@@ -177,6 +178,7 @@ namespace Engine
 				glDeleteProgram(m_program_ID);
 				return;
 			}
+			LOG_CORE_INFO("FRAG SHADER COMPILED");
 			glAttachShader(m_program_ID, FS);
 #pragma endregion
 

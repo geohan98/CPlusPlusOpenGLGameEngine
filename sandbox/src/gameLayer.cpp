@@ -15,44 +15,19 @@ namespace Engine
 		m_camera->init(80.0f, 800.0f / 600.0f, 0.1, 100.0f);
 
 		m_gameObjects.push_back(std::shared_ptr<GameObject>(new GameObject()));
+		m_positionComponents.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f))));
 		m_particleComponents.push_back(std::shared_ptr<Components::ParticleComponent>(new Components::ParticleComponent()));
+		m_gameObjects.back()->addComponent(m_positionComponents.back());
 		m_gameObjects.back()->addComponent(m_particleComponents.back());
 
+		Renderer::UniformBufferLayout viewProjectionLayout = { Renderer::ShaderDataType::Mat4,Renderer::ShaderDataType::Mat4 };
+		auto viewProjectionBuffer = std::shared_ptr<Renderer::UniformBuffer>(Renderer::UniformBuffer::create(viewProjectionLayout.getStride(), viewProjectionLayout));
 
-
-		Renderer::UniformBufferLayout cameraUniformLayout = { Renderer::ShaderDataType::Mat4,Renderer::ShaderDataType::Mat4 };
-		auto cameraUniformBuffer = std::shared_ptr<Renderer::UniformBuffer>(Renderer::UniformBuffer::create(cameraUniformLayout.getStride(), cameraUniformLayout));
-
-		//cameraUniformBuffer->attachShaderBlock(m_resourceManager->getMaterial("FC_CUBE")->getShader(), "Matrices");
-		std::vector<void*> cameraSceneData(2);
-		cameraSceneData[0] = (void*)&m_camera->getCamera()->getProjection();
-		cameraSceneData[1] = (void*)&m_camera->getCamera()->getView();
-
-		/*std::vector<int> xXxSephirothxXx;
-		xXxSephirothxXx.push_back(0);
-		int * start = &xXxSephirothxXx[0];
-		LOG_CORE_INFO("TEST, size: {0}, capacity {1}, start address {2}", xXxSephirothxXx.size(), xXxSephirothxXx.capacity(), (int)start);
-		unsigned int blockCount = 0;
-		for (unsigned int i = 0; i < 100; i++) {
-			xXxSephirothxXx.push_back(0);
-			if (start != &xXxSephirothxXx[0]) {
-				LOG_CORE_CRITICAL("AaAaH wE mOveD!1!! (Block count {0})", blockCount);
-				start = &xXxSephirothxXx[0];
-				blockCount = 0;
-			}
-			blockCount++;
-			LOG_CORE_INFO("TEST, size: {0}, capacity {1}, start address {2}", xXxSephirothxXx.size(), xXxSephirothxXx.capacity(), (int)start);
-		}*/
-
-		m_sceneData[cameraUniformBuffer] = cameraSceneData;
-
-		Renderer::UniformBufferLayout LightUniformLayout = { Renderer::ShaderDataType::Float3 };
-		auto lightUniformBuffer = std::shared_ptr<Renderer::UniformBuffer>(Renderer::UniformBuffer::create(LightUniformLayout.getStride(), LightUniformLayout));
-
-		//lightUniformBuffer->attachShaderBlock(m_resourceManager->getMaterial("FC_CUBE")->getShader(), "Lights");
-		std::vector<void*> lightSceneData(1);
-		lightSceneData[0] = (void*)&colour;
-		m_sceneData[lightUniformBuffer] = lightSceneData;
+		viewProjectionBuffer->attachShaderBlock(m_particleComponents.back()->getMaterial()->getShader(), "VP");
+		std::vector<void*> viewProjectionData(2);
+		viewProjectionData[0] = (void*)&m_camera->getCamera()->getProjection();
+		viewProjectionData[1] = (void*)&m_camera->getCamera()->getView();
+		m_sceneData[viewProjectionBuffer] = viewProjectionData;
 	}
 
 	void GameLayer::onDetach()

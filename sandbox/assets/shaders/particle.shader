@@ -1,12 +1,21 @@
 #region Vertex
 #version 440 core
 
-layout(location = 0) in vec3 a_vertexPosition;
-layout(location = 1) in vec3 a_vertexColour;
+layout(location = 0) in vec3 a_particlePosition;
 
-out vec3 v_FragColour;
+uniform mat4 u_model;
 
-layout (std140) uniform Matrices
+void main()
+{
+	gl_Position = u_model * vec4(a_particlePosition,1.0f);
+}
+
+#region Geomatry
+#version 440 core
+layout (points) in;
+layout (triangle_strip, max_vertices = 4) out;
+
+layout (std140) uniform VP
 {
 	mat4 u_projection;
 	mat4 u_view;
@@ -14,45 +23,27 @@ layout (std140) uniform Matrices
 
 uniform mat4 u_model;
 
-
-void main()
-{
-	v_FragColour = a_vertexColour;
-	gl_Position = u_projection * u_view * u_model * vec4(a_vertexPosition, 1);
-}
-
-#region Geomatry
-#version 440 core
-layout (triangles) in;
-layout (triangle_strip, max_vertices = 3) out;
-
-in vec3 v_FragColour[];
-
-out vec3 g_FragColour;
-
-void main() {    
-
-  // loop through each vertex (3 because we're reading a triangle)
-  for(int i = 0 ; i < 3; i++){
-    gl_Position = gl_in[i].gl_Position ;
-    g_FragColour = v_FragColour[i]; 
-    EmitVertex() ;
-  }
-    EndPrimitive();
+void main() 
+{    
+	vec3 position = gl_in[0].gl_Position.xyz;
+	
+	gl_Position = u_projection * u_view * vec4(position + vec3(-1.0f,-1.0f,0.0f),1.0f);
+	EmitVertex();
+	gl_Position = u_projection * u_view * vec4(position + vec3(-1.0f,1.0f,0.0f),1.0f);
+	EmitVertex();
+	gl_Position = u_projection * u_view * vec4(position + vec3(1.0f,-1.0f,0.0f),1.0f);
+	EmitVertex();
+	gl_Position = u_projection * u_view * vec4(position + vec3(1.0f,1.0f,0.0f),1.0f);
+	EmitVertex();
+	EndPrimitive(); 
 }
 
 #region Fragment
 #version 440 core
 
 layout(location = 0) out vec4 colour;
-in vec3 g_FragColour;
-
-layout (std140) uniform Lights
-{
-	vec3 u_Colour;
-};
 
 void main()
 {
-	colour = vec4(u_Colour, 1.0);
+	colour = vec4(0.5f,0.5f,0.5f,1.0f);
 }

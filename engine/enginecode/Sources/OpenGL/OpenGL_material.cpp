@@ -11,6 +11,12 @@ namespace Engine
 			m_geomertry = vertexArray;
 		}
 
+		OpenGL_Material::OpenGL_Material(const std::shared_ptr<Shader>& Shader, const std::shared_ptr<VertexBuffer>& vertexBuffer)
+		{
+			m_shader = Shader;
+			m_geomertry = vertexBuffer;
+		}
+
 		void OpenGL_Material::init(const std::shared_ptr<Shader>& Shader, const std::shared_ptr<VertexArray>& vertexArray)
 		{
 			m_shader = Shader;

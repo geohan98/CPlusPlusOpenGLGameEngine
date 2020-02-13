@@ -3,6 +3,7 @@
 #include "../enginecode/Headers/core/gameObject.h"
 #include "../enginecode/Headers/renderer/uniformBuffer.h"
 #include "Headers/components/particleComponent.h"
+#include "Headers/components/PositionComponent.h"
 
 
 namespace Engine
@@ -14,6 +15,7 @@ namespace Engine
 	{
 	private:
 		std::vector<std::shared_ptr<GameObject>> m_gameObjects;					///< All the GameObjects
+		std::vector<std::shared_ptr<PositionComponent>> m_positionComponents;
 		std::vector<std::shared_ptr<Components::ParticleComponent>> m_particleComponents;
 		Renderer::SceneData m_sceneData;
 		glm::vec3 colour = glm::vec3(0.5f);
