@@ -1,6 +1,6 @@
 #include "engine_pch.h"
 
-/*#include "audio.h"
+#include "../enginecode/Headers/audio/audio.h"
 #include <fmod_errors.h>
 
 namespace Engine {
@@ -232,4 +232,4 @@ namespace Engine {
 	void Audio::Shutdown() {
 		delete sgpImplementation;
 	}
-}*/
+}

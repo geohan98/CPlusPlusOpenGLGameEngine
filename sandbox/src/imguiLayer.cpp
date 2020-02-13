@@ -22,6 +22,19 @@ namespace Engine {
 
 	void ImGUILayer::onAttach()
 	{
+		// audio stuff, abstract to its own layer
+		//Audio audioEngine;
+		//audioEngine.Init();
+
+		//audioEngine.LoadBank("../assets/audio/master.bank", FMOD_STUDIO_LOAD_BANK_NORMAL);
+		//audioEngine.LoadBank("../assets/audio/master.strings.bank", FMOD_STUDIO_LOAD_BANK_NORMAL);
+		//audioEngine.LoadEvent("event:/oofEvent");
+		
+		//audioEngine.LoadSound("../assets/audio/oof.mp3", false);
+		//audioEngine.PlayEvent("event:/oofEvent");
+		
+		
+
 		ImGui::CreateContext();
 		
 		ImGui::StyleColorsDark();
@@ -37,6 +50,10 @@ namespace Engine {
 
 	void ImGUILayer::onUpdate(float deltaTime)
 	{
+		// audio stuff, abstract to its own layer
+		//audioEngine.Update();
+		//audioEngine.PlaySounds("../assets/audio/oof.mp3", { 0,0,0 }, 0.2f);
+
 		ImGui_ImplGlfwGL3_NewFrame();
 
 		ImGui::ShowDemoWindow();

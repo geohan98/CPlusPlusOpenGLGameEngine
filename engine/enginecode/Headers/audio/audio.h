@@ -1,6 +1,6 @@
 #pragma once
 
-/*#ifndef _AUDIO_ENGINE_H_
+#ifndef _AUDIO_ENGINE_H_
 #define _AUDIO_ENGINE_H_
 
 #include "fmod_studio.hpp"
@@ -69,4 +69,4 @@ namespace Engine {
 		FMOD_VECTOR VectorToFmod(const Vector3& vPosition);
 	};
 #endif
-}*/
+}
