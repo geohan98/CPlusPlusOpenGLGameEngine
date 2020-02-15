@@ -1,5 +1,7 @@
 #include "engine_pch.h"
 
+#include "../enginecode/Headers/systems/log.h"
+
 #include "../enginecode/Headers/audio/audio.h"
 #include <fmod_errors.h>
 
@@ -7,11 +9,19 @@ namespace Engine {
 	Implementation::Implementation() {
 		mpStudioSystem = NULL;
 		Audio::ErrorCheck(FMOD::Studio::System::create(&mpStudioSystem));
-		Audio::ErrorCheck(mpStudioSystem->initialize(32, FMOD_STUDIO_INIT_LIVEUPDATE, FMOD_INIT_PROFILE_ENABLE, NULL));
+		Audio::ErrorCheck(mpStudioSystem->initialize(32, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, NULL));
 
-		// REMOVED DUE TO GET LOW LEVEL SYSTEM NOT BEING A MEMBER FUNCTION OF mpStudioSystem
-		mpSystem = NULL;
-		//Audio::ErrorCheck(mpStudioSystem->getLowLevelSystem(&mpSystem));
+		unsigned int version;
+		Audio::ErrorCheck(FMOD::System_Create(&mpSystem));
+		Audio::ErrorCheck(mpSystem->getVersion(&version));
+
+		if (version < FMOD_VERSION) {
+			LOG_CORE_INFO("FMOD LIB DOESN'T MATCH HEADER VERSION");
+		}
+
+		Audio::ErrorCheck(mpSystem->init(32, FMOD_INIT_NORMAL, NULL));
+		Audio::ErrorCheck(mpSystem->set3DSettings(1.f, 1.f, 1.f));
+		Audio::ErrorCheck(mpSystem->setGeometrySettings(50.f));
 	}
 
 	Implementation::~Implementation() {
@@ -34,6 +44,7 @@ namespace Engine {
 		{
 			mChannels.erase(it);
 		}
+
 		Audio::ErrorCheck(mpStudioSystem->update());
 	}
 

@@ -4,6 +4,7 @@
 #include <memory>
 #include "gameLayer.h"
 #include "imguiLayer.h"
+#include "audioLayer.h"
 
 
 engineApp::engineApp()
@@ -11,6 +12,7 @@ engineApp::engineApp()
 	LOG_INFO("ENGINE APP: START");
 	m_layerStack->push(std::shared_ptr<Engine::GameLayer>(new Engine::GameLayer()));
 	m_layerStack->push(std::shared_ptr<Engine::ImGUILayer>(new Engine::ImGUILayer()));
+	m_layerStack->push(std::shared_ptr<Engine::AudioLayer>(new Engine::AudioLayer()));
 }
 
 engineApp::~engineApp()

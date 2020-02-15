@@ -10,31 +10,10 @@
 
 namespace Engine {
 
-	ImGUILayer::ImGUILayer() : Layer("ImGUI Layer")
-	{
-
-	}
-
-	ImGUILayer::~ImGUILayer()
-	{
-
-	}
+	ImGUILayer::ImGUILayer() : Layer("ImGUI Layer") {};
 
 	void ImGUILayer::onAttach()
-	{
-		// audio stuff, abstract to its own layer
-		//Audio audioEngine;
-		//audioEngine.Init();
-
-		//audioEngine.LoadBank("../assets/audio/master.bank", FMOD_STUDIO_LOAD_BANK_NORMAL);
-		//audioEngine.LoadBank("../assets/audio/master.strings.bank", FMOD_STUDIO_LOAD_BANK_NORMAL);
-		//audioEngine.LoadEvent("event:/oofEvent");
-		
-		//audioEngine.LoadSound("../assets/audio/oof.mp3", false);
-		//audioEngine.PlayEvent("event:/oofEvent");
-		
-		
-
+	{	
 		ImGui::CreateContext();
 		
 		ImGui::StyleColorsDark();
@@ -50,20 +29,11 @@ namespace Engine {
 
 	void ImGUILayer::onUpdate(float deltaTime)
 	{
-		// audio stuff, abstract to its own layer
-		//audioEngine.Update();
-		//audioEngine.PlaySounds("../assets/audio/oof.mp3", { 0,0,0 }, 0.2f);
-
 		ImGui_ImplGlfwGL3_NewFrame();
 
 		ImGui::ShowDemoWindow();
 
 		ImGui::Render();
 		ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
-	}
-
-	void ImGUILayer::onEvent(Events::Event & e)
-	{
-
 	}
 }
