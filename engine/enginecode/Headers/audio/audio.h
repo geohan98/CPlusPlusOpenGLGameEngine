@@ -10,63 +10,77 @@
 #include <vector>
 #include <math.h>
 #include <iostream>
+#include <../enginecode/Headers/systems/system.h>
 
 using namespace std;
 
 namespace Engine {
-	struct Vector3 {
-		float x;
-		float y;
-		float z;
-	};
+	namespace Systems {
+		struct Vector3 {
+			float x;
+			float y;
+			float z;
+		};
 
-	struct Implementation {
-		Implementation();
-		~Implementation();
+		struct Implementation {
+			Implementation();
+			~Implementation();
 
-		void Update();
+			void Update();
 
-		FMOD::Studio::System* mpStudioSystem;
-		FMOD::System* mpSystem;
+			FMOD::Studio::System* mpStudioSystem;
+			FMOD::System* mpSystem;
 
-		int mnNextChannelId;
+			int mnNextChannelId;
 
-		typedef map<string, FMOD::Sound*> SoundMap;
-		typedef map<int, FMOD::Channel*> ChannelMap;
-		typedef map<string, FMOD::Studio::EventInstance*> EventMap;
-		typedef map<string, FMOD::Studio::Bank*> BankMap;
-		BankMap mBanks;
-		EventMap mEvents;
-		SoundMap mSounds;
-		ChannelMap mChannels;
-	};
+			typedef map<string, FMOD::Sound*> SoundMap;
+			typedef map<int, FMOD::Channel*> ChannelMap;
+			typedef map<string, FMOD::Studio::EventInstance*> EventMap;
+			typedef map<string, FMOD::Studio::Bank*> BankMap;
+			BankMap mBanks;
+			EventMap mEvents;
+			SoundMap mSounds;
+			ChannelMap mChannels;
+		};
 
-	class Audio {
-	public:
-		static void Init();
-		static void Update();
-		static void Shutdown();
-		static int ErrorCheck(FMOD_RESULT result);
+		class Audio : public System {
+		private:
+			//static std::shared_ptr<Systems::Audio> audioEngine;
+		public:
+			static void start(SystemSignal init = SystemSignal::None, ...);
+			static void stop(SystemSignal close = SystemSignal::None, ...);
 
-		void LoadBank(const std::string& strBankName, FMOD_STUDIO_LOAD_BANK_FLAGS flags);
-		void LoadEvent(const std::string& strEventName);
-		void LoadSound(const string &strSoundName, bool b3d = true, bool bLooping = false, bool bStream = false);
-		void UnLoadSound(const string &strSoundName);
-		void Set3dListenerAndOrientation(const Vector3& vPosition, const Vector3& vLook, const Vector3& vUp);
-		int PlaySounds(const string &strSoundName, const Vector3& vPos = Vector3{ 0, 0, 0 }, float fVolumedB = 0.0f);
-		void PlayEvent(const string &strEventName);
-		void StopChannel(int nChannelId);
-		void StopEvent(const string &strEventName, bool bImmediate = false);
-		void GetEventParameter(const string &strEventName, const string &strEventParameter, float* parameter);
-		void SetEventParameter(const string &strEventName, const string &strParameterName, float fValue);
-		void StopAllChannels();
-		void SetChannel3dPosition(int nChannelId, const Vector3& vPosition);
-		void SetChannelVolume(int nChannelId, float fVolumedB);
-		bool IsPlaying(int nChannelId) const;
-		bool IsEventPlaying(const string &strEventName) const;
-		float dbToVolume(float dB);
-		float VolumeTodB(float volume);
-		FMOD_VECTOR VectorToFmod(const Vector3& vPosition);
-	};
+			static void Update();
+			static int ErrorCheck(FMOD_RESULT result);
+
+			//inline static std::shared_ptr<Systems::Audio>& getAudioRef() { return audioEngine;  }
+			
+			void LoadBank(const std::string& strBankName, FMOD_STUDIO_LOAD_BANK_FLAGS flags);
+			void LoadEvent(const std::string& strEventName);
+			void LoadSound(const string &strSoundName, bool b3d = true, bool bLooping = false, bool bStream = false);
+			void UnLoadSound(const string &strSoundName);
+			void Set3dListenerAndOrientation(const Vector3& vPosition, const Vector3& vLook, const Vector3& vUp);
+			int PlaySounds(const string &strSoundName, const Vector3& vPos = Vector3{ 0, 0, 0 }, float fVolumedB = 0.0f);
+			void PlayEvent(const string &strEventName);
+			void StopChannel(int nChannelId);
+			void StopEvent(const string &strEventName, bool bImmediate = false);
+			void GetEventParameter(const string &strEventName, const string &strEventParameter, float* parameter);
+			void SetEventParameter(const string &strEventName, const string &strParameterName, float fValue);
+			void StopAllChannels();
+			void SetChannel3dPosition(int nChannelId, const Vector3& vPosition);
+			void SetChannelVolume(int nChannelId, float fVolumedB);
+			bool IsPlaying(int nChannelId) const;
+			bool IsEventPlaying(const string &strEventName) const;
+			float dbToVolume(float dB);
+			float VolumeTodB(float volume);
+			FMOD_VECTOR VectorToFmod(const Vector3& vPosition);
+		};
+	}
 #endif
 }
+//
+//#define START_SOUND_ENGINE(...) Systems::Audio::getAudioRef()->start(__VA_ARGS__);
+//#define LOAD_SOUND_BANK(...) Systems::Audio::getAudioRef()->LoadBank(__VA_ARGS__)
+//#define LOAD_SOUND(...) Systems::Audio::getAudioRef()->LoadSound(__VA_ARGS__)
+//#define PLAY_SOUND(...) Systems::Audio::getAudioRef()->PlaySounds(__VA_ARGS__)
+//#define UPDATE_SOUND_ENGINE(...) Systems::Audio::getAudioRef()->Update(__VA_ARGS__);

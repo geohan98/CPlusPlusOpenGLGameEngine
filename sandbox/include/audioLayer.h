@@ -10,8 +10,8 @@
 namespace Engine {
 	class AudioLayer : public Layer {		
 	public:
-		std::shared_ptr<Audio> audioEngine;
-		
+		std::shared_ptr<Systems::Audio> audioEngine;
+
 		AudioLayer();
 
 		void onAttach(); ///< Run on layer stack attach
