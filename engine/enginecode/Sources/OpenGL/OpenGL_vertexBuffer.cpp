@@ -10,7 +10,7 @@ namespace Engine
 		{
 			glCreateBuffers(1, &m_rendererID);
 			glBindBuffer(GL_ARRAY_BUFFER, m_rendererID);
-			glBufferData(GL_ARRAY_BUFFER, count * layout.getStride(), vertices, GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, count * layout.getStride(), vertices, GL_DYNAMIC_DRAW);
 		}
 
 		void OpenGL_VertexBuffer::bind()
@@ -23,11 +23,10 @@ namespace Engine
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 		}
 
-		void OpenGL_VertexBuffer::edit(float* vertices, unsigned int size, unsigned int offset)
+		void OpenGL_VertexBuffer::edit(float* vertices, unsigned int count)
 		{
-#ifdef NG_DEBUG
-			LOG_CORE_WARN("FUNCTION NOT IMPLIMENTED: 'OpenGL_VertexBuffer::edit(float* vertices, unsigned int size, unsigned int offset)'");
-#endif // NG_DEBUG
+			glBindBuffer(GL_ARRAY_BUFFER, m_rendererID);
+			glBufferData(GL_ARRAY_BUFFER, count * m_layout.getStride(), vertices, GL_DYNAMIC_DRAW);
 		}
 
 		const VertexBufferLayout& OpenGL_VertexBuffer::getLayout() const
