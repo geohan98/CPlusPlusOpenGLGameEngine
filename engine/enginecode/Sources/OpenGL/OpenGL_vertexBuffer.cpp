@@ -10,7 +10,7 @@ namespace Engine
 		{
 			glCreateBuffers(1, &m_rendererID);
 			glBindBuffer(GL_ARRAY_BUFFER, m_rendererID);
-			glBufferData(GL_ARRAY_BUFFER, count * layout.getStride(), vertices, GL_DYNAMIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, m_drawCount * m_layout.getStride(), vertices, GL_DYNAMIC_DRAW);
 		}
 
 		void OpenGL_VertexBuffer::bind()
@@ -25,8 +25,9 @@ namespace Engine
 
 		void OpenGL_VertexBuffer::edit(float* vertices, unsigned int count)
 		{
+			m_drawCount = count;
 			glBindBuffer(GL_ARRAY_BUFFER, m_rendererID);
-			glBufferData(GL_ARRAY_BUFFER, count * m_layout.getStride(), vertices, GL_DYNAMIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, m_drawCount * m_layout.getStride(), vertices, GL_DYNAMIC_DRAW);
 		}
 
 		const VertexBufferLayout& OpenGL_VertexBuffer::getLayout() const

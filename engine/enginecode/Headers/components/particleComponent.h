@@ -6,6 +6,7 @@
 
 #include <vector>
 #include "Headers/systems/time.h"
+#include <glm/gtc/random.hpp>
 
 
 namespace Engine
@@ -48,29 +49,11 @@ namespace Engine
 			std::vector<ParticleData> m_particleData;
 			std::vector<float> m_shaderData;
 
-			float m_spawnRate = 1.0f;
-			int m_particleCount;
-			int m_maxParticles = 10;
-			float m_particleLifetime;
-			glm::vec4 m_defualtColour = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
+			glm::vec3 m_minVelocity = glm::vec3(-0.1f, 0.5f, -0.1f);
+			glm::vec3 m_maxVelocity = glm::vec3(0.1f, 0.5f, 0.1f);
 
-			float vertices[30] =
-			{
-				0.0f,0.0f,0.0f,
-				0.0f,
-				1.0f,1.0f,
-				1.0f,1.0f,1.0f,1.0f,
+			bool m_gravity = true;
 
-				-2.0f,0.0f,0.0f,
-				0.0f,
-				1.0f,1.0f,
-				1.0f,1.0f,1.0f,1.0f,
-
-				2.0f,0.0f,0.0f,
-				0.0f,
-				1.0f,1.0f,
-				1.0f,1.0f,1.0f,1.0f
-			};
 
 
 		public:
@@ -78,10 +61,6 @@ namespace Engine
 			{
 				m_particleData.push_back(ParticleData());
 				m_particleData.push_back(ParticleData());
-
-				m_particleData[1].colour = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
-				m_particleData[1].position = glm::vec3(1.0f, 0.0f, 0.0f);
-				m_particleData[1].angularVelocity = 15;
 
 				m_shader = std::shared_ptr<Renderer::Shader>(Renderer::Shader::create("assets/shaders/particle.shader"));
 				Renderer::VertexBufferLayout layout = { Renderer::ShaderDataType::Float3,Renderer::ShaderDataType::Float,Renderer::ShaderDataType::Float2,Renderer::ShaderDataType::Float4 };
@@ -113,7 +92,6 @@ namespace Engine
 						it->lifetime -= deltaTime;
 						if (it->lifetime <= 0)
 						{
-							LOG_CORE_INFO("[Particle Component] Removed Particle");
 							it = m_particleData.erase(it);
 						}
 						else
@@ -129,6 +107,9 @@ namespace Engine
 
 					for (int i = 0; i < m_particleData.size(); i++)
 					{
+						m_particleData[i].position += m_particleData[i].linearVelocity * deltaTime;
+						m_particleData[i].rotation += m_particleData[i].angularVelocity * deltaTime;
+
 						int start = i * 10;
 						vertexData[start + 0] = m_particleData[i].position.x;
 						vertexData[start + 1] = m_particleData[i].position.y;
@@ -142,11 +123,10 @@ namespace Engine
 						vertexData[start + 9] = m_particleData[i].colour.w;
 					}
 					m_vertexBuffer->edit(&vertexData[0], vertexData.size());
-					LOG_CORE_INFO("[Paticle Component] Edited Vertex Data");
 					return;
 				}
-				LOG_CORE_INFO("[Paticle Component] No Vertex Data");
 				m_vertexBuffer->edit(nullptr, 0);
+
 			}
 		};
 	}
