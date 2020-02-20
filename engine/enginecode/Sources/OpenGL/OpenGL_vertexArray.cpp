@@ -16,8 +16,9 @@ namespace Engine
 		void OpenGL_VertexArray::bind()
 		{
 			glBindVertexArray(m_rendererID);
-			m_indexBuffer->bind();
-			m_vertexBuffer->bind();
+			if (m_vertexBuffer != nullptr) m_vertexBuffer->bind();
+			if (m_indexBuffer != nullptr) m_indexBuffer->bind();
+
 		}
 		void OpenGL_VertexArray::unbind()
 		{
@@ -32,7 +33,6 @@ namespace Engine
 
 			for (unsigned i = 0; i < layout.GetElements().size(); i++)
 			{
-				//LOG_CORE_INFO("Added Element");
 				const auto& element = layout.GetElements()[i];
 				glEnableVertexAttribArray(i);
 				glVertexAttribPointer(i, ShaderDataTypeComponentCount(element.m_dataType), ShaderDataTypeToOpenGL(element.m_dataType), element.m_normalized, layout.getStride(), (const void*)element.m_offset);
@@ -42,8 +42,6 @@ namespace Engine
 		}
 		void OpenGL_VertexArray::setIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
 		{
-			glBindVertexArray(m_rendererID);
-			indexBuffer->bind();
 			m_indexBuffer = indexBuffer;
 		}
 		std::shared_ptr<VertexBuffer> OpenGL_VertexArray::getVertexBuffer() const

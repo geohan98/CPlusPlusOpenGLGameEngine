@@ -10,14 +10,15 @@
 
 namespace Engine
 {
+
 	struct ParticleData
 	{
 		glm::vec3 position;
-		glm::vec3 scale;
+		float rotation;
+		glm::vec2 scale;
 		glm::vec4 colour;
 		glm::vec3 velocity;
-		float lifetime;
-		float spawntime;
+		float spawnTime;
 	};
 
 
@@ -29,22 +30,28 @@ namespace Engine
 			std::shared_ptr<Renderer::Material> m_material;
 			std::shared_ptr<Renderer::Shader> m_shader;
 			std::shared_ptr<Renderer::VertexBuffer> m_vertexBuffer;
-			std::vector<ParticleData>  m_particleData;
-			int spawnRate;
-			float vertices[10] = {	0.0f, 0.0f, 0.0f, 
-									1.0f, 1.0f, 1.0f, 
-									1.0f, 1.0f, 1.0f, 1.0f };
+
+			std::vector<ParticleData> m_data;
+
+			float m_spawnRate = 1.0f;
+			int m_particleCount;
+			int m_maxParticles = 10;
+			float m_particleLifetime;
+			glm::vec4 m_defualtColour = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
+
+			float vertices[100];
 		public:
-			ParticleComponent() 
+			ParticleComponent()
 			{
 				m_shader = std::shared_ptr<Renderer::Shader>(Renderer::Shader::create("assets/shaders/particle.shader"));
-				Renderer::VertexBufferLayout layout = { Renderer::ShaderDataType::Float3,Renderer::ShaderDataType::Float3, Renderer::ShaderDataType::Float4, };
-				m_vertexBuffer = std::shared_ptr<Renderer::VertexBuffer>(Renderer::VertexBuffer::create(nullptr,0,layout));
+				Renderer::VertexBufferLayout layout = { Renderer::ShaderDataType::Float3,Renderer::ShaderDataType::Float,Renderer::ShaderDataType::Float2,Renderer::ShaderDataType::Float4 };
+				m_vertexBuffer = std::shared_ptr<Renderer::VertexBuffer>(Renderer::VertexBuffer::create(vertices, m_particleCount, layout));
 				m_material = std::shared_ptr<Renderer::Material>(Renderer::Material::create(m_shader, m_vertexBuffer));
 			}
+
 			inline std::shared_ptr<Renderer::Material> getMaterial() { return m_material; }
 
-			void receiveMessage(const ComponentMessage& msg) override ///< Override receive Message and deal with data, Sets Shader Uniform
+			void receiveMessage(const ComponentMessage& msg) override
 			{
 				switch (msg.m_msgType)
 				{
@@ -55,7 +62,13 @@ namespace Engine
 				}
 			}
 
-			void onUpdate(float deltaTime) override {}
+			void onUpdate(float deltaTime) override
+			{
+				if (TIME_APP_START - m_data.back().spawnTime >= m_spawnRate / 1.0f)
+				{
+
+				}
+			}
 		};
 	}
 }

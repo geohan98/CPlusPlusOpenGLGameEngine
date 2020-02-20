@@ -41,17 +41,39 @@ namespace Engine
 		{
 			auto shader = materials->getShader();
 			shader->bind();
-
-			auto geometry = std::get<std::shared_ptr<VertexArray>>(materials->getGeometry());
-			geometry->bind();
-
-			auto perDrawData = materials->getData();
-			for (auto dataPair : perDrawData)
+			if (materials->getGeometry().index() == 0)
 			{
-				shader->uploadData(dataPair.first, dataPair.second);
-			}
+				//LOG_CORE_INFO("OPEN_GL: VARIANT WAS VERTEX ARRAY");
+				auto geometry = std::get<std::shared_ptr<VertexArray>>(materials->getGeometry());
+				geometry->bind();
 
-			glDrawElements(GL_TRIANGLES, geometry->getDrawCount(), GL_UNSIGNED_INT, nullptr);
+				auto perDrawData = materials->getData();
+				for (auto dataPair : perDrawData)
+				{
+					shader->uploadData(dataPair.first, dataPair.second);
+				}
+
+				glDrawElements(GL_TRIANGLES, geometry->getDrawCount(), GL_UNSIGNED_INT, nullptr);
+			}
+			else
+			{
+				//LOG_CORE_INFO("OPEN_GL: VARIANT WAS VERTEX BUFFER");
+				auto geometry = std::get<std::shared_ptr<VertexBuffer>>(materials->getGeometry());
+				geometry->bind();
+
+				auto perDrawData = materials->getData();
+				for (auto dataPair : perDrawData)
+				{
+					shader->uploadData(dataPair.first, dataPair.second);
+				}
+
+				auto VAO = std::shared_ptr<VertexArray>(VertexArray::create());
+
+				VAO->setVertexBuffer(geometry);
+				VAO->bind();
+
+				glDrawArrays(GL_POINTS, 0, geometry->getDrawCount());
+			}
 		}
 
 		void OpenGL_BasicRenderer::flush()
@@ -61,4 +83,3 @@ namespace Engine
 
 	}
 }
-	

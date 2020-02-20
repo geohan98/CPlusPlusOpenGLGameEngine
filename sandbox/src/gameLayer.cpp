@@ -46,8 +46,12 @@ namespace Engine
 		}
 
 		m_renderer->actionCommand(Renderer::RenderCommand::setDepthTestLessCommand(true));
+		m_renderer->actionCommand(Renderer::RenderCommand::setBlendMode(true));
 		m_renderer->actionCommand(Renderer::RenderCommand::setBackFaceCullingCommand(true));
 		m_renderer->actionCommand(Renderer::RenderCommand::ClearDepthColourBufferCommand());
+
+		m_renderer->submit(m_particleComponents.back()->getMaterial());
+
 	}
 
 	void GameLayer::onEvent(Events::Event& e)

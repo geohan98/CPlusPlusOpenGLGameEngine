@@ -12,6 +12,7 @@ namespace Engine
 		{
 		private:
 			unsigned int m_rendererID; ///< object id
+			unsigned int m_drawCount;
 			VertexBufferLayout m_layout; ///< buffer layout
 		public:
 			OpenGL_VertexBuffer(float* vertices, unsigned int count, VertexBufferLayout& layout); ///< Constructor
@@ -19,6 +20,7 @@ namespace Engine
 			void unbind() override; ///< Unbind the vertex buffer
 			void edit(float* vertices, unsigned int size, unsigned int offset) override; ///< Edit the vertex buffer
 			const VertexBufferLayout& getLayout() const override; ///< return the layout of the buffer
+			unsigned int getDrawCount() const override { return m_drawCount; }
 		};
 	}
 }

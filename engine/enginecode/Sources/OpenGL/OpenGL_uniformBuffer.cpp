@@ -39,6 +39,7 @@ namespace Engine
 			else
 			{
 				LOG_CORE_INFO("UNIFORM BUFFER: ATTACH SHADER BLOCK INDEX {0}", uniformBlockIndex);
+
 			}
 #endif // NG_DEBUG
 

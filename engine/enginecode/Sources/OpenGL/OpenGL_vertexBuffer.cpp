@@ -6,11 +6,11 @@
 namespace Engine
 {
 	namespace Renderer {
-		OpenGL_VertexBuffer::OpenGL_VertexBuffer(float* vertices, unsigned int count, VertexBufferLayout& layout) : m_layout(layout)
+		OpenGL_VertexBuffer::OpenGL_VertexBuffer(float* vertices, unsigned int count, VertexBufferLayout& layout) : m_layout(layout), m_drawCount(count)
 		{
 			glCreateBuffers(1, &m_rendererID);
 			glBindBuffer(GL_ARRAY_BUFFER, m_rendererID);
-			glBufferData(GL_ARRAY_BUFFER, count * sizeof(float), vertices, GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, count * layout.getStride(), vertices, GL_STATIC_DRAW);
 		}
 
 		void OpenGL_VertexBuffer::bind()
