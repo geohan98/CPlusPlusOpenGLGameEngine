@@ -35,11 +35,11 @@ namespace Engine
 		m_resourceManager->addIndexBuffer("TEXT", indices, 4);
 		m_resourceManager->getVertexArray("TEXT")->setVertexBuffer(m_resourceManager->getVertexBuffer("TEXT"));
 		m_resourceManager->getVertexArray("TEXT")->setIndexBuffer(m_resourceManager->getIndexBuffer("TEXT"));
-		m_resourceManager->addTexture("assets/textures/face.png");
 		m_resourceManager->addMaterial("TEXT", m_resourceManager->getShader("assets/shaders/2DQuad.shader"), m_resourceManager->getVertexArray("TEXT"));
-
+		
+		m_resourceManager->addTexture("assets/textures/buttonTest.png");
 		m_materials.push_back(std::shared_ptr<MaterialComponent>(new MaterialComponent(m_resourceManager->getMaterial("TEXT"))));
-		m_positions.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(400.0f, 75.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f))));
+		m_positions.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(400.0f, 75.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(2.0f, 1.0f, 1.0f))));
 		m_velocities.push_back(std::shared_ptr<VelocityComponent>(new VelocityComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 90.0f))));
 		m_gameObjects.push_back(std::shared_ptr<GameObject>(new GameObject));
 		m_gameObjects.back()->addComponent(m_materials.back());
@@ -68,13 +68,20 @@ namespace Engine
 		m_materials.back()->receiveMessage(msg);
 
 		unsigned int texSlot = 1;
-		m_resourceManager->getTexture("assets/textures/face.png")->bind(texSlot);
+		m_resourceManager->getTexture("assets/textures/buttonTest.png")->bind(texSlot);
 		m_materials.back()->getMaterial()->setDataElement("u_texData", (void*)& texSlot);
 		glm::mat4 model = glm::mat4(1.0f);
-		m_resourceManager->getTexture("assets/textures/face.png")->bind();
-
+		m_resourceManager->getTexture("assets/textures/buttonTest.png")->bind();
+	
 		m_renderer->submit(m_materials.back()->getMaterial());
 	}
+
+	struct Button {
+		std::pair<float, float> size;
+		std::pair<float, float> position;
+	};
+
+
 
 	void Layer2D::onEvent(Events::Event& e)
 	{
