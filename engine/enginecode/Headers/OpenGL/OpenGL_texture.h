@@ -21,7 +21,6 @@ namespace Engine
 			OpenGL_Texture(const std::string& filepath); ///< 
 			OpenGL_Texture(unsigned int width, unsigned int height, unsigned int channels, unsigned char* texData); ///< 
 			~OpenGL_Texture(); ///< Decontrcutor
-
 			inline unsigned int getWidth() const override { return m_width; }; ///< return the width of the texture
 			inline unsigned int getHeight() const override { return m_height; }; ///< return the height of the texture
 

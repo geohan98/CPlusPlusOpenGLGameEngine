@@ -4,6 +4,7 @@
 #include "../enginecode/Headers/cameras/cameraController3D.h"
 #include "../enginecode/Headers/fileLoaders/textLoader.h"
 #include "../enginecode/Headers/fileLoaders/JSONLoaderLog.h"
+#include "../enginecode/Headers/assetloader.h"
 
 #include "../imgui/imgui.h"
 
@@ -14,6 +15,8 @@ namespace Engine
 		TextModel mesh;
 		std::string filepath = "assets/models/fccube.txt";
 		TextLoader::loadModel(m_resourceManager, filepath, mesh);
+		//std::string ourModel = ("Propane_LOD3.obj");
+		//AssetLoader ourModel("assets/models/Propane_LOD3.obj");
 
 		m_resourceManager = std::shared_ptr<Systems::ResourceManager>(new Systems::ResourceManager());
 		m_resourceManager->start();
