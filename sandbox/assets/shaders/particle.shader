@@ -3,11 +3,11 @@
 
 layout(location = 0) in vec3 a_position;
 layout(location = 1) in float a_rotation;
-layout(location = 2) in vec2 a_scale;
+layout(location = 2) in float a_scale;
 layout(location = 3) in vec4 a_colour;
 
 out float v_rotation;
-out vec2 v_scale;
+out float v_scale;
 out vec4 v_colour;
 
 uniform mat4 u_model;
@@ -32,7 +32,7 @@ layout (std140) uniform VP
 };
 
 in float v_rotation[];
-in vec2 v_scale[];
+in float v_scale[];
 in vec4 v_colour[];
 
 out vec4 g_colour;
@@ -50,16 +50,16 @@ void main()
 	vec3 position = gl_in[0].gl_Position.xyz;
 	
 	g_colour = v_colour[0];
-	gl_Position = vp * vec4(position + cameraRight * rotatePoint(-0.5f * v_scale[0].x,0.5f * v_scale[0].y, v_rotation[0]).x + cameraUp * rotatePoint(-0.5f * v_scale[0].x,0.5f * v_scale[0].y, v_rotation[0]).y, 1.0f);
+	gl_Position = vp * vec4(position + cameraRight * rotatePoint(-0.5f * v_scale[0],0.5f * v_scale[0], v_rotation[0]).x + cameraUp * rotatePoint(-0.5f * v_scale[0],0.5f * v_scale[0], v_rotation[0]).y, 1.0f);
 	EmitVertex();
 	g_colour = v_colour[0];
-	gl_Position = vp * vec4(position + cameraRight * rotatePoint(-0.5f * v_scale[0].x ,-0.5f * v_scale[0].y,v_rotation[0]).x + cameraUp * rotatePoint(-0.5f * v_scale[0].x,-0.5f * v_scale[0].y,v_rotation[0]).y, 1.0f);
+	gl_Position = vp * vec4(position + cameraRight * rotatePoint(-0.5f * v_scale[0] ,-0.5f * v_scale[0],v_rotation[0]).x + cameraUp * rotatePoint(-0.5f * v_scale[0],-0.5f * v_scale[0],v_rotation[0]).y, 1.0f);
 	EmitVertex();
 	g_colour = v_colour[0];
-	gl_Position = vp * vec4(position + cameraRight * rotatePoint(0.5f * v_scale[0].x,0.5f * v_scale[0].y,  v_rotation[0]).x + cameraUp * rotatePoint(0.5f * v_scale[0].x,0.5f * v_scale[0].y,  v_rotation[0]).y, 1.0f);
+	gl_Position = vp * vec4(position + cameraRight * rotatePoint(0.5f * v_scale[0],0.5f * v_scale[0],  v_rotation[0]).x + cameraUp * rotatePoint(0.5f * v_scale[0],0.5f * v_scale[0],  v_rotation[0]).y, 1.0f);
 	EmitVertex();
 	g_colour = v_colour[0];
-	gl_Position = vp * vec4(position + cameraRight * rotatePoint(0.5f * v_scale[0].x,-0.5f * v_scale[0].y, v_rotation[0]).x + cameraUp * rotatePoint(0.5f * v_scale[0].x,-0.5f * v_scale[0].y, v_rotation[0]).y, 1.0f);
+	gl_Position = vp * vec4(position + cameraRight * rotatePoint(0.5f * v_scale[0],-0.5f * v_scale[0], v_rotation[0]).x + cameraUp * rotatePoint(0.5f * v_scale[0],-0.5f * v_scale[0], v_rotation[0]).y, 1.0f);
 	EmitVertex();
 	EndPrimitive(); 
 }
