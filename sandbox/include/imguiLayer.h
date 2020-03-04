@@ -16,5 +16,28 @@ namespace Engine {
 
 		void createButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char*  text, ImVec4 color, int corner);
 		void createImageButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, int corner, const char* filepath);
+		void loadButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char*  text, ImVec4 color, int corner);
+
+
+		struct ImGuiButton {
+
+			ImGuiButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char*  text, ImVec4 color, int corner) {
+				this->buttonName = buttonName;
+				this->size = size;
+				this->position = position;
+				this->text = text;
+				this->color = color;
+				this->corner = corner;
+			};
+			
+			const char* buttonName;
+			std::pair<float, float> size;
+			std::pair<float, float> position;
+			const char*  text;
+			ImVec4 color;
+			int corner;
+		};	
+
+		std::vector<ImGuiButton> buttonsToLoad;
 	};
 }
