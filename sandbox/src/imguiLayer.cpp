@@ -6,6 +6,8 @@
 #include "Headers/windows/GLFW_windowImp.h"
 #include "../enginecode/Headers/core/application.h"
 
+
+
 namespace Engine {
 
 	ImGUILayer::ImGUILayer() : Layer("ImGUI Layer") {};
@@ -18,6 +20,8 @@ namespace Engine {
 
 		ImGui_ImplGlfwGL3_Init(static_cast<GLFWwindow*>(Application::getInstance().getWindow()->getNativeWindow()), true);
 
+		//texturePtr = std::shared_ptr<Renderer::Texture>(Renderer::Texture::createFromFile())
+		
 		ImGuiIO& io = ImGui::GetIO();
 		ImFont* roboto = io.Fonts->AddFontFromFileTTF("../sandbox/assets/fonts/Roboto-Medium.ttf", 16.0f);
 
@@ -43,11 +47,15 @@ namespace Engine {
 				buttonsToLoad[i].text, buttonsToLoad[i].color, buttonsToLoad[i].corner);
 		}
 
-		//createImageButton("3", { 200, 100 }, { 0, 0 }, "Bottom left corner button", 3, "../sandbox/assets/textures/buttonTest.png");
+		createImageButton("3", { 200, 100 }, { 0, 0 }, "Bottom left corner button", 3, "../sandbox/assets/textures/buttonTest.png");
 
 		ImGui::SetNextWindowBgAlpha(1.0f); // Make the ImGUI Debug backgrounds fully visible whilst allowing the button backgrounds to be hidden
 
 		//ImGui::ShowDemoWindow();
+
+		/*if (lives == 3) {
+			loadImage(the texture of three lives);
+		}*/
 
 		ImGui::Render();
 		ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
@@ -99,6 +107,7 @@ namespace Engine {
 
 	void ImGUILayer::createImageButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, int corner, const char* filepath) {
 		//******************************** REQUIRES A "TEXTURE ID" WHICH I DON'T HAVE A CLUE HOW TO GET, YOU CAN'T JUST LOAD VIA FILEPATH ***************************
+		
 		//ImGuiIO& io = ImGui::GetIO();
 
 		//ImGui::SetNextWindowBgAlpha(0.0f); // Transparent background
@@ -116,7 +125,6 @@ namespace Engine {
 
 		//ImGuiStyle& style = ImGui::GetStyle();
 		//style.WindowBorderSize = 0.0f;
-
 
 		//ImTextureID my_tex_id = io.Fonts->TexID;
 		//float my_tex_w = (float)io.Fonts->TexWidth;
@@ -136,5 +144,4 @@ namespace Engine {
 
 		//ImGui::End();
 	}
-
 }

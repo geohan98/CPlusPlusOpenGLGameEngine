@@ -4,10 +4,14 @@
 #include "../enginecode/Headers/ImGui/imgui.h"
 #include "../enginecode/Headers/ImGui/imgui_impl_glfw_gl3.h"
 
+#include "Headers/renderer/texture.h"
+
 namespace Engine {
 	class ImGUILayer : public Layer {
 	public:
 		ImGUILayer();
+
+		std::shared_ptr<Renderer::Texture> texturePtr;
 
 		void onAttach() override; ///< Run on layer stack attach
 		void onDetach() override; ///< Run on layer stack removal
@@ -17,7 +21,7 @@ namespace Engine {
 		void createButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char*  text, ImVec4 color, int corner);
 		void createImageButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, int corner, const char* filepath);
 		void loadButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char*  text, ImVec4 color, int corner);
-
+		//void loadImage(const char* imageName, ...)
 
 		struct ImGuiButton {
 
