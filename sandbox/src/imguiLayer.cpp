@@ -18,6 +18,9 @@ namespace Engine {
 
 		ImGui_ImplGlfwGL3_Init(static_cast<GLFWwindow*>(Application::getInstance().getWindow()->getNativeWindow()), true);
 
+		ImGuiIO& io = ImGui::GetIO();
+		ImFont* roboto = io.Fonts->AddFontFromFileTTF("../sandbox/assets/fonts/Roboto-Medium.ttf", 16.0f);
+
 		// Can call createButton from anywhere in the project and it will be added to the buttons to load each frame
 		createButton("1", { 100, 50 }, { 30, 30 }, "pos(20,20) button", ImVec4(0.8f, 0.4f, 1.0f, 1.0f), -1);
 		createButton("2", { 200, 50 }, { 0, 0 }, "Top right corner button", ImVec4(0.8f, 0.4f, 0.5f, 1.0f), 1);
@@ -32,9 +35,6 @@ namespace Engine {
 
 	void ImGUILayer::onUpdate(float deltaTime)
 	{
-		ImGuiIO& io = ImGui::GetIO();
-		ImFont* roboto = io.Fonts->AddFontFromFileTTF("../sandbox/assets/fonts/Roboto-Medium.ttf", 16.0f);
-
 		ImGui_ImplGlfwGL3_NewFrame();
 
 		for (int i = 0; i < buttonsToLoad.size(); i++) {
@@ -47,7 +47,7 @@ namespace Engine {
 
 		ImGui::SetNextWindowBgAlpha(1.0f); // Make the ImGUI Debug backgrounds fully visible whilst allowing the button backgrounds to be hidden
 
-		ImGui::ShowDemoWindow();
+		//ImGui::ShowDemoWindow();
 
 		ImGui::Render();
 		ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
