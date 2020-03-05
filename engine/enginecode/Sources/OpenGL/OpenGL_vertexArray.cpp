@@ -13,6 +13,13 @@ namespace Engine
 			glGenVertexArrays(1, &m_rendererID);
 			glBindVertexArray(m_rendererID);
 		}
+
+		OpenGL_VertexArray::~OpenGL_VertexArray()
+		{
+			glBindVertexArray(m_rendererID);
+			glDeleteVertexArrays(1, &m_rendererID);
+		}
+
 		void OpenGL_VertexArray::bind()
 		{
 			glBindVertexArray(m_rendererID);

@@ -127,6 +127,7 @@ namespace Engine
 
 						if (it->timeleft < 0)
 						{
+							// TODO: Replace with swap-one-off-the-end algo.
 							it = m_particleData.erase(it);
 						}
 						else
