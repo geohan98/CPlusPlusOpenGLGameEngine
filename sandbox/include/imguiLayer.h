@@ -20,18 +20,28 @@ namespace Engine {
 
 		void createButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char*  text, ImVec4 color, int corner);
 		void createImageButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, int corner, const char* filepath);
+		void loadImageButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, int corner, unsigned int textureID);
 		void loadButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char*  text, ImVec4 color, int corner);
 		//void loadImage(const char* imageName, ...)
 
+		struct ImGuiImageButton {
+			ImGuiImageButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, int corner, unsigned int textureID)
+				: buttonName(buttonName), size(size), position(position), text(text), corner(corner), textureID(textureID) {
+			};
+
+			const char* buttonName;
+			std::pair<float, float> size;
+			std::pair<float, float> position;
+			const char* text;
+			int corner;
+			unsigned int textureID;
+
+		};
+
 		struct ImGuiButton {
 
-			ImGuiButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char*  text, ImVec4 color, int corner) {
-				this->buttonName = buttonName;
-				this->size = size;
-				this->position = position;
-				this->text = text;
-				this->color = color;
-				this->corner = corner;
+			ImGuiButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char*  text, ImVec4 color, int corner)
+			: buttonName(buttonName), size(size), position(position), text(text), color(color), corner(corner) {
 			};
 			
 			const char* buttonName;
@@ -43,5 +53,6 @@ namespace Engine {
 		};	
 
 		std::vector<ImGuiButton> buttonsToLoad;
+		std::vector<ImGuiImageButton> imageButtonsToLoad;
 	};
 }
