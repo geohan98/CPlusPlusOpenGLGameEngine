@@ -20,6 +20,7 @@ namespace Engine
 
 			virtual void bind(int slot = 0) const = 0; ///< Make this the active texture
 			virtual void unbind() const = 0; ///< Make this not the active texture
+			virtual int getId() const = 0;
 		};
 	}
 }

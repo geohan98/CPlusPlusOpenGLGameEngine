@@ -81,5 +81,9 @@ namespace Engine
 			LOG_CORE_INFO("NO TEXTURE UNBIND FUNCTION SET");
 #endif // NG_DEBUG
 		}
+		int OpenGL_Texture::getId() const
+		{
+			return m_id;
+		}
 	}
 }

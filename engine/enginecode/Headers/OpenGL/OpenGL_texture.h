@@ -29,6 +29,7 @@ namespace Engine
 
 			void bind(int slot) const override; ///< bind the texture
 			void unbind() const override; ///< bind the texture
+			virtual int getId() const override;
 		};
 	}
 }
