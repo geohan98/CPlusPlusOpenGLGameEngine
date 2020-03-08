@@ -4,6 +4,7 @@
 #include "engine_pch.h"
 #include "Headers/core/application.h"
 #include "Headers/systems/log.h"
+#include "Headers/systems/profiler.h"
 #ifdef NG_PLATFORM_WINDOWS
 #include "Headers/windows/GLFW_windowSys.h"
 #include "Headers/windows/GLFW_inputPoller.h"
@@ -52,6 +53,7 @@ namespace Engine {
 
 	Application::~Application()
 	{
+		PROFILE_SCOPE("APP DESTRUCTOR");
 		m_layerStack->stop();
 		m_window->close();
 		m_windowSystem->stop();
