@@ -12,6 +12,8 @@ namespace Engine
 		class UniformBuffer
 		{
 		public:
+			virtual ~UniformBuffer() {};
+
 			virtual void bind() = 0;	///< Make this the active buffer
 			virtual void unbind() = 0;	///< Make this not the active buffer
 			virtual void attachShaderBlock(const std::shared_ptr<Shader>& shader, const std::string& blockName) = 0; ///< Attach a shader to this uniform buffer

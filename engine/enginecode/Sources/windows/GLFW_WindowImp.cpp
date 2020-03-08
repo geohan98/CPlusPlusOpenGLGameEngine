@@ -15,14 +15,14 @@ namespace Engine
 		if (!m_nativeWindow)
 		{
 #ifdef NG_DEBUG
-			LOG_CORE_CRITICAL("FAILED TO CREATE GLFW WINDOW");
+			LOG_CORE_CRITICAL("[WINDOW][GLFW][FAILED TO CREATE GLFW WINDOW]");
 #endif // NG_DEBUG
 			return;
 		}
 		else
 		{
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("GLFW WINDOW CREATED");
+			LOG_CORE_WARN("[WINDOW][GLFW][GLFW WINDOW CREATED]");
 #endif // NG_DEBUG
 		}
 
@@ -34,6 +34,7 @@ namespace Engine
 		//Application Event Callbacks
 		glfwSetWindowCloseCallback(m_nativeWindow, [](GLFWwindow* window)
 			{
+				LOG_CORE_TRACE("[WINDOW][GLFW][WINDOW CLOSE]");
 				std::function<void(Events::Event&)>& callback = *(std::function<void(Events::Event&)>*)glfwGetWindowUserPointer(window);
 				Events::WindowClose event;
 				callback(event);
@@ -42,6 +43,7 @@ namespace Engine
 
 		glfwSetWindowSizeCallback(m_nativeWindow, [](GLFWwindow* window, int width, int height)
 			{
+				LOG_CORE_TRACE("[WINDOW][GLFW][WINDOW SET SIZE: {0} x {1}]", width, height);
 				std::function<void(Events::Event&)>& callback = *(std::function<void(Events::Event&)>*)glfwGetWindowUserPointer(window);
 				Events::WindowResize event(width, height);
 				callback(event);
@@ -130,13 +132,14 @@ namespace Engine
 	{
 		m_context.release();
 #ifdef NG_DEBUG
-		LOG_CORE_WARN("DESTROYING GLFW WINDOW");
+		LOG_CORE_WARN("[WINDOW][GLFW][DESTROYING GLFW WINDOW]");
 #endif // NG_DEBUG
 		glfwDestroyWindow(m_nativeWindow);
 	}
 
 	GLFW_WindowImp::GLFW_WindowImp(const WindowProperties& properties)
 	{
+		LOG_CORE_WARN("[WINDOW][GLFW][CREATING GLFW WINDOW]");
 		init(properties);
 	}
 

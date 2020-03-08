@@ -11,7 +11,7 @@ namespace Engine
 		{
 		public:
 			virtual void action() = 0;																				///< Run the render command
-			bool dontDestroyOnAction;																				///< Should it be destroyed
+			bool destroyOnAction;																				///< Should it be destroyed
 			static RenderCommand* ClearDepthColourBufferCommand(bool destroy = true);								///< Clear the depth and color buffer
 			static RenderCommand* setClearColourCommand(float r, float g, float b, float a, bool destroy = true);	///< Set Window Clear color 
 			static RenderCommand* setDepthTestLessCommand(bool enabled, bool destroy = true);						///< Set if depth dest should run

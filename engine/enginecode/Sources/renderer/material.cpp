@@ -17,14 +17,13 @@ namespace Engine
 			}
 		}
 
-		Material* Material::create(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexBuffer>& vertexArray)
+		Material* Material::create(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexBuffer>& vertexBuffer)
 		{
 			switch (RenderAPI::getAPI())
 			{
 			case RenderAPI::API::None: return nullptr;
-			case RenderAPI::API::OpenGL: return nullptr;
+			case RenderAPI::API::OpenGL: return new OpenGL_Material(shader, vertexBuffer);
 			defualt: return nullptr;
-
 			}
 		}
 	}

@@ -13,6 +13,8 @@ namespace Engine
 		class VertexArray
 		{
 		public:
+			virtual ~VertexArray() {};
+
 			virtual void bind() = 0;																///< Make this the active buffer
 			virtual void unbind() = 0;																///< Make this not the active buffer
 
@@ -24,8 +26,7 @@ namespace Engine
 
 			virtual unsigned int getDrawCount() const = 0;											///< return number of indices in index buffer
 
-			static VertexArray* create();															///< Create API Specific Object
-
+			static VertexArray* create();
 		};
 	}
 }

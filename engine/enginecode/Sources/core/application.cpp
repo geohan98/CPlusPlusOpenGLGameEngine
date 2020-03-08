@@ -2,27 +2,25 @@
 */
 
 #include "engine_pch.h"
-#include "../enginecode/Headers/core/application.h"
+#include "Headers/core/application.h"
+#include "Headers/systems/log.h"
+#include "Headers/systems/profiler.h"
 #ifdef NG_PLATFORM_WINDOWS
-#include "../enginecode/Headers/windows/GLFW_windowSys.h"
-#include "../enginecode/Headers/windows/GLFW_inputPoller.h"
+#include "Headers/windows/GLFW_windowSys.h"
+#include "Headers/windows/GLFW_inputPoller.h"
 #endif // NG_PLATFORM_WINDOWS
-
-#include "../enginecode/Headers/systems/profiler.h"
-
-// ImGui Stuff
-#include "../enginecode/Headers/ImGui/imgui.h"
-#include "../enginecode/Headers/ImGui/imgui_impl_glfw_gl3.h"
 
 namespace Engine {
 
+#pragma region Statics
+
 	Application* Application::s_instance = nullptr;
-
-	glm::ivec2 Application::s_screenResolution;
-
 	std::shared_ptr<Systems::ResourceManager> Application::m_resourceManager;
-
 	float Application::s_deltaTime;
+
+#pragma endregion
+
+#pragma region Constructor & Destructor
 
 	Application::Application()
 	{
@@ -34,13 +32,11 @@ namespace Engine {
 		m_log = std::shared_ptr<Systems::Log>(new Systems::Log());
 		m_log->start();
 
-		m_resourceManager = std::shared_ptr<Systems::ResourceManager>(new Systems::ResourceManager());
-		m_resourceManager->start();
-
 		m_time = std::shared_ptr<Systems::Time>(new Systems::Time());
 		m_time->start();
 
-
+		m_resourceManager = std::shared_ptr<Systems::ResourceManager>(new Systems::ResourceManager());
+		m_resourceManager->start();
 
 #ifdef NG_PLATFORM_WINDOWS
 		m_windowSystem = std::shared_ptr<Systems::WindowSystem>(new Systems::GLFW_WindowSys());
@@ -49,44 +45,40 @@ namespace Engine {
 
 		m_window = std::shared_ptr<Window>(Window::create());
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
-		s_screenResolution = glm::ivec2(m_window->getWidth(), m_window->getHeight());
 
 		m_layerStack = std::shared_ptr<Systems::LayerStack>(new Systems::LayerStack());
 		m_layerStack->start();
 	}
 
+
 	Application::~Application()
 	{
+		PROFILE_SCOPE("APP DESTRUCTOR");
 		m_layerStack->stop();
 		m_window->close();
 		m_windowSystem->stop();
-		m_time->stop();
 		m_resourceManager->stop();
+		m_time->stop();
 		m_log->stop();
 	}
+#pragma endregion
+
+#pragma region Run & Event
 
 	void Application::run()
 	{
-		bool show_demo_window = true;
-		bool show_another_window = false;
-		ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-
-		//Engine Loop
-		while (m_running)
+		while (m_running) //Run Loop
 		{
 			//Timer Tick
 			m_time->tick();
 			//Update Delta Time
 			s_deltaTime = m_time->getDeltaTime();
-			//LOG_CORE_INFO("APPLICATION: FPS '{0}' , DeltaTime '{1}'", 1 / m_time->getDeltaTime(), m_time->getDeltaTime());
-#ifdef NG_DEBUG
-#endif // NG_DEBUG
-
+			//Update Layer Stack
 			for (auto it = m_layerStack->begin(); it != m_layerStack->end(); ++it)
 			{
 				(*it)->onUpdate(s_deltaTime);
 			}
-
+			//Update Window
 			m_window->onUpdate(s_deltaTime);
 		}
 	}
@@ -95,20 +87,9 @@ namespace Engine {
 	{
 		//Dispatch Event to Application
 		Events::EventDispatcher dispatcher(e);
-		//Window Events
-		dispatcher.dispatch<Events::WindowResize>(std::bind(&Application::onWindowResize, this, std::placeholders::_1));
+
 		dispatcher.dispatch<Events::WindowClose>(std::bind(&Application::onWindowClose, this, std::placeholders::_1));
-		dispatcher.dispatch<Events::WindowMoved>(std::bind(&Application::onWindowMoved, this, std::placeholders::_1));
-		dispatcher.dispatch<Events::WindowLostFocus>(std::bind(&Application::onWindowLostFocus, this, std::placeholders::_1));
-		//Key Events
 		dispatcher.dispatch<Events::KeyPressed>(std::bind(&Application::onKeyPressed, this, std::placeholders::_1));
-		dispatcher.dispatch<Events::KeyReleased>(std::bind(&Application::onKeyReleased, this, std::placeholders::_1));
-		dispatcher.dispatch<Events::KeyTyped>(std::bind(&Application::onKeyTyped, this, std::placeholders::_1));
-		//Mouse Events
-		dispatcher.dispatch<Events::MouseMoved>(std::bind(&Application::onMouseMove, this, std::placeholders::_1));
-		dispatcher.dispatch<Events::MouseScrolled>(std::bind(&Application::onMouseScrolled, this, std::placeholders::_1));
-		dispatcher.dispatch<Events::MouseButtonPressed>(std::bind(&Application::onMouseButtonPressed, this, std::placeholders::_1));
-		dispatcher.dispatch<Events::MouseButtonReleased>(std::bind(&Application::onMouseButtonReleased, this, std::placeholders::_1));
 
 		//Send Event to Layer Stack
 		for (auto it = m_layerStack->end(); it != m_layerStack->begin();)
@@ -117,40 +98,18 @@ namespace Engine {
 		}
 	}
 
-	bool Application::onWindowResize(Events::WindowResize& e)
-	{
-#ifdef NG_DEBUG
-		LOG_CORE_INFO("APPLICATION: WINDOW RESIZE '{0} x {1}'", e.getWidth(), e.getHeight());
-#endif // NG_DEBUG
+#pragma endregion
 
-		s_screenResolution = glm::ivec2(e.getWidth(), e.getHeight());
-		return true;
-	}
+#pragma region Events
 
 	bool Application::onWindowClose(Events::WindowClose& e)
 	{
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("APPLICATION: CLOSING APPLICATION");
 #endif // NG_DEBUG
+#pragma endregion
 
 		m_running = false;
-		return true;
-	}
-
-	bool Application::onWindowMoved(Events::WindowMoved& e)
-	{
-#ifdef NG_DEBUG
-		LOG_CORE_INFO("APPLICATION: WINDOW MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
-#endif // NG_DEBUG
-
-		return true;
-	}
-
-	bool Application::onWindowLostFocus(Events::WindowLostFocus& e)
-	{
-#ifdef NG_DEBUG
-		LOG_CORE_INFO("APPLICATION: WINDOW LOST FOCUS '{0} , {1}'", e.getxPos(), e.getyPos());
-#endif // NG_DEBUG
 
 		return true;
 	}
@@ -158,75 +117,20 @@ namespace Engine {
 	bool Application::onKeyPressed(Events::KeyPressed& e)
 	{
 #ifdef NG_DEBUG
-		LOG_CORE_INFO("APPLICATION: KEY PRESSED '{0}'", e.getButton());
+		LOG_CORE_INFO("[APPLICATION][EVENT][KEY PRESS '{0}']", e.getButton());
 #endif // NG_DEBUG
 
-
+#ifdef NG_DEBUG
 		if (e.getButton() == KEY_ESCAPE)
 		{
 			m_running = false;
 		}
-
-		return true;
-	}
-
-	bool Application::onKeyReleased(Events::KeyReleased& e)
-	{
-#ifdef NG_DEBUG
-		LOG_CORE_INFO("APPLICATION: KEY RELEASED '{0}'", e.getButton());
-#endif // NG_DEBUG
-
-
-		if (e.getButton() == KEY_ESCAPE)
-		{
-			m_running = false;
-		}
-
-		return true;
-	}
-
-	bool Application::onKeyTyped(Events::KeyTyped& e)
-	{
-#ifdef NG_DEBUG
-		LOG_CORE_INFO("APPLICATION: KEY TYPED '{0}'", e.getButton());
 #endif // NG_DEBUG
 
 		return true;
 	}
 
-	bool Application::onMouseMove(Events::MouseMoved& e)
-	{
-#ifdef NG_DEBU
-		LOG_CORE_INFO("APPLICATION: MOUSE MOVED '{0} , {1}'", e.getxPos(), e.getyPos());
-#endif // NG_DEBUG
+#pragma endregion
 
-		return true;
-	}
 
-	bool Application::onMouseScrolled(Events::MouseScrolled& e)
-	{
-#ifdef NG_DEBUG
-		LOG_CORE_INFO("APPLICATION: MOUSE SCROLLED '{0} , {1}'", e.getxDelta(), e.getyDelta());
-#endif // NG_DEBUG
-
-		return true;
-	}
-
-	bool Application::onMouseButtonPressed(Events::MouseButtonPressed& e)
-	{
-#ifdef NG_DEBUG
-		LOG_CORE_INFO("APPLICATION: MOUSE BUTTON PRESSED '{0}'", e.getButton());
-#endif // NG_DEBUG
-
-		return true;
-	}
-
-	bool Application::onMouseButtonReleased(Events::MouseButtonReleased& e)
-	{
-#ifdef NG_DEBUG
-		LOG_CORE_INFO("APPLICATION: MOUSE BUTTON RELEASED '{0}'", e.getButton());
-#endif // NG_DEBUG
-
-		return true;
-	}
 }

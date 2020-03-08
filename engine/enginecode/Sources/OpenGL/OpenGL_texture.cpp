@@ -9,7 +9,7 @@ namespace Engine
 	namespace Renderer {
 		unsigned int OpenGL_Texture::s_slot = 0;
 
-		OpenGL_Texture::OpenGL_Texture(const std::string& filepath) : m_id(0), m_filePath(filepath), m_width(0), m_height(0), m_channels(0)
+		OpenGL_Texture::OpenGL_Texture(const std::string& filepath) : m_rendererID(0), m_filePath(filepath), m_width(0), m_height(0), m_channels(0)
 		{
 			unsigned char* localBuffer = stbi_load(m_filePath.c_str(), &m_width, &m_height, &m_channels, 0);
 			if (!localBuffer)
@@ -19,11 +19,11 @@ namespace Engine
 #endif // NG_DEBUG
 			}
 
-			glGenTextures(1, &m_id);
+			glGenTextures(1, &m_rendererID);
 			m_slot = s_slot;
 			s_slot++;
 			glActiveTexture(GL_TEXTURE0 + m_slot);
-			glBindTexture(GL_TEXTURE_2D, m_id);
+			glBindTexture(GL_TEXTURE_2D, m_rendererID);
 
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -52,7 +52,7 @@ namespace Engine
 			{
 				stbi_image_free(localBuffer);
 			}
-
+			LOG_CORE_INFO("[OpenGL][TEXTURE][TEXTURE CREATED WITH ID:{0}]", m_rendererID);
 		}
 
 		OpenGL_Texture::OpenGL_Texture(unsigned int width, unsigned int height, unsigned int channels, unsigned char* texData)
@@ -61,7 +61,8 @@ namespace Engine
 
 		OpenGL_Texture::~OpenGL_Texture()
 		{
-			glDeleteTextures(1, &m_id);
+			glDeleteTextures(1, &m_rendererID);
+			LOG_CORE_INFO("[OpenGL][TEXTURE][TEXTURE DESTROYED WITH ID:{0}]", m_rendererID);
 		}
 
 		unsigned int OpenGL_Texture::getSlot() const
@@ -72,7 +73,7 @@ namespace Engine
 		void OpenGL_Texture::bind(int slot) const
 		{
 			glActiveTexture(GL_TEXTURE0 + slot);
-			glBindTexture(GL_TEXTURE_2D, m_id);
+			glBindTexture(GL_TEXTURE_2D, m_rendererID);
 		}
 
 		void OpenGL_Texture::unbind() const

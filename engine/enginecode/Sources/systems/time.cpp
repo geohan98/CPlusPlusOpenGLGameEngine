@@ -1,5 +1,6 @@
 #include "engine_pch.h"
 #include "../enginecode/Headers/systems/time.h"
+#include "Headers/systems/log.h"
 
 namespace Engine
 {
@@ -12,6 +13,7 @@ namespace Engine
 
 		void Time::start(SystemSignal init, ...)
 		{
+			LOG_CORE_WARN("[SYSTEMS][TIME][TIMER STARTED]");
 			s_appStart = std::chrono::high_resolution_clock::now();
 			s_frameStart = std::chrono::high_resolution_clock::now();
 			s_deltaTime = std::chrono::duration<float>(0.0f);
@@ -21,6 +23,7 @@ namespace Engine
 
 		void Time::stop(SystemSignal close, ...)
 		{
+			LOG_CORE_WARN("[SYSTEMS][TIME][TIMER STOPPED]");
 		}
 
 		void Time::tick()

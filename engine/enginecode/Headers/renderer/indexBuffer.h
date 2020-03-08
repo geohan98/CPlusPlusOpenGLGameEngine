@@ -9,6 +9,9 @@ namespace Engine
 		class IndexBuffer
 		{
 		public:
+			virtual ~IndexBuffer() {};
+
+
 			virtual void bind() = 0;		///< Make this the active buffer
 			virtual void unbind() = 0;		///< Make this not the active buffer
 

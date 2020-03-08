@@ -15,6 +15,7 @@ namespace Engine
 			std::shared_ptr<IndexBuffer> m_indexBuffer; ///< Pointer to a Index Buffer
 		public:
 			OpenGL_VertexArray(); ///< Constructor
+			~OpenGL_VertexArray(); ///< Destructor
 			void bind() override; ///< Bind the vertex Array
 			void unbind() override; ///< Unbind the vertex Array
 

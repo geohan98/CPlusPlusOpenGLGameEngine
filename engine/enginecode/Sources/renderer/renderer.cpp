@@ -27,6 +27,7 @@ namespace Engine
 				break;
 			}
 		}
+
 		Renderer* Renderer::createBasic2D()
 		{
 			switch (RenderAPI::getAPI())

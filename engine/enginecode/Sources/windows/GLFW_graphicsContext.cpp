@@ -16,13 +16,13 @@ namespace Engine
 		if (!result)
 		{
 #ifdef NG_DEBUG
-			LOG_CORE_CRITICAL("FAILED TO INITIALISE GLAD");
+			LOG_CORE_CRITICAL("[GLFW][GRAPHICS CONTEXT][FAILED TO INITIALISE GLAD]");
 #endif // NG_DEBUG
 		}
 		else
 		{
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("GLAD INITALIZED");
+			LOG_CORE_WARN("[GLFW][GRAPHICS CONTEXT][GLAD INITALIZED]");
 #endif // NG_DEBUG
 
 			glEnable(GL_DEBUG_OUTPUT);
@@ -34,11 +34,11 @@ namespace Engine
 				const GLchar* message,
 				const void* userParam) {
 #ifdef NG_DEBUG
-					LOG_CORE_INFO("OpenGL DEBUG: [Type {0}] [ID {1}] [Severity {2}]; {3}", type, id, severity, message);
+					//LOG_CORE_INFO("OpenGL DEBUG: [Type {0}] [ID {1}] [Severity {2}]; {3}", type, id, severity, message);
 #endif // NG_DEBUG
-		}, 0);
+				}, 0);
+		}
 	}
-}
 
 	void GLFW_GraphicsContext::swapBuffers()
 	{

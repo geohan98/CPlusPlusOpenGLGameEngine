@@ -18,7 +18,7 @@ engineApp::engineApp()
 
 engineApp::~engineApp()
 {
-	LOG_INFO("ENGINE APP: STOP");
+	LOG_INFO("[TANKS][STOP]");
 }
 
 Engine::Application* Engine::startApplication()
