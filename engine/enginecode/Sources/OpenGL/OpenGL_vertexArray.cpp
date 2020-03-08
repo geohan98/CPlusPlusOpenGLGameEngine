@@ -12,12 +12,14 @@ namespace Engine
 		{
 			glGenVertexArrays(1, &m_rendererID);
 			glBindVertexArray(m_rendererID);
+			LOG_CORE_INFO("[OpenGL][VERTEX ARRAY][VERTEX ARRAY CREATED WITH ID:{0}]", m_rendererID);
 		}
 
 		OpenGL_VertexArray::~OpenGL_VertexArray()
 		{
 			glBindVertexArray(m_rendererID);
 			glDeleteVertexArrays(1, &m_rendererID);
+			LOG_CORE_INFO("[OpenGL][VERTEX ARRAY][VERTEX ARRAY DESTROYED WITH ID:{0}]", m_rendererID);
 		}
 
 		void OpenGL_VertexArray::bind()

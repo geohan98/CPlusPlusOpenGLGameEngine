@@ -43,7 +43,7 @@ namespace Engine
 			shader->bind();
 			if (materials->getGeometry().index() == 0)
 			{
-				//LOG_CORE_INFO("OPEN_GL: VARIANT WAS VERTEX ARRAY");
+				//LOG_CORE_INFO("OpenGL: VARIANT WAS VERTEX ARRAY");
 				auto geometry = std::get<std::shared_ptr<VertexArray>>(materials->getGeometry());
 				geometry->bind();
 
@@ -57,7 +57,7 @@ namespace Engine
 			}
 			else
 			{
-				//LOG_CORE_INFO("OPEN_GL: VARIANT WAS VERTEX BUFFER");
+				//LOG_CORE_INFO("OpenGL: VARIANT WAS VERTEX BUFFER");
 				auto geometry = std::get<std::shared_ptr<VertexBuffer>>(materials->getGeometry());
 				geometry->bind();
 

@@ -10,6 +10,8 @@ namespace Engine
 		class Texture
 		{
 		public:
+			virtual ~Texture() {};
+
 			virtual unsigned int getWidth() const = 0;		///< Return the texture width
 			virtual unsigned int getHeight() const = 0;		///< Return the texture height
 			virtual unsigned int getChannels() const = 0;	///< Return the number of channels

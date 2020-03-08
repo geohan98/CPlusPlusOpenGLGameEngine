@@ -18,6 +18,8 @@ namespace Engine
 		class Material
 		{
 		public:
+			virtual ~Material() {};
+
 			virtual void setShader(const std::shared_ptr<Shader>& shader) = 0; ///< Set the shader for the material
 			virtual void setGeometry(const std::variant<std::shared_ptr<VertexArray>, std::shared_ptr<VertexBuffer>>& geometry) = 0; ///< set the geometry for the material
 			virtual void setDataBlock(const std::map<std::string, void*>& data) = 0; ///< set all the data for the material

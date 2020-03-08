@@ -11,6 +11,13 @@ namespace Engine
 			glCreateBuffers(1, &m_rendererID);
 			glBindBuffer(GL_ARRAY_BUFFER, m_rendererID);
 			glBufferData(GL_ARRAY_BUFFER, m_drawCount * m_layout.getStride(), vertices, GL_DYNAMIC_DRAW);
+			LOG_CORE_INFO("[OpenGL][VERTEX BUFFER][CREATING VERTEX BUFFER, ID:{0}]", m_rendererID);
+		}
+
+		OpenGL_VertexBuffer::~OpenGL_VertexBuffer()
+		{
+			glDeleteBuffers(1, &m_rendererID);
+			LOG_CORE_INFO("[OpenGL][VERTEX BUFFER][VERTEX BUFFER DESTROYED WITH ID:{0}]", m_rendererID);
 		}
 
 		void OpenGL_VertexBuffer::bind()

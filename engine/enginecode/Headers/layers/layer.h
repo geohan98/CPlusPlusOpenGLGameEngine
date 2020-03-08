@@ -20,7 +20,7 @@ namespace Engine
 		std::shared_ptr<Renderer::Renderer> m_renderer; ///< Pointer to renderer
 		std::shared_ptr<CameraController> m_camera; ///< Pointer to camera controller
 	public:
-		Layer(const std::string& name); ///< Constructor
+		Layer(const std::string& name) : m_name(name) {}; ///< Constructor
 		virtual void onAttach() = 0; ///< Run on layer stack attach
 		virtual void onDetach() = 0; ///< Run on layer stack remove
 		virtual void onUpdate(float deltaTime) = 0; ///< Run every frame

@@ -7,6 +7,7 @@ namespace Engine
 	namespace Renderer {
 		OpenGL_Material::OpenGL_Material(const std::shared_ptr<Shader>& Shader, const std::shared_ptr<VertexArray>& vertexArray)
 		{
+			LOG_CORE_INFO("[OpenGL][MATERIAL][MATERAIL CREATED]");
 			m_shader = Shader;
 			m_geomertry = vertexArray;
 		}
@@ -15,6 +16,13 @@ namespace Engine
 		{
 			m_shader = Shader;
 			m_geomertry = vertexBuffer;
+		}
+
+		OpenGL_Material::~OpenGL_Material()
+		{
+			m_shader = nullptr;
+			m_data.clear();
+			LOG_CORE_INFO("[OpenGL][MATERIAL][MATERAIL DESTROYED]");
 		}
 
 		void OpenGL_Material::init(const std::shared_ptr<Shader>& Shader, const std::shared_ptr<VertexArray>& vertexArray)
@@ -46,7 +54,7 @@ namespace Engine
 		void OpenGL_Material::setVertexData(float* vertices, unsigned int size, unsigned int offset)
 		{
 #ifdef NG_DEBUG
-			LOG_CORE_INFO("FUNCTION NOT IMPLIMENTED, setVertexData(float* vertices, unsigned int size, unsigned int offset)");
+			LOG_CORE_WARN("FUNCTION NOT IMPLIMENTED, setVertexData(float* vertices, unsigned int size, unsigned int offset)");
 #endif // NG_DEBUG
 		}
 

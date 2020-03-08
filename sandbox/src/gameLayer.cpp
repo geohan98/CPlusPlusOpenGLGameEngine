@@ -7,6 +7,7 @@ namespace Engine
 {
 	void GameLayer::onAttach()
 	{
+		LOG_INFO("[GAMELAYER][ATTACH]");
 		m_resourceManager = std::shared_ptr<Systems::ResourceManager>(new Systems::ResourceManager());
 		m_resourceManager->start();
 		m_renderer = std::shared_ptr<Renderer::Renderer>(Renderer::Renderer::createBasic3D());
@@ -38,7 +39,7 @@ namespace Engine
 
 	void GameLayer::onDetach()
 	{
-
+		LOG_INFO("[GAMELAYER][DETACH]");
 	}
 
 	void GameLayer::onUpdate(float deltaTime)

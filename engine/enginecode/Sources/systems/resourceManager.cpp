@@ -23,12 +23,12 @@ namespace Engine
 
 		void ResourceManager::start(SystemSignal init, ...)
 		{
-
+			LOG_CORE_WARN("[SYSTEMS][RESOURCE MANAGER][RESOURCE MANAGER STARTED]");
 		}
 
 		void ResourceManager::stop(SystemSignal close, ...)
 		{
-
+			LOG_CORE_WARN("[SYSTEMS][RESOURCE MANAGER][RESOURCE MANAGER STOPPED]");
 		}
 
 		//INDEX BUFFERS

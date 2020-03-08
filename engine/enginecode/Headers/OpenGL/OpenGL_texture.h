@@ -11,7 +11,7 @@ namespace Engine
 		{
 		private:
 			std::string m_filePath; ///< filepath of image
-			unsigned int m_id; ///< object id
+			unsigned int m_rendererID; ///< object id
 			int m_width; ///< image width
 			int m_height; ///< image height
 			int m_channels; ///< number of channels

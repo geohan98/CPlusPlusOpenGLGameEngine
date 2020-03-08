@@ -10,10 +10,11 @@ namespace Engine
 		class OpenGL_IndexBuffer : public IndexBuffer
 		{
 		private:
-			unsigned int m_RendererID; ///< Object ID
-			unsigned int m_Count; ///< Number of indices
+			unsigned int m_rendererID; ///< Object ID
+			unsigned int m_count; ///< Number of indices
 		public:
 			OpenGL_IndexBuffer(unsigned int* indices, unsigned int count); ///< Constructor
+			~OpenGL_IndexBuffer();
 			void bind() override; ///< Bind the index Buffer
 			void unbind() override; ///< Unbind the index buffer
 			unsigned int getCount() const override; ///< Return the number of indices

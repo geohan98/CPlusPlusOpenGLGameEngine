@@ -10,6 +10,8 @@ namespace Engine
 		class VertexBuffer
 		{
 		public:
+			virtual ~VertexBuffer() {};
+
 			virtual void bind() = 0;		///< Make this the active buffer
 			virtual void unbind() = 0;		///< Make this not the active buffer
 			virtual void edit(float* vertices, unsigned int count) = 0; ///< Not Implemented

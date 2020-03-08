@@ -16,6 +16,7 @@ namespace Engine
 			VertexBufferLayout m_layout; ///< buffer layout
 		public:
 			OpenGL_VertexBuffer(float* vertices, unsigned int count, VertexBufferLayout& layout); ///< Constructor
+			~OpenGL_VertexBuffer();
 			void bind() override; ///< Bind the vertex buffer
 			void unbind() override; ///< Unbind the vertex buffer
 			void edit(float* vertices, unsigned int count) override; ///< Edit the vertex buffer

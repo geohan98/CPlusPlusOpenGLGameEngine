@@ -10,6 +10,30 @@
 namespace Engine
 {
 	namespace Renderer {
+		OpenGL_Shader::OpenGL_Shader(const std::string& filepath) : m_rendererID(0)
+		{
+			parseSource(filepath);
+			LOG_CORE_INFO("[OpenGL][SHADER][SHADER CREATED WITH ID:{0}]", m_rendererID);
+		}
+		OpenGL_Shader::~OpenGL_Shader()
+		{
+			glDeleteShader(m_rendererID);
+			LOG_CORE_INFO("[OpenGL][SHADER][SHADER DESTROYED WITH ID:{0}]", m_rendererID);
+		}
+
+		void OpenGL_Shader::bind()
+		{
+			glUseProgram(m_rendererID);
+		}
+		void OpenGL_Shader::unbind()
+		{
+			glUseProgram(0);
+		}
+		unsigned int OpenGL_Shader::getId()
+		{
+			return m_rendererID;
+		}
+
 		void OpenGL_Shader::parseSource(const std::string& filepath)
 		{
 			std::fstream handle(filepath, std::ios::in);
@@ -17,7 +41,7 @@ namespace Engine
 			if (!handle.is_open())
 			{
 #ifdef NG_DEBUG
-				LOG_CORE_ERROR("COULD NOT OPEN SHADER FILE '{0}'", filepath);
+				LOG_CORE_ERROR("[OpenGL][SHADER][ COULD NOT OPEN SHADER FILE: '{0}']", filepath);
 #endif // NG_DEBUG
 			}
 
@@ -63,10 +87,9 @@ namespace Engine
 
 			compileAndLink(src[VERTEX], src[FRAGMENT], src[GEOMATRY], src[TESSALATION_CONTROL], src[TESSALATION_EVALUATION]);
 		}
-
 		void OpenGL_Shader::compileAndLink(std::string& vertex, std::string& fragment, std::string& geomatry, std::string& tessalationControl, std::string& tessalationEvaluation)
 		{
-			m_program_ID = glCreateProgram();
+			m_rendererID = glCreateProgram();
 
 #pragma region VERTEX SHADER
 			unsigned int VS = glCreateShader(GL_VERTEX_SHADER);
@@ -76,11 +99,11 @@ namespace Engine
 			if (!checkCompileErrors(VS, false))
 			{
 				glDeleteShader(VS);
-				glDeleteProgram(m_program_ID);
+				glDeleteProgram(m_rendererID);
 				return;
 			}
-			LOG_CORE_INFO("VERTEX SHADER COMPILED");
-			glAttachShader(m_program_ID, VS);
+			LOG_CORE_TRACE("[OpenGL][SHADER][COMPILED VERTX SHADER SOURCE]");
+			glAttachShader(m_rendererID, VS);
 #pragma endregion
 
 #pragma region GEOMATRY SHADER
@@ -96,11 +119,11 @@ namespace Engine
 
 					glDeleteShader(VS);
 					glDeleteShader(GS);
-					glDeleteProgram(m_program_ID);
+					glDeleteProgram(m_rendererID);
 					return;
 				}
-				LOG_CORE_INFO("GEOMATRY SHADER COMPILED");
-				glAttachShader(m_program_ID, GS);
+				LOG_CORE_TRACE("[OpenGL][SHADER][COMPILED GEOMETRY SHADER SOURCE]");
+				glAttachShader(m_rendererID, GS);
 			}
 #pragma endregion
 
@@ -120,10 +143,11 @@ namespace Engine
 						glDeleteShader(GS);
 					}
 					glDeleteShader(TC);
-					glDeleteProgram(m_program_ID);
+					glDeleteProgram(m_rendererID);
 					return;
 				}
-				glAttachShader(m_program_ID, TC);
+				LOG_CORE_TRACE("[OpenGL][SHADER][COMPILED TESS CONTROL SHADER SOURCE]");
+				glAttachShader(m_rendererID, TC);
 			}
 #pragma endregion
 
@@ -147,10 +171,11 @@ namespace Engine
 						glDeleteShader(TC);
 					}
 					glDeleteShader(TE);
-					glDeleteProgram(m_program_ID);
+					glDeleteProgram(m_rendererID);
 					return;
 				}
-				glAttachShader(m_program_ID, TE);
+				LOG_CORE_TRACE("[OpenGL][SHADER][COMPILED TESS EVALUATION SHADER SOURCE]");
+				glAttachShader(m_rendererID, TE);
 			}
 #pragma endregion
 
@@ -175,15 +200,15 @@ namespace Engine
 					glDeleteShader(TE);
 				}
 				glDeleteShader(FS);
-				glDeleteProgram(m_program_ID);
+				glDeleteProgram(m_rendererID);
 				return;
 			}
-			LOG_CORE_INFO("FRAG SHADER COMPILED");
-			glAttachShader(m_program_ID, FS);
+			LOG_CORE_TRACE("[OpenGL][SHADER][COMPILED FRAGMENT SHADER SOURCE]");
+			glAttachShader(m_rendererID, FS);
 #pragma endregion
 
 #pragma region PROGRAME LINKING
-			glLinkProgram(m_program_ID);
+			glLinkProgram(m_rendererID);
 
 			glDeleteShader(VS);
 			glDeleteShader(FS);
@@ -199,16 +224,15 @@ namespace Engine
 			{
 				glDeleteShader(TE);
 			}
-			if (!checkCompileErrors(m_program_ID, true))
+			if (!checkCompileErrors(m_rendererID, true))
 			{
-				glDeleteProgram(m_program_ID);
+				glDeleteProgram(m_rendererID);
 				return;
 			}
 #pragma endregion
 
 			setUniformLocations();
 		}
-
 		bool OpenGL_Shader::checkCompileErrors(unsigned int shader, bool program)
 		{
 			int success;
@@ -219,7 +243,7 @@ namespace Engine
 				if (!success)
 				{
 					glGetShaderInfoLog(shader, 1024, NULL, info);
-					LOG_CORE_ERROR("OPEN_GL: SHADER LINKING ERROR: {0}", info);
+					LOG_CORE_ERROR("[OpenGL][SHADER][SHADER LINKING ERROR:{0}]", info);
 					return false;
 				}
 			}
@@ -229,13 +253,12 @@ namespace Engine
 				if (!success)
 				{
 					glGetShaderInfoLog(shader, 1024, NULL, info);
-					LOG_CORE_ERROR("OPEN_GL: SHADER COMPILE ERROR: {0}", info);
+					LOG_CORE_ERROR("[OpenGL][SHADER][SHADER COMPILE ERROR:{0}]", info);
 					return  false;
 				}
 			}
 			return true;
 		}
-
 		void OpenGL_Shader::setUniformLocations()
 		{
 			std::map<std::string, std::pair<ShaderDataType, int>>::iterator it;
@@ -244,20 +267,19 @@ namespace Engine
 			{
 				if (it->second.second == -1)
 				{
-					it->second.second = glGetUniformLocation(m_program_ID, it->first.c_str());
+					it->second.second = glGetUniformLocation(m_rendererID, it->first.c_str());
 #ifdef NG_DEBUG
-					LOG_CORE_TRACE("UNIFORM CACHED, '{0}', TYPE == '{1}', LOCATION == '{2}'", it->first, it->second.first, it->second.second);
+					LOG_CORE_TRACE("[OpenGL][SHADER][UNIFORM CACHED, '{0}', TYPE == '{1}', LOCATION == '{2}']", it->first, it->second.first, it->second.second);
 #endif // NG_DEBUG
 					if (it->second.second == -1)
 					{
 #ifdef NG_DEBUG
-						LOG_CORE_ERROR("UNIFORM '{0}', DOES NOT EXSIST", it->first);
+						LOG_CORE_ERROR("[OpenGL][SHADER][UNIFORM '{0}', DOES NOT EXSIST]", it->first);
 #endif // NG_DEBUG
 					}
 				}
 			}
 		}
-
 		void OpenGL_Shader::dispatchUniformUpload(ShaderDataType type, unsigned int location, void* data)
 		{
 			const float* addrf;
@@ -269,7 +291,7 @@ namespace Engine
 			{
 			case ShaderDataType::None:
 #ifdef NG_DEBUG
-				LOG_CORE_ERROR("UNIFORM TYPE NOT SPECIFIED");
+				LOG_CORE_ERROR("[OpenGL][SHADER][UNIFORM TYPE NOT SPECIFIED]");
 #endif // NG_DEBUG
 				break;
 			case ShaderDataType::Int:
@@ -322,39 +344,12 @@ namespace Engine
 				break;
 			}
 		}
-
-		OpenGL_Shader::OpenGL_Shader(const std::string& filepath) : m_program_ID(0)
-		{
-			parseSource(filepath);
-		}
-
-		OpenGL_Shader::OpenGL_Shader(const std::string& vertex, const std::string& fragment)
-		{
-		}
-
-		unsigned int OpenGL_Shader::id()
-		{
-			return m_program_ID;
-		}
-
-		void OpenGL_Shader::bind()
-		{
-			glUseProgram(m_program_ID);
-		}
-
-		void OpenGL_Shader::unbind()
-		{
-			glUseProgram(0);
-		}
 		bool OpenGL_Shader::uploadData(const std::string& name, void* data)
 		{
 			dispatchUniformUpload(m_uniformLocationCache[name].first, m_uniformLocationCache[name].second, data);
 			return false;
 		}
-		bool OpenGL_Shader::uploadData(const UniformLayout& uniforms)
-		{
-			return false;
-		}
+
 		VertexBufferLayout OpenGL_Shader::getBufferLayout() const
 		{
 			return m_bufferlayout;

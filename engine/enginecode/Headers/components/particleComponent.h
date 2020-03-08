@@ -45,7 +45,7 @@ namespace Engine
 
 			//System Data
 			float m_lastSpawn;
-			float m_spawnRate = 100.0f;
+			float m_spawnRate = 10.0f;
 			//Rotation
 			float m_minStartRotation = 0.0f;
 			float m_maxStartRotation = 45.0f;
@@ -103,8 +103,6 @@ namespace Engine
 			}
 			void onUpdate(float deltaTime) override
 			{
-				LOG_CORE_WARN("{0}", ((Systems::Time::getTimeNow() - m_lastSpawn)));
-
 				if ((Systems::Time::getTimeNow() - m_lastSpawn) / 1000000000.0f >= 1.0f / m_spawnRate)
 				{
 					addParticle();
