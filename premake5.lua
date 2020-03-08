@@ -247,7 +247,7 @@ project "Game"
 		location "engineTests"
         kind "ConsoleApp"
         language "C++"
-		staticruntime "on"
+		staticruntime "off"
 		systemversion "latest"
 
 		targetdir ("bin/" .. outputdir .. "/%{prj.name}")

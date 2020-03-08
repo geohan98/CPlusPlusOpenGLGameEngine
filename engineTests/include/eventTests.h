@@ -2,11 +2,11 @@
 
 #include <gtest/gtest.h>
 
-#include "events/event.h"
-#include "events/applicationEvents.h"
-#include "events/keyEvents.h"
-#include "events/mouseEvents.h"
-#include "systems/ButtonCodes.h"
+#include "Headers/events/event.h"
+#include "Headers/events/applicationEvents.h"
+#include "Headers/events/keyEvents.h"
+#include "Headers/events/mouseEvents.h"
+#include "Headers/systems/ButtonCodes.h"
 
 bool onResizeTrue(Engine::Events::WindowResize& e)
 {
