@@ -9,6 +9,7 @@
 engineApp::engineApp()
 {
 	LOG_INFO("[TANKS][START]");
+	m_layerStack->push(std::shared_ptr<Engine::Layer>(new Engine::GameLayer()));
 }
 
 engineApp::~engineApp()

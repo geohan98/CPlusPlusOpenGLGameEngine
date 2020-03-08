@@ -4,8 +4,8 @@
 #include "Headers/renderer/shader.h"
 #include "Headers/renderer/vertexBuffer.h"
 #include "Headers/systems/time.h"
-#include <vector>
 #include "Headers/systems/time.h"
+#include <vector>
 #include <glm/gtc/random.hpp>
 
 
@@ -27,7 +27,6 @@ namespace Engine
 		float lifetime;
 		float timeleft;
 
-		ParticleData() {}
 		ParticleData(glm::vec3 _position, float _rotation, float _startScale, float _endScale, glm::vec4 _startColour, glm::vec4 _endColour, glm::vec3 _linearVelocity, float _angularVelocity, float _lifetime) :
 			position(_position), rotation(_rotation), scale(_startScale), startScale(_startScale), endScale(_endScale), colour(_startColour), startColour(_startColour), endColour(_endColour), linearVelocity(_linearVelocity), angularVelocity(_angularVelocity), lifetime(_lifetime), timeleft(_lifetime) {}
 	};

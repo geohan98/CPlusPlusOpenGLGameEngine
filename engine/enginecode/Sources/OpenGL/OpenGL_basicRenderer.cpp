@@ -8,9 +8,8 @@ namespace Engine
 	namespace Renderer {
 		void OpenGL_BasicRenderer::actionCommand(RenderCommand* command)
 		{
-
 			command->action();
-			if (!command->dontDestroyOnAction)
+			if (command->destroyOnAction)
 			{
 				delete command;
 			}

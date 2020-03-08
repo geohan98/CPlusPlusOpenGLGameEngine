@@ -12,7 +12,7 @@ namespace Engine
 		class OpenGL_ClearDepthColourBufferCommand : public RenderCommand
 		{
 		public:
-			OpenGL_ClearDepthColourBufferCommand(bool destroy) { dontDestroyOnAction = destroy; };
+			OpenGL_ClearDepthColourBufferCommand(bool destroy) { destroyOnAction = destroy; };
 			void action() override; ///< Action the command
 		};
 
@@ -29,7 +29,7 @@ namespace Engine
 		private:
 			float m_r, m_g, m_b, m_a; ///< Clear color
 		public:
-			OpenGL_setClearColourCommand(float r, float g, float b, float a, bool destroy) : m_r(r), m_g(g), m_b(b), m_a(a) { dontDestroyOnAction = destroy; };
+			OpenGL_setClearColourCommand(float r, float g, float b, float a, bool destroy) : m_r(r), m_g(g), m_b(b), m_a(a) { destroyOnAction = destroy; };
 			void action() override;///< Action the command
 		};
 
@@ -46,7 +46,7 @@ namespace Engine
 		private:
 			bool m_enabled; ///< Should it be enabled
 		public:
-			OpenGL_setDepthTestLessCommand(bool enabled, bool destroy) : m_enabled(enabled) { dontDestroyOnAction = destroy; };
+			OpenGL_setDepthTestLessCommand(bool enabled, bool destroy) : m_enabled(enabled) { destroyOnAction = destroy; };
 			void action() override;///< Action the command
 		};
 
@@ -71,7 +71,7 @@ namespace Engine
 		private:
 			bool m_enabled; ///< Should it be enabled
 		public:
-			OpenGL_setBackFaceCullingCommand(bool enabled, bool destroy) : m_enabled(enabled) { dontDestroyOnAction = destroy; };
+			OpenGL_setBackFaceCullingCommand(bool enabled, bool destroy) : m_enabled(enabled) { destroyOnAction = destroy; };
 			void action() override;///< Action the command
 		};
 
@@ -94,7 +94,7 @@ namespace Engine
 		class OpenGL_setPolygonModeFill : public RenderCommand
 		{
 		public:
-			OpenGL_setPolygonModeFill(bool destroy) { dontDestroyOnAction = destroy; };
+			OpenGL_setPolygonModeFill(bool destroy) { destroyOnAction = destroy; };
 			void action() override;///< Action the command
 		};
 
@@ -109,7 +109,7 @@ namespace Engine
 		class OpenGL_setPolygonModeLine : public RenderCommand
 		{
 		public:
-			OpenGL_setPolygonModeLine(bool destroy) { dontDestroyOnAction = destroy; };
+			OpenGL_setPolygonModeLine(bool destroy) { destroyOnAction = destroy; };
 			void action() override;///< Action the command
 		};
 
@@ -124,7 +124,7 @@ namespace Engine
 		class OpenGL_setPolygonModePoint : public RenderCommand
 		{
 		public:
-			OpenGL_setPolygonModePoint(bool destroy) { dontDestroyOnAction = destroy; };
+			OpenGL_setPolygonModePoint(bool destroy) { destroyOnAction = destroy; };
 			void action() override;///< Action the command
 		};
 
@@ -141,7 +141,7 @@ namespace Engine
 		private:
 			bool m_enabled; ///< Should it be enabled
 		public:
-			OpenGL_setBlendMode(bool enabled, bool destroy) : m_enabled(enabled) { dontDestroyOnAction = destroy; };
+			OpenGL_setBlendMode(bool enabled, bool destroy) : m_enabled(enabled) { destroyOnAction = destroy; };
 			void action() override;///< Action the command
 		};
 

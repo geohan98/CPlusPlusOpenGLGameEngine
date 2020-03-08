@@ -18,7 +18,9 @@ namespace Engine
 		std::vector<std::shared_ptr<PositionComponent>> m_positionComponents;
 		std::vector<std::shared_ptr<Components::ParticleComponent>> m_particleComponents;
 		Renderer::SceneData m_sceneData;
-		glm::vec3 colour = glm::vec3(0.5f);
+
+		std::vector<std::shared_ptr<Renderer::RenderCommand>> m_predrawCommands;	///< List of all PreDraw Render Commands
+		std::vector<std::shared_ptr<Renderer::RenderCommand>> m_postdrawCommands;	///< List of all PostDraw Render Commands
 	public:
 		GameLayer(const std::string& name = "Game Layer") : Layer(name) {};		///< Constructor
 		void onAttach() override;												///< Run on layer Attach

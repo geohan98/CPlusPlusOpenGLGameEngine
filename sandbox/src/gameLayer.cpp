@@ -10,8 +10,15 @@ namespace Engine
 		LOG_INFO("[GAMELAYER][ATTACH]");
 		m_resourceManager = std::shared_ptr<Systems::ResourceManager>(new Systems::ResourceManager());
 		m_resourceManager->start();
+
 		m_renderer = std::shared_ptr<Renderer::Renderer>(Renderer::Renderer::createBasic3D());
 		m_renderer->actionCommand(Renderer::RenderCommand::setClearColourCommand(0.0, 0.0, 0.0, 1.0f));
+
+		m_predrawCommands.push_back(std::shared_ptr<Renderer::RenderCommand>(Renderer::RenderCommand::setDepthTestLessCommand(true, false)));
+		m_predrawCommands.push_back(std::shared_ptr<Renderer::RenderCommand>(Renderer::RenderCommand::setBlendMode(true, false)));
+		m_predrawCommands.push_back(std::shared_ptr<Renderer::RenderCommand>(Renderer::RenderCommand::setBackFaceCullingCommand(true, false)));
+		m_predrawCommands.push_back(std::shared_ptr<Renderer::RenderCommand>(Renderer::RenderCommand::ClearDepthColourBufferCommand(false)));
+
 		m_camera = std::shared_ptr<CameraController3D>(new CameraController3D);
 		m_camera->init(80.0f, 800.0f / 600.0f, 0.1, 100.0f);
 
@@ -19,7 +26,7 @@ namespace Engine
 		m_positionComponents.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f))));
 		m_particleComponents.push_back(std::shared_ptr<Components::ParticleComponent>(new Components::ParticleComponent()));
 		m_gameObjects.back()->addComponent(m_positionComponents.back());
-		if (m_particleComponents.size() > 0)
+		if (!m_particleComponents.empty())
 		{
 			m_gameObjects.back()->addComponent(m_particleComponents.back());
 		}
@@ -27,7 +34,7 @@ namespace Engine
 		Renderer::UniformBufferLayout viewProjectionLayout = { Renderer::ShaderDataType::Mat4,Renderer::ShaderDataType::Mat4 };
 		auto viewProjectionBuffer = std::shared_ptr<Renderer::UniformBuffer>(Renderer::UniformBuffer::create(viewProjectionLayout.getStride(), viewProjectionLayout));
 
-		if (m_particleComponents.size() > 0)
+		if (!m_particleComponents.empty())
 		{
 			viewProjectionBuffer->attachShaderBlock(m_particleComponents.back()->getMaterial()->getShader(), "VP");
 			std::vector<void*> viewProjectionData(2);
@@ -44,22 +51,27 @@ namespace Engine
 
 	void GameLayer::onUpdate(float deltaTime)
 	{
-		m_renderer->beginScene(m_sceneData);
-
 		m_camera->onUpdate(deltaTime);
 		for (auto& CGO : m_gameObjects)
 		{
 			CGO->onUpdate(deltaTime);
 		}
 
-		m_renderer->actionCommand(Renderer::RenderCommand::setDepthTestLessCommand(true));
-		m_renderer->actionCommand(Renderer::RenderCommand::setBlendMode(true));
-		m_renderer->actionCommand(Renderer::RenderCommand::setBackFaceCullingCommand(true));
-		m_renderer->actionCommand(Renderer::RenderCommand::ClearDepthColourBufferCommand());
+		m_renderer->beginScene(m_sceneData);
 
-		if (m_particleComponents.size() > 0)
+		for (auto& renderCommand : m_predrawCommands)
+		{
+			m_renderer->actionCommand(renderCommand.get());
+		}
+
+		if (!m_particleComponents.empty())
 		{
 			m_renderer->submit(m_particleComponents.back()->getMaterial());
+		}
+
+		for (auto& renderCommand : m_postdrawCommands)
+		{
+			m_renderer->actionCommand(renderCommand.get());
 		}
 
 	}
