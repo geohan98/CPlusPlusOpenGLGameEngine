@@ -84,7 +84,7 @@ namespace Engine
 		}
 		int OpenGL_Texture::getId() const
 		{
-			return m_id;
+			return m_rendererID;
 		}
 	}
 }
