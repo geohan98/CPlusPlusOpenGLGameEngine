@@ -306,50 +306,16 @@ project "Spike"
 
 	includedirs
 	{
-		"%{prj.name}/include",
-		"vendor/spdlog/include",
-		"vendor/stb_image",
-		"vendor/freetype2/include",
-		"vendor/glm/",
-		"vendor/assimp/include",
-		"vendor/Glad/include",
-		"vendor/bullet3-2.89/src"
+		"%{prj.name}/include"
 	}
-	
-	libdirs 
-	{
-		"vendor/bullet3-2.89/bin"
-	}
-	
-	links 
-	{
-		"Freetype",
-		"assimp",
-		"Glad",
-		"BulletDynamics_vs2010_x64_debug",
-		"BulletCollision_vs2010_x64_debug",
-		"LinearMath_vs2010_x64_debug"
-	}
-	
-
-	defines { "BT_THREADSAFE=1", "BT_USE_DOUBLE_PRECISION" }
 
 	filter "system:windows"
 		cppdialect "C++17"
 		systemversion "latest"
-		defines
-		{
-			"NG_PLATFORM_WINDOWS"
-		}
 
 	filter "configurations:Debug"
-		defines { "NG_DEBUG", "_DEBUG=1" }
 		runtime "Debug"
 		symbols "On"
-
-	filter "configurations:Release"
-		runtime "Release"
-		optimize "On"
 
 group "Vendor"
 

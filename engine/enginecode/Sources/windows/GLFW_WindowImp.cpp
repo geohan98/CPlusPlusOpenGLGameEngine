@@ -11,19 +11,40 @@ namespace Engine
 	{
 		m_properties = properties;
 
-		m_nativeWindow = glfwCreateWindow(m_properties.m_width, m_properties.m_height, m_properties.m_title.c_str(), NULL, NULL);
-		if (!m_nativeWindow)
+		if (m_properties.m_isFullScreen)
 		{
+			const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+			m_nativeWindow = glfwCreateWindow(mode->width, mode->height, m_properties.m_title.c_str(), glfwGetPrimaryMonitor(), NULL);
+			if (!m_nativeWindow)
+			{
 #ifdef NG_DEBUG
-			LOG_CORE_CRITICAL("[WINDOW][GLFW][FAILED TO CREATE GLFW WINDOW]");
+				LOG_CORE_CRITICAL("[WINDOW][GLFW][FAILED TO CREATE GLFW WINDOW]");
 #endif // NG_DEBUG
-			return;
+				return;
+			}
+			else
+			{
+#ifdef NG_DEBUG
+				LOG_CORE_WARN("[WINDOW][GLFW][GLFW WINDOW CREATED]");
+#endif // NG_DEBUG
+			}
 		}
 		else
 		{
+			m_nativeWindow = glfwCreateWindow(m_properties.m_width, m_properties.m_height, m_properties.m_title.c_str(), NULL, NULL);
+			if (!m_nativeWindow)
+			{
 #ifdef NG_DEBUG
-			LOG_CORE_WARN("[WINDOW][GLFW][GLFW WINDOW CREATED]");
+				LOG_CORE_CRITICAL("[WINDOW][GLFW][FAILED TO CREATE GLFW WINDOW]");
 #endif // NG_DEBUG
+				return;
+			}
+			else
+			{
+#ifdef NG_DEBUG
+				LOG_CORE_WARN("[WINDOW][GLFW][GLFW WINDOW CREATED]");
+#endif // NG_DEBUG
+			}
 		}
 
 		m_context = std::unique_ptr<GraphicsContext>(new GLFW_GraphicsContext(m_nativeWindow));
@@ -155,6 +176,8 @@ namespace Engine
 
 	void GLFW_WindowImp::onResize(unsigned int width, unsigned int height)
 	{
+		LOG_CORE_INFO("[WINDOW][GLFW][RESIZE WINDOW]");
+		glfwSetWindowSize(m_nativeWindow, width, height);
 	}
 
 	void GLFW_WindowImp::setVSync(bool VSync)

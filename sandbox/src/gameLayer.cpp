@@ -4,6 +4,8 @@
 #include "../enginecode/Headers/fileLoaders/textLoader.h"
 #include "../enginecode/Headers/fileLoaders/JSONLoaderLog.h"
 #include "../enginecode/Headers/assetloader.h"
+#include "Headers/core/application.h"
+
 
 #include "../imgui/imgui.h"
 
@@ -29,7 +31,7 @@ namespace Engine
 		m_predrawCommands.push_back(std::shared_ptr<Renderer::RenderCommand>(Renderer::RenderCommand::ClearDepthColourBufferCommand(false)));
 
 		m_camera = std::shared_ptr<CameraController3D>(new CameraController3D);
-		m_camera->init(80.0f, 800.0f / 600.0f, 0.1, 100.0f);
+		m_camera->init(80.0f, Engine::Application::getInstance().getWindow()->getWidth() / Engine::Application::getInstance().getWindow()->getHeight(), 0.1, 100.0f);
 
 		m_gameObjects.push_back(std::shared_ptr<GameObject>(new GameObject()));
 		m_positionComponents.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f))));

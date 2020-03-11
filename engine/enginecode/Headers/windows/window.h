@@ -20,7 +20,7 @@ namespace Engine {
 		bool m_isFullScreen;
 		bool m_isVSync;
 
-		WindowProperties(const std::string& title = "My Window", unsigned int width = 800, unsigned int height = 600, bool fullscreen = false) : m_title(title), m_width(width), m_height(height), m_isFullScreen(fullscreen) {}
+		WindowProperties(const std::string& title = "Window", unsigned int width = 800, unsigned int height = 600, bool fullscreen = false) : m_title(title), m_width(width), m_height(height), m_isFullScreen(fullscreen) {}
 	};
 
 	/**

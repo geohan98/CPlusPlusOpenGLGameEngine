@@ -17,7 +17,7 @@ namespace Engine
 		}
 		OpenGL_Shader::~OpenGL_Shader()
 		{
-			LOG_CORE_INFO("[OpenGL][SHADER][SHADER DESTROYED WITH ID:{0}]", m_rendererID);
+			//LOG_CORE_INFO("[OpenGL][SHADER][SHADER DESTROYED WITH ID:{0}]", m_rendererID);
 			glDeleteShader(m_rendererID);
 		}
 

@@ -10,6 +10,8 @@
 #include "Headers/windows/GLFW_inputPoller.h"
 #endif // NG_PLATFORM_WINDOWS
 
+#include "Headers/iniParser.h"
+
 namespace Engine {
 
 #pragma region Statics
@@ -43,10 +45,14 @@ namespace Engine {
 #endif // NG_PLATFORM_WINDOWS
 		m_windowSystem->start();
 
+
+		IniParser config = IniParser("config.ini");
+
 		Engine::WindowProperties win = Engine::WindowProperties();
 		win.m_title = _name;
-		win.m_width = _width;
-		win.m_height = _height;
+		win.m_width = config.getDataInt("width");
+		win.m_height = config.getDataInt("height");
+		win.m_isFullScreen = config.getDataBool("fullscreen");
 
 		m_window = std::shared_ptr<Window>(Window::create(win));
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
