@@ -15,7 +15,7 @@ namespace Engine {
 	class Application
 	{
 	protected:
-		Application(); ///< Constructor
+		Application(char* _name, int _width, int _height); ///< Constructor
 		std::shared_ptr<Systems::Log> m_log; ///< Logger System
 		std::shared_ptr<Systems::Time> m_time; ///< Timer System
 		std::shared_ptr<Systems::WindowSystem> m_windowSystem; ///< Window System

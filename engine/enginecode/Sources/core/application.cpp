@@ -22,7 +22,7 @@ namespace Engine {
 
 #pragma region Constructor & Destructor
 
-	Application::Application()
+	Application::Application(char* _name, int _width, int _height)
 	{
 		if (s_instance == nullptr)
 		{
@@ -43,13 +43,17 @@ namespace Engine {
 #endif // NG_PLATFORM_WINDOWS
 		m_windowSystem->start();
 
-		m_window = std::shared_ptr<Window>(Window::create());
+		Engine::WindowProperties win = Engine::WindowProperties();
+		win.m_title = _name;
+		win.m_width = _width;
+		win.m_height = _height;
+
+		m_window = std::shared_ptr<Window>(Window::create(win));
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
 
 		m_layerStack = std::shared_ptr<Systems::LayerStack>(new Systems::LayerStack());
 		m_layerStack->start();
 	}
-
 
 	Application::~Application()
 	{
