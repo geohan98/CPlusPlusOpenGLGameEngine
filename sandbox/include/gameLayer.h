@@ -4,7 +4,8 @@
 #include "../enginecode/Headers/renderer/uniformBuffer.h"
 #include "Headers/components/particleComponent.h"
 #include "Headers/components/PositionComponent.h"
-
+#include "Headers/systems/Physics.h"
+#include "Headers/components/PhysicsComponent.h"
 
 
 namespace Engine
@@ -18,6 +19,7 @@ namespace Engine
 		std::vector<std::shared_ptr<GameObject>> m_gameObjects;					///< All the GameObjects
 		std::vector<std::shared_ptr<PositionComponent>> m_positionComponents;
 		std::vector<std::shared_ptr<Components::ParticleComponent>> m_particleComponents;
+		std::vector<std::shared_ptr<PhysicsComponent>> m_physicsComponent;
 		Renderer::SceneData m_sceneData;
 
 		std::vector<std::shared_ptr<Renderer::RenderCommand>> m_predrawCommands;	///< List of all PreDraw Render Commands

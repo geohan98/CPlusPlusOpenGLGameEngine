@@ -28,6 +28,9 @@ namespace Engine
 		m_predrawCommands.push_back(std::shared_ptr<Renderer::RenderCommand>(Renderer::RenderCommand::setBackFaceCullingCommand(true, false)));
 		m_predrawCommands.push_back(std::shared_ptr<Renderer::RenderCommand>(Renderer::RenderCommand::ClearDepthColourBufferCommand(false)));
 
+		m_physicsComponent.push_back(new std::shared_ptr(PhysicsComponent(glm::vec3(0.5,0.5,0.5),glm::vec3(0,0,0))));
+
+
 		m_camera = std::shared_ptr<CameraController3D>(new CameraController3D);
 		m_camera->init(80.0f, 800.0f / 600.0f, 0.1, 100.0f);
 
