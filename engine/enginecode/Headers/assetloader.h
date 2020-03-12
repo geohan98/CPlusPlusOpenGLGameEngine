@@ -18,9 +18,6 @@ namespace Engine {
 		class AssetLoader 
 		{
 
-			
-
-			
 			static void ASSIMPProcessMeshLog(aiMesh *mesh, const aiScene *scene)
 			{
 				// Find vertex properties

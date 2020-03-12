@@ -1,25 +1,32 @@
-#ifndef MESH_H
-#define MESH_H
 #pragma once
-#include "../assimp/include/assimp/mesh.h"
+
+#pragma message("Non-Risky")
 #include "glm/glm.hpp"
-#include <string>
-#include <sstream>
-#include <fstream>
-#include <iostream>
-#include <memory>
-#include <vector>
-#include "glad/glad.h"
+#include <glm/gtc/matrix_transform.hpp>
+#include "../stb_image/stb_image.h"
+
+
+#pragma message("Assimp")
+#include "../assimp/include/assimp/mesh.h"
+#include "../assimp/include/assimp/scene.h"
+#include "../assimp/include/assimp/material.h"
+#include "../assimp/include/assimp/postprocess.h"
+#include "../assimp/include/assimp/Importer.hpp"
+
+#pragma message("OpenGL Infrastructure Headers")
 #include "../enginecode/Headers/OpenGL/OpenGL_shader.h"
 #include "../enginecode/Headers/OpenGL/OpenGL_vertexArray.h"
-#include <glm/gtc/matrix_transform.hpp>
 
+#pragma message("Includes complete.")
 
 using namespace std;
 
-namespace Engine {
+namespace Engine 
+{
 
-	namespace Renderer {
+	namespace Renderer 
+	{
+        unsigned int TextureFromFile(const char *path, const string &directory, bool gamma = false);
 
 		struct Vertex {
 			// position
@@ -34,14 +41,15 @@ namespace Engine {
 			glm::vec3 Bitangent;
 		};
 
-		struct Texture {
-			unsigned int id;
-			string type;
-			string path;
-		};
 
 		class Mesh {
 		public:
+			struct Texture {
+				unsigned int id;
+				string type;
+				string path;
+			};
+
 			/*  Mesh Data  */
 			vector<Vertex> vertices;
 			vector<unsigned int> indices;
@@ -50,7 +58,7 @@ namespace Engine {
 
 			/*  Functions  */
 			// constructor
-			Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures)
+			Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Mesh::Texture> textures)
 			{
 				this->vertices = vertices;
 				this->indices = indices;
@@ -61,42 +69,7 @@ namespace Engine {
 			}
 
 			// render the mesh
-			void Draw(const std::shared_ptr<Shader>& shader)
-			{
-				// bind appropriate textures
-				unsigned int diffuseNr = 1;
-				unsigned int specularNr = 1;
-				unsigned int normalNr = 1;
-				unsigned int heightNr = 1;
-				for (unsigned int i = 0; i < textures.size(); i++)
-				{
-					glActiveTexture(GL_TEXTURE0 + i); // active proper texture unit before binding
-					// retrieve texture number (the N in diffuse_textureN)
-					string number;
-					string name = textures[i].type;
-					if (name == "texture_diffuse")
-						number = std::to_string(diffuseNr++);
-					else if (name == "texture_specular")
-						number = std::to_string(specularNr++); // transfer unsigned int to stream
-					else if (name == "texture_normal")
-						number = std::to_string(normalNr++); // transfer unsigned int to stream
-					else if (name == "texture_height")
-						number = std::to_string(heightNr++); // transfer unsigned int to stream
-
-					// now set the sampler to the correct texture unit
-					glUniform1i(glGetUniformLocation(shader->id(), (name + number).c_str()), i);
-					// and finally bind the texture
-					glBindTexture(GL_TEXTURE_2D, textures[i].id);
-				}
-
-				// draw mesh
-				glBindVertexArray(VAO);
-				glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-				glBindVertexArray(0);
-
-				// always good practice to set everything back to defaults once configured.
-				glActiveTexture(GL_TEXTURE0);
-			}
+			void Draw(const std::shared_ptr<Shader>& shader);
 
 		private:
 			/*  Render data  */
@@ -104,45 +77,45 @@ namespace Engine {
 
 			/*  Functions    */
 			// initializes all the buffer objects/arrays
-			void setupMesh()
+			void setupMesh();
+		};	
+		
+		class OBJModel
+		{
+		public:
+			/*  Model Data */
+			vector<Mesh::Texture> textures_loaded;	// stores all the textures loaded so far, optimization to make sure textures aren't loaded more than once.
+			vector<Mesh> meshes;
+			string directory;
+			bool gammaCorrection;
+
+			/*  Functions   */
+			// constructor, expects a filepath to a 3D model.
+			OBJModel(string const &path, bool gamma = false) : gammaCorrection(gamma)
 			{
-				// create buffers/arrays
-				glGenVertexArrays(1, &VAO);
-				glGenBuffers(1, &VBO);
-				glGenBuffers(1, &EBO);
-
-				glBindVertexArray(VAO);
-				// load data into vertex buffers
-				glBindBuffer(GL_ARRAY_BUFFER, VBO);
-				// A great thing about structs is that their memory layout is sequential for all its items.
-				// The effect is that we can simply pass a pointer to the struct and it translates perfectly to a glm::vec3/2 array which
-				// again translates to 3/2 floats which translates to a byte array.
-				glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
-
-				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-				glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
-
-				// set the vertex attribute pointers
-				// vertex Positions
-				glEnableVertexAttribArray(0);
-				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
-				// vertex normals
-				glEnableVertexAttribArray(1);
-				glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
-				// vertex texture coords
-				glEnableVertexAttribArray(2);
-				glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, TexCoords));
-				// vertex tangent
-				glEnableVertexAttribArray(3);
-				glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Tangent));
-				// vertex bitangent
-				glEnableVertexAttribArray(4);
-				glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Bitangent));
-
-				glBindVertexArray(0);
+				loadModel(path);
 			}
+
+
+		private:
+			/*  Functions   */
+			// loads a model with supported ASSIMP extensions from file and stores the resulting meshes in the meshes vector.
+			void loadModel(string const &path);
+
+			// processes a node in a recursive fashion. Processes each individual mesh located at the node and repeats this process on its children nodes (if any).
+			void processNode(aiNode *node, const aiScene *scene);
+
+			Mesh processMesh(aiMesh *mesh, const aiScene *scene);
+
+			// checks all material textures of a given type and loads the textures if they're not loaded yet.
+			// the required info is returned as a Texture struct.
+			vector<Mesh::Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, string typeName);
 		};
-#endif
+
+		
+	};
 
 }
 
+
+		
