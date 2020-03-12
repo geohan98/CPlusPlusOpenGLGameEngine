@@ -52,7 +52,7 @@ namespace Engine
 
 		void onUpdate(float deltaTime) override ///< Called Every Frame, Sends model matrix to other Components
 		{
-			caclulateModel();
+			//caclulateModel();
 			std::pair<std::string, void*> data("u_model", (void*)&m_model[0][0]);
 			ComponentMessage msg(ComponentMessageType::UniformSet, data);
 			sendMessage(msg);
@@ -64,8 +64,8 @@ namespace Engine
 			{
 			case ComponentMessageType::PositionSet:
 			{
-				glm::vec3 pos = std::any_cast<glm::vec3>(msg.m_msgData);
-				m_transVec = pos;
+				glm::mat4 pos = std::any_cast<glm::mat4>(msg.m_msgData);
+				m_model = pos;
 				return;
 			}
 			case ComponentMessageType::PositionIntergrate:

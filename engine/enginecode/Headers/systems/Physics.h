@@ -1,6 +1,11 @@
 #pragma once
-#include "btBulletDynamicsCommon.h"
 #include "Headers/systems/system.h"
+
+class btDiscreteDynamicsWorld;
+class btCollisionDispatcher;
+class btDefaultCollisionConfiguration;
+class btBroadphaseInterface;
+class btSequentialImpulseConstraintSolver;
 
 namespace Engine {
 	namespace Systems {

@@ -1,8 +1,12 @@
 #include "engine_pch.h"
 #include "Headers/systems/Physics.h"
+#include "btBulletDynamicsCommon.h"
 
 namespace Engine {
 	namespace Systems {
+
+		btDiscreteDynamicsWorld* Physics::s_world = nullptr;
+
 		Physics::Physics()
 		{
 		}

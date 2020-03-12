@@ -61,7 +61,8 @@ project "Engine"
 		"GLFW",
 		"Glad",
 		"Freetype",
-		"assimp"
+		"assimp",
+		
 	}
 	
 	filter "system:windows"
@@ -122,7 +123,10 @@ project "Sandbox"
 
 	links
 	{
-		"Engine"
+		"Engine",
+		"BulletDynamics_vs2010_x64_debug",
+		"BulletCollision_vs2010_x64_debug",
+		"LinearMath_vs2010_x64_debug"
 	}
 
 	filter "system:windows"

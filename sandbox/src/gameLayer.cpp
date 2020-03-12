@@ -7,6 +7,8 @@
 
 #include "../imgui/imgui.h"
 
+#pragma message("Includes complete.")
+
 namespace Engine
 {
 	void GameLayer::onAttach()
@@ -28,7 +30,7 @@ namespace Engine
 		m_predrawCommands.push_back(std::shared_ptr<Renderer::RenderCommand>(Renderer::RenderCommand::setBackFaceCullingCommand(true, false)));
 		m_predrawCommands.push_back(std::shared_ptr<Renderer::RenderCommand>(Renderer::RenderCommand::ClearDepthColourBufferCommand(false)));
 
-		m_physicsComponent.push_back(new std::shared_ptr(PhysicsComponent(glm::vec3(0.5,0.5,0.5),glm::vec3(0,0,0))));
+		m_physicsComponent.push_back(std::shared_ptr<PhysicsComponent>(new PhysicsComponent(glm::vec3(0.5,0.5,0.5),glm::vec3(0,0,0))));
 
 
 		m_camera = std::shared_ptr<CameraController3D>(new CameraController3D);
@@ -55,11 +57,13 @@ namespace Engine
 			m_sceneData[viewProjectionBuffer] = viewProjectionData;
 		}
 	}
+#pragma message("GameLayer::onAttach() complete.")
 
 	void GameLayer::onDetach()
 	{
 		LOG_INFO("[GAMELAYER][DETACH]");
 	}
+#pragma message("GameLayer::onDetach() complete.")
 
 	void GameLayer::onUpdate(float deltaTime)
 	{
@@ -87,6 +91,7 @@ namespace Engine
 		}
 
 	}
+#pragma message("GameLayer::onUpdate() complete.")
 
 	void GameLayer::onEvent(Events::Event& e)
 	{
@@ -95,5 +100,5 @@ namespace Engine
 		//Send Event to All Game Objects
 		for (auto& CGO : m_gameObjects) CGO->onEvent(e);
 	}
-
+#pragma message("GameLayer::onEvent() complete.")
 }
