@@ -1,6 +1,7 @@
 #pragma once
 #include "camera.h"
 #include "../events/event.h"
+#include "Headers/events/applicationEvents.h"
 #include <memory>
 
 namespace Engine
@@ -17,5 +18,6 @@ namespace Engine
 		virtual std::shared_ptr<Camera> getCamera() { return m_camera; } ///< Returns the camera pointer
 		virtual void onUpdate(float deltaTime) = 0; ///< Called Every Frame
 		virtual void onEvent(Events::Event& e) = 0; ///< Called On an Event
+		virtual bool resizeEvent(Events::WindowResize& e) = 0;
 	};
 }

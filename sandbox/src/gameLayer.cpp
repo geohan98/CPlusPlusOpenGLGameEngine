@@ -23,7 +23,7 @@ namespace Engine
 		m_resourceManager->start();
 
 		m_renderer = std::shared_ptr<Renderer::Renderer>(Renderer::Renderer::createBasic3D());
-		m_renderer->actionCommand(Renderer::RenderCommand::setClearColourCommand(0.0, 0.0, 0.0, 1.0f));
+		m_renderer->actionCommand(Renderer::RenderCommand::setClearColourCommand(0.5, 0.5, 0.5, 1.0f));
 
 		m_predrawCommands.push_back(std::shared_ptr<Renderer::RenderCommand>(Renderer::RenderCommand::setDepthTestLessCommand(true, false)));
 		m_predrawCommands.push_back(std::shared_ptr<Renderer::RenderCommand>(Renderer::RenderCommand::setBlendMode(true, false)));

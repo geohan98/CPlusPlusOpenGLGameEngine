@@ -1,7 +1,7 @@
 #include "engine_pch.h"
-#include "../enginecode/Headers/systems/log.h"
-#include "../enginecode/Headers/cameras/cameraController2D.h"
-#include "../enginecode/Headers/cameras/camera2D.h"
+#include "Headers/systems/log.h"
+#include "Headers/cameras/cameraController2D.h"
+#include "Headers/cameras/camera2D.h"
 
 namespace Engine
 {

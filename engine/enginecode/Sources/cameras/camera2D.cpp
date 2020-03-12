@@ -5,9 +5,9 @@
 namespace Engine
 {
 
-	Camera2D::Camera2D(float left, float right, float top, float bottom)
+	Camera2D::Camera2D(float left, float right, float top, float bottom) : m_left(left),m_right(right),m_top(top),m_bottom(bottom)
 	{
-		m_projection = glm::ortho(left, right, bottom, top);
+		m_projection = glm::ortho(m_left, m_right, m_bottom, m_top);
 
 		m_position = glm::vec3(0.0f, 0.0f, 0.0f);
 		m_rotation = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -28,6 +28,13 @@ namespace Engine
 		m_view = translateMatrix;
 
 		m_viewProjection = m_projection * m_view;
+	}
+
+	void Camera2D::resize(float a, float b)
+	{
+		m_right = a;
+		m_top = b;
+		m_projection = glm::ortho(m_left, m_right, m_bottom, m_top);
 	}
 
 }

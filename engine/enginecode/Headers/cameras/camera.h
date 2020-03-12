@@ -27,5 +27,6 @@ namespace Engine
 		const glm::mat4& getViewProjection() { return m_viewProjection; } ///< Returns Projection Matrix * View Maxtrix
 
 		virtual void update() = 0; ///< Update the camera matrices
+		virtual void resize(float a, float b) = 0;
 	};
 }
