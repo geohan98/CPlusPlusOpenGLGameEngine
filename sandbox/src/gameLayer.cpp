@@ -30,8 +30,14 @@ namespace Engine
 		m_predrawCommands.push_back(std::shared_ptr<Renderer::RenderCommand>(Renderer::RenderCommand::setBackFaceCullingCommand(true, false)));
 		m_predrawCommands.push_back(std::shared_ptr<Renderer::RenderCommand>(Renderer::RenderCommand::ClearDepthColourBufferCommand(false)));
 
-		m_physicsComponent.push_back(std::shared_ptr<PhysicsComponent>(new PhysicsComponent(glm::vec3(0.5,0.5,0.5),glm::vec3(0,0,0))));
+		m_gameObjects.push_back(std::shared_ptr<GameObject>(new GameObject));
+		m_positionComponents.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f))));
+		m_materials.push_back(std::shared_ptr<MaterialComponent>(new MaterialComponent(m_resourceManager->getMaterial("FC_CUBE"))));
+		m_physicsComponent.push_back(std::shared_ptr<PhysicsComponent>(new PhysicsComponent(glm::vec3(0.5,0.5,0.5),glm::vec3(0,0,5.0f))));
 
+		m_gameObjects.back()->addComponent(m_positionComponents.back());
+		m_gameObjects.back()->addComponent(m_physicsComponent.back());
+		m_gameObjects.back()->addComponent(m_materials.back());
 
 		m_camera = std::shared_ptr<CameraController3D>(new CameraController3D);
 		m_camera->init(80.0f, 800.0f / 600.0f, 0.1, 100.0f);
@@ -40,10 +46,13 @@ namespace Engine
 		m_positionComponents.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f))));
 		m_particleComponents.push_back(std::shared_ptr<Components::ParticleComponent>(new Components::ParticleComponent()));
 		m_gameObjects.back()->addComponent(m_positionComponents.back());
+		
 		if (!m_particleComponents.empty())
 		{
 			m_gameObjects.back()->addComponent(m_particleComponents.back());
 		}
+
+		
 
 		Renderer::UniformBufferLayout viewProjectionLayout = { Renderer::ShaderDataType::Mat4,Renderer::ShaderDataType::Mat4 };
 		auto viewProjectionBuffer = std::shared_ptr<Renderer::UniformBuffer>(Renderer::UniformBuffer::create(viewProjectionLayout.getStride(), viewProjectionLayout));
@@ -89,6 +98,7 @@ namespace Engine
 		{
 			m_renderer->actionCommand(renderCommand.get());
 		}
+
 
 	}
 #pragma message("GameLayer::onUpdate() complete.")

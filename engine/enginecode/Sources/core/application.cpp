@@ -64,6 +64,7 @@ namespace Engine {
 		m_resourceManager->stop();
 		m_time->stop();
 		m_log->stop();
+
 	}
 #pragma endregion
 

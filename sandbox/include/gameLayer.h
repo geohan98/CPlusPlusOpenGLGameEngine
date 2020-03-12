@@ -6,7 +6,7 @@
 #include "Headers/components/PositionComponent.h"
 #include "Headers/systems/Physics.h"
 #include "Headers/components/PhysicsComponent.h"
-
+#include "../enginecode/Headers/components/materialComponent.h"
 
 namespace Engine
 {
@@ -19,6 +19,7 @@ namespace Engine
 		std::vector<std::shared_ptr<GameObject>> m_gameObjects;					///< All the GameObjects
 		std::vector<std::shared_ptr<PositionComponent>> m_positionComponents;
 		std::vector<std::shared_ptr<Components::ParticleComponent>> m_particleComponents;
+		std::vector<std::shared_ptr<MaterialComponent>> m_materials;	///< All the material Components
 		std::vector<std::shared_ptr<PhysicsComponent>> m_physicsComponent;
 		Renderer::SceneData m_sceneData;
 
