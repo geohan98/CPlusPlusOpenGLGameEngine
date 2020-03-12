@@ -79,4 +79,16 @@ namespace Engine
 		m_camera->update();
 	}
 
+	void CameraController3D::onEvent(Events::Event& _e)
+	{
+		Events::EventDispatcher dispatcher(_e);
+		dispatcher.dispatch<Events::WindowResize>(std::bind(&CameraController::resizeEvent, this, std::placeholders::_1));
+	}
+
+	bool CameraController3D::resizeEvent(Events::WindowResize & e)
+	{
+		m_camera->resize(e.getWidth(), e.getHeight());
+		return false;
+	}
+
 }

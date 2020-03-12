@@ -1,14 +1,15 @@
 #include "engine_pch.h"
-#include "../enginecode/Headers/systems/log.h"
-#include "../enginecode/Headers/cameras/camera3D.h"
+#include "Headers/systems/log.h"
+#include "Headers/cameras/camera3D.h"
 #include "glm/gtx/rotate_vector.hpp"
+#include "Headers/systems/log.h"
 
 namespace Engine
 {
 
-	Camera3D::Camera3D(float fov, float aspectRatio, float nearClip, float farClip)
+	Camera3D::Camera3D(float fov, float aspectRatio, float nearClip, float farClip) : m_fov(fov), m_aspectRatio(aspectRatio),m_nearClip(nearClip),m_farClip(farClip)
 	{
-		m_projection = glm::perspective(glm::radians(fov), aspectRatio, nearClip, farClip);
+		m_projection = glm::perspective(glm::radians(m_fov), m_aspectRatio, m_nearClip, m_farClip);
 
 		m_position = glm::vec3(0.0f, -5.0f, -8.0f);
 		m_rotation = glm::vec3(50.0f, 0.0f, 0.0f);
@@ -29,6 +30,13 @@ namespace Engine
 		m_view = rotationMatrix * translateMatrix;
 
 		m_viewProjection = m_projection * m_view;
+	}
+
+	void Camera3D::resize(float a, float b)
+	{
+		LOG_CORE_CRITICAL("[CAMERA][RESIIZE][{0} x {1}]",a,b);
+		m_aspectRatio = a / b;
+		m_projection = glm::perspective(glm::radians(m_fov), m_aspectRatio, m_nearClip, m_farClip);
 	}
 
 }
