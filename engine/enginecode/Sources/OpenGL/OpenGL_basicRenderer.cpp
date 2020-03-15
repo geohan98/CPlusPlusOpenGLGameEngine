@@ -52,7 +52,7 @@ namespace Engine
 					shader->uploadData(dataPair.first, dataPair.second);
 				}
 
-				glDrawElements(GL_TRIANGLES, geometry->getDrawCount(), GL_UNSIGNED_INT, nullptr);
+				glDrawElements(GL_TRIANGLES, geometry->getDrawCount(), GL_UNSIGNED_INT, 0);
 			}
 			else
 			{
