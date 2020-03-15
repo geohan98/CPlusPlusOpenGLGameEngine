@@ -50,6 +50,7 @@ namespace Engine {
 
 		Engine::WindowProperties win = Engine::WindowProperties();
 		win.m_title = _name;
+
 		win.m_width = config.getDataInt("width");
 		win.m_height = config.getDataInt("height");
 		win.m_isFullScreen = config.getDataBool("fullscreen");

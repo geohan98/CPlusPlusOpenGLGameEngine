@@ -48,7 +48,8 @@ project "Engine"
 		"vendor/bullet3-2.89/src",
 		"vendor/FMOD/core/inc",
 		"vendor/FMOD/fsbank/inc",
-		"vendor/FMOD/studio/inc"
+		"vendor/FMOD/studio/inc",
+		"vendor/assimp/include/"
 	}
 	
 	libdirs 
@@ -109,7 +110,8 @@ project "Sandbox"
 		"vendor/json/single_include/nlohmann",
 		"vendor/FMOD/core/inc",
 		"vendor/FMOD/fsbank/inc",
-		"vendor/FMOD/studio/inc"
+		"vendor/FMOD/studio/inc",
+		"vendor/assimp/include/"
 	}
 
 	libdirs 
