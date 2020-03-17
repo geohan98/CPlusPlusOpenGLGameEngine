@@ -8,11 +8,10 @@ namespace Engine {
 		btDiscreteDynamicsWorld* Physics::s_world = nullptr;
 
 		Physics::Physics()
-		{
-		}
+		{}
 		void Physics::onUpdate(float deltaTime)
 		{
-			s_world->stepSimulation(deltaTime,10);
+			s_world->stepSimulation(deltaTime, 10);
 
 			for (int i = s_world->getNumCollisionObjects() - 1; i >= 0; i--)
 			{
@@ -35,13 +34,18 @@ namespace Engine {
 			m_collisionConfiguration = new btDefaultCollisionConfiguration();
 			m_dispatcher = new btCollisionDispatcher(m_collisionConfiguration);
 			m_overlappingPairCache = new btDbvtBroadphase();
-			m_solver = new btSequentialImpulseConstraintSolver;
+			m_solver = new btSequentialImpulseConstraintSolver();
 			s_world = new btDiscreteDynamicsWorld(m_dispatcher, m_overlappingPairCache, m_solver, m_collisionConfiguration);
 			s_world->setGravity(btVector3(0, -10, 0));
 		}
 
 		void Engine::Systems::Physics::stop(SystemSignal close, ...)
 		{
+			delete s_world;
+			delete m_solver;
+			delete m_overlappingPairCache;
+			delete m_dispatcher;
+			delete m_collisionConfiguration;
 		}
 	}
 }

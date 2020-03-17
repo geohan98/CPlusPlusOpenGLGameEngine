@@ -53,11 +53,15 @@ namespace Engine {
 
 		m_layerStack = std::shared_ptr<Systems::LayerStack>(new Systems::LayerStack());
 		m_layerStack->start();
+
+		m_physicsWorld = std::shared_ptr<Systems::Physics>(new Systems::Physics());
+		m_physicsWorld->start();
 	}
 
 	Application::~Application()
 	{
 		PROFILE_SCOPE("APP DESTRUCTOR");
+		m_physicsWorld->stop();
 		m_layerStack->stop();
 		m_window->close();
 		m_windowSystem->stop();

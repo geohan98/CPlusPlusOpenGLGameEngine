@@ -5,6 +5,7 @@
 #include "../enginecode/Headers/windows/window.h"
 #include "../enginecode/Headers/systems/resourceManager.h"
 #include "../enginecode/Headers/systems/layerStack.h"
+#include "Headers/systems/Physics.h"
 
 namespace Engine {
 
@@ -22,6 +23,7 @@ namespace Engine {
 		std::shared_ptr<Window> m_window; ///< Window
 		static std::shared_ptr<Systems::ResourceManager> m_resourceManager; ///< Resource Manager System
 		std::shared_ptr<Systems::LayerStack> m_layerStack; ///< Layer Stack
+		std::shared_ptr<Systems::Physics> m_physicsWorld;
 	private:
 		static Application* s_instance; ///< Pointer to this application
 		bool m_running = true; ///< Should the update loop run

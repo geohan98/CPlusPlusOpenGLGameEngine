@@ -1,12 +1,15 @@
 #pragma once
-#include "../enginecode/Headers/layers/layer.h"
-#include "../enginecode/Headers/core/gameObject.h"
-#include "../enginecode/Headers/renderer/uniformBuffer.h"
-#include "Headers/components/particleComponent.h"
+#include "Headers/layers/layer.h"
+#include "Headers/core/gameObject.h"
 #include "Headers/components/PositionComponent.h"
-#include "Headers/systems/Physics.h"
 #include "Headers/components/PhysicsComponent.h"
-#include "../enginecode/Headers/components/materialComponent.h"
+#include "Headers/components/materialComponent.h"
+
+#include"Headers/renderer/material.h"
+#include"Headers/renderer/vertexArray.h"
+#include"Headers/renderer/vertexBuffer.h"
+#include"Headers/renderer/indexBuffer.h"
+#include"Headers/renderer/shader.h"
 
 namespace Engine
 {
@@ -18,13 +21,22 @@ namespace Engine
 	private:
 		std::vector<std::shared_ptr<GameObject>> m_gameObjects;					///< All the GameObjects
 		std::vector<std::shared_ptr<PositionComponent>> m_positionComponents;
-		std::vector<std::shared_ptr<Components::ParticleComponent>> m_particleComponents;
-		std::vector<std::shared_ptr<MaterialComponent>> m_materials;	///< All the material Components
+		std::vector<std::shared_ptr<MaterialComponent>> m_materials;				///< All the material Components
 		std::vector<std::shared_ptr<PhysicsComponent>> m_physicsComponent;
-		Renderer::SceneData m_sceneData;
 
 		std::vector<std::shared_ptr<Renderer::RenderCommand>> m_predrawCommands;	///< List of all PreDraw Render Commands
 		std::vector<std::shared_ptr<Renderer::RenderCommand>> m_postdrawCommands;	///< List of all PostDraw Render Commands
+
+
+
+
+
+
+		std::shared_ptr<Renderer::Material> MAT;
+		std::shared_ptr<Renderer::VertexArray> VAO;
+		std::shared_ptr<Renderer::VertexBuffer> VBO;
+		std::shared_ptr<Renderer::IndexBuffer> IBO;
+		std::shared_ptr<Renderer::Shader> SHADER;
 	public:
 		GameLayer(const std::string& name = "Game Layer") : Layer(name) {};		///< Constructor
 		void onAttach() override;												///< Run on layer Attach

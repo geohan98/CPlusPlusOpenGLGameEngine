@@ -37,7 +37,7 @@ namespace Engine
 
 		Renderer::SceneData m_sceneData; ///< Uniform Scene Data
 		std::list<void*> m_data; ///< Lits of void pointer data
-		std::string m_filepath; ///< Filepath of Level File
+		const std::string m_filepath; ///< Filepath of Level File
 
 		//Application Events
 		bool onWindowResize(Events::WindowResize& e);				///< Window Resize Event
