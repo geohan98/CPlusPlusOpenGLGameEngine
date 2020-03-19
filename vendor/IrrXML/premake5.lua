@@ -1,7 +1,7 @@
 project "IrrXML"
     kind "StaticLib"
     language "C++"
-    staticruntime "off"
+    staticruntime "On"
 	systemversion "latest"
     
 	targetdir ("../../bin/" .. outputdir .. "/%{prj.name}")
