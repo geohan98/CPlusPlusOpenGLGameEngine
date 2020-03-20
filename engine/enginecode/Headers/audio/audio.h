@@ -22,65 +22,62 @@ namespace Engine {
 			float z;
 		};
 
-		struct Implementation {
-			Implementation();
-			~Implementation();
+		struct AudioImplementation {
+			AudioImplementation();
 
-			void Update();
+			void update();
 
-			FMOD::Studio::System* mpStudioSystem;
-			FMOD::System* mpSystem;
+			FMOD::Studio::System* fmodStudioSystem;
+			FMOD::System* fmodSystem;
 
-			int mnNextChannelId;
+			int fmodNextChannelId;
 
-			typedef map<string, FMOD::Sound*> SoundMap;
-			typedef map<int, FMOD::Channel*> ChannelMap;
-			typedef map<string, FMOD::Studio::EventInstance*> EventMap;
-			typedef map<string, FMOD::Studio::Bank*> BankMap;
-			BankMap mBanks;
-			EventMap mEvents;
-			SoundMap mSounds;
-			ChannelMap mChannels;
+			typedef map<string, FMOD::Sound*> fmodSoundMap;
+			typedef map<int, FMOD::Channel*> fmodChannelMap;
+			typedef map<string, FMOD::Studio::EventInstance*> fmodEventMap;
+			typedef map<string, FMOD::Studio::Bank*> fmodBankMap;
+			fmodBankMap fmodBanks;
+			fmodEventMap fmodEvents;
+			fmodSoundMap fmodSounds;
+			fmodChannelMap fmodChannels;
 		};
 
 		class Audio : public System {
-		private:
-			//static std::shared_ptr<Systems::Audio> audioEngine;
 		public:
 			static void start(SystemSignal init = SystemSignal::None, ...);
 			static void stop(SystemSignal close = SystemSignal::None, ...);
 
-			static void Update();
-			static int ErrorCheck(FMOD_RESULT result);
+			static void update();
+			static int errorCheck(FMOD_RESULT result);
 
-			//inline static std::shared_ptr<Systems::Audio>& getAudioRef() { return audioEngine;  }
-			
-			void LoadBank(const std::string& strBankName, FMOD_STUDIO_LOAD_BANK_FLAGS flags);
-			void LoadEvent(const std::string& strEventName);
-			void LoadSound(const string &strSoundName, bool b3d = true, bool bLooping = false, bool bStream = false);
-			void UnLoadSound(const string &strSoundName);
-			void Set3dListenerAndOrientation(const Vector3& vPosition, const Vector3& vLook, const Vector3& vUp);
-			int PlaySounds(const string &strSoundName, const Vector3& vPos = Vector3{ 0, 0, 0 }, float fVolumedB = 0.0f);
-			void PlayEvent(const string &strEventName);
-			void StopChannel(int nChannelId);
-			void StopEvent(const string &strEventName, bool bImmediate = false);
-			void GetEventParameter(const string &strEventName, const string &strEventParameter, float* parameter);
-			void SetEventParameter(const string &strEventName, const string &strParameterName, float fValue);
-			void StopAllChannels();
-			void SetChannel3dPosition(int nChannelId, const Vector3& vPosition);
-			void SetChannelVolume(int nChannelId, float fVolumedB);
-			bool IsPlaying(int nChannelId) const;
-			bool IsEventPlaying(const string &strEventName) const;
+			static int playSound(const string &strSoundName, const Vector3& vPos = Vector3{ 0, 0, 0 }, float fVolumedB = 0.0f);
+			static void loadSound(const string &strSoundName, bool b3d = true, bool bLooping = false, bool bStream = false);
+			static void loadBank(const std::string& strBankName, FMOD_STUDIO_LOAD_BANK_FLAGS flags);
+
+			void playEvent(const string &strEventName);
+			void loadEvent(const std::string& strEventName);
+			void unLoadSound(const string &strSoundName);
+			void getEventParameter(const string &strEventName, const string &strEventParameter, float* parameter);
+			void setEventParameter(const string &strEventName, const string &strParameterName, float fValue);
+			void stopEvent(const string &strEventName, bool bImmediate = false);
+			void setChannel3dPosition(int nChannelId, const Vector3& vPosition);
+			void setChannelVolume(int nChannelId, float fVolumedB);
+			bool isEventPlaying(const string &strEventName) const;
+			FMOD_VECTOR vectorToFmod(const Vector3& vPosition);
 			float dbToVolume(float dB);
-			float VolumeTodB(float volume);
-			FMOD_VECTOR VectorToFmod(const Vector3& vPosition);
+			float volumeTodB(float volume);
+
+			void set3dListenerAndOrientation(const Vector3& vPosition, const Vector3& vLook, const Vector3& vUp);
+			void stopChannel(int nChannelId);
+			bool isPlaying(int nChannelId) const;
+			void stopAllChannels();
 		};
 	}
 #endif
 }
-//
-//#define START_SOUND_ENGINE(...) Systems::Audio::getAudioRef()->start(__VA_ARGS__);
-//#define LOAD_SOUND_BANK(...) Systems::Audio::getAudioRef()->LoadBank(__VA_ARGS__)
-//#define LOAD_SOUND(...) Systems::Audio::getAudioRef()->LoadSound(__VA_ARGS__)
-//#define PLAY_SOUND(...) Systems::Audio::getAudioRef()->PlaySounds(__VA_ARGS__)
-//#define UPDATE_SOUND_ENGINE(...) Systems::Audio::getAudioRef()->Update(__VA_ARGS__);
+
+#define START_SOUND_ENGINE(...) Systems::Audio::start(__VA_ARGS__);
+#define LOAD_SOUND_BANK(...) Systems::Audio::loadBank(__VA_ARGS__)
+#define LOAD_SOUND(...) Systems::Audio::loadSound(__VA_ARGS__)
+#define PLAY_SOUND(...) Systems::Audio::playSound(__VA_ARGS__)
+#define UPDATE_SOUND_ENGINE(...) Systems::Audio::update(__VA_ARGS__);

@@ -131,7 +131,6 @@ namespace Engine {
 
 		ImGuiStyle& style = ImGui::GetStyle();
 		style.WindowBorderSize = 0.0f;
-
 		
 		float texWidth = (float)texturePtr->getWidth();
 		float texHeight = (float)texturePtr->getHeight();
