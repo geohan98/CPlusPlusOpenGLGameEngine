@@ -50,22 +50,22 @@ namespace Engine {
 			static void update();
 			static int errorCheck(FMOD_RESULT result);
 
-			static int playSound(const string &strSoundName, const Vector3& vPos = Vector3{ 0, 0, 0 }, float fVolumedB = 0.0f);
-			static void loadSound(const string &strSoundName, bool b3d = true, bool bLooping = false, bool bStream = false);
+			static int playSound(const string& strSoundName, const Vector3& vPos = Vector3{ 0, 0, 0 }, float fVolumedB = 0.0f);
+			static void loadSound(const string& strSoundName, bool b3d = true, bool bLooping = false, bool bStream = false);
 			static void loadBank(const std::string& strBankName, FMOD_STUDIO_LOAD_BANK_FLAGS flags);
 
-			void playEvent(const string &strEventName);
+			void playEvent(const string& strEventName);
 			void loadEvent(const std::string& strEventName);
-			void unLoadSound(const string &strSoundName);
-			void getEventParameter(const string &strEventName, const string &strEventParameter, float* parameter);
-			void setEventParameter(const string &strEventName, const string &strParameterName, float fValue);
-			void stopEvent(const string &strEventName, bool bImmediate = false);
+			void unLoadSound(const string& strSoundName);
+			void getEventParameter(const string& strEventName, const string& strEventParameter, float* parameter);
+			void setEventParameter(const string& strEventName, const string& strParameterName, float fValue);
+			void stopEvent(const string& strEventName, bool bImmediate = false);
 			void setChannel3dPosition(int nChannelId, const Vector3& vPosition);
 			void setChannelVolume(int nChannelId, float fVolumedB);
-			bool isEventPlaying(const string &strEventName) const;
-			FMOD_VECTOR vectorToFmod(const Vector3& vPosition);
-			float dbToVolume(float dB);
-			float volumeTodB(float volume);
+			bool isEventPlaying(const string& strEventName) const;
+			FMOD_VECTOR static vectorToFmod(const Vector3& vPosition);
+			float static dbToVolume(float dB);
+			float static volumeTodB(float volume);
 
 			void set3dListenerAndOrientation(const Vector3& vPosition, const Vector3& vLook, const Vector3& vUp);
 			void stopChannel(int nChannelId);
