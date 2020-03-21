@@ -45,7 +45,6 @@ project "Engine"
 		"vendor/stb_image",
 		"vendor/freetype2/include",
 		"vendor/json/single_include/nlohmann",
-		"vendor/bullet3-2.89/src",
 		"vendor/FMOD/core/inc",
 		"vendor/FMOD/fsbank/inc",
 		"vendor/FMOD/studio/inc",
@@ -56,7 +55,6 @@ project "Engine"
 	
 	libdirs 
 	{
-		"vendor/bullet3-2.89/bin"
 	}
 	
 	links 
@@ -119,7 +117,6 @@ project "Sandbox"
 
 	libdirs 
 	{
-		"vendor/bullet3-2.89/bin",
 		"vendor/FMOD/core/lib/x64",
 		"vendor/FMOD/fsbank/lib/x64",
 		"vendor/FMOD/studio/lib/x64"
@@ -199,7 +196,6 @@ project "Game"
 
 	libdirs 
 	{
-		"vendor/bullet3-2.89/bin",
 		"vendor/FMOD/core/lib/x64",
 		"vendor/FMOD/fsbank/lib/x64",
 		"vendor/FMOD/studio/lib/x64"
