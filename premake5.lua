@@ -49,7 +49,9 @@ project "Engine"
 		"vendor/FMOD/core/inc",
 		"vendor/FMOD/fsbank/inc",
 		"vendor/FMOD/studio/inc",
-		"vendor/assimp/include/"
+		"vendor/assimp/include/",
+		"vendor/reactPhysics3D/src"
+		
 	}
 	
 	libdirs 
@@ -62,7 +64,8 @@ project "Engine"
 		"GLFW",
 		"Glad",
 		"Freetype",
-		"assimp"
+		"assimp",
+		"ReactPhysics3d"
 	}
 	
 	filter "system:windows"
@@ -328,3 +331,4 @@ group "Vendor"
 	include "vendor/zlib"
 	include "vendor/IrrXML"
 	include "vendor/assimp"
+	include	"vendor/reactPhysics3D"
