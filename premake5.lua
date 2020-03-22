@@ -63,7 +63,7 @@ project "Engine"
 		"Glad",
 		"Freetype",
 		"assimp",
-		"ReactPhysics3d"
+		"reactPhysics3d"
 	}
 	
 	filter "system:windows"
@@ -112,7 +112,8 @@ project "Sandbox"
 		"vendor/FMOD/core/inc",
 		"vendor/FMOD/fsbank/inc",
 		"vendor/FMOD/studio/inc",
-		"vendor/assimp/include/"
+		"vendor/assimp/include/",
+		"vendor/reactPhysics3D/src"
 	}
 
 	libdirs 

@@ -60,6 +60,10 @@ namespace Engine {
 
 		m_layerStack = std::shared_ptr<Systems::LayerStack>(new Systems::LayerStack());
 		m_layerStack->start();
+
+		m_Physics = Systems::Physics::GetInstance();
+		m_Physics->start();
+
 	}
 
 	Application::~Application()
@@ -84,6 +88,9 @@ namespace Engine {
 			m_time->tick();
 			//Update Delta Time
 			s_deltaTime = m_time->getDeltaTime();
+			//Update Physics
+			//Systems::Physics::GetInstance()->getWorld()->update(s_deltaTime);
+			m_Physics->getWorld()->update(s_deltaTime);
 			//Update Layer Stack
 			for (auto it = m_layerStack->begin(); it != m_layerStack->end(); ++it)
 			{
@@ -91,6 +98,7 @@ namespace Engine {
 			}
 			//Update Window
 			m_window->onUpdate(s_deltaTime);
+
 		}
 	}
 
