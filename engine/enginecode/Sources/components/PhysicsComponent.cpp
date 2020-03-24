@@ -30,38 +30,26 @@ namespace Engine {
 
 	void PhysicsComponent::setup(glm::vec3 Position, glm::vec4 Orientation, glm::vec3 boxSize, float density)
 	{
-
 		rp3d::Vector3 initialPosition(Position.x, Position.y, Position.z);
 		rp3d::Quaternion initialOrientation = rp3d::Quaternion::identity();
 		rp3d::Transform initialTransform(initialPosition, initialOrientation);
-
+		//Add Body
 		m_body = Systems::Physics::GetInstance()->getWorld()->createRigidBody(initialTransform);
-
-		rp3d::BoxShape shape(rp3d::Vector3(boxSize.x, boxSize.y, boxSize.z));
-		rp3d::decimal mass = boxSize.x * boxSize.y * boxSize.z * density;
-		m_shape = &shape;
-		m_proxy = m_body->addCollisionShape(&shape, rp3d::Transform::identity(), mass);
-
-
+		//Create Box Shape
+		rp3d::Vector3 halfExtents(boxSize.x, boxSize.y, boxSize.z);
+		m_shape = new rp3d::BoxShape(halfExtents);
+		//Add Shape to Rigibody
+		m_proxy = m_body->addCollisionShape(m_shape, rp3d::Transform::identity(), 1.0);
 	}
-
-
 
 	PhysicsComponent::PhysicsComponent()
 	{
-		m_proxy = nullptr;
-		m_body = nullptr;
-		m_shape = nullptr;
+
 	}
 
 	void PhysicsComponent::onDetach()
 	{
-		m_body->removeCollisionShape(m_proxy);
-		delete m_proxy;
 		Systems::Physics::GetInstance()->getWorld()->destroyRigidBody(m_body);
-		delete m_body;
-
-		m_parent = nullptr;
 	}
 
 }
