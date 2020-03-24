@@ -13,12 +13,6 @@
 [submodule "vendor/imgui"]
 	path = vendor/imgui
 	url = https://github.com/ocornut/imgui.git
-[submodule "vendor/reactPhysics3D/into"]
-	path = vendor/reactPhysics3D/into
-	url = https://github.com/IMAT3905/reactphysics3d.git
-[submodule "vendor/into"]
-	path = vendor/into
-	url = https://github.com/IMAT3905/reactphysics3d.git
 [submodule "vendor/reactPhysics3d"]
 	path = vendor/reactPhysics3d
 	url = https://github.com/IMAT3905/reactphysics3d.git
