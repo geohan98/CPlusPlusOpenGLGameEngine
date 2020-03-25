@@ -24,9 +24,9 @@ namespace Engine {
 		ImFont* roboto = io.Fonts->AddFontFromFileTTF("../sandbox/assets/fonts/Roboto-Medium.ttf", 16.0f);
 
 		// Can call createButton from anywhere in the project and it will be added to the buttons to load each frame
-		createButton("1", { 100, 50 }, { 100, 100 }, "pos(100,100) button", ImVec4(0.8f, 0.4f, 1.0f, 1.0f), -1);
-		createButton("2", { 200, 50 }, { 0, 0 }, "Top right corner button", ImVec4(0.8f, 0.4f, 0.5f, 1.0f), 1);
-		createButton("3s", { 200, 100 }, { 0, 0 }, "Bottom left corner button", ImVec4(0.5f, 0.5f, 0.2f, 1.0f), 2);
+		createButton("1", { 100, 50 }, { 100, 100 }, "pos(100,100) button", ImVec4(0.8f, 0.4f, 1.0f, 1.0f), -1, helloWorld);
+		createButton("2", { 200, 50 }, { 0, 0 }, "Top right corner button", ImVec4(0.8f, 0.4f, 0.5f, 1.0f), 1, helloWorld);
+		createButton("3s", { 200, 100 }, { 0, 0 }, "Bottom left corner button", ImVec4(0.5f, 0.5f, 0.2f, 1.0f), 2, helloWorld);
 		createImageButton("3", { 100, 100 }, { 0, 0 }, "Bottom left corner button", 3, "../sandbox/assets/textures/buttonShiny.png");
 		createImageButton("10", { 100, 100 }, { 0, 0 }, "Top left corner button", 0, "../sandbox/assets/textures/buttonShiny.png");
 	}
@@ -44,7 +44,7 @@ namespace Engine {
 		for (int i = 0; i < buttonsToLoad.size(); i++) {
 
 			loadButton(buttonsToLoad[i].buttonName, buttonsToLoad[i].size, buttonsToLoad[i].position, 
-				buttonsToLoad[i].text, buttonsToLoad[i].color, buttonsToLoad[i].corner);
+				buttonsToLoad[i].text, buttonsToLoad[i].color, buttonsToLoad[i].corner, buttonsToLoad[i].functionHolder);
 		}
 
 		for (int i = 0; i < imageButtonsToLoad.size(); i++) {
@@ -61,13 +61,18 @@ namespace Engine {
 		ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
 	}
 
-	void ImGUILayer::createButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner)
+	void ImGUILayer::helloWorld()
 	{
-		ImGuiButton button(buttonName, size, position, text, color, corner);
+		std::cout << "HELLO WORLD!" << std::endl;
+	}
+
+	void ImGUILayer::createButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, void(*func)())
+	{
+		ImGuiButton button(buttonName, size, position, text, color, corner, func);
 		buttonsToLoad.push_back(button);
 	}
 
-	void ImGUILayer::loadButton(const char * buttonName, std::pair<float, float> size, std::pair<float, float> position, const char * text, ImVec4 color, int corner)
+	void ImGUILayer::loadButton(const char * buttonName, std::pair<float, float> size, std::pair<float, float> position, const char * text, ImVec4 color, int corner, void(*func)())
 	{
 		ImGuiIO& io = ImGui::GetIO();
 
@@ -96,7 +101,9 @@ namespace Engine {
 			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(color.x, color.y + 0.1f, color.z, color.w));
 			ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(color.x, color.y + 0.2f, color.z, color.w));
 
-			ImGui::Button(text, { size.first, size.second });
+			if (ImGui::Button(text, { size.first, size.second })) {
+				func();
+			}
 
 			ImGui::PopStyleColor(3);
 			ImGui::PopID();
