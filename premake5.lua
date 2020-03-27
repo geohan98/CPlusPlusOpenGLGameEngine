@@ -45,16 +45,16 @@ project "Engine"
 		"vendor/stb_image",
 		"vendor/freetype2/include",
 		"vendor/json/single_include/nlohmann",
-		"vendor/bullet3-2.89/src",
 		"vendor/FMOD/core/inc",
 		"vendor/FMOD/fsbank/inc",
 		"vendor/FMOD/studio/inc",
-		"vendor/assimp/include/"
+		"vendor/assimp/include/",
+		"vendor/reactPhysics3D/src"
+		
 	}
 	
 	libdirs 
 	{
-		"vendor/bullet3-2.89/bin"
 	}
 	
 	links 
@@ -62,7 +62,8 @@ project "Engine"
 		"GLFW",
 		"Glad",
 		"Freetype",
-		"assimp"
+		"assimp",
+		"reactPhysics3d"
 	}
 	
 	filter "system:windows"
@@ -111,12 +112,12 @@ project "Sandbox"
 		"vendor/FMOD/core/inc",
 		"vendor/FMOD/fsbank/inc",
 		"vendor/FMOD/studio/inc",
-		"vendor/assimp/include/"
+		"vendor/assimp/include/",
+		"vendor/reactPhysics3D/src"
 	}
 
 	libdirs 
 	{
-		"vendor/bullet3-2.89/bin",
 		"vendor/FMOD/core/lib/x64",
 		"vendor/FMOD/fsbank/lib/x64",
 		"vendor/FMOD/studio/lib/x64"
@@ -196,7 +197,6 @@ project "Game"
 
 	libdirs 
 	{
-		"vendor/bullet3-2.89/bin",
 		"vendor/FMOD/core/lib/x64",
 		"vendor/FMOD/fsbank/lib/x64",
 		"vendor/FMOD/studio/lib/x64"
@@ -328,3 +328,4 @@ group "Vendor"
 	include "vendor/zlib"
 	include "vendor/IrrXML"
 	include "vendor/assimp"
+	include	"vendor/reactPhysics3D"

@@ -1,11 +1,11 @@
 #pragma once
-#include "../enginecode/Headers/systems/log.h"
-#include "../enginecode/Headers/systems/time.h"
-#include "../enginecode/Headers/windows/windowSystem.h"
-#include "../enginecode/Headers/windows/window.h"
-#include "../enginecode/Headers/systems/resourceManager.h"
-#include "../enginecode/Headers/systems/layerStack.h"
-
+#include "Headers/systems/log.h"
+#include "Headers/systems/time.h"
+#include "Headers/windows/windowSystem.h"
+#include "Headers/windows/window.h"
+#include "Headers/systems/resourceManager.h"
+#include "Headers/systems/layerStack.h"
+#include "Headers/systems/Physics.h"
 namespace Engine {
 
 
@@ -16,6 +16,7 @@ namespace Engine {
 	{
 	protected:
 		Application(char* _name, int _width, int _height); ///< Constructor
+		std::shared_ptr<Systems::Physics> m_Physics; ///< Physics System
 		std::shared_ptr<Systems::Log> m_log; ///< Logger System
 		std::shared_ptr<Systems::Time> m_time; ///< Timer System
 		std::shared_ptr<Systems::WindowSystem> m_windowSystem; ///< Window System

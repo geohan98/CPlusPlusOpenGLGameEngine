@@ -1,9 +1,15 @@
 #pragma once
-#include "../events/event.h"
+//#include "../events/event.h"
 #include <any>
+
+
 
 namespace Engine
 {
+	namespace Events
+	{
+		class Event;
+	}
 	class GameObject;
 
 	/**
@@ -12,6 +18,7 @@ namespace Engine
 	enum class ComponentMessageType
 	{
 		None = 0,
+		ModelMatrixSet,
 		PositionIntergrate, PositionSet, RelativePositionSet,
 		VelocityIntergrate, VelocitySetLinear, VelocitySetAngular,
 		AccelerationSet,

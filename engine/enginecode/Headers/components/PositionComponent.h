@@ -45,15 +45,15 @@ namespace Engine
 		void onAttach(GameObject* parent) override ///< Called when Added to Parent
 		{
 			m_parent = parent;
-			std::pair<std::string, void*> data("u_model", (void*)&m_model[0][0]);
+			std::pair<std::string, void*> data("u_model", (void*)& m_model[0][0]);
 			ComponentMessage msg(ComponentMessageType::UniformSet, data);
 			sendMessage(msg);
 		}
 
 		void onUpdate(float deltaTime) override ///< Called Every Frame, Sends model matrix to other Components
 		{
-			caclulateModel();
-			std::pair<std::string, void*> data("u_model", (void*)&m_model[0][0]);
+			//caclulateModel();
+			std::pair<std::string, void*> data("u_model", (void*)& m_model[0][0]);
 			ComponentMessage msg(ComponentMessageType::UniformSet, data);
 			sendMessage(msg);
 		}
@@ -62,6 +62,12 @@ namespace Engine
 		{
 			switch (msg.m_msgType)
 			{
+			case ComponentMessageType::ModelMatrixSet:
+			{
+				glm::mat4 mod = std::any_cast<glm::mat4>(msg.m_msgData);
+				m_model = mod;
+				return;
+			}
 			case ComponentMessageType::PositionSet:
 			{
 				glm::vec3 pos = std::any_cast<glm::vec3>(msg.m_msgData);
