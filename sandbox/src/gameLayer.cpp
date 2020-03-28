@@ -77,7 +77,7 @@ namespace Engine
 
 		if (!m_particleComponents.empty())
 		{
-			m_renderer->submit(m_particleComponents.back()->getMaterial());
+			m_renderer->submit(m_particleComponents.back()->getMaterial(), Renderer::RendererDrawType::Point);
 		}
 
 		for (auto& renderCommand : m_postdrawCommands)

@@ -40,6 +40,7 @@ namespace Engine
 			std::shared_ptr<Renderer::Material> m_material;
 			std::shared_ptr<Renderer::Shader> m_shader;
 			std::shared_ptr<Renderer::VertexBuffer> m_vertexBuffer;
+			std::shared_ptr<Renderer::VertexArray> m_vertexArray;
 			std::vector<ParticleData> m_particleData;
 
 			//System Data
@@ -86,7 +87,9 @@ namespace Engine
 				m_shader = std::shared_ptr<Renderer::Shader>(Renderer::Shader::create("assets/shaders/particle.shader"));
 				Renderer::VertexBufferLayout layout = { Renderer::ShaderDataType::Float3,Renderer::ShaderDataType::Float,Renderer::ShaderDataType::Float,Renderer::ShaderDataType::Float4 };
 				m_vertexBuffer = std::shared_ptr<Renderer::VertexBuffer>(Renderer::VertexBuffer::create(nullptr, 0, layout));
-				m_material = std::shared_ptr<Renderer::Material>(Renderer::Material::create(m_shader, m_vertexBuffer));
+				m_vertexArray = std::shared_ptr<Renderer::VertexArray>(Renderer::VertexArray::create());
+				m_vertexArray->setVertexBuffer(m_vertexBuffer);
+				m_material = std::shared_ptr<Renderer::Material>(Renderer::Material::create(m_shader, m_vertexArray));
 				m_lastSpawn = Systems::Time::getTimeNow();
 			}
 			inline std::shared_ptr<Renderer::Material> getMaterial() { return m_material; }

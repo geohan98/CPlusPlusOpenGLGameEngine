@@ -165,6 +165,7 @@ project "Sandbox"
 		"fmod_vc.lib",
 		"fmodstudio_vc.lib"
 		}
+		
 project "ParticleEditor"
 	location "particleEditor"
 	kind "ConsoleApp"
@@ -205,7 +206,9 @@ project "ParticleEditor"
 
 	links
 	{
-		"Engine"
+		"Engine",
+		"fmodL_vc.lib",
+		"fmodstudioL_vc.lib"
 	}
 
 	filter "system:windows"
@@ -227,24 +230,10 @@ project "ParticleEditor"
 		runtime "Debug"
 		symbols "On"
 
-		links
-		{
-		"Engine",
-		"fmodL_vc.lib",
-		"fmodstudioL_vc.lib"
-		}
-
 	filter "configurations:Release"
 		defines "NG_RELEASE"
 		runtime "Release"
 		optimize "On"
-
-		links
-		{
-		"Engine",
-		"fmod_vc.lib",
-		"fmodstudio_vc.lib"
-		}
 
  project "EngineTests"
 		location "engineTests"

@@ -21,7 +21,7 @@ namespace Engine
 		{
 			layer->onAttach();
 			m_layers.push_back(layer);
-			LOG_CORE_INFO("[SYSTEMS][LAYER STACK][ATACHED LAYER:'{0}']", layer->getName());
+			LOG_CORE_INFO("[SYSTEMS][LAYER STACK][ATTACHED LAYER:'{0}']", layer->getName());
 		}
 
 		void LayerStack::pop()

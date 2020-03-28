@@ -14,7 +14,7 @@ namespace Engine
 			void actionCommand(RenderCommand* command) override; ///< Action A render command
 			void beginScene(const SceneData& sceneData) override; ///< Apply Uniform Data
 			void endScene() override; ///< Cleanup the scene
-			void submit(const std::shared_ptr<Material>& materials) override; ///< Submit a material fo rendering
+			void submit(const std::shared_ptr<Material>& materials, RendererDrawType _drawType) override; ///< Submit a material fo rendering
 			void flush() override; ///< ///< Not Implemented
 		};
 	}

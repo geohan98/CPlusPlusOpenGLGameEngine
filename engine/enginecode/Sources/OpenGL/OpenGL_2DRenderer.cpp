@@ -13,7 +13,7 @@ namespace Engine
 			delete command;
 		}
 
-		void OpenGL_2DRenderer::submit(const std::shared_ptr<Material>& materials)
+		void OpenGL_2DRenderer::submit(const std::shared_ptr<Material>& materials, RendererDrawType _drawType)
 		{
 			auto shader = materials->getShader();
 			shader->bind();

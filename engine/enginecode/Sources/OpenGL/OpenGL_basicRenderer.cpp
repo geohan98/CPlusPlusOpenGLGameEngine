@@ -1,6 +1,6 @@
 #include "engine_pch.h"
-#include "../enginecode/Headers/systems/log.h"
-#include "../enginecode/Headers/OpenGL/OpenGL_basicRenderer.h"
+#include "Headers/systems/log.h"
+#include "Headers/OpenGL/OpenGL_basicRenderer.h"
 #include <glad/glad.h>
 
 namespace Engine
@@ -36,42 +36,35 @@ namespace Engine
 
 		}
 
-		void OpenGL_BasicRenderer::submit(const std::shared_ptr<Material>& materials)
+		void OpenGL_BasicRenderer::submit(const std::shared_ptr<Material>& materials, RendererDrawType _drawType)
 		{
-			auto shader = materials->getShader();
+			std::shared_ptr<Shader> shader = materials->getShader();
 			shader->bind();
-			if (materials->getGeometry().index() == 0)
+			std::shared_ptr<VertexArray> vertexArray = std::get<std::shared_ptr<VertexArray>>(materials->getGeometry());
+			vertexArray->bind();
+
+			auto perDrawData = materials->getData();
+			for (auto dataPair : perDrawData)
 			{
-				//LOG_CORE_INFO("OpenGL: VARIANT WAS VERTEX ARRAY");
-				auto geometry = std::get<std::shared_ptr<VertexArray>>(materials->getGeometry());
-				geometry->bind();
-
-				auto perDrawData = materials->getData();
-				for (auto dataPair : perDrawData)
-				{
-					shader->uploadData(dataPair.first, dataPair.second);
-				}
-
-				glDrawElements(GL_TRIANGLES, geometry->getDrawCount(), GL_UNSIGNED_INT, 0);
+				shader->uploadData(dataPair.first, dataPair.second);
 			}
-			else
+
+			switch (_drawType)
 			{
-				//LOG_CORE_INFO("OpenGL: VARIANT WAS VERTEX BUFFER");
-				auto geometry = std::get<std::shared_ptr<VertexBuffer>>(materials->getGeometry());
-				geometry->bind();
-
-				auto perDrawData = materials->getData();
-				for (auto dataPair : perDrawData)
-				{
-					shader->uploadData(dataPair.first, dataPair.second);
-				}
-
-				auto VAO = std::shared_ptr<VertexArray>(VertexArray::create());
-
-				VAO->setVertexBuffer(geometry);
-				VAO->bind();
-
-				glDrawArrays(GL_POINTS, 0, geometry->getDrawCount());
+			case Engine::Renderer::Triangle:
+				//glDrawElements(GL_TRIANGLES, vertexArray->getDrawCount(), GL_UNSIGNED_INT, 0);
+				glDrawArrays(GL_TRIANGLES, 0, vertexArray->getDrawCount());
+				break;
+			case Engine::Renderer::Lines:
+				glDrawArrays(GL_LINES, 0, vertexArray->getDrawCount());
+				break;
+			case Engine::Renderer::Point:
+				//glDrawElements(GL_POINTS, vertexArray->getDrawCount(), GL_UNSIGNED_INT, 0);
+				glDrawArrays(GL_POINTS, 0, vertexArray->getDrawCount());
+				break;
+			default:
+				LOG_CORE_ERROR("[RENDERER][OPENGL][NO DRAW TYPE SPECIFIED]");
+				break;
 			}
 		}
 
