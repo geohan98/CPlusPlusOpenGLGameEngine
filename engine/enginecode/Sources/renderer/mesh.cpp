@@ -25,7 +25,7 @@ namespace Engine
 		m_IBO = std::shared_ptr<Renderer::IndexBuffer>(Renderer::IndexBuffer::create(&m_indices[0], m_indices.size()));
 		m_VAO->setVertexBuffer(m_VBO);
 		m_VAO->setIndexBuffer(m_IBO);
-		m_shader = std::shared_ptr<Renderer::Shader>(Renderer::Shader::create("assets/shaders/Debug/debug.shader"));
+		m_shader = std::shared_ptr<Renderer::Shader>(Renderer::Shader::create("assets/shaders/modelDebug.shader"));
 		m_MAT = std::shared_ptr<Renderer::Material>(Renderer::Material::create(m_shader, m_VAO));
 	}
 }

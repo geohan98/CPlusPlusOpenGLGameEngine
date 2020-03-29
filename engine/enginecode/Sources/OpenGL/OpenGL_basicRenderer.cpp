@@ -52,8 +52,8 @@ namespace Engine
 			switch (_drawType)
 			{
 			case Engine::Renderer::Triangle:
-				//glDrawElements(GL_TRIANGLES, vertexArray->getDrawCount(), GL_UNSIGNED_INT, 0);
-				glDrawArrays(GL_TRIANGLES, 0, vertexArray->getDrawCount());
+				glDrawElements(GL_TRIANGLES, vertexArray->getDrawCount(), GL_UNSIGNED_INT, 0);
+				//glDrawArrays(GL_TRIANGLES, 0, vertexArray->getDrawCount());
 				break;
 			case Engine::Renderer::Lines:
 				glDrawArrays(GL_LINES, 0, vertexArray->getDrawCount());

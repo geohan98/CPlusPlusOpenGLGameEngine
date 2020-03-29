@@ -1,7 +1,8 @@
 #pragma once
 #include "Headers/layers/layer.h"
-#include <memory>
 #include "worldGrid.h"
+#include "Headers/renderer/model.h"
+#include <memory>
 
 namespace ParticleDesigner
 {
@@ -11,6 +12,7 @@ namespace ParticleDesigner
 		std::vector<std::shared_ptr<Engine::Renderer::RenderCommand>> m_predrawCommands;
 		std::vector<std::shared_ptr<Engine::Renderer::RenderCommand>> m_postdrawCommands;
 		std::shared_ptr<WorldGrid> m_worldGrid;
+		std::shared_ptr<Engine::Model> m_debugCube;
 	public:
 		ParticleLayer(const std::string& name = "ParticleLayer") : Layer(name) {};
 		virtual void onAttach();

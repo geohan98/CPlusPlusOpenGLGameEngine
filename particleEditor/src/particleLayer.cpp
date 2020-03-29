@@ -20,8 +20,11 @@ namespace ParticleDesigner
 		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::setClearColourCommand(0.1f, 0.1f, 0.1f, 1.0f, false)));
 		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::ClearDepthColourBufferCommand(false)));
 		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::setPolygonModeFill(false)));
+		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::setLineWidth(2.0f, false)));
 		//World Grid
 		m_worldGrid = std::shared_ptr<WorldGrid>(new WorldGrid());
+		//Debug Cube
+		m_debugCube = std::shared_ptr<Engine::Model>(new Engine::Model("assets/models/DebugCube.obj"));
 	}
 
 	void ParticleLayer::onDetach()
@@ -41,6 +44,11 @@ namespace ParticleDesigner
 		m_worldGrid->getMaterial()->setDataElement("u_model", &model[0][0]);
 		m_worldGrid->getMaterial()->setDataElement("u_vp", (void*)&m_camera->getCamera()->getViewProjection());
 		m_renderer->submit(m_worldGrid->getMaterial(), Engine::Renderer::RendererDrawType::Lines);
+		//Draw Debug Cube
+		m_renderer->actionCommand(Engine::Renderer::RenderCommand::setPolygonModeLine(true));
+		m_debugCube->getMaterials()[0]->setDataElement("u_model", &model[0][0]);
+		m_debugCube->getMaterials()[0]->setDataElement("u_vp", (void*)&m_camera->getCamera()->getViewProjection());
+		m_renderer->submit(m_debugCube->getMaterials()[0]);
 		//PostDraw Commands
 		for (auto& renderCommand : m_postdrawCommands)
 		{

@@ -11,8 +11,8 @@ namespace ParticleDesigner
 	class WorldGrid
 	{
 	private:
-		float m_squareSize = 1;
-		int m_numberOfSquares = 8;
+		float m_squareDivisions = 10; //Minimum is 1
+		int m_numberOfSquares = 10;
 	public:
 		WorldGrid();
 		~WorldGrid();

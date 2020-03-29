@@ -20,6 +20,7 @@ namespace Engine
 			static RenderCommand* setPolygonModeLine(bool destroy = true);											///< Set Render Mode to Wire frame
 			static RenderCommand* setPolygonModePoint(bool destroy = true);											///< Set Render Mode to Vertexes
 			static RenderCommand* setBlendMode(bool enbaled, bool destroy = true);									///< Set if blending should happen
+			static RenderCommand* setLineWidth(float width, bool destroy = true);									///< Set if blending should happen
 		};
 	}
 }

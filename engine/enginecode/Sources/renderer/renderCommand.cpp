@@ -162,5 +162,24 @@ namespace Engine
 				break;
 			}
 		}
+		RenderCommand* RenderCommand::setLineWidth(float width, bool destroy)
+		{
+			switch (RenderAPI::getAPI())
+			{
+			case RenderAPI::API::None:
+#ifdef NG_DEBUG
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
+				break;
+			case RenderAPI::API::OpenGL:
+				return new OpenGL_setLineWidth(width, destroy);
+				break;
+			default:
+#ifdef NG_DEBUG
+				LOG_CORE_WARN("NO GRAPHICS API SELECTED");
+#endif // NG_DEBUG
+				break;
+			}
+		}
 	}
 }

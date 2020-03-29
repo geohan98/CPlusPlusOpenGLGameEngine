@@ -158,5 +158,19 @@ namespace Engine
 			}
 		}
 
+		class OpenGL_setLineWidth : public RenderCommand
+		{
+		private:
+			float m_lineWidth;
+		public:
+			OpenGL_setLineWidth(float width, bool destroy) : m_lineWidth(width) { destroyOnAction = destroy; };
+			void action() override;
+		};
+
+		void OpenGL_setLineWidth::action()
+		{
+			glLineWidth(m_lineWidth);
+		}
+
 	}
 }
