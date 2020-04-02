@@ -48,6 +48,9 @@ namespace Engine {
 		void Audio::start(SystemSignal init, ...)
 		{
 			sgpImplementation = new AudioImplementation;
+
+			LOAD_SOUND_BANK("assets/audio/master.bank", FMOD_STUDIO_LOAD_BANK_NORMAL);
+			LOAD_SOUND_BANK("assets/audio/master.strings.bank", FMOD_STUDIO_LOAD_BANK_NORMAL);
 		}
 
 		void Audio::stop(SystemSignal close, ...)
