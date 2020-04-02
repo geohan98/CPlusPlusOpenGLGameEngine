@@ -61,6 +61,12 @@ namespace Engine {
 
 		m_Physics = Systems::Physics::GetInstance();
 		m_Physics->start();
+	
+		m_audioSystem->start();
+		m_audioSystem->loadSound("assets/audio/woo.mp3", false);
+		// alternatively
+		// START_SOUND_ENGINE();
+		// LOAD_SOUND("assets/audio/woo.mp3", false);
 	}
 
 	Application::~Application()
@@ -83,11 +89,22 @@ namespace Engine {
 		{
 			//Timer Tick
 			m_time->tick();
+
 			//Update Delta Time
 			s_deltaTime = m_time->getDeltaTime();
+
 			//Update Physics
 			//Systems::Physics::GetInstance()->getWorld()->update(s_deltaTime);
 			m_Physics->getWorld()->update(s_deltaTime);
+
+			//Update Audio 
+			m_audioSystem->update();
+			if (Systems::InputPoller::isKeyPressed(KEY_B)) {
+				m_audioSystem->playSound("assets/audio/woo.mp3", { 0,0,0 }, 1.f);
+				//alternatively
+				//PLAY_SOUND("assets/audio/woo.mp3", { 0,0,0 }, 1.f);
+			}
+
 			//Update Layer Stack
 			for (auto it = m_layerStack->begin(); it != m_layerStack->end(); ++it)
 			{

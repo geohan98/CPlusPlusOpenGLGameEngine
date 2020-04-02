@@ -6,6 +6,8 @@
 #include "Headers/systems/resourceManager.h"
 #include "Headers/systems/layerStack.h"
 #include "Headers/systems/Physics.h"
+#include "Headers/audio/audio.h"
+
 namespace Engine {
 
 
@@ -20,6 +22,7 @@ namespace Engine {
 		std::shared_ptr<Systems::Log> m_log; ///< Logger System
 		std::shared_ptr<Systems::Time> m_time; ///< Timer System
 		std::shared_ptr<Systems::WindowSystem> m_windowSystem; ///< Window System
+		std::shared_ptr<Systems::Audio> m_audioSystem;
 		std::shared_ptr<Window> m_window; ///< Window
 		static std::shared_ptr<Systems::ResourceManager> m_resourceManager; ///< Resource Manager System
 		std::shared_ptr<Systems::LayerStack> m_layerStack; ///< Layer Stack
