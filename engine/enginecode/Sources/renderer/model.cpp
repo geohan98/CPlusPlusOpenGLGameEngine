@@ -106,6 +106,15 @@ namespace Engine
 		}
 		LOG_CORE_INFO("[MODEL][PROCESSMESH][NUMBER OF VERTICES: {0}]", vertices.size());
 		LOG_CORE_INFO("[MODEL][PROCESSMESH][NUMBER OF INDICES: {0}]", indices.size());
-		return Mesh(vertices, indices);
+
+		aiMaterial* material = _scene->mMaterials[_mesh->mMaterialIndex];
+		aiString filepath;
+		material->GetTexture(aiTextureType_DIFFUSE, 0, &filepath);
+		std::string filename = m_filepath;
+		int pos = filename.find_last_of("/");
+		filename = filename.substr(0, pos);
+		filename += "/" + std::string(filepath.C_Str());
+		return Mesh(vertices, indices, filename);
+
 	}
 }

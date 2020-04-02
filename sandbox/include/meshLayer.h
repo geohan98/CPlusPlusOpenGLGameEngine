@@ -3,6 +3,7 @@
 #include "Headers/layers/layer.h"
 #include "Headers/renderer/renderer.h"
 #include "Headers/renderer/model.h"
+#include "Headers/renderer/texture.h"
 #include "Headers/cameras/cameraController3D.h"
 #include "Headers/components/PhysicsComponent.h"
 #include "Headers/components/materialComponent.h"
@@ -17,6 +18,7 @@ namespace Engine
 		std::shared_ptr<Renderer::Renderer> m_renderer;
 		std::shared_ptr<CameraController> m_camera;
 		Model lettercube;
+		std::shared_ptr<Renderer::Texture> texPic;
 
 		std::shared_ptr<PhysicsComponent> phy;
 		std::shared_ptr<MaterialComponent> mat;

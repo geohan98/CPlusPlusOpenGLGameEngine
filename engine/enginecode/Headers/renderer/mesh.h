@@ -8,6 +8,7 @@
 #include "Headers/renderer/indexBuffer.h"
 #include "Headers/renderer/material.h"
 #include "Headers/renderer/shader.h"
+#include "Headers/renderer/texture.h"
 
 struct Vertex
 {
@@ -30,9 +31,11 @@ namespace Engine
 		std::shared_ptr<Renderer::VertexBuffer> m_VBO;
 		std::shared_ptr<Renderer::IndexBuffer> m_IBO;
 		std::shared_ptr<Renderer::Shader> m_shader;
+		std::shared_ptr<Renderer::Texture> m_Texture;
+		int m_textureslot;
 		void setupMesh();
 	public:
-		Mesh(std::vector<Vertex> _vertices, std::vector<unsigned int> _indices);
+		Mesh(std::vector<Vertex> _vertices, std::vector<unsigned int> _indices, std::string _texFileName);
 		~Mesh();
 		inline std::shared_ptr<Renderer::Material> getMaterial() { return m_MAT; }
 	};

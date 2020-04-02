@@ -13,11 +13,12 @@ namespace Engine
 		m_camera = std::shared_ptr<CameraController3D>(new CameraController3D);
 		m_camera->init(80.0f, 1280.0f / 720.0f, 0.1, 100.0f);
 		lettercube = Model("assets/propane/Propane_LOD3.obj");
+		
 
 		m_renderer->actionCommand(Renderer::RenderCommand::setDepthTestLessCommand(true));
 		m_renderer->actionCommand(Renderer::RenderCommand::setBlendMode(true));
-		//m_renderer->actionCommand(Renderer::RenderCommand::setBackFaceCullingCommand(true));
-		m_renderer->actionCommand(Renderer::RenderCommand::setPolygonModeLine(true));
+		m_renderer->actionCommand(Renderer::RenderCommand::setBackFaceCullingCommand(true));
+		//m_renderer->actionCommand(Renderer::RenderCommand::setPolygonModeLine(true));
 
 		gam = std::shared_ptr<GameObject>(new GameObject);
 		pos = std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(1.f, 1.f, 1.f)));
@@ -27,7 +28,7 @@ namespace Engine
 
 		gam->addComponent(pos);
 		gam->addComponent(mat);
-		gam->addComponent(phy);
+		//gam->addComponent(phy);
 
 	}
 	void MeshLayer::onDetach()
@@ -45,12 +46,14 @@ namespace Engine
 
 		gam->onUpdate(deltaTime);
 
-		glm::mat4 model = glm::scale(glm::mat4(1.0), glm::vec3(0.1, 0.1, 0.1));
+		glm::mat4 model = glm::scale(glm::mat4(1.0), glm::vec3(0.1, 0.1, 0.1)); 
 		for (unsigned int i = 0; i < lettercube.getNumMaterials(); i++)
 		{
-			lettercube.getMaterials()[i]->getShader()->uploadData("u_vp", (void*)& m_camera->getCamera()->getViewProjection());
+			//lettercube.getMaterials()[i]->getShader()->uploadData("u_vp", (void*)& m_camera->getCamera()->getViewProjection());
 			//lettercube.getMaterials()[i]->getShader()->uploadData("u_model", &model[0][0]);
-
+			lettercube.getMaterials()[i]->setDataElement("u_vp", (void*)& m_camera->getCamera()->getViewProjection());
+			lettercube.getMaterials()[i]->setDataElement("u_model", &model[0][0]);
+			auto mat = lettercube.getMaterials()[i];
 			m_renderer->submit(lettercube.getMaterials()[i]);
 		}
 	}
