@@ -21,10 +21,23 @@ namespace ParticleDesigner
 		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::ClearDepthColourBufferCommand(false)));
 		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::setPolygonModeFill(false)));
 		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::setLineWidth(2.0f, false)));
+		//Uniform Buffer
+		Engine::Renderer::UniformBufferLayout viewProjectionLayout = { Engine::Renderer::ShaderDataType::Mat4,Engine::Renderer::ShaderDataType::Mat4, };
+		std::shared_ptr<Engine::Renderer::UniformBuffer> viewProjectionBuffer = std::shared_ptr<Engine::Renderer::UniformBuffer>(Engine::Renderer::UniformBuffer::create(viewProjectionLayout.getStride(), viewProjectionLayout));
+		//Scene Data
+		std::vector<void*> viewProjectionData(2);
+		viewProjectionData[0] = (void*)&m_camera->getCamera()->getProjection();
+		viewProjectionData[1] = (void*)&m_camera->getCamera()->getView();
+		m_sceneData[viewProjectionBuffer] = viewProjectionData;
 		//World Grid
 		m_worldGrid = std::shared_ptr<WorldGrid>(new WorldGrid());
-		//Debug Cube
-		m_debugCube = std::shared_ptr<Engine::Model>(new Engine::Model("assets/models/DebugCube.obj"));
+		//Particle Cube
+		m_gameObject = std::shared_ptr<Engine::GameObject>(new Engine::GameObject());
+		m_positionComponent = std::shared_ptr<Engine::PositionComponent>(new Engine::PositionComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+		m_gameObject->addComponent(m_positionComponent);
+		m_particleComponent = std::shared_ptr<Engine::Components::ParticleComponent>(new Engine::Components::ParticleComponent());
+		m_gameObject->addComponent(m_particleComponent);
+		viewProjectionBuffer->attachShaderBlock(m_particleComponent->getMaterial()->getShader(), "VP");
 	}
 
 	void ParticleLayer::onDetach()
@@ -34,21 +47,21 @@ namespace ParticleDesigner
 	void ParticleLayer::onUpdate(float deltaTime)
 	{
 		m_camera->onUpdate(deltaTime);
+		m_gameObject->onUpdate(deltaTime);
 		//PreDraw Commands
 		for (auto& renderCommand : m_predrawCommands)
 		{
 			m_renderer->actionCommand(renderCommand.get());
 		}
+		//Begin Scene
+		m_renderer->beginScene(m_sceneData);
 		//Draw Grid
 		glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0, 0.0, 0.0));
 		m_worldGrid->getMaterial()->setDataElement("u_model", &model[0][0]);
 		m_worldGrid->getMaterial()->setDataElement("u_vp", (void*)&m_camera->getCamera()->getViewProjection());
 		m_renderer->submit(m_worldGrid->getMaterial(), Engine::Renderer::RendererDrawType::Lines);
-		//Draw Debug Cube
-		m_renderer->actionCommand(Engine::Renderer::RenderCommand::setPolygonModeLine(true));
-		m_debugCube->getMaterials()[0]->setDataElement("u_model", &model[0][0]);
-		m_debugCube->getMaterials()[0]->setDataElement("u_vp", (void*)&m_camera->getCamera()->getViewProjection());
-		m_renderer->submit(m_debugCube->getMaterials()[0]);
+		//Draw Particle System
+		m_renderer->submit(m_particleComponent->getMaterial(), Engine::Renderer::RendererDrawType::Point);
 		//PostDraw Commands
 		for (auto& renderCommand : m_postdrawCommands)
 		{
