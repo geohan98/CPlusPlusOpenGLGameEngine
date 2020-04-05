@@ -14,13 +14,13 @@ namespace ParticleDesigner
 		//FOV, ASPECT RATIO, NEAR, FAR
 		m_camera->init(90.0f, 1280.0f / 720.0f, 0.1f, 100.0f);
 		//PredrawCommands
-		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::setBlendMode(false, false)));
-		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::setBackFaceCullingCommand(true, false)));
-		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::setDepthTestLessCommand(true, false)));
-		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::setClearColourCommand(0.1f, 0.1f, 0.1f, 1.0f, false)));
-		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::ClearDepthColourBufferCommand(false)));
-		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::setPolygonModeFill(false)));
-		m_predrawCommands.push_back(std::shared_ptr < Engine::Renderer::RenderCommand >(Engine::Renderer::RenderCommand::setLineWidth(2.0f, false)));
+		m_predrawCommands.push_back(std::shared_ptr <Engine::Renderer::RenderCommand>(Engine::Renderer::RenderCommand::setBlendMode(false, false)));
+		m_predrawCommands.push_back(std::shared_ptr <Engine::Renderer::RenderCommand>(Engine::Renderer::RenderCommand::setBackFaceCullingCommand(true, false)));
+		m_predrawCommands.push_back(std::shared_ptr <Engine::Renderer::RenderCommand>(Engine::Renderer::RenderCommand::setDepthTestLessCommand(true, false)));
+		m_predrawCommands.push_back(std::shared_ptr <Engine::Renderer::RenderCommand>(Engine::Renderer::RenderCommand::setClearColourCommand(0.1f, 0.1f, 0.1f, 1.0f, false)));
+		m_predrawCommands.push_back(std::shared_ptr <Engine::Renderer::RenderCommand>(Engine::Renderer::RenderCommand::ClearDepthColourBufferCommand(false)));
+		m_predrawCommands.push_back(std::shared_ptr <Engine::Renderer::RenderCommand>(Engine::Renderer::RenderCommand::setPolygonModeFill(false)));
+		m_predrawCommands.push_back(std::shared_ptr <Engine::Renderer::RenderCommand>(Engine::Renderer::RenderCommand::setLineWidth(2.0f, false)));
 		//Uniform Buffer
 		Engine::Renderer::UniformBufferLayout viewProjectionLayout = { Engine::Renderer::ShaderDataType::Mat4,Engine::Renderer::ShaderDataType::Mat4, };
 		std::shared_ptr<Engine::Renderer::UniformBuffer> viewProjectionBuffer = std::shared_ptr<Engine::Renderer::UniformBuffer>(Engine::Renderer::UniformBuffer::create(viewProjectionLayout.getStride(), viewProjectionLayout));
@@ -31,7 +31,7 @@ namespace ParticleDesigner
 		m_sceneData[viewProjectionBuffer] = viewProjectionData;
 		//World Grid
 		m_worldGrid = std::shared_ptr<WorldGrid>(new WorldGrid());
-		//Particle Cube
+		//Particle Emiter
 		m_gameObject = std::shared_ptr<Engine::GameObject>(new Engine::GameObject());
 		m_positionComponent = std::shared_ptr<Engine::PositionComponent>(new Engine::PositionComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
 		m_gameObject->addComponent(m_positionComponent);

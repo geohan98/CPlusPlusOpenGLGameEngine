@@ -57,6 +57,7 @@ namespace Engine
 
 		OpenGL_Texture::OpenGL_Texture(unsigned int width, unsigned int height, unsigned int channels, unsigned char* texData)
 		{
+
 		}
 
 		OpenGL_Texture::~OpenGL_Texture()

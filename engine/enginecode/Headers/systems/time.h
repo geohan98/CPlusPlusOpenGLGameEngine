@@ -1,6 +1,7 @@
 #pragma once
 #include "../enginecode/Headers/systems/system.h"
 #include <chrono>
+#include <math.h>
 
 namespace Engine
 {
@@ -24,6 +25,7 @@ namespace Engine
 			inline static void setTimeScale(float t) { s_timeScale = t; }							///< Set Time Scale
 			inline static float getTimeScale() { return s_timeScale; }								///< Return Time Scale
 			inline static float getTimeNow() { return s_frameStart.time_since_epoch().count(); }	///< Return Current Time
+			inline static float getTimeNowMillisecconds() { return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count(); }	///< Return Current Time
 			inline static float getDeltaTime() { return s_deltaTime.count(); }						///< get Delta Time
 			inline static float getAppStart() { return s_appStart.time_since_epoch().count(); }		///< get App Start
 			inline static bool getTimerStatus() { return s_timeActive; }							///< return is the timer active

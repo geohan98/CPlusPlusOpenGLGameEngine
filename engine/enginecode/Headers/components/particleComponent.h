@@ -82,7 +82,7 @@ namespace Engine
 			}
 
 		public:
-			ParticleComponent()
+			ParticleComponent(float _spawnRate = 1.0f, float _size = 0.25f, float _rotation = 0.0f, glm::vec4 _colour = glm::vec4(1, 1, 1, 1), glm::vec3 _linarVelocity = glm::vec3(0, 1, 0), float _angularVelocity = 0.0f, float _lifetime = 1.0f)
 			{
 				m_shader = std::shared_ptr<Renderer::Shader>(Renderer::Shader::create("assets/shaders/particle.shader"));
 				Renderer::VertexBufferLayout layout = { Renderer::ShaderDataType::Float3,Renderer::ShaderDataType::Float,Renderer::ShaderDataType::Float,Renderer::ShaderDataType::Float4 };
@@ -90,7 +90,31 @@ namespace Engine
 				m_vertexArray = std::shared_ptr<Renderer::VertexArray>(Renderer::VertexArray::create());
 				m_vertexArray->setVertexBuffer(m_vertexBuffer);
 				m_material = std::shared_ptr<Renderer::Material>(Renderer::Material::create(m_shader, m_vertexArray));
-				m_lastSpawn = Systems::Time::getTimeNow();
+				m_lastSpawn = Systems::Time::getTimeNowMillisecconds();
+
+				m_spawnRate = _spawnRate;
+
+				m_minStartScale = _size;
+				m_maxStartScale = _size;
+				m_minEndScale = _size;
+				m_maxEndScale = _size;
+
+				m_minStartRotation = _rotation;
+				m_maxStartRotation = _rotation;
+
+				m_minStartColour = _colour;
+				m_maxStartColour = _colour;
+				m_minEndColour = _colour;
+				m_maxEndColour = _colour;
+
+				m_minStartLinearVelocity = _linarVelocity;
+				m_maxStartLinearVelocity = _linarVelocity;
+
+				m_minStartAngularVelocity = _angularVelocity;
+				m_maxStartAngularVelocity = _angularVelocity;
+
+				m_minStartLifetime = _lifetime;
+				m_maxStartLifetime = _lifetime;
 			}
 			inline std::shared_ptr<Renderer::Material> getMaterial() { return m_material; }
 			void receiveMessage(const ComponentMessage& msg) override
@@ -105,12 +129,13 @@ namespace Engine
 			}
 			void onUpdate(float deltaTime) override
 			{
-				if ((Systems::Time::getTimeNow() - m_lastSpawn) / 1000000000.0f >= 1.0f / m_spawnRate)
-				{
-					addParticle();
-					m_lastSpawn = Systems::Time::getTimeNow();
-				}
 
+				int count = std::floor((Systems::Time::getTimeNowMillisecconds() - m_lastSpawn) / ((1.0f / m_spawnRate) * 1000.0f));
+				if (count > 0)
+				{
+					addParticle(count);
+					m_lastSpawn = Systems::Time::getTimeNowMillisecconds();
+				}
 
 				//Remove Old Particles
 				if (!m_particleData.empty())
