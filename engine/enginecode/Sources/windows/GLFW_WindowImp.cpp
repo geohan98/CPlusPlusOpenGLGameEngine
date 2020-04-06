@@ -71,6 +71,13 @@ namespace Engine
 			}
 		);
 
+		glfwSetFramebufferSizeCallback(m_nativeWindow, [](GLFWwindow* window, int width, int height)
+			{
+				LOG_CORE_TRACE("[WINDOW][GLFW][FRAME BUFFER SET SIZE: {0} x {1}]", width, height);
+				glViewport(0, 0, width, height);
+			}
+		);
+
 		//Keyboard Event Callbacks
 		glfwSetKeyCallback(m_nativeWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
