@@ -5,7 +5,6 @@
 
 namespace Engine
 {
-
 	void CameraController2D::init(float a, float b, float c, float d)
 	{
 		m_camera = std::shared_ptr<Camera>(new Camera2D(a, b, c, d));

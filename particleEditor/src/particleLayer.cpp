@@ -1,7 +1,7 @@
 #include "engine_pch.h"
 #include "Headers/systems/log.h"
 #include "particleLayer.h"
-#include "Headers/cameras/cameraController3D.h"
+#include "editorCameraController.h"
 
 namespace ParticleDesigner
 {
@@ -10,7 +10,7 @@ namespace ParticleDesigner
 		//Initalization
 		m_resourceManager = std::shared_ptr<Engine::Systems::ResourceManager>(new Engine::Systems::ResourceManager());
 		m_renderer = std::shared_ptr<Engine::Renderer::Renderer>(Engine::Renderer::Renderer::createBasic3D());
-		m_camera = std::shared_ptr<Engine::CameraController>(new Engine::CameraController3D());
+		m_camera = std::shared_ptr<Engine::CameraController>(new Engine::EditorCameraController());
 		//FOV, ASPECT RATIO, NEAR, FAR
 		m_camera->init(90.0f, 1280.0f / 720.0f, 0.1f, 100.0f);
 		//PredrawCommands
@@ -71,5 +71,6 @@ namespace ParticleDesigner
 
 	void ParticleLayer::onEvent(Engine::Events::Event& e)
 	{
+		m_camera->onEvent(e);
 	}
 }

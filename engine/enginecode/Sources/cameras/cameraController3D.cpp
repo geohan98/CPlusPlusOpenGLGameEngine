@@ -1,9 +1,10 @@
 #include "engine_pch.h"
-#include "../enginecode/Headers/systems/log.h"
-#include "../enginecode/Headers/cameras/cameraController3D.h"
-#include "../enginecode/Headers/cameras/camera3D.h"
-#include "../enginecode/Headers/systems/inputPoller.h"
-#include "../enginecode/Headers/systems/ButtonCodes.h"
+#include "Headers/systems/log.h"
+#include "Headers/cameras/cameraController3D.h"
+#include "Headers/cameras/camera3D.h"
+#include "Headers/systems/inputPoller.h"
+#include "Headers/systems/ButtonCodes.h"
+#include "Headers/events/applicationEvents.h"
 
 namespace Engine
 {
@@ -85,7 +86,7 @@ namespace Engine
 		dispatcher.dispatch<Events::WindowResize>(std::bind(&CameraController::resizeEvent, this, std::placeholders::_1));
 	}
 
-	bool CameraController3D::resizeEvent(Events::WindowResize & e)
+	bool CameraController3D::resizeEvent(Events::WindowResize& e)
 	{
 		m_camera->resize(e.getWidth(), e.getHeight());
 		return false;

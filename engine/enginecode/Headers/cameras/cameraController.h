@@ -1,11 +1,17 @@
 #pragma once
 #include "camera.h"
-#include "../events/event.h"
-#include "Headers/events/applicationEvents.h"
+//#include "Headers/events/event.h"
+//#include "Headers/events/applicationEvents.h"
 #include <memory>
 
 namespace Engine
 {
+	namespace Events
+	{
+		class Event;
+		class WindowResize;
+	}
+
 	/**
 	 *  Camera3D, Handles events and updates for the Camera
 	 */
