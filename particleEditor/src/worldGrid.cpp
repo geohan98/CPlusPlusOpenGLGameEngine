@@ -6,7 +6,7 @@
 #include "glm/glm.hpp"
 #include <math.h>
 
-namespace ParticleDesigner
+namespace ParticleEditor
 {
 	WorldGrid::WorldGrid()
 	{

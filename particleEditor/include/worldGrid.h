@@ -6,7 +6,7 @@
 
 
 
-namespace ParticleDesigner
+namespace ParticleEditor
 {
 	class WorldGrid
 	{

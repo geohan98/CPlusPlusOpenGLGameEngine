@@ -1,24 +1,24 @@
 #include "engine_pch.h"
 
-#include "..\include\imguiLayer.h"
+#include "imguiLayer.h"
 
 #include "Headers/windows/window.h"
 #include "Headers/windows/GLFW_windowImp.h"
-#include "../enginecode/Headers/core/application.h"
+#include "Headers/core/application.h"
 
 namespace Engine {
 
 	ImGUILayer::ImGUILayer() : Layer("ImGUI Layer") {};
 
 	void ImGUILayer::onAttach()
-	{	
+	{
 		ImGui::CreateContext();
-		
+
 		ImGui::StyleColorsDark();
 
 		ImGui_ImplGlfwGL3_Init(static_cast<GLFWwindow*>(Application::getInstance().getWindow()->getNativeWindow()), true);
 
-		
+
 
 		ImGuiIO& io = ImGui::GetIO();
 		ImFont* roboto = io.Fonts->AddFontFromFileTTF("../sandbox/assets/fonts/Roboto-Medium.ttf", 16.0f);
@@ -43,15 +43,15 @@ namespace Engine {
 
 		for (int i = 0; i < buttonsToLoad.size(); i++) {
 
-			loadButton(buttonsToLoad[i].buttonName, buttonsToLoad[i].size, buttonsToLoad[i].position, 
+			loadButton(buttonsToLoad[i].buttonName, buttonsToLoad[i].size, buttonsToLoad[i].position,
 				buttonsToLoad[i].text, buttonsToLoad[i].color, buttonsToLoad[i].corner, buttonsToLoad[i].functionHolder);
 		}
 
 		for (int i = 0; i < imageButtonsToLoad.size(); i++) {
 			loadImageButton(imageButtonsToLoad[i].buttonName, imageButtonsToLoad[i].size, imageButtonsToLoad[i].position, imageButtonsToLoad[i].text, imageButtonsToLoad[i].corner, imageButtonsToLoad[i].textureID);
 		}
-		
-		
+
+
 		/*if (lives == 3) {
 			loadImage(the texture of three lives);
 		}*/
@@ -72,7 +72,7 @@ namespace Engine {
 		buttonsToLoad.push_back(button);
 	}
 
-	void ImGUILayer::loadButton(const char * buttonName, std::pair<float, float> size, std::pair<float, float> position, const char * text, ImVec4 color, int corner, void(*func)())
+	void ImGUILayer::loadButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, void(*func)())
 	{
 		ImGuiIO& io = ImGui::GetIO();
 
@@ -138,14 +138,14 @@ namespace Engine {
 
 		ImGuiStyle& style = ImGui::GetStyle();
 		style.WindowBorderSize = 0.0f;
-		
+
 		float texWidth = (float)texturePtr->getWidth();
 		float texHeight = (float)texturePtr->getHeight();
 
 		if (ImGui::Begin(buttonName, false, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav))
 		{
 			ImGui::PushID(1);
-			
+
 			ImGui::ImageButton((void*)textureID, ImVec2(size.first, size.second), { 0,0 }, { 1,1 }, -1);
 
 			ImGui::PopID();

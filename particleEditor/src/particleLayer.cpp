@@ -3,14 +3,14 @@
 #include "particleLayer.h"
 #include "editorCameraController.h"
 
-namespace ParticleDesigner
+namespace ParticleEditor
 {
 	void ParticleLayer::onAttach()
 	{
 		//Initalization
 		m_resourceManager = std::shared_ptr<Engine::Systems::ResourceManager>(new Engine::Systems::ResourceManager());
 		m_renderer = std::shared_ptr<Engine::Renderer::Renderer>(Engine::Renderer::Renderer::createBasic3D());
-		m_camera = std::shared_ptr<Engine::CameraController>(new Engine::EditorCameraController());
+		m_camera = std::shared_ptr<Engine::CameraController>(new EditorCameraController());
 		//FOV, ASPECT RATIO, NEAR, FAR
 		m_camera->init(90.0f, 1280.0f / 720.0f, 0.1f, 100.0f);
 		//PredrawCommands
@@ -35,7 +35,7 @@ namespace ParticleDesigner
 		m_gameObject = std::shared_ptr<Engine::GameObject>(new Engine::GameObject());
 		m_positionComponent = std::shared_ptr<Engine::PositionComponent>(new Engine::PositionComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
 		m_gameObject->addComponent(m_positionComponent);
-		m_particleComponent = std::shared_ptr<Engine::Components::ParticleComponent>(new Engine::Components::ParticleComponent());
+		m_particleComponent = std::shared_ptr<Engine::Components::ParticleComponent>(new Engine::Components::ParticleComponent(10.0f, 0.1f));
 		m_gameObject->addComponent(m_particleComponent);
 		viewProjectionBuffer->attachShaderBlock(m_particleComponent->getMaterial()->getShader(), "VP");
 	}

@@ -6,7 +6,7 @@
 #include "Headers/components/particleComponent.h"
 #include <memory>
 
-namespace ParticleDesigner
+namespace ParticleEditor
 {
 	class ParticleLayer : public Engine::Layer
 	{

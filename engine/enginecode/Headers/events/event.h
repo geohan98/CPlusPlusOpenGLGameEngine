@@ -57,7 +57,7 @@ namespace Engine {
 			{
 				if (m_event.getEventType() == T::getStaticType())
 				{
-					m_event.handle(func(*((T*)& m_event)));
+					m_event.handle(func(*((T*)&m_event)));
 
 					return true;
 				}

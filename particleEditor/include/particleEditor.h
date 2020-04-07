@@ -2,7 +2,7 @@
 
 #include <Engine.h>
 
-namespace ParticleDesigner
+namespace ParticleEditor
 {
 	class ParticleEditor : public Engine::Application
 	{

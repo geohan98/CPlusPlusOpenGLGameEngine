@@ -1,9 +1,8 @@
 #pragma once
 #include "Headers/layers/layer.h"
 #include "Headers/audio/audio.h"
-#include "../enginecode/Headers/ImGui/imgui.h"
-#include "../enginecode/Headers/ImGui/imgui_impl_glfw_gl3.h"
-
+#include "Headers/ImGui/imgui.h"
+#include "Headers/ImGui/imgui_impl_glfw_gl3.h"
 #include "Headers/renderer/texture.h"
 
 namespace Engine {
@@ -19,10 +18,10 @@ namespace Engine {
 		void onEvent(Events::Event& e) {}; ///< Run on an Event
 
 		static void helloWorld();
-		
-		void createButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char*  text, ImVec4 color, int corner, void(*func)());
+
+		void createButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, void(*func)());
 		void createImageButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, int corner, const char* filepath);
-		void loadButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char*  text, ImVec4 color, int corner, void(*func)());
+		void loadButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, void(*func)());
 		void loadImageButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, int corner, unsigned int textureID);
 		//void loadImage(const char* imageName, ...)
 
@@ -42,18 +41,18 @@ namespace Engine {
 
 		struct ImGuiButton {
 
-			ImGuiButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char*  text, ImVec4 color, int corner, void(*func)())
-			: buttonName(buttonName), size(size), position(position), text(text), color(color), corner(corner), functionHolder(func) {
+			ImGuiButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, void(*func)())
+				: buttonName(buttonName), size(size), position(position), text(text), color(color), corner(corner), functionHolder(func) {
 			};
-			
+
 			const char* buttonName;
 			std::pair<float, float> size;
 			std::pair<float, float> position;
-			const char*  text;
+			const char* text;
 			ImVec4 color;
 			int corner;
 			void(*functionHolder)();
-		};	
+		};
 
 		std::vector<ImGuiButton> buttonsToLoad;
 		std::vector<ImGuiImageButton> imageButtonsToLoad;
