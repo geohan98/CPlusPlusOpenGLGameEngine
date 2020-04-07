@@ -24,11 +24,7 @@ namespace Engine {
 		ImFont* roboto = io.Fonts->AddFontFromFileTTF("../sandbox/assets/fonts/Roboto-Medium.ttf", 16.0f);
 
 		// Can call createButton from anywhere in the project and it will be added to the buttons to load each frame
-		createButton("1", { 100, 50 }, { 100, 100 }, "pos(100,100) button", ImVec4(0.8f, 0.4f, 1.0f, 1.0f), -1, helloWorld);
-		createButton("2", { 200, 50 }, { 0, 0 }, "Top right corner button", ImVec4(0.8f, 0.4f, 0.5f, 1.0f), 1, helloWorld);
-		createButton("3s", { 200, 100 }, { 0, 0 }, "Bottom left corner button", ImVec4(0.5f, 0.5f, 0.2f, 1.0f), 2, helloWorld);
-		createImageButton("3", { 100, 100 }, { 0, 0 }, "Bottom left corner button", 3, "../sandbox/assets/textures/buttonShiny.png");
-		createImageButton("10", { 100, 100 }, { 0, 0 }, "Top left corner button", 0, "../sandbox/assets/textures/buttonShiny.png");
+		createButton("2", { 200, 50 }, { 0, 0 }, "Top right corner button", ImVec4(0.8f, 0.4f, 0.5f, 1.0f), 1, [this] { helloWorld(); });
 	}
 
 	void ImGUILayer::onDetach()
@@ -51,11 +47,6 @@ namespace Engine {
 			loadImageButton(imageButtonsToLoad[i].buttonName, imageButtonsToLoad[i].size, imageButtonsToLoad[i].position, imageButtonsToLoad[i].text, imageButtonsToLoad[i].corner, imageButtonsToLoad[i].textureID);
 		}
 
-
-		/*if (lives == 3) {
-			loadImage(the texture of three lives);
-		}*/
-
 		ImGui::SetNextWindowBgAlpha(1.0f); // Make the ImGUI Debug backgrounds fully visible whilst allowing the button backgrounds to be hidden
 		ImGui::Render();
 		ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
@@ -63,16 +54,16 @@ namespace Engine {
 
 	void ImGUILayer::helloWorld()
 	{
-		std::cout << "HELLO WORLD!" << std::endl;
+		std::cout << "Button clicked from inside imguilayer" << std::endl;
 	}
 
-	void ImGUILayer::createButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, void(*func)())
+	void ImGUILayer::createButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, std::function<void()> func)
 	{
 		ImGuiButton button(buttonName, size, position, text, color, corner, func);
 		buttonsToLoad.push_back(button);
 	}
 
-	void ImGUILayer::loadButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, void(*func)())
+	void ImGUILayer::loadButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, std::function<void()> func)
 	{
 		ImGuiIO& io = ImGui::GetIO();
 
