@@ -8,8 +8,8 @@
 #include "Headers/systems/Physics.h"
 #include "Headers/audio/audio.h"
 
-namespace Engine {
 
+namespace Engine {
 
 	/**
 	 *  Application, Handles Events system init and update loop
@@ -18,14 +18,15 @@ namespace Engine {
 	{
 	protected:
 		Application(char* _name); ///< Constructor
-		std::shared_ptr<Systems::Physics> m_physics; ///< Physics System
 		std::shared_ptr<Systems::Log> m_log; ///< Logger System
 		std::shared_ptr<Systems::Time> m_time; ///< Timer System
 		std::shared_ptr<Systems::WindowSystem> m_windowSystem; ///< Window System
-		std::shared_ptr<Systems::Audio> m_audioSystem;
 		std::shared_ptr<Window> m_window; ///< Window
 		static std::shared_ptr<Systems::ResourceManager> m_resourceManager; ///< Resource Manager System
 		std::shared_ptr<Systems::LayerStack> m_layerStack; ///< Layer Stack
+		std::shared_ptr<Systems::Audio> m_audioSystem;
+		std::shared_ptr<Systems::Physics> m_physics; ///< Physics System
+
 		glm::ivec2 m_windowSize;
 		bool fullscreen;
 	private:
@@ -40,6 +41,7 @@ namespace Engine {
 		void onEvent(Events::Event& e); ///< Called On an Event
 		inline static Application& getInstance() { return *s_instance; } ///< Return an Application Pointer
 		void close();
+		void toggleFullscreen();
 		inline std::shared_ptr<Window> getWindow() { return m_window; } ///< Returns The Window
 		inline bool isFullscreen() { return fullscreen; }
 		inline glm::ivec2 getWindowSize() { return m_windowSize; }

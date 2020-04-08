@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../enginecode/Headers/windows/window.h"
+#include "Headers/windows/window.h"
 
 struct GLFWwindow;
 
@@ -13,10 +13,8 @@ namespace Engine
 	{
 	private:
 		GLFWwindow* m_nativeWindow;  ///< The GLFW window
-
 		void init(const WindowProperties& properties)override; ///< Initialize the window
 		void close();  ///<  close the window
-		WindowProperties m_properties; ///< window properties
 		std::function<void(Events::Event&)> m_callBack; ///< callback to event in application
 		float m_aspectRatio; ///< Aspect ratio of the window
 	public:
@@ -32,6 +30,7 @@ namespace Engine
 		inline unsigned int getHeight() const override { return m_properties.m_height; } ///< Return the Window Height
 		inline void* getNativeWindow() const override { return m_nativeWindow; } ///< Return The Native Window
 		inline bool isFullScreenMode() const override { return m_properties.m_isFullScreen; } ///< Return if the screen if full screen
+		inline void setFullScreenMode(bool _fullscreen) override;
 		inline bool isVSync() const override { return m_properties.m_isVSync; } ///< Return is Vsync
 	};
 }

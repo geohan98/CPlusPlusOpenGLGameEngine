@@ -1,7 +1,7 @@
 #include "engine_pch.h"
-#include "../enginecode/Headers/windows/GLFW_windowImp.h"
-#include "../enginecode/Headers/windows/GLFW_graphicsContext.h"
-#include "../enginecode/Headers/systems/log.h"
+#include "Headers/windows/GLFW_windowImp.h"
+#include "Headers/windows/GLFW_graphicsContext.h"
+#include "Headers/systems/log.h"
 
 #include <GLFW/glfw3.h>
 
@@ -200,9 +200,32 @@ namespace Engine
 
 		m_properties.m_isVSync = VSync;
 	}
+
 	void GLFW_WindowImp::setEventCallback(const std::function<void(Events::Event&)>& callback)
 	{
 		m_callBack = callback;
+	}
+
+	inline void GLFW_WindowImp::setFullScreenMode(bool _fullscreen)
+	{
+		if (_fullscreen == m_properties.m_isFullScreen)
+		{
+			LOG_CORE_INFO("ALREADY IN THAT MODE");
+			return;
+		}
+		if (_fullscreen)
+		{
+			glfwGetWindowSize(m_nativeWindow, &m_properties.m_width, &m_properties.m_height);
+
+			const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+
+			glfwSetWindowMonitor(m_nativeWindow, nullptr, 0, 0, mode->width, mode->height, 0);
+		}
+		else
+		{
+			glfwSetWindowMonitor(m_nativeWindow, nullptr, 10, 10, m_properties.m_width, m_properties.m_height, 0);
+		}
+		m_properties.m_isFullScreen = _fullscreen;
 	}
 
 	Window* Window::create(const WindowProperties& properties)

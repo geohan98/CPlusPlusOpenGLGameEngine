@@ -1,8 +1,8 @@
 #include "engine_pch.h"
-#include "../enginecode/Headers/windows/GLFW_inputPoller.h"
+#include "Headers/windows/GLFW_inputPoller.h"
 #include <GLFW/glfw3.h>
-#include "../enginecode/Headers/core/application.h"
-#include "../enginecode/Headers/systems/ButtonCodes.h"
+#include "Headers/core/application.h"
+#include "Headers/systems/ButtonCodes.h"
 
 namespace Engine
 {

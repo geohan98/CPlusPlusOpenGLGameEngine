@@ -32,56 +32,22 @@ namespace ParticleEditor
 		ImGui_ImplGlfwGL3_NewFrame();
 
 		//Stuff Here
-		ImGui::Begin("Properties");
-		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-
-		//Spawn Rate
-		static float spawnRate;
-		ImGui::SliderFloat("Spawn Rate", &spawnRate, 0.0f, 100.0f);
-		//Rotation
-		static bool rotationOverLife;
-		static float rotMinStart;
-		static float rotMaxStart;
-		static float rotMinEnd;
-		static float rotMaxEnd;
-		ImGui::Checkbox("Rotation Over Life", &rotationOverLife);
-		if (rotationOverLife)
+		ImGui::BeginMainMenuBar();
+		if (ImGui::BeginMenu("Particle Editor"))
 		{
-			static bool randomStart;
-			ImGui::Checkbox("Random Start", &randomStart);
-			if (randomStart)
-			{
-				ImGui::SliderFloat("Start Min Rot", &rotMinStart, 0.0f, 90.0f);
-				ImGui::SliderFloat("Start Max Rot", &rotMaxStart, 0.0f, 90.0f);
-			}
-			else
-			{
-				ImGui::SliderFloat("Start Rot", &rotMinStart, 0.0f, 90.0f);
-				rotMaxStart = rotMinStart;
-			}
-
-			static bool randomEnd;
-			ImGui::Checkbox("Random End", &randomEnd);
-			if (randomEnd)
-			{
-				ImGui::SliderFloat("End Min Rot", &rotMinEnd, 0.0f, 90.0f);
-				ImGui::SliderFloat("End Max Rot", &rotMaxEnd, 0.0f, 90.0f);
-			}
-			else
-			{
-				ImGui::SliderFloat("End Rot", &rotMinEnd, 0.0f, 90.0f);
-				rotMaxEnd = rotMinEnd;
-			}
+			if (ImGui::MenuItem("New")) {}
+			if (ImGui::MenuItem("Save")) {}
+			if (ImGui::MenuItem("Save As")) {}
+			ImGui::Separator();
+			if (ImGui::MenuItem("Close")) { Engine::Application::getInstance().close(); }
+			ImGui::EndMenu();
 		}
-		else
+		if (ImGui::BeginMenu("View"))
 		{
-			ImGui::SliderFloat("Start Rot", &rotMinStart, 0.0f, 90.0f);
-			rotMaxStart = rotMinStart;
-			rotMinEnd = rotMinStart;
-			rotMaxEnd = rotMinStart;
+			if (ImGui::MenuItem("Toggle Fullscreen")) { Engine::Application::getInstance().toggleFullscreen(); }
+			ImGui::EndMenu();
 		}
-		ImGui::End();
-
+		ImGui::EndMainMenuBar();
 
 		ImGui::SetNextWindowBgAlpha(1.0f);
 		ImGui::Render();

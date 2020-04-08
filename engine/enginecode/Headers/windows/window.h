@@ -15,8 +15,8 @@ namespace Engine {
 	struct WindowProperties
 	{
 		std::string m_title;
-		unsigned int m_width;
-		unsigned int m_height;
+		int m_width;
+		int m_height;
 		bool m_isFullScreen;
 		bool m_isVSync;
 
@@ -40,11 +40,13 @@ namespace Engine {
 		virtual unsigned int getHeight() const = 0;										///< return window height
 		virtual void* getNativeWindow() const = 0;										///< get the native window
 		virtual bool isFullScreenMode() const = 0;										///< return is fullscreen
+		virtual void setFullScreenMode(bool _fullscreen) = 0;
 		virtual bool isVSync() const = 0;												///< return is vsync
 
 		static Window* create(const WindowProperties& properties = WindowProperties());	///< Creates API specific window
 	protected:
-		std::unique_ptr<GraphicsContext> m_context;										///<  pointer to graphics context
+		std::unique_ptr<GraphicsContext> m_context;
+		WindowProperties m_properties; ///< Window properties///<  pointer to graphics context
 	};
 }
 

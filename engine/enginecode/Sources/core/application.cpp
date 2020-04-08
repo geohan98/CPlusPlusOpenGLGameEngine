@@ -3,7 +3,7 @@
 
 #include "engine_pch.h"
 #include "Headers/core/application.h"
-#include "Headers/systems/log.h"
+
 #include "Headers/iniParser.h"
 #ifdef NG_PLATFORM_WINDOWS
 #include "Headers/windows/GLFW_windowSys.h"
@@ -51,9 +51,12 @@ namespace Engine {
 		win.m_width = config.getDataInt("width");
 		win.m_height = config.getDataInt("height");
 		win.m_isFullScreen = config.getDataBool("fullscreen");
+		fullscreen = win.m_isFullScreen;
+
 
 		m_window = std::shared_ptr<Window>(Window::create(win));
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
+		fullscreen = m_window->isFullScreenMode();
 
 		m_layerStack = std::shared_ptr<Systems::LayerStack>(new Systems::LayerStack());
 		m_layerStack->start();
@@ -127,6 +130,12 @@ namespace Engine {
 	void Application::close()
 	{
 		m_running = false;
+	}
+
+	void Application::toggleFullscreen()
+	{
+		fullscreen = !fullscreen;
+		m_window->setFullScreenMode(fullscreen);
 	}
 
 #pragma endregion
