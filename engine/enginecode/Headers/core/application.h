@@ -18,7 +18,7 @@ namespace Engine {
 	{
 	protected:
 		Application(char* _name); ///< Constructor
-		std::shared_ptr<Systems::Physics> m_Physics; ///< Physics System
+		std::shared_ptr<Systems::Physics> m_physics; ///< Physics System
 		std::shared_ptr<Systems::Log> m_log; ///< Logger System
 		std::shared_ptr<Systems::Time> m_time; ///< Timer System
 		std::shared_ptr<Systems::WindowSystem> m_windowSystem; ///< Window System
@@ -26,20 +26,23 @@ namespace Engine {
 		std::shared_ptr<Window> m_window; ///< Window
 		static std::shared_ptr<Systems::ResourceManager> m_resourceManager; ///< Resource Manager System
 		std::shared_ptr<Systems::LayerStack> m_layerStack; ///< Layer Stack
+		glm::ivec2 m_windowSize;
+		bool fullscreen;
 	private:
 		static Application* s_instance; ///< Pointer to this application
 		bool m_running = true; ///< Should the update loop run
 		static float s_deltaTime; ///< Time Since Last Frame
-
 		bool onWindowClose(Events::WindowClose& e);
 		bool onKeyPressed(Events::KeyPressed& e);
 	public:
 		virtual ~Application(); ///< Deconstructor
-		inline static Application& getInstance() { return *s_instance; } ///< Return an Application Pointer
-		inline static float getdeltaTime() { return s_deltaTime; } ///< Returns Time Since Last Frame
-		inline std::shared_ptr<Window> getWindow() { return m_window; } ///< Returns The Window
 		void run(); ///< Update Loop
 		void onEvent(Events::Event& e); ///< Called On an Event
+		inline static Application& getInstance() { return *s_instance; } ///< Return an Application Pointer
+		void close();
+		inline std::shared_ptr<Window> getWindow() { return m_window; } ///< Returns The Window
+		inline bool isFullscreen() { return fullscreen; }
+		inline glm::ivec2 getWindowSize() { return m_windowSize; }
 	};
 
 	Application* startApplication();

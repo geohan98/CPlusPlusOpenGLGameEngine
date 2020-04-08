@@ -4,12 +4,11 @@
 #include "engine_pch.h"
 #include "Headers/core/application.h"
 #include "Headers/systems/log.h"
+#include "Headers/iniParser.h"
 #ifdef NG_PLATFORM_WINDOWS
 #include "Headers/windows/GLFW_windowSys.h"
 #include "Headers/windows/GLFW_inputPoller.h"
 #endif // NG_PLATFORM_WINDOWS
-
-#include "Headers/iniParser.h"
 
 namespace Engine {
 
@@ -59,9 +58,9 @@ namespace Engine {
 		m_layerStack = std::shared_ptr<Systems::LayerStack>(new Systems::LayerStack());
 		m_layerStack->start();
 
-		m_Physics = Systems::Physics::GetInstance();
-		m_Physics->start();
-	
+		m_physics = Systems::Physics::GetInstance();
+		m_physics->start();
+
 		m_audioSystem->start();
 		m_audioSystem->loadSound("assets/audio/woo.mp3", false);
 		// alternatively
@@ -71,7 +70,7 @@ namespace Engine {
 
 	Application::~Application()
 	{
-		m_Physics->stop();
+		m_physics->stop();
 		m_layerStack->stop();
 		m_window->close();
 		m_windowSystem->stop();
@@ -94,25 +93,19 @@ namespace Engine {
 			s_deltaTime = m_time->getDeltaTime();
 
 			//Update Physics
-			//Systems::Physics::GetInstance()->getWorld()->update(s_deltaTime);
-			m_Physics->getWorld()->update(s_deltaTime);
+			m_physics->getWorld()->update(s_deltaTime);
 
 			//Update Audio 
 			m_audioSystem->update();
-			if (Systems::InputPoller::isKeyPressed(KEY_B)) {
-				m_audioSystem->playSound("assets/audio/woo.mp3", { 0,0,0 }, 1.f);
-				//alternatively
-				//PLAY_SOUND("assets/audio/woo.mp3", { 0,0,0 }, 1.f);
-			}
 
 			//Update Layer Stack
 			for (auto it = m_layerStack->begin(); it != m_layerStack->end(); ++it)
 			{
 				(*it)->onUpdate(s_deltaTime);
 			}
+
 			//Update Window
 			m_window->onUpdate(s_deltaTime);
-
 		}
 	}
 
@@ -131,6 +124,11 @@ namespace Engine {
 		}
 	}
 
+	void Application::close()
+	{
+		m_running = false;
+	}
+
 #pragma endregion
 
 #pragma region Events
@@ -140,7 +138,6 @@ namespace Engine {
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("APPLICATION: CLOSING APPLICATION");
 #endif // NG_DEBUG
-#pragma endregion
 
 		m_running = false;
 
@@ -164,6 +161,5 @@ namespace Engine {
 	}
 
 #pragma endregion
-
 
 }
