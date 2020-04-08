@@ -17,6 +17,8 @@ namespace Engine {
 		std::string m_title;
 		int m_width;
 		int m_height;
+		int m_posX;
+		int m_posY;
 		bool m_isFullScreen;
 		bool m_isVSync;
 

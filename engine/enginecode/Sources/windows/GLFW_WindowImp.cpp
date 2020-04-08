@@ -7,6 +7,21 @@
 
 namespace Engine
 {
+	GLFW_WindowImp::GLFW_WindowImp(const WindowProperties& properties)
+	{
+		LOG_CORE_WARN("[WINDOW][GLFW][CREATING GLFW WINDOW]");
+		init(properties);
+	}
+
+	GLFW_WindowImp::~GLFW_WindowImp()
+	{
+	}
+
+	Window* Window::create(const WindowProperties& properties)
+	{
+		return new GLFW_WindowImp(properties);
+	}
+
 	void GLFW_WindowImp::init(const WindowProperties& properties)
 	{
 		m_properties = properties;
@@ -75,6 +90,15 @@ namespace Engine
 			{
 				LOG_CORE_TRACE("[WINDOW][GLFW][FRAME BUFFER SET SIZE: {0} x {1}]", width, height);
 				glViewport(0, 0, width, height);
+			}
+		);
+
+		glfwSetWindowPosCallback(m_nativeWindow, [](GLFWwindow* window, int x, int y)
+			{
+				LOG_CORE_TRACE("[WINDOW][GLFW][WINDOW MOVED: {0} x {1}]", x, y);
+				std::function<void(Events::Event&)>& callback = *(std::function<void(Events::Event&)>*)glfwGetWindowUserPointer(window);
+				Events::WindowMoved event(x, y);
+				callback(event);
 			}
 		);
 
@@ -165,16 +189,6 @@ namespace Engine
 		glfwDestroyWindow(m_nativeWindow);
 	}
 
-	GLFW_WindowImp::GLFW_WindowImp(const WindowProperties& properties)
-	{
-		LOG_CORE_WARN("[WINDOW][GLFW][CREATING GLFW WINDOW]");
-		init(properties);
-	}
-
-	GLFW_WindowImp::~GLFW_WindowImp()
-	{
-	}
-
 	void GLFW_WindowImp::onUpdate(float deltaTime)
 	{
 		glfwPollEvents();
@@ -223,13 +237,13 @@ namespace Engine
 		}
 		else
 		{
-			glfwSetWindowMonitor(m_nativeWindow, nullptr, 10, 10, m_properties.m_width, m_properties.m_height, 0);
+			const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+
+			float x = (mode->width / 2) - (m_properties.m_width / 2);
+			float y = (mode->height / 2) - (m_properties.m_height / 2);
+
+			glfwSetWindowMonitor(m_nativeWindow, nullptr, x, y, m_properties.m_width, m_properties.m_height, 0);
 		}
 		m_properties.m_isFullScreen = _fullscreen;
-	}
-
-	Window* Window::create(const WindowProperties& properties)
-	{
-		return new GLFW_WindowImp(properties);
 	}
 }

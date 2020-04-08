@@ -119,6 +119,7 @@ namespace Engine {
 
 		dispatcher.dispatch<Events::WindowClose>(std::bind(&Application::onWindowClose, this, std::placeholders::_1));
 		dispatcher.dispatch<Events::KeyPressed>(std::bind(&Application::onKeyPressed, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowMoved>(std::bind(&Application::onWindowMove, this, std::placeholders::_1));
 
 		//Send Event to Layer Stack
 		for (auto it = m_layerStack->end(); it != m_layerStack->begin();)
@@ -166,6 +167,14 @@ namespace Engine {
 		}
 #endif // NG_DEBUG
 
+		return true;
+	}
+
+	bool Application::onWindowMove(Events::WindowMoved& e)
+	{
+#ifdef NG_DEBUG
+		LOG_CORE_INFO("[APPLICATION][EVENT][WINDOW MOVED: {0} x {1}]", e.getxPos(), e.getyPos());
+#endif // NG_DEBUG
 		return true;
 	}
 

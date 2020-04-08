@@ -35,6 +35,7 @@ namespace Engine {
 		static float s_deltaTime; ///< Time Since Last Frame
 		bool onWindowClose(Events::WindowClose& e);
 		bool onKeyPressed(Events::KeyPressed& e);
+		bool onWindowMove(Events::WindowMoved& e);
 	public:
 		virtual ~Application(); ///< Deconstructor
 		void run(); ///< Update Loop

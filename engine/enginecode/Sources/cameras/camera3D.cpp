@@ -34,7 +34,6 @@ namespace Engine
 
 	void Camera3D::resize(float a, float b)
 	{
-		LOG_CORE_CRITICAL("[CAMERA][RESIIZE][{0} x {1}]", a, b);
 		m_aspectRatio = a / b;
 		m_projection = glm::perspective(glm::radians(m_fov), m_aspectRatio, m_nearClip, m_farClip);
 	}

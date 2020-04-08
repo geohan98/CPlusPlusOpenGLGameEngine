@@ -31,7 +31,7 @@ namespace ParticleEditor
 	{
 		ImGui_ImplGlfwGL3_NewFrame();
 
-		//Stuff Here
+		//Main Menu Bar
 		ImGui::BeginMainMenuBar();
 		if (ImGui::BeginMenu("Particle Editor"))
 		{
@@ -48,6 +48,14 @@ namespace ParticleEditor
 			ImGui::EndMenu();
 		}
 		ImGui::EndMainMenuBar();
+
+		ImGui::Begin("Particle Properties");
+		if (ImGui::TreeNode("Spawn"))
+		{
+			ImGui::Text("Spawn Rate");
+			ImGui::TreePop();
+		}
+		ImGui::End();
 
 		ImGui::SetNextWindowBgAlpha(1.0f);
 		ImGui::Render();
