@@ -17,13 +17,12 @@ namespace Engine {
 		void onUpdate(float deltaTime); ///< Run every frame
 		void onEvent(Events::Event& e) {}; ///< Run on an Event
 
-		static void helloWorld();
+		void helloWorld();
 
-		void createButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, void(*func)());
+		void createButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, std::function<void()> func);
 		void createImageButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, int corner, const char* filepath);
-		void loadButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, void(*func)());
+		void loadButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, std::function<void()> func);
 		void loadImageButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, int corner, unsigned int textureID);
-		//void loadImage(const char* imageName, ...)
 
 		struct ImGuiImageButton {
 			ImGuiImageButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, int corner, unsigned int textureID)
@@ -41,7 +40,7 @@ namespace Engine {
 
 		struct ImGuiButton {
 
-			ImGuiButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, void(*func)())
+			ImGuiButton(const char* buttonName, std::pair<float, float> size, std::pair<float, float> position, const char* text, ImVec4 color, int corner, std::function<void()> func)
 				: buttonName(buttonName), size(size), position(position), text(text), color(color), corner(corner), functionHolder(func) {
 			};
 
@@ -51,7 +50,7 @@ namespace Engine {
 			const char* text;
 			ImVec4 color;
 			int corner;
-			void(*functionHolder)();
+			std::function<void()> functionHolder;
 		};
 
 		std::vector<ImGuiButton> buttonsToLoad;
