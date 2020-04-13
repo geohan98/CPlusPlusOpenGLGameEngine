@@ -9,6 +9,8 @@ namespace ParticleEditor
 		LOG_INFO("[{0}][START]", _name);
 		m_layerStack->push(std::shared_ptr<Engine::Layer>(new ParticleLayer()));
 		m_layerStack->push(std::shared_ptr<Engine::Layer>(new EditorImGuiLayer()));
+
+		(*(m_layerStack->begin() + 1))->addSubscriber(&(*(*m_layerStack->begin())));
 	}
 
 	ParticleEditor::~ParticleEditor()

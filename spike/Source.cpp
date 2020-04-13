@@ -1,11 +1,18 @@
-#include "iniParser.h"
+class ISubscriber
+{
+public:
+	virtual void notify() = 0;
+};
+
+class ISubject
+{
+public:
+	virtual void add(ISubscriber* _subscriber) = 0;
+	virtual void remove(ISubscriber* _subscriber) = 0;
+	virtual void notify() = 0;
+};
 
 int main()
 {
-	IniParser config = IniParser("config.ini");
-
-	std::cout << config.getDataInt("width") << std::endl;
-	std::cout << config.getDataFloat("mouseSensitivity") << std::endl;
-
 	return 0;
 }

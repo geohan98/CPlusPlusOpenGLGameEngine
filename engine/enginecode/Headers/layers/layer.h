@@ -1,10 +1,12 @@
 #pragma once
 #include <string>
 #include <memory>
-#include "../enginecode/Headers/systems/resourceManager.h"
-#include "../renderer/renderer.h"
-#include "../enginecode/Headers/cameras/cameraController.h"
-#include "../enginecode/Headers/events/event.h"
+#include "Headers/systems/resourceManager.h"
+#include "Headers/renderer/renderer.h"
+#include "Headers/cameras/cameraController.h"
+#include "Headers/events/event.h"
+#include "Headers/interfaces/iSubscriber.h"
+#include "Headers/interfaces/iSubject.h"
 
 
 namespace Engine
@@ -12,7 +14,7 @@ namespace Engine
 	/**
 	 *  Layer, Handles Resource Manager, Renderer, and Camera controller
 	 */
-	class Layer
+	class Layer : public ISubject, public ISubscriber
 	{
 	protected:
 		std::string m_name; ///< Layer Name
@@ -29,5 +31,23 @@ namespace Engine
 		inline std::shared_ptr<Systems::ResourceManager>& getResources() { return m_resourceManager; } ///< Return the resource manager
 		inline std::shared_ptr<Renderer::Renderer>& getRenderer() { return m_renderer; } ///< Return the renderer
 		inline std::shared_ptr<CameraController>& getCamera() { return m_camera; } ///< Return the Camera controller
+	public:
+		virtual void beNotified(MsgType _type, std::any _data) {};
+	public:
+		std::vector<ISubscriber*> m_subscribers;
+		void addSubscriber(ISubscriber* _subscriber) override
+		{
+			m_subscribers.push_back(_subscriber);
+		};
+		void removeSubscriber(ISubscriber* _subscriber) override
+		{
+		};
+		void notifySubscribers(MsgType _type, std::any _data) override
+		{
+			for each (ISubscriber * sub in m_subscribers)
+			{
+				sub->beNotified(_type, _data);
+			}
+		};
 	};
 };

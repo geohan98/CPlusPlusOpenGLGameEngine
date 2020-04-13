@@ -1,8 +1,8 @@
 #include "engine_pch.h"
-#include "../enginecode/Headers/systems/log.h"
+#include "Headers/systems/log.h"
 #include "layer2D.h"
-#include "../enginecode/Headers/cameras/cameraController2D.h"
-#include "../enginecode/Headers/fileLoaders/textLoader.h"
+#include "Headers/cameras/cameraController2D.h"
+#include "Headers/fileLoaders/textLoader.h"
 
 
 namespace Engine
@@ -36,7 +36,7 @@ namespace Engine
 		m_resourceManager->getVertexArray("TEXT")->setVertexBuffer(m_resourceManager->getVertexBuffer("TEXT"));
 		m_resourceManager->getVertexArray("TEXT")->setIndexBuffer(m_resourceManager->getIndexBuffer("TEXT"));
 		m_resourceManager->addMaterial("TEXT", m_resourceManager->getShader("assets/shaders/2DQuad.shader"), m_resourceManager->getVertexArray("TEXT"));
-		
+
 		m_resourceManager->addTexture("assets/textures/buttonTest.png");
 		m_materials.push_back(std::shared_ptr<MaterialComponent>(new MaterialComponent(m_resourceManager->getMaterial("TEXT"))));
 		m_positions.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(400.0f, 75.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(2.0f, 1.0f, 1.0f))));
@@ -63,16 +63,16 @@ namespace Engine
 		m_renderer->actionCommand(Renderer::RenderCommand::setDepthTestLessCommand(false));
 		m_renderer->actionCommand(Renderer::RenderCommand::setBackFaceCullingCommand(false));
 
-		std::pair<std::string, void*> data("u_vp", (void*)& m_camera->getCamera()->getViewProjection()[0][0]);
+		std::pair<std::string, void*> data("u_vp", (void*)&m_camera->getCamera()->getViewProjection()[0][0]);
 		ComponentMessage msg(ComponentMessageType::UniformSet, data);
 		m_materials.back()->receiveMessage(msg);
 
 		unsigned int texSlot = 1;
 		m_resourceManager->getTexture("assets/textures/buttonTest.png")->bind(texSlot);
-		m_materials.back()->getMaterial()->setDataElement("u_texData", (void*)& texSlot);
+		m_materials.back()->getMaterial()->setDataElement("u_texData", (void*)&texSlot);
 		glm::mat4 model = glm::mat4(1.0f);
 		m_resourceManager->getTexture("assets/textures/buttonTest.png")->bind();
-	
+
 		m_renderer->submit(m_materials.back()->getMaterial());
 	}
 

@@ -2,7 +2,6 @@
 #include "meshLayer.h"
 #include "Headers/ASSIMPLoaderLog.h"
 
-
 namespace Engine
 {
 #pragma region Attach & Detach
@@ -12,6 +11,7 @@ namespace Engine
 		m_renderer = std::shared_ptr<Renderer::Renderer>(Renderer::Renderer::createBasic3D());
 		m_camera = std::shared_ptr<CameraController3D>(new CameraController3D);
 		m_camera->init(80.0f, 1280.0f / 720.0f, 0.1, 100.0f);
+
 		lettercube = Model("assets/propane/Propane_LOD3.obj");
 
 		m_renderer->actionCommand(Renderer::RenderCommand::setDepthTestLessCommand(true));

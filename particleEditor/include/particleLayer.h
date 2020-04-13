@@ -5,6 +5,7 @@
 #include "Headers/components/PositionComponent.h"
 #include "Headers/components/particleComponent.h"
 #include <memory>
+#include "msgTypes.h"
 
 namespace ParticleEditor
 {
@@ -24,5 +25,14 @@ namespace ParticleEditor
 		virtual void onDetach();
 		virtual void onUpdate(float deltaTime);
 		virtual void onEvent(Engine::Events::Event& e);
+	public:
+		void beNotified(MsgType _type, std::any _data) override
+		{
+			if (_type == UPDATE_PARTICLE_SYSTEM)
+			{
+				Engine::SystemProperties* properties = std::any_cast<Engine::SystemProperties*>(_data);
+				m_particleComponent->reset(properties);
+			}
+		};
 	};
 }

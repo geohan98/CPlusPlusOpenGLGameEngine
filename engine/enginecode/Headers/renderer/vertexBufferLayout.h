@@ -2,8 +2,8 @@
 #include <vector>
 #include <initializer_list>
 #include <string>
-#include "../enginecode/Headers/renderer/shaderDataType.h"
-#include "../enginecode/Headers/systems/ButtonCodes.h"
+#include "Headers/renderer/shaderDataType.h"
+#include "Headers/systems/ButtonCodes.h"
 
 namespace Engine
 {
