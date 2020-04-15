@@ -36,6 +36,7 @@ namespace Engine {
 		bool onWindowClose(Events::WindowClose& e);
 		bool onKeyPressed(Events::KeyPressed& e);
 		bool onWindowMove(Events::WindowMoved& e);
+		bool onWindowResize(Events::WindowResize& e);
 	public:
 		virtual ~Application(); ///< Deconstructor
 		void run(); ///< Update Loop

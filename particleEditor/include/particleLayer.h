@@ -30,7 +30,7 @@ namespace ParticleEditor
 		{
 			if (_type == UPDATE_PARTICLE_SYSTEM)
 			{
-				Engine::SystemProperties* properties = std::any_cast<Engine::SystemProperties*>(_data);
+				Engine::ParticleSystemProperties* properties = std::any_cast<Engine::ParticleSystemProperties*>(_data);
 				m_particleComponent->reset(properties);
 			}
 		};

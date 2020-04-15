@@ -14,7 +14,7 @@ namespace ParticleEditor
 		//FOV, ASPECT RATIO, NEAR, FAR
 		m_camera->init(90.0f, 1280.0f / 720.0f, 0.1f, 100.0f);
 		//PredrawCommands
-		m_predrawCommands.push_back(std::shared_ptr <Engine::Renderer::RenderCommand>(Engine::Renderer::RenderCommand::setBlendMode(false, false)));
+		m_predrawCommands.push_back(std::shared_ptr <Engine::Renderer::RenderCommand>(Engine::Renderer::RenderCommand::setBlendMode(true, false)));
 		m_predrawCommands.push_back(std::shared_ptr <Engine::Renderer::RenderCommand>(Engine::Renderer::RenderCommand::setBackFaceCullingCommand(true, false)));
 		m_predrawCommands.push_back(std::shared_ptr <Engine::Renderer::RenderCommand>(Engine::Renderer::RenderCommand::setDepthTestLessCommand(true, false)));
 		m_predrawCommands.push_back(std::shared_ptr <Engine::Renderer::RenderCommand>(Engine::Renderer::RenderCommand::setClearColourCommand(0.1f, 0.1f, 0.1f, 1.0f, false)));

@@ -1,6 +1,10 @@
 #include "engine_pch.h"
-#include "../enginecode/Headers/systems/log.h"
-#include "../enginecode/Headers/systems/resourceManager.h"
+#include "Headers/systems/log.h"
+#include "Headers/systems/resourceManager.h"
+#include <math>
+
+#include <ft2build.h>
+#include FT_FREETYPE_H
 
 namespace Engine
 {
@@ -12,6 +16,11 @@ namespace Engine
 		AssetManager<Renderer::VertexBuffer> ResourceManager::m_vertexBufferObjects;
 		AssetManager<Renderer::Material> ResourceManager::m_materials;
 		AssetManager<Renderer::UniformBuffer> ResourceManager::m_uniformBuffers;
+
+		std::map<std::string, std::vector<Character>> ResourceManager::m_characters;
+		const int ResourceManager::m_ASCIIstart = 32;
+		const int ResourceManager::m_ASCIIend = 126;
+		std::shared_ptr<Renderer::Texture> ResourceManager::m_fontTexture;
 
 		std::string ResourceManager::parseFilePath(const std::string& str)
 		{
@@ -159,6 +168,70 @@ namespace Engine
 		bool ResourceManager::doesUniformBufferExist(const std::string& name)
 		{
 			return m_uniformBuffers.contains(name);
+		}
+
+		//FONTS
+
+		void ResourceManager::populateCharacters(std::unordered_map<std::string, unsigned int> _fontAndSizes)
+		{
+			//Mem Setup
+			unsigned char* texMemory;
+			int memH = 1024;
+			int memW = 1024;
+			texMemory = (unsigned char*)malloc(memW * memH);
+			memset(texMemory, 0, memW * memH);
+
+			FT_Library ft;
+			FT_Face face;
+
+			if (FT_Init_FreeType(&ft)) LOG_CORE_CRITICAL("[RESOURCE MANAGER][FONTS][COULD NOT START FREETYPE]");
+
+			for each (std::pair<std::string, unsigned int> font in _fontAndSizes)
+			{
+				glm::ivec2 maxSize = glm::ivec2(0);
+				std::pair<std::string, std::vector<Character>> fontChars;
+
+				if (FT_New_Face(ft, font.first.c_str(), 0, &face)) LOG_CORE_CRITICAL("[RESOURCE MANAGER][FONTS][FREETYPE COULD NOT LOAD FONT {0}]", font.first);
+				if (FT_Set_Pixel_Sizes(face, 0, font.second)) LOG_CORE_CRITICAL("[RESOURCE MANAGER][FONTS][FREETYPE COULD NOT SET FONT FACE SIZE OF {0}]", font.second);
+
+				fontChars.first = font.first;
+
+				for (int i = m_ASCIIstart; i < m_ASCIIend; i++)
+				{
+					if (FT_Load_Char(face, i, FT_LOAD_RENDER))LOG_CORE_CRITICAL("[RESOURCE MANAGER][FONTS][COULD NOT LOAD THE CHARACTER {0}]", (char)i);
+					if (face->glyph->bitmap.width > maxSize.x) maxSize.x = face->glyph->bitmap.width;
+					if (face->glyph->bitmap.rows > maxSize.y) maxSize.y = face->glyph->bitmap.rows;
+					fontChars.second.push_back(Character(glm::vec2(face->glyph->bitmap.width, face->glyph->bitmap.rows), glm::vec2(face->glyph->bitmap_left, face->glyph->bitmap_top), face->glyph->advance.x));
+				}
+				int start = 0;
+				for (int i = m_ASCIIstart; i < m_ASCIIend; i++)
+				{
+					if (FT_Load_Char(face, i, FT_LOAD_RENDER))LOG_CORE_CRITICAL("[RESOURCE MANAGER][FONTS][COULD NOT LOAD THE CHARACTER {0}]", (char)i);
+
+					int rows = face->glyph->bitmap.rows;
+					int columns = face->glyph->bitmap.width;
+
+					for (int j = 0; j < rows; j++)
+					{
+						for (size_t k = 0; k < columns; k++)
+						{
+							int offset = j * 1024 + k + start;
+
+							int glyphOffset = j * columns + k;
+
+							*(texMemory + offset) = *(face->glyph->bitmap.buffer + glyphOffset);
+						}
+
+					}
+				}
+
+				m_characters.emplace(fontChars);
+			}
+		}
+
+		std::shared_ptr<Character> ResourceManager::getCharacter(std::string _font, unsigned int _ASCIIcode)
+		{
+			return std::shared_ptr<Character>();
 		}
 
 	}

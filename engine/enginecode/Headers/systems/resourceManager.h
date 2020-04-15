@@ -1,15 +1,15 @@
 #pragma once
 #include "system.h"
-#include "../assetManager.h"
-
-#include "../enginecode/Headers/renderer/indexBuffer.h"
-#include "../enginecode/Headers/renderer/shader.h"
-#include "../enginecode/Headers/renderer/texture.h"
-#include "../enginecode/Headers/renderer/vertexBuffer.h"
-#include "../enginecode/Headers/renderer/vertexBufferLayout.h"
-#include "../enginecode/Headers/renderer/vertexArray.h"
-#include "../enginecode/Headers/renderer/material.h"
-#include "../enginecode/Headers/renderer/uniformBuffer.h"
+#include "Headers/assetManager.h"
+#include "Headers/renderer/indexBuffer.h"
+#include "Headers/renderer/shader.h"
+#include "Headers/renderer/texture.h"
+#include "Headers/renderer/vertexBuffer.h"
+#include "Headers/renderer/vertexBufferLayout.h"
+#include "Headers/renderer/vertexArray.h"
+#include "Headers/renderer/material.h"
+#include "Headers/renderer/uniformBuffer.h"
+#include "Headers/textRendering/character.h"
 
 namespace Engine
 {
@@ -27,8 +27,14 @@ namespace Engine
 			static AssetManager<Renderer::VertexBuffer> m_vertexBufferObjects;																														///< Vertex Buffer Asset Manager
 			static AssetManager<Renderer::Material> m_materials;																																		///< Material Asset Manager
 			static AssetManager<Renderer::UniformBuffer> m_uniformBuffers;
-		public:
+
+			static std::map<std::string, std::vector<Character>> m_characters; //Font Characters
+			static const int m_ASCIIstart = 32;
+			static const int m_ASCIIend = 126;
+			static std::shared_ptr<Renderer::Texture> m_fontTexture;
+
 			static std::string parseFilePath(const std::string& str);																														///< Remove all but the file name
+		public:
 			void start(SystemSignal init = SystemSignal::None, ...) override;																												///< Start the Resource Manager
 			void stop(SystemSignal close = SystemSignal::None, ...) override;																												///< Stop the Resource Manager
 
@@ -60,6 +66,10 @@ namespace Engine
 			static std::shared_ptr<Renderer::UniformBuffer> addUniformBuffer(const std::string& name, unsigned int size, Renderer::UniformBufferLayout& layout);
 			static std::shared_ptr<Renderer::UniformBuffer> getUniformBuffer(const std::string& name);
 			static bool doesUniformBufferExist(const std::string& name);
+
+			static void populateCharacters(std::unordered_map<std::string, unsigned int> _fontAndSizes);
+			static std::shared_ptr<Character> getCharacter(std::string _font, unsigned int _ASCIIcode);
+			inline static std::shared_ptr<Renderer::Texture> getFontTexture() { return m_fontTexture; };
 
 		};
 	}

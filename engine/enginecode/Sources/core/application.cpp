@@ -120,6 +120,7 @@ namespace Engine {
 		dispatcher.dispatch<Events::WindowClose>(std::bind(&Application::onWindowClose, this, std::placeholders::_1));
 		dispatcher.dispatch<Events::KeyPressed>(std::bind(&Application::onKeyPressed, this, std::placeholders::_1));
 		dispatcher.dispatch<Events::WindowMoved>(std::bind(&Application::onWindowMove, this, std::placeholders::_1));
+		dispatcher.dispatch<Events::WindowResize>(std::bind(&Application::onWindowResize, this, std::placeholders::_1));
 
 		//Send Event to Layer Stack
 		for (auto it = m_layerStack->end(); it != m_layerStack->begin();)
@@ -176,6 +177,13 @@ namespace Engine {
 		LOG_CORE_INFO("[APPLICATION][EVENT][WINDOW MOVED: {0} x {1}]", e.getxPos(), e.getyPos());
 #endif // NG_DEBUG
 		return true;
+	}
+
+	bool Application::onWindowResize(Events::WindowResize& e)
+	{
+		m_windowSize.x = e.getWidth();
+		m_windowSize.y = e.getHeight();
+		return false;
 	}
 
 #pragma endregion

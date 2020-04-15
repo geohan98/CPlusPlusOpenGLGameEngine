@@ -9,13 +9,15 @@ namespace ParticleEditor
 	class EditorImGuiLayer : public Engine::Layer
 	{
 	private:
-		Engine::SystemProperties* m_properties;
+		Engine::ParticleSystemProperties* m_properties;
+		ImVec2 m_windowSize;
 	public:
 		EditorImGuiLayer(const std::string& name = "EditorImGuiLayer") : Engine::Layer(name) {};
 		void onAttach() override;
 		void onDetach() override;
 		void onUpdate(float deltaTime);
 		void onEvent(Engine::Events::Event& e);
+		bool onWindowResize(Engine::Events::WindowResize& e);
 	public:
 		void beNotified(MsgType _type, std::any _data) override
 		{

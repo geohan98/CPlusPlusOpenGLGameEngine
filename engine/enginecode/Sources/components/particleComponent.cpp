@@ -48,7 +48,7 @@ namespace Engine
 			m_properties.m_minStartLifetime = _lifetime;
 			m_properties.m_maxStartLifetime = _lifetime;
 		}
-		ParticleComponent::ParticleComponent(SystemProperties _properties)
+		ParticleComponent::ParticleComponent(ParticleSystemProperties _properties)
 		{
 			m_shader = std::shared_ptr<Renderer::Shader>(Renderer::Shader::create("assets/shaders/particle.shader"));
 			Renderer::VertexBufferLayout layout = { Renderer::ShaderDataType::Float3,Engine::Renderer::ShaderDataType::Float,Renderer::ShaderDataType::Float,Renderer::ShaderDataType::Float4 };
@@ -129,7 +129,7 @@ namespace Engine
 			}
 
 		}
-		void ParticleComponent::reset(SystemProperties* _properties)
+		void ParticleComponent::reset(ParticleSystemProperties* _properties)
 		{
 			m_properties = *_properties;
 			m_particleData.clear();
