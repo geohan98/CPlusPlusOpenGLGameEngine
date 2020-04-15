@@ -34,17 +34,17 @@ namespace Engine
 	public:
 		virtual void beNotified(MsgType _type, std::any _data) {};
 	public:
-		std::vector<ISubscriber*> m_subscribers;
-		void addSubscriber(ISubscriber* _subscriber) override
+		std::vector<std::shared_ptr<ISubscriber>> m_subscribers;
+		void addSubscriber(std::shared_ptr<ISubscriber> _subscriber) override
 		{
 			m_subscribers.push_back(_subscriber);
 		};
-		void removeSubscriber(ISubscriber* _subscriber) override
+		void removeSubscriber(std::shared_ptr<ISubscriber> _subscriber) override
 		{
 		};
 		void notifySubscribers(MsgType _type, std::any _data) override
 		{
-			for each (ISubscriber * sub in m_subscribers)
+			for each (std::shared_ptr<ISubscriber> sub in m_subscribers)
 			{
 				sub->beNotified(_type, _data);
 			}
