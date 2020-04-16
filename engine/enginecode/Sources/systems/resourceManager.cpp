@@ -1,7 +1,7 @@
 #include "engine_pch.h"
 #include "Headers/systems/log.h"
 #include "Headers/systems/resourceManager.h"
-#include <math>
+#include <math.h>
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -18,8 +18,8 @@ namespace Engine
 		AssetManager<Renderer::UniformBuffer> ResourceManager::m_uniformBuffers;
 
 		std::map<std::string, std::vector<Character>> ResourceManager::m_characters;
-		const int ResourceManager::m_ASCIIstart = 32;
-		const int ResourceManager::m_ASCIIend = 126;
+		const int ResourceManager::m_ASCIIstart;
+		const int ResourceManager::m_ASCIIend;
 		std::shared_ptr<Renderer::Texture> ResourceManager::m_fontTexture;
 
 		std::string ResourceManager::parseFilePath(const std::string& str)
