@@ -3,6 +3,7 @@
 #include "layer2D.h"
 #include "Headers/cameras/cameraController2D.h"
 #include "Headers/fileLoaders/textLoader.h"
+#include "Headers/core/application.h"
 
 
 namespace Engine
@@ -10,21 +11,21 @@ namespace Engine
 
 	void Layer2D::onAttach()
 	{
-		m_resourceManager = std::shared_ptr<Systems::ResourceManager>(new Systems::ResourceManager());
-		m_resourceManager->start();
+		m_resourceManager = Engine::Application::getInstance().getRousrceManager();
+
 		m_renderer = std::shared_ptr<Renderer::Renderer>(Renderer::Renderer::createBasic2D());
-		m_renderer->actionCommand(Renderer::RenderCommand::setClearColourCommand(0.9, 0.9, 0.9, 1.0f));
+		m_renderer->actionCommand(Renderer::RenderCommand::setClearColourCommand(0.0, 0.0, 0.0, 1.0f));
 		m_renderer->actionCommand(Renderer::RenderCommand::setBlendMode(true));
 		m_camera = std::shared_ptr<CameraController2D>(new CameraController2D);
-		m_camera->init(0.0f, 800.0f, 600.0f, 0.0f);
+		m_camera->init(0.0f, 1280.0f, 720.0f, 0.0f);
 
 
-		float verts[4 * 4] =
+		float verts[4 * 5] =
 		{
-			-75.0f, -75.0f, 0.0f, 1.0f,
-			-75.0f, 75.0f, 0.0f, 0.0f,
-			75.0f, 75.0f, 1.0f, 0.0f,
-			75.0f, -75.0f, 1.0f, 1.0f
+			-0.5f, -0.5f,0.0, 0.0f, 1.0f,
+			-0.5f, 0.5f,0.0, 0.0f, 0.0f,
+			0.5f, 0.5f,0.0, 1.0f, 0.0f,
+			0.5f, -0.5f,0.0, 1.0f, 1.0f
 		};
 
 		unsigned int indices[4] = { 0,1,2,3 };
@@ -39,7 +40,7 @@ namespace Engine
 
 		m_resourceManager->addTexture("assets/textures/buttonTest.png");
 		m_materials.push_back(std::shared_ptr<MaterialComponent>(new MaterialComponent(m_resourceManager->getMaterial("TEXT"))));
-		m_positions.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(400.0f, 75.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(2.0f, 1.0f, 1.0f))));
+		m_positions.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(640.0f, 460.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(100.0f, 100.0f, 100.0f))));
 		m_velocities.push_back(std::shared_ptr<VelocityComponent>(new VelocityComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 90.0f))));
 		m_gameObjects.push_back(std::shared_ptr<GameObject>(new GameObject));
 		m_gameObjects.back()->addComponent(m_materials.back());
@@ -62,6 +63,7 @@ namespace Engine
 
 		m_renderer->actionCommand(Renderer::RenderCommand::setDepthTestLessCommand(false));
 		m_renderer->actionCommand(Renderer::RenderCommand::setBackFaceCullingCommand(false));
+		m_renderer->actionCommand(Renderer::RenderCommand::ClearDepthColourBufferCommand());
 
 		std::pair<std::string, void*> data("u_vp", (void*)&m_camera->getCamera()->getViewProjection()[0][0]);
 		ComponentMessage msg(ComponentMessageType::UniformSet, data);
@@ -72,7 +74,7 @@ namespace Engine
 		m_materials.back()->getMaterial()->setDataElement("u_texData", (void*)&texSlot);
 		glm::mat4 model = glm::mat4(1.0f);
 		m_resourceManager->getTexture("assets/textures/buttonTest.png")->bind();
-
+		m_resourceManager->bindFontTexture(texSlot);
 		m_renderer->submit(m_materials.back()->getMaterial());
 	}
 

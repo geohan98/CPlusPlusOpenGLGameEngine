@@ -41,6 +41,7 @@ namespace Engine
 		};
 		void removeSubscriber(std::shared_ptr<ISubscriber> _subscriber) override
 		{
+			LOG_CORE_INFO("NOT IMPLIMENTED");
 		};
 		void notifySubscribers(MsgType _type, std::any _data) override
 		{

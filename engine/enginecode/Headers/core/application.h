@@ -47,6 +47,7 @@ namespace Engine {
 		inline std::shared_ptr<Window> getWindow() { return m_window; } ///< Returns The Window
 		inline bool isFullscreen() { return fullscreen; }
 		inline glm::ivec2 getWindowSize() { return m_windowSize; }
+		inline std::shared_ptr<Systems::ResourceManager> getRousrceManager() { return m_resourceManager; }
 	};
 
 	Application* startApplication();

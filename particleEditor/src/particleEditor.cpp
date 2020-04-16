@@ -13,6 +13,11 @@ namespace ParticleEditor
 		m_layerStack->push(m_uiLayer);
 
 		m_uiLayer->addSubscriber(m_sceneLayer);
+
+		std::unordered_map < std::string, unsigned int> fonts;
+		fonts.emplace(std::pair<std::string, unsigned int>("assets/fonts/Roboto-Medium.ttf", 8));
+
+		m_resourceManager->populateCharacters(fonts);
 	}
 
 	ParticleEditor::~ParticleEditor()

@@ -176,8 +176,10 @@ namespace Engine
 		{
 			//Mem Setup
 			unsigned char* texMemory;
-			int memH = 1024;
-			int memW = 1024;
+			int memH = 512;
+			int memW = 512;
+			int usedX = 0;
+			int usedY = 0;
 			texMemory = (unsigned char*)malloc(memW * memH);
 			memset(texMemory, 0, memW * memH);
 
@@ -199,8 +201,8 @@ namespace Engine
 				for (int i = m_ASCIIstart; i < m_ASCIIend; i++)
 				{
 					if (FT_Load_Char(face, i, FT_LOAD_RENDER))LOG_CORE_CRITICAL("[RESOURCE MANAGER][FONTS][COULD NOT LOAD THE CHARACTER {0}]", (char)i);
-					if (face->glyph->bitmap.width > maxSize.x) maxSize.x = face->glyph->bitmap.width;
-					if (face->glyph->bitmap.rows > maxSize.y) maxSize.y = face->glyph->bitmap.rows;
+					if (face->glyph->bitmap.width > maxSize.x) maxSize.x = face->glyph->bitmap.width; //pixels
+					if (face->glyph->bitmap.rows > maxSize.y) maxSize.y = face->glyph->bitmap.rows; //pixels
 					fontChars.second.push_back(Character(glm::vec2(face->glyph->bitmap.width, face->glyph->bitmap.rows), glm::vec2(face->glyph->bitmap_left, face->glyph->bitmap_top), face->glyph->advance.x));
 				}
 				int start = 0;
@@ -211,22 +213,47 @@ namespace Engine
 					int rows = face->glyph->bitmap.rows;
 					int columns = face->glyph->bitmap.width;
 
+					if (usedX + maxSize.x > memW)
+					{
+						usedY += memW * maxSize.y;
+						usedX = 0;
+					}
+					start = usedX + usedY;
+
 					for (int j = 0; j < rows; j++)
 					{
 						for (size_t k = 0; k < columns; k++)
 						{
-							int offset = j * 1024 + k + start;
+							int offset = j * memW + k + start;
 
 							int glyphOffset = j * columns + k;
 
-							*(texMemory + offset) = *(face->glyph->bitmap.buffer + glyphOffset);
+							texMemory[offset] = face->glyph->bitmap.buffer[glyphOffset];
 						}
 
 					}
+					usedX += maxSize.x;
+
+					int x = (start - 1) % memW;
+					int y = (start - 1) / memH;
+
+					float a = x / memW;
+					float b = y / memH;
+
+					float c = maxSize.x / memW;
+					float d = maxSize.y / memW;
+
+					fontChars.second[i - m_ASCIIstart].setUVs(glm::vec2(a, b), glm::vec2(a + c, b + d));
+
+
 				}
 
 				m_characters.emplace(fontChars);
 			}
+
+
+			m_fontTexture = std::shared_ptr<Renderer::Texture>(Renderer::Texture::createFromRawData(memW, memH, 1, texMemory));
+
 		}
 
 		std::shared_ptr<Character> ResourceManager::getCharacter(std::string _font, unsigned int _ASCIIcode)

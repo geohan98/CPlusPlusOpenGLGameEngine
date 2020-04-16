@@ -1,6 +1,7 @@
 #include "engine_pch.h"
 #include "meshLayer.h"
 #include "Headers/ASSIMPLoaderLog.h"
+#include "Headers/core/application.h"
 
 namespace Engine
 {
@@ -17,6 +18,7 @@ namespace Engine
 		m_renderer->actionCommand(Renderer::RenderCommand::setDepthTestLessCommand(true));
 		m_renderer->actionCommand(Renderer::RenderCommand::setBlendMode(true));
 		m_renderer->actionCommand(Renderer::RenderCommand::setBackFaceCullingCommand(true));
+		m_renderer->actionCommand(Renderer::RenderCommand::setClearColourCommand(1.0f, 1.0f, 0.0f, 1.0f));
 		//m_renderer->actionCommand(Renderer::RenderCommand::setPolygonModeLine(true));
 
 		gam = std::shared_ptr<GameObject>(new GameObject);
@@ -55,6 +57,7 @@ namespace Engine
 			lettercube.getMaterials()[i]->setDataElement("u_vp", (void*)&m_camera->getCamera()->getViewProjection());
 			lettercube.getMaterials()[i]->setDataElement("u_model", &model[0][0]);
 			auto mat = lettercube.getMaterials()[i];
+			Engine::Systems::ResourceManager::bindFontTexture();
 			m_renderer->submit(lettercube.getMaterials()[i]);
 		}
 	}

@@ -1,12 +1,12 @@
 #pragma once
-#include "../enginecode/Headers/layers/layer.h"
-#include "../enginecode/Headers/core/gameObject.h"
-#include "../enginecode/Headers/components/materialComponent.h"
-#include "../enginecode/Headers/components/PositionComponent.h"
-#include "../enginecode/Headers/components/velocityComponent.h"
-#include "../enginecode/Headers/events/applicationEvents.h"
-#include "../enginecode/Headers/events/keyEvents.h"
-#include "../enginecode/Headers/events/mouseEvents.h"
+#include "Headers/layers/layer.h"
+#include "Headers/core/gameObject.h"
+#include "Headers/components/materialComponent.h"
+#include "Headers/components/PositionComponent.h"
+#include "Headers/components/velocityComponent.h"
+#include "Headers/events/applicationEvents.h"
+#include "Headers/events/keyEvents.h"
+#include "Headers/events/mouseEvents.h"
 
 namespace Engine
 {

@@ -70,6 +70,7 @@ namespace Engine
 			static void populateCharacters(std::unordered_map<std::string, unsigned int> _fontAndSizes);
 			static std::shared_ptr<Character> getCharacter(std::string _font, unsigned int _ASCIIcode);
 			inline static std::shared_ptr<Renderer::Texture> getFontTexture() { return m_fontTexture; };
+			inline static void bindFontTexture(int slot = 0) { m_fontTexture->bind(slot); }
 
 		};
 	}
