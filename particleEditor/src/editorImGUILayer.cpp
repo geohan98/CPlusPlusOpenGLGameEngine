@@ -243,6 +243,13 @@ namespace ParticleEditor
 			ParticleEditor::ParticleFileManager::save(m_properties, inputTextBuffer);
 		}
 
+		ImGui::SameLine();
+
+		if (ImGui::Button("Load")) {
+			m_properties = ParticleEditor::ParticleFileManager::load(inputTextBuffer);
+			notifySubscribers(UPDATE_PARTICLE_SYSTEM, m_properties);
+		}
+
 		ImGui::PopItemWidth();
 		ImGui::End();
 
