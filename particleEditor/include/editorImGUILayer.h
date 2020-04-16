@@ -11,6 +11,7 @@ namespace ParticleEditor
 	private:
 		Engine::ParticleSystemProperties* m_properties;
 		ImVec2 m_windowSize;
+		char inputTextBuffer[80] = {};
 	public:
 		EditorImGuiLayer(const std::string& name = "EditorImGuiLayer") : Engine::Layer(name) {};
 		void onAttach() override;

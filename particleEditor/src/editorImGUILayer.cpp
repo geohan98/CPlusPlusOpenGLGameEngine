@@ -3,6 +3,7 @@
 #include "Headers/renderer/renderAPI.h"
 #include "msgTypes.h"
 #include "Headers/core/application.h"
+#include "particleFileManager.h"
 
 namespace ParticleEditor
 {
@@ -232,6 +233,23 @@ namespace ParticleEditor
 		{
 			notifySubscribers(UPDATE_PARTICLE_SYSTEM, m_properties);
 		}
+
+		ImGui::NewLine();
+		ImGui::NewLine();
+
+		ImGui::InputText("Filepath", inputTextBuffer, sizeof(inputTextBuffer));
+
+		if (ImGui::Button("Save")) {
+			ParticleEditor::ParticleFileManager::save(m_properties, inputTextBuffer);
+		}
+
+		ImGui::SameLine();
+
+		if (ImGui::Button("Load")) {
+			m_properties = ParticleEditor::ParticleFileManager::load(inputTextBuffer);
+			notifySubscribers(UPDATE_PARTICLE_SYSTEM, m_properties);
+		}
+
 		ImGui::PopItemWidth();
 		ImGui::End();
 
