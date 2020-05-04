@@ -20,7 +20,7 @@ namespace Engine
 
 		for (unsigned int i = 0; i < m_meshes.size(); i++)
 		{
-			m_meshes[i].rebindTexture(); // makes sure we're using the correct texture before getting material
+			m_meshes[i].rebindTexture(); // makes sure we're using the correct texture before getting the material
 			materials.push_back(m_meshes[i].getMaterial());
 
 		}
