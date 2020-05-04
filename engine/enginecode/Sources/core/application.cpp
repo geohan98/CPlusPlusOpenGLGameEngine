@@ -138,6 +138,7 @@ namespace Engine {
 	{
 		fullscreen = !fullscreen;
 		m_window->setFullScreenMode(fullscreen);
+		
 	}
 
 #pragma endregion
@@ -184,6 +185,9 @@ namespace Engine {
 		m_windowSize.x = e.getWidth();
 		m_windowSize.y = e.getHeight();
 		return false;
+
+		
+
 	}
 
 #pragma endregion

@@ -38,5 +38,9 @@ namespace Engine
 		Mesh(std::vector<Vertex> _vertices, std::vector<unsigned int> _indices, std::string _texFileName);
 		~Mesh();
 		inline std::shared_ptr<Renderer::Material> getMaterial() { return m_MAT; }
+		inline void rebindTexture() {
+
+			m_Texture->bind(m_textureslot);
+		};
 	};
 }

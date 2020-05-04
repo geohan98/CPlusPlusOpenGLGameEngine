@@ -12,7 +12,6 @@ namespace Engine
 	void Layer2D::onAttach()
 	{
 		m_resourceManager = Engine::Application::getInstance().getRousrceManager();
-
 		m_renderer = std::shared_ptr<Renderer::Renderer>(Renderer::Renderer::createBasic2D());
 		m_renderer->actionCommand(Renderer::RenderCommand::setClearColourCommand(0.0, 0.0, 0.0, 1.0f));
 		m_renderer->actionCommand(Renderer::RenderCommand::setBlendMode(true));
@@ -69,6 +68,7 @@ namespace Engine
 		ComponentMessage msg(ComponentMessageType::UniformSet, data);
 		m_materials.back()->receiveMessage(msg);
 
+
 		unsigned int texSlot = 1;
 		m_resourceManager->getTexture("assets/textures/buttonTest.png")->bind(texSlot);
 		m_materials.back()->getMaterial()->setDataElement("u_texData", (void*)&texSlot);
@@ -112,6 +112,7 @@ namespace Engine
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("LAYER 2D: WINDOW RESIZE '{0} x {1}'", e.getWidth(), e.getHeight());
 #endif // NG_DEBUG
+	
 		return true;
 	}
 

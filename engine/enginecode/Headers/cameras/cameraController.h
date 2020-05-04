@@ -25,5 +25,6 @@ namespace Engine
 		virtual void onUpdate(float deltaTime) = 0; ///< Called Every Frame
 		virtual void onEvent(Events::Event& e) = 0; ///< Called On an Event
 		virtual bool resizeEvent(Events::WindowResize& e) = 0;
+		
 	};
 }
