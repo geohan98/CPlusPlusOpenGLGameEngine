@@ -9,10 +9,10 @@ namespace Engine
 {
 	Mesh::Mesh(std::vector<Vertex> _vertices, std::vector<unsigned int> _indices, std::string _texFileName)
 	{
-		m_vertices = _vertices;
-		m_indices = _indices;
-		m_Texture.reset(Renderer::Texture::createFromFile(_texFileName)); //Replace this with ResourceManager
-		m_textureslot = m_Texture ->getSlot();
+		m_vertices = _vertices; //Recieve the vertex values for object
+		m_indices = _indices; //Recieve the index values for object
+		m_Texture.reset(Renderer::Texture::createFromFile(_texFileName));  //Recieve the texture file location for object
+		m_textureslot = m_Texture ->getSlot(); //Inserting the slot feature for the texture to be implemented
 		setupMesh();
 	}
 	Mesh::~Mesh()
