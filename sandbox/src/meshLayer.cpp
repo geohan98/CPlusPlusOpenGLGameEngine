@@ -1,6 +1,5 @@
 #include "engine_pch.h"
 #include "meshLayer.h"
-#include "Headers/ASSIMPLoaderLog.h"
 #include "Headers/core/application.h"
 
 namespace Engine

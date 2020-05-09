@@ -1,6 +1,6 @@
 #pragma once
-#include "../enginecode/Headers/renderer/shader.h"
-#include "../enginecode/Headers/renderer/vertexBufferLayout.h"
+#include "Headers/renderer/shader.h"
+#include "Headers/renderer/vertexBufferLayout.h"
 #include <string>
 
 namespace Engine

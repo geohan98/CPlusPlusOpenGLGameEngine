@@ -4,7 +4,7 @@
 #include "engine_pch.h"
 #include "Headers/core/application.h"
 
-#include "Headers/iniParser.h"
+#include "Headers/fileLoaders/iniParser.h"
 #ifdef NG_PLATFORM_WINDOWS
 #include "Headers/windows/GLFW_windowSys.h"
 #include "Headers/windows/GLFW_inputPoller.h"
@@ -138,7 +138,7 @@ namespace Engine {
 	{
 		fullscreen = !fullscreen;
 		m_window->setFullScreenMode(fullscreen);
-		
+
 	}
 
 #pragma endregion
@@ -186,7 +186,7 @@ namespace Engine {
 		m_windowSize.y = e.getHeight();
 		return false;
 
-		
+
 
 	}
 

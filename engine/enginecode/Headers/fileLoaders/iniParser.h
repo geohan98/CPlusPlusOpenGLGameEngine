@@ -4,16 +4,16 @@
 #include <fstream>
 #include <algorithm>
 #include<iostream>
-#include "systems/log.h"
+#include "Headers/systems/log.h"
 
 namespace Engine {
 
 	class IniParser
 	{
 	private:
-		std::map<std::string, std::string> m_data;
+		std::map<std::string, std::string> m_data; ///< Collection of all the data
 	public:
-		IniParser(const char* _filepath)
+		IniParser(const char* _filepath) ///< Load the data from a file into the Map
 		{
 			std::fstream file(_filepath, std::ios::in);
 			if (!file.is_open())
@@ -34,7 +34,7 @@ namespace Engine {
 			}
 		}
 
-		int getDataInt(const char* _name)
+		int getDataInt(const char* _name) ///< Retreive a data of type Int
 		{
 			if (m_data[_name].empty())
 			{
@@ -59,7 +59,7 @@ namespace Engine {
 			return i;
 		}
 
-		float getDataFloat(const char* _name)
+		float getDataFloat(const char* _name) ///< Retreive a data of type Float
 		{
 			if (m_data[_name].empty())
 			{
@@ -83,7 +83,7 @@ namespace Engine {
 			return f;
 		}
 
-		bool getDataBool(const char* _name)
+		bool getDataBool(const char* _name) ///< Retreive a data of type Bool
 		{
 			if (m_data[_name].empty())
 			{

@@ -71,21 +71,21 @@ namespace Engine
 		class ParticleComponent : public Component
 		{
 		private:
-			ParticleSystemProperties m_properties;
-			float m_lastSpawn;
-			std::shared_ptr<Renderer::Material> m_material;
-			std::shared_ptr<Renderer::Shader> m_shader;
-			std::shared_ptr<Renderer::VertexBuffer> m_vertexBuffer;
-			std::shared_ptr<Renderer::VertexArray> m_vertexArray;
-			std::vector<ParticleData> m_particleData;
-			void addParticle(int count = 1);
+			ParticleSystemProperties m_properties; ///< The configuration of the particle sysetm
+			float m_lastSpawn;///< Last time one or more particles where spawned
+			std::shared_ptr<Renderer::Material> m_material; ///< The material for the particle system
+			std::shared_ptr<Renderer::Shader> m_shader; ///< The Shader for the particle system
+			std::shared_ptr<Renderer::VertexBuffer> m_vertexBuffer; ///< The VBO for the particle system
+			std::shared_ptr<Renderer::VertexArray> m_vertexArray; ///< The VAO for the particle system
+			std::vector<ParticleData> m_particleData; ///< List of all the currently active particles
+			void addParticle(int count = 1); ///< Add one or more particles to the system using the particle system properties
 		public:
-			ParticleComponent(float _spawnRate = 1.0f, float _size = 0.25f, float _rotation = 0.0f, glm::vec4 _colour = glm::vec4(1, 1, 1, 1), glm::vec3 _linarVelocity = glm::vec3(0, 1, 0), float _angularVelocity = 0.0f, float _lifetime = 1.0f);
-			ParticleComponent(ParticleSystemProperties _properties);
-			inline std::shared_ptr<Renderer::Material> getMaterial() { return m_material; }
-			void receiveMessage(const ComponentMessage& msg) override;
-			void onUpdate(float deltaTime) override;
-			void reset(ParticleSystemProperties* _properties);
+			ParticleComponent(float _spawnRate = 1.0f, float _size = 0.25f, float _rotation = 0.0f, glm::vec4 _colour = glm::vec4(1, 1, 1, 1), glm::vec3 _linarVelocity = glm::vec3(0, 1, 0), float _angularVelocity = 0.0f, float _lifetime = 1.0f); ///< Constructor with induvidual parameters
+			ParticleComponent(ParticleSystemProperties _properties); ///< Construcotr with particle system properties
+			inline std::shared_ptr<Renderer::Material> getMaterial() { return m_material; } ///< Return the material of the particle system
+			void receiveMessage(const ComponentMessage& msg) override;  ///< Component Recive Message
+			void onUpdate(float deltaTime) override; ///< Component on Update, upddate all particles and add new ones if needed
+			void reset(ParticleSystemProperties* _properties); ///< Remove all particle data and use the new system properties
 		};
 	}
 }

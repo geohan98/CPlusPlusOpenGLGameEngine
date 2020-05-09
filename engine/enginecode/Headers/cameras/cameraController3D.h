@@ -15,6 +15,6 @@ namespace Engine
 		void init(float a, float b, float c, float d) override; ///< Creates a 3D camera
 		void onUpdate(float deltaTime) override; ///< Called every Frame, checks for player input and moves camera.
 		void onEvent(Events::Event& _e) override; ///< Called on Event
-		bool resizeEvent(Events::WindowResize& e) override;
+		bool resizeEvent(Events::WindowResize& e) override; ///< Called when the window is resized, maxamised, or minamized 
 	};
 }

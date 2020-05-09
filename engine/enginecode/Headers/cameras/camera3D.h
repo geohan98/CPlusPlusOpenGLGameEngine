@@ -16,6 +16,6 @@ namespace Engine
 	public:
 		Camera3D(float fov, float aspectRatio, float nearClip, float farClip); ///< Constructor
 		void update() override; ///< Updates the View and Projection Matrix for a perspective View
-		void resize(float a, float b) override;
+		void resize(float a, float b) override; ///< Resize the window, and recalculate the projection matrix
 	};
 }
