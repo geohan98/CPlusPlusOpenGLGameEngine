@@ -1,5 +1,5 @@
 #include "engine_pch.h"
-#include "Headers/components/PhysicsComponent.h"
+#include "Headers/components/PhysicsBoxComponent.h"
 #include "Headers/systems/Physics.h"
 namespace Engine {
 
@@ -8,7 +8,7 @@ namespace Engine {
 
 
 
-	void PhysicsComponent::onUpdate(float deltaTime)
+	void PhysicsBoxComponent::onUpdate(float deltaTime)
 	{
 
 		glm::mat4 model(1.0);
@@ -20,15 +20,16 @@ namespace Engine {
 
 	}
 
-	void PhysicsComponent::onEvent(Events::Event& e)
+	void PhysicsBoxComponent::onEvent(Events::Event& e)
 	{
 	}
 
-	void PhysicsComponent::receiveMessage(const ComponentMessage& msg)
+	void PhysicsBoxComponent::receiveMessage(const ComponentMessage& msg)
 	{
 	}
 
-	void PhysicsComponent::setup(glm::vec3 Position, glm::vec4 Orientation, glm::vec3 boxSize, float density)
+
+	PhysicsBoxComponent::PhysicsBoxComponent(glm::vec3 Position, glm::vec4 Orientation, glm::vec3 boxSize, float density)
 	{
 		rp3d::Vector3 initialPosition(Position.x, Position.y, Position.z);
 		rp3d::Quaternion initialOrientation = rp3d::Quaternion::identity();
@@ -42,12 +43,7 @@ namespace Engine {
 		m_proxy = m_body->addCollisionShape(m_shape, rp3d::Transform::identity(), 1.0);
 	}
 
-	PhysicsComponent::PhysicsComponent()
-	{
-
-	}
-
-	void PhysicsComponent::onDetach()
+	void PhysicsBoxComponent::onDetach()
 	{
 		Systems::Physics::GetInstance()->getWorld()->destroyRigidBody(m_body);
 	}

@@ -24,8 +24,8 @@ namespace Engine
 		pos = std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(0.f, 0.f, -5.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.1f, 0.1f, 0.1f)));
 		//mat = std::shared_ptr<MaterialComponent>(new MaterialComponent(lettercube.getMaterials()[0]));
 		mod = std::shared_ptr<Components::ModelComponent>(new Components::ModelComponent("assets/propane/Propane_LOD3.obj"));
-		phy = std::shared_ptr<PhysicsComponent>(new PhysicsComponent);
-		phy->setup(glm::vec3(0.f, 0.f, -60.f), glm::vec4(0.f, 0.f, 0.f, 0.f), glm::vec3(0.5f, 0.5f, 0.5f), 2.5f);
+		phy = std::shared_ptr<PhysicsSphereComponent>(new PhysicsSphereComponent(glm::vec3(0.f, 0.f, -60.f), glm::vec4(0.f, 0.f, 0.f, 0.f), 2.0, 2.5f));
+
 
 		gam->addComponent(pos);
 		//gam->addComponent(mat);

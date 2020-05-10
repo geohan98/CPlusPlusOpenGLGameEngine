@@ -5,7 +5,7 @@
 #include "Headers/renderer/model.h"
 #include "Headers/renderer/texture.h"
 #include "Headers/cameras/cameraController3D.h"
-#include "Headers/components/PhysicsComponent.h"
+#include "Headers/components/PhysicsSphereComponent.h"
 #include "Headers/components/materialComponent.h"
 #include "Headers/components/PositionComponent.h"
 #include "Headers/core/gameObject.h"
@@ -21,7 +21,7 @@ namespace Engine
 		Model lettercube;
 		std::shared_ptr<Renderer::Texture> texPic;
 
-		std::shared_ptr<PhysicsComponent> phy;
+		std::shared_ptr<PhysicsSphereComponent> phy;
 		std::shared_ptr<MaterialComponent> mat;
 		std::shared_ptr<PositionComponent> pos;
 		std::shared_ptr<Components::ModelComponent> mod;
