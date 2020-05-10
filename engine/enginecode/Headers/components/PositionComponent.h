@@ -4,6 +4,7 @@
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/transform.hpp>
+#include <glm/gtx/matrix_decompose.hpp>
 
 namespace Engine
 {
@@ -44,6 +45,7 @@ namespace Engine
 
 		void onAttach(GameObject* parent) override ///< Called when Added to Parent
 		{
+
 			m_parent = parent;
 			std::pair<std::string, void*> data("u_model", (void*)& m_model[0][0]);
 			ComponentMessage msg(ComponentMessageType::UniformSet, data);
@@ -52,7 +54,7 @@ namespace Engine
 
 		void onUpdate(float deltaTime) override ///< Called Every Frame, Sends model matrix to other Components
 		{
-			//caclulateModel();
+			caclulateModel();
 			std::pair<std::string, void*> data("u_model", (void*)& m_model[0][0]);
 			ComponentMessage msg(ComponentMessageType::UniformSet, data);
 			sendMessage(msg);
@@ -65,7 +67,15 @@ namespace Engine
 			case ComponentMessageType::ModelMatrixSet:
 			{
 				glm::mat4 mod = std::any_cast<glm::mat4>(msg.m_msgData);
-				m_model = mod;
+
+				glm::vec3 scale;
+				glm::quat rotation;
+				glm::vec3 skew;
+				glm::vec4 perspective;
+				glm::decompose(mod, scale, rotation, m_transVec, skew, perspective);
+
+				m_rotVec = glm::eulerAngles(rotation);
+
 				return;
 			}
 			case ComponentMessageType::PositionSet:

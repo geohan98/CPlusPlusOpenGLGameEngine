@@ -9,6 +9,7 @@
 #include "Headers/components/materialComponent.h"
 #include "Headers/components/PositionComponent.h"
 #include "Headers/core/gameObject.h"
+#include "Headers/components/ModelComponent.h"
 
 namespace Engine
 {
@@ -23,6 +24,7 @@ namespace Engine
 		std::shared_ptr<PhysicsComponent> phy;
 		std::shared_ptr<MaterialComponent> mat;
 		std::shared_ptr<PositionComponent> pos;
+		std::shared_ptr<Components::ModelComponent> mod;
 		std::shared_ptr<GameObject> gam;
 
 	public:
