@@ -3,11 +3,6 @@
 #include "Headers/systems/Physics.h"
 namespace Engine {
 
-
-
-
-
-
 	void PhysicsBoxComponent::onUpdate(float deltaTime)
 	{
 
@@ -28,8 +23,39 @@ namespace Engine {
 	{
 	}
 
+	void PhysicsBoxComponent::enableGravity(bool isenabled)
+	{
+		m_body->enableGravity(isenabled);
+	}
 
-	PhysicsBoxComponent::PhysicsBoxComponent(glm::vec3 Position, glm::vec4 Orientation, glm::vec3 boxSize, float density)
+	void PhysicsBoxComponent::addForce(glm::vec3 force, glm::vec3 point)
+	{
+
+		rp3d::Vector3 Force = rp3d::Vector3(force.x, force.y, force.z);
+		rp3d::Vector3 Point = rp3d::Vector3(point.x, point.y, point.z);
+		m_body->applyForce(Force, Point);
+	}
+
+	void PhysicsBoxComponent::addTorque(glm::vec3 torque)
+	{
+		rp3d::Vector3 Torque = rp3d::Vector3(torque.x, torque.y, torque.z);
+		m_body->applyTorque(Torque);
+	}
+
+	void PhysicsBoxComponent::setAngularVelocity(glm::vec3 angularVelocity)
+	{
+		rp3d::Vector3 AngularVelocity = rp3d::Vector3(angularVelocity.x, angularVelocity.y, angularVelocity.z);
+		m_body->setAngularVelocity(AngularVelocity);
+	}
+
+	void PhysicsBoxComponent::setLinearVelocity(glm::vec3 linearVelocity)
+	{
+		rp3d::Vector3 LinearVelocity = rp3d::Vector3(linearVelocity.x, linearVelocity.y, linearVelocity.z);
+		m_body->setLinearVelocity(LinearVelocity);
+	}
+
+
+	PhysicsBoxComponent::PhysicsBoxComponent(glm::vec3 Position, glm::vec4 Orientation, glm::vec3 boxSize, float density, bool useGravity = true)
 	{
 		rp3d::Vector3 initialPosition(Position.x, Position.y, Position.z);
 		rp3d::Quaternion initialOrientation = rp3d::Quaternion::identity();
@@ -41,6 +67,7 @@ namespace Engine {
 		m_shape = new rp3d::BoxShape(halfExtents);
 		//Add Shape to Rigibody
 		m_proxy = m_body->addCollisionShape(m_shape, rp3d::Transform::identity(), 1.0);
+		m_body->enableGravity(useGravity);
 	}
 
 	void PhysicsBoxComponent::onDetach()
