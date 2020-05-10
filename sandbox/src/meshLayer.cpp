@@ -53,10 +53,10 @@ namespace Engine
 		{
 			//lettercube.getMaterials()[i]->getShader()->uploadData("u_vp", (void*)& m_camera->getCamera()->getViewProjection());
 			//lettercube.getMaterials()[i]->getShader()->uploadData("u_model", &model[0][0]);
-			lettercube.getMaterials()[i]->setDataElement("u_vp", (void*)&m_camera->getCamera()->getViewProjection());
+			lettercube.getMaterials()[i]->setDataElement("u_vp", (void*)& m_camera->getCamera()->getViewProjection());
 			lettercube.getMaterials()[i]->setDataElement("u_model", &model[0][0]);
 			auto mat = lettercube.getMaterials()[i];
-			Engine::Systems::ResourceManager::bindFontTexture();
+			//Engine::Systems::ResourceManager::bindFontTexture();
 			m_renderer->submit(lettercube.getMaterials()[i]);
 		}
 	}
