@@ -3,7 +3,9 @@
 namespace ParticleEditor {
 	bool ParticleFileManager::save(Engine::ParticleSystemProperties* particleProperties, const char* filepath)
 	{
-		std::ofstream file(filepath, std::ios::out);
+		std::string fp = "assets/particles/";
+		fp.append(filepath);
+		std::ofstream file(fp, std::ios::out);
 
 		if (file.is_open())
 		{
@@ -49,9 +51,11 @@ namespace ParticleEditor {
 	Engine::ParticleSystemProperties * ParticleFileManager::load(const char * filepath)
 	{
 		Engine::ParticleSystemProperties* properties = new Engine::ParticleSystemProperties;
-		std::ifstream file(filepath);
+		std::string fp = "assets/particles/";
+		fp.append(filepath);
+		std::ifstream file(fp);
 			
-		Engine::IniParser particleFile = Engine::IniParser(filepath);
+		Engine::IniParser particleFile = Engine::IniParser(fp.c_str());
 		properties->m_spawnRate = particleFile.getDataFloat("spawnRate");
 		properties->m_minStartScale = particleFile.getDataFloat("minStartScale");
 		properties->m_maxStartScale = particleFile.getDataFloat("maxStartScale");

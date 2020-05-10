@@ -12,5 +12,5 @@ namespace ParticleEditor
 	public:
 		ParticleEditor(char* _name); ///< Constructor
 		~ParticleEditor() override; ///< Destructor
-	}
+	};
 }
