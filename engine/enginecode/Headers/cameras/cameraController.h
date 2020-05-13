@@ -1,7 +1,5 @@
 #pragma once
 #include "camera.h"
-//#include "Headers/events/event.h"
-//#include "Headers/events/applicationEvents.h"
 #include <memory>
 
 namespace Engine
@@ -25,6 +23,7 @@ namespace Engine
 		virtual void onUpdate(float deltaTime) = 0; ///< Called Every Frame
 		virtual void onEvent(Events::Event& e) = 0; ///< Called On an Event
 		virtual bool resizeEvent(Events::WindowResize& e) = 0;
-		
+		virtual void setPosition(glm::vec3 _pos) { m_camera->setPosition(_pos); }
+		virtual void setRotation(glm::vec3 _rot) { m_camera->setRotation(_rot); }
 	};
 }

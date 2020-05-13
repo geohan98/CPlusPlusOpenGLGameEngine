@@ -13,7 +13,7 @@ namespace ParticleEditor
 	{
 	private:
 		std::vector<std::shared_ptr<Engine::Renderer::RenderCommand>> m_predrawCommands; ///< Commands to be execute before every draw
-		std::vector<std::shared_ptr<Engine::Renderer::RenderCommand>> m_postdrawCommands; ///< Commands to be executed adter every draw
+		std::vector<std::shared_ptr<Engine::Renderer::RenderCommand>> m_postdrawCommands; ///< Commands to be executed after every draw
 		Engine::Renderer::SceneData m_sceneData; ///< Data About Scene for UBO
 		std::shared_ptr<WorldGrid> m_worldGrid; ///< The world grid, used for mesaureing and a sense of scale
 		std::shared_ptr<Engine::GameObject> m_gameObject; ///< The gameobject for the particle system

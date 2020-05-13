@@ -112,11 +112,21 @@ namespace Engine
 		aiMaterial* material = _scene->mMaterials[_mesh->mMaterialIndex];
 		aiString filepath;
 		material->GetTexture(aiTextureType_DIFFUSE, 0, &filepath);
-		std::string filename = m_filepath;
-		int pos = filename.find_last_of("/");
-		filename = filename.substr(0, pos);
-		filename += "/" + std::string(filepath.C_Str());
-		return Mesh(vertices, indices, filename);
+		if (filepath.length > 0)
+		{
+			std::string filename = m_filepath;
+			int pos = filename.find_last_of("/");
+			filename = filename.substr(0, pos);
+			filename += "/" + std::string(filepath.C_Str());
+			return Mesh(vertices, indices, filename);
+		}
+		else
+		{
+			return Mesh(vertices, indices, "");
+		}
+
+
+
 
 	}
 }

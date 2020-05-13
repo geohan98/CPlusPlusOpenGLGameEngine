@@ -40,7 +40,7 @@ namespace Engine
 		inline std::shared_ptr<Renderer::Material> getMaterial() { return m_MAT; }
 		inline void rebindTexture() {
 
-			m_Texture->bind(m_textureslot);
+			if(m_Texture != nullptr) m_Texture->bind(m_textureslot);
 		};
 	};
 }

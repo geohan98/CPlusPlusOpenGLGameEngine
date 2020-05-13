@@ -26,7 +26,7 @@ void main()
 #region Fragment
 #version 440 core
 
-layout(location = 0) 
+layout(location = 0)
 out vec4 colour;
 
 in vec3 normal;
@@ -37,5 +37,5 @@ uniform sampler2D u_texData;
 
 void main()
 {
-       colour = texture(u_texData, texCoord);
+	colour = texture(u_texData, texCoord);
 }

@@ -11,8 +11,15 @@ namespace Engine
 	{
 		m_vertices = _vertices;
 		m_indices = _indices;
-		m_Texture.reset(Renderer::Texture::createFromFile(_texFileName)); //Replace this with ResourceManager
-		m_textureslot = m_Texture ->getSlot();
+		if (!_texFileName.empty())
+		{
+			m_Texture = std::shared_ptr<Renderer::Texture>(Renderer::Texture::createFromFile(_texFileName));
+			m_textureslot = m_Texture->getSlot();
+		}
+		else
+		{
+			m_Texture = std::shared_ptr<Renderer::Texture>(Renderer::Texture::createFromFile("assets/textures/GridWhite.png"));
+		}
 		setupMesh();
 	}
 	Mesh::~Mesh()
@@ -48,8 +55,8 @@ namespace Engine
 		m_IBO = std::shared_ptr<Renderer::IndexBuffer>(Renderer::IndexBuffer::create(&m_indices[0], m_indices.size()));
 		m_VAO->setVertexBuffer(m_VBO);
 		m_VAO->setIndexBuffer(m_IBO);
-		m_shader = std::shared_ptr<Renderer::Shader>(Renderer::Shader::create("assets/shaders/modelDebug.shader"));
+		m_shader = std::shared_ptr<Renderer::Shader>(Renderer::Shader::create("assets/shaders/defaultShader.shader"));
 		m_MAT = std::shared_ptr<Renderer::Material>(Renderer::Material::create(m_shader, m_VAO));
-		m_MAT->setDataElement("u_texData", (void *) &m_textureslot);
+		if (m_Texture != nullptr) m_MAT->setDataElement("u_texData", (void*)&m_textureslot);
 	}
 }

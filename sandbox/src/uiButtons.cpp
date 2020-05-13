@@ -4,12 +4,12 @@
 
 namespace Engine
 {
-	
+
 
 	void uiButtons::onAttach() {
-		
 
-		m_resourceManager = Engine::Application::getInstance().getRousrceManager();
+
+		m_resourceManager = Engine::Application::getInstance().getResourceManager();
 		m_renderer = std::shared_ptr<Renderer::Renderer>(Renderer::Renderer::createBasic2D());
 		m_renderer->actionCommand(Renderer::RenderCommand::setClearColourCommand(0.0, 0.0, 0.0, 1.0f));
 		m_renderer->actionCommand(Renderer::RenderCommand::setBlendMode(true));
@@ -17,7 +17,7 @@ namespace Engine
 		m_camera->init(0.0f, 1280.0f, 720.0f, 0.0f);
 	}
 
-	
+
 
 
 	void uiButtons::onDetach()
@@ -27,14 +27,14 @@ namespace Engine
 	void Engine::uiButtons::createButton(int anchor, std::pair<float, float> position, std::string filepath, std::pair<float, float> size) {
 
 
-		
+
 
 		std::shared_ptr<Window> m_window;
-		
-		
+
+
 		button tempbutton = {};
-		Engine::Application::getInstance().getRousrceManager()->addTexture(filepath);
-		Engine::Application::getInstance().getRousrceManager()->getMaterial;
+		Engine::Application::getInstance().getResourceManager()->addTexture(filepath);
+		Engine::Application::getInstance().getResourceManager()->getMaterial;
 		tempbutton.size = size;
 		tempbutton.position = position;
 
@@ -74,7 +74,7 @@ namespace Engine
 
 		}
 
-		Engine::uiButtons::m_materials.push_back(std::shared_ptr<MaterialComponent>(new MaterialComponent(Engine::Application::getInstance().getRousrceManager()->getMaterial("TEXT"))));
+		Engine::uiButtons::m_materials.push_back(std::shared_ptr<MaterialComponent>(new MaterialComponent(Engine::Application::getInstance().getResourceManager()->getMaterial("TEXT"))));
 		m_positions.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(640.0f, 460.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(100.0f, 100.0f, 100.0f))));
 		m_velocities.push_back(std::shared_ptr<VelocityComponent>(new VelocityComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 90.0f))));
 		m_gameObjects.push_back(std::shared_ptr<GameObject>(new GameObject));

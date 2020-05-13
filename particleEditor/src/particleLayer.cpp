@@ -7,7 +7,7 @@ namespace ParticleEditor
 {
 	void ParticleLayer::onAttach()
 	{
-		//Initalization
+		//Initalisation
 		m_resourceManager = std::shared_ptr<Engine::Systems::ResourceManager>(new Engine::Systems::ResourceManager());
 		m_renderer = std::shared_ptr<Engine::Renderer::Renderer>(Engine::Renderer::Renderer::createBasic3D());
 		m_camera = std::shared_ptr<Engine::CameraController>(new EditorCameraController());
