@@ -1,6 +1,7 @@
 #pragma once
 #include "cameraController.h"
 
+
 namespace Engine
 {
 	/**
@@ -14,7 +15,8 @@ namespace Engine
 	public:
 		void init(float a, float b, float c, float d) override; ///< Creates a 2D Camera
 		void onUpdate(float deltaTime) override; ///< Called Every Frame
-		void onEvent(Events::Event& e) override {}; ///< Called on Event
-		bool resizeEvent(Events::WindowResize& e) override { return false; }
+		void onEvent(Events::Event& e) override; ///< Called on Event
+		bool resizeEvent(Events::WindowResize& e) override;
+
 	};
 }
