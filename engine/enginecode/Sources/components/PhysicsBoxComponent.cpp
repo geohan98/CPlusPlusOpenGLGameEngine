@@ -55,7 +55,7 @@ namespace Engine {
 	}
 
 
-	PhysicsBoxComponent::PhysicsBoxComponent(glm::vec3 Position, glm::vec4 Orientation, glm::vec3 boxSize, float density, bool useGravity = true)
+	PhysicsBoxComponent::PhysicsBoxComponent(glm::vec3 Position, glm::vec4 Orientation, glm::vec3 boxSize, float density, bool useGravity)
 	{
 		rp3d::Vector3 initialPosition(Position.x, Position.y, Position.z);
 		rp3d::Quaternion initialOrientation = rp3d::Quaternion::identity();

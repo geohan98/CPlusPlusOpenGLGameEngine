@@ -58,7 +58,7 @@ namespace Engine {
 		m_body->setLinearVelocity(LinearVelocity);
 	}
 
-	PhysicsSphereComponent::PhysicsSphereComponent(glm::vec3 Position, glm::vec4 Orientation, float radius, float density, bool useGravity = true)
+	PhysicsSphereComponent::PhysicsSphereComponent(glm::vec3 Position, glm::vec4 Orientation, float radius, float density, bool useGravity)
 	{
 		rp3d::Vector3 initialPosition(Position.x, Position.y, Position.z);
 		rp3d::Quaternion initialOrientation = rp3d::Quaternion::identity();
