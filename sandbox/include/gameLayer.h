@@ -16,7 +16,7 @@ namespace Engine
 	{
 	private:
 		std::vector<std::shared_ptr<GameObject>> m_gameObjects;					///< All the GameObjects
-		std::vector<std::shared_ptr<PositionComponent>> m_positionComponents;
+		std::vector<std::shared_ptr<Components::PositionComponent>> m_positionComponents;
 		std::vector<std::shared_ptr<Components::ParticleComponent>> m_particleComponents;
 		Renderer::SceneData m_sceneData;
 

@@ -17,9 +17,9 @@ namespace Engine
 	{
 	private:
 		std::vector<std::shared_ptr<GameObject>> m_gameObjects;			///< All the GameObjects
-		std::vector<std::shared_ptr<MaterialComponent>> m_materials;	///< All the material Components
-		std::vector<std::shared_ptr<PositionComponent>> m_positions;	///< All the position Components
-		std::vector<std::shared_ptr<VelocityComponent>> m_velocities;	///< All the velocity Components
+		std::vector<std::shared_ptr<Components::MaterialComponent>> m_materials;	///< All the material Components
+		std::vector<std::shared_ptr<Components::PositionComponent>> m_positions;	///< All the position Components
+		std::vector<std::shared_ptr<Components::VelocityComponent>> m_velocities;	///< All the velocity Components
 		//Application Events
 		bool onWindowResize(Events::WindowResize& e);				///< Window Resize Event
 		bool onWindowClose(Events::WindowClose& e);					///< Window Close Event

@@ -20,9 +20,9 @@ namespace Engine {
 	public:
 		uiButtons(const std::string& name = "Ui Layer") : Layer(name) {};
 		std::vector<std::shared_ptr<GameObject>> m_gameObjects;			///< All the GameObjects
-		std::vector<std::shared_ptr<MaterialComponent>> m_materials;	///< All the material Components
-		std::vector<std::shared_ptr<PositionComponent>> m_positions;	///< All the position Components
-		std::vector<std::shared_ptr<VelocityComponent>> m_velocities;
+		std::vector<std::shared_ptr<Components::MaterialComponent>> m_materials;	///< All the material Components
+		std::vector<std::shared_ptr<Components::PositionComponent>> m_positions;	///< All the position Components
+		std::vector<std::shared_ptr<Components::VelocityComponent>> m_velocities;
 		std::shared_ptr<Systems::ResourceManager> m_resourceManager;
 
 		bool onWindowResize(Events::WindowResize& e);				///< Window Resize Event

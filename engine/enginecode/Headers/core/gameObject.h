@@ -12,15 +12,15 @@ namespace Engine
 	{
 	protected:
 		std::string m_name = "GameObject"; ///< Game object Name
-		std::vector<std::shared_ptr<Component>> m_components; ///< Vector of Components
+		std::vector<std::shared_ptr<Components::Component>> m_components; ///< Vector of Components
 	public:
 		GameObject() {}; ///< Default Constructor
 		GameObject(std::string& name) : m_name(name) {}; ///< Constructor
 		void onUpdate(float deltaTime); ///< Called Every Frame
 		void onEvent(Events::Event& e); ///< Called on an Event
-		void addComponent(const std::shared_ptr<Component>& comp); ///< Add a new Component To the Game object
-		void removeComponent(std::vector<std::shared_ptr<Component>>::iterator itt); ///< Removes a Component From the Game object
-		void sendMessage(const ComponentMessage& msg)
+		void addComponent(const std::shared_ptr<Components::Component>& comp); ///< Add a new Component To the Game object
+		void removeComponent(std::vector<std::shared_ptr<Components::Component>>::iterator itt); ///< Removes a Component From the Game object
+		void sendMessage(const Components::ComponentMessage& msg)
 		{
 			for (auto component : m_components)
 			{
@@ -29,7 +29,7 @@ namespace Engine
 		}
 
 		template<typename G>
-		std::vector<std::shared_ptr<Component>>::iterator getComponent() ///< Returns a Component
+		std::vector<std::shared_ptr<Components::Component>>::iterator getComponent() ///< Returns a Component
 		{
 			auto result = m_components.end();
 			for (auto it = m_components.begin(); it != m_components.end(); ++it)
@@ -40,7 +40,7 @@ namespace Engine
 			return result;
 		}
 
-		inline std::vector<std::shared_ptr<Component>>::iterator begin() { return m_components.begin(); } ///< Component Begin Iterator
-		inline std::vector<std::shared_ptr<Component>>::iterator end() { return m_components.end(); } ///< Component End Iterator
+		inline std::vector<std::shared_ptr<Components::Component>>::iterator begin() { return m_components.begin(); } ///< Component Begin Iterator
+		inline std::vector<std::shared_ptr<Components::Component>>::iterator end() { return m_components.end(); } ///< Component End Iterator
 	};
 }

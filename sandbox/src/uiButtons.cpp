@@ -22,10 +22,10 @@ namespace Engine
 		i_Width = 1280;
 		i_Height = 720;
 
-		createButton(0, { 250, 250}, "assets/textures/buttonShiny.png", { 80, 80 }, 1);
-		createButton(1, { 1130, 250}, "assets/textures/buttonShiny.png", { 80, 80 }, 1);
-		createButton(2, { 250, 470}, "assets/textures/buttonShiny.png", { 80, 80 }, 1);
-		createButton(3, { 1130, 470}, "assets/textures/buttonShiny.png", { 80, 80 }, 1);
+		createButton(0, { 250, 250 }, "assets/textures/buttonShiny.png", { 80, 80 }, 1);
+		createButton(1, { 1130, 250 }, "assets/textures/buttonShiny.png", { 80, 80 }, 1);
+		createButton(2, { 250, 470 }, "assets/textures/buttonShiny.png", { 80, 80 }, 1);
+		createButton(3, { 1130, 470 }, "assets/textures/buttonShiny.png", { 80, 80 }, 1);
 	}
 
 	void uiButtons::onDetach()
@@ -38,7 +38,7 @@ namespace Engine
 		std::shared_ptr<Window> m_window;
 
 		button tempbutton = {};
-		Engine::Application::getInstance().getRousrceManager()->addTexture(filepath);
+		Engine::Application::getInstance().getResourceManager()->addTexture(filepath);
 
 		tempbutton.position.first = position.first;
 		tempbutton.position.second = i_Height - position.second; // Need to fli pthe Y because for some reason by default (0,0) is the bottom left corner, we want it to be the top right
@@ -51,15 +51,18 @@ namespace Engine
 			tempbutton.anchorPoint = TOP_LEFT;
 			tempbutton.xOffset = tempbutton.position.first;
 			tempbutton.yOffset = i_Height - tempbutton.position.second;
-		} else if (anchor == 1) {
+		}
+		else if (anchor == 1) {
 			tempbutton.anchorPoint = Engine::uiButtons::anchorPoints::TOP_RIGHT;
 			tempbutton.xOffset = i_Width - tempbutton.position.first;
 			tempbutton.yOffset = i_Height - tempbutton.position.second;
-		} else if (anchor == 2) {
+		}
+		else if (anchor == 2) {
 			tempbutton.anchorPoint = Engine::uiButtons::anchorPoints::BOTTOM_LEFT;
 			tempbutton.xOffset = tempbutton.position.first;
 			tempbutton.yOffset = tempbutton.position.second;
-		} else if (anchor == 3)	{
+		}
+		else if (anchor == 3) {
 			tempbutton.anchorPoint = Engine::uiButtons::anchorPoints::BOTTOM_RIGHT;
 			tempbutton.xOffset = i_Width - tempbutton.position.first;
 			tempbutton.yOffset = tempbutton.position.second;
@@ -83,7 +86,7 @@ namespace Engine
 		//m_renderer->actionCommand(Renderer::RenderCommand::ClearDepthColourBufferCommand());
 
 		std::pair<std::string, void*> data("u_vp", (void*)&m_camera->getCamera()->getViewProjection()[0][0]);
-		ComponentMessage msg(ComponentMessageType::UniformSet, data);
+		Components::ComponentMessage msg(Components::ComponentMessageType::UniformSet, data);
 
 		//LOG_CORE_CRITICAL(i_Width);
 
@@ -108,11 +111,11 @@ namespace Engine
 			}
 			else if (buttonstoload.at(i).anchorPoint == BOTTOM_RIGHT) //if current button anchor is bottom right, then do ...
 			{
-				
+
 				buttonstoload.at(i).position.first = i_Width - buttonstoload.at(i).xOffset;
 				buttonstoload.at(i).position.second = buttonstoload.at(i).yOffset;
 			}
-			
+
 			float verts[4 * 5] =
 			{
 				-0.5f, -0.5f,0.0, 0.0f, 1.0f,							//first threee position second two are UV, XYZ u v.
@@ -133,9 +136,9 @@ namespace Engine
 
 			m_resourceManager->addTexture(buttonstoload.at(i).filepath);
 
-			Engine::uiButtons::m_materials.push_back(std::shared_ptr<MaterialComponent>(new MaterialComponent(Engine::Application::getInstance().getRousrceManager()->getMaterial("TEXT"))));
-			m_positions.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(buttonstoload.at(i).position.first, buttonstoload.at(i).position.second, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(buttonstoload.at(i).size.first, buttonstoload.at(i).size.second, 0.0f))));
-			m_velocities.push_back(std::shared_ptr<VelocityComponent>(new VelocityComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 90.0f))));
+			Engine::uiButtons::m_materials.push_back(std::shared_ptr<Components::MaterialComponent>(new Components::MaterialComponent(Engine::Application::getInstance().getResourceManager()->getMaterial("TEXT"))));
+			m_positions.push_back(std::shared_ptr<Components::PositionComponent>(new Components::PositionComponent(glm::vec3(buttonstoload.at(i).position.first, buttonstoload.at(i).position.second, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(buttonstoload.at(i).size.first, buttonstoload.at(i).size.second, 0.0f))));
+			m_velocities.push_back(std::shared_ptr<Components::VelocityComponent>(new Components::VelocityComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 90.0f))));
 			m_gameObjects.push_back(std::shared_ptr<GameObject>(new GameObject));
 			m_gameObjects.back()->addComponent(m_materials.back());
 			m_gameObjects.back()->addComponent(m_positions.back());

@@ -164,7 +164,7 @@ namespace Engine
 								layer.getData().push_back((void*)new int(model.texture->getSlot()));
 								mat->setDataElement("u_texData", (void*)layer.getData().back());
 							}
-							layer.getMaterials().at(materialsIndex) = std::make_shared<MaterialComponent>(MaterialComponent(mat));
+							layer.getMaterials().at(materialsIndex) = std::make_shared<Components::MaterialComponent>(Components::MaterialComponent(mat));
 							gameObject->addComponent(layer.getMaterials().at(materialsIndex));
 							materialsIndex++;
 						}
@@ -192,14 +192,14 @@ namespace Engine
 						glm::vec3 translation(object["position"]["trans"]["x"].get<float>(), object["position"]["trans"]["y"].get<float>(), object["position"]["trans"]["z"].get<float>());
 						glm::vec3 rotation(object["position"]["rot"]["x"].get<float>(), object["position"]["rot"]["y"].get<float>(), object["position"]["rot"]["z"].get<float>());
 						glm::vec3 scale(object["position"]["scale"]["x"].get<float>(), object["position"]["scale"]["y"].get<float>(), object["position"]["scale"]["z"].get<float>());
-						layer.getPositions().at(positionsIndex) = std::make_shared<PositionComponent>(PositionComponent(translation, rotation, scale));
+						layer.getPositions().at(positionsIndex) = std::make_shared<Components::PositionComponent>(Components::PositionComponent(translation, rotation, scale));
 						gameObject->addComponent(layer.getPositions().at(positionsIndex));
 						positionsIndex++;
 					}
 					if (object.count("velocity") > 0) {
 						glm::vec3 linear(object["velocity"]["linear"]["x"].get<float>(), object["velocity"]["linear"]["y"].get<float>(), object["velocity"]["linear"]["z"].get<float>());
 						glm::vec3 angular(object["velocity"]["angular"]["x"].get<float>(), object["velocity"]["angular"]["y"].get<float>(), object["velocity"]["angular"]["z"].get<float>());
-						layer.getVelocities().at(velocitiesIndex) = std::make_shared<VelocityComponent>(VelocityComponent(glm::vec3(0.f), glm::vec3(0.0, 20.0, 0.0)));
+						layer.getVelocities().at(velocitiesIndex) = std::make_shared<Components::VelocityComponent>(Components::VelocityComponent(glm::vec3(0.f), glm::vec3(0.0, 20.0, 0.0)));
 						gameObject->addComponent(layer.getVelocities().at(velocitiesIndex));
 						velocitiesIndex++;
 					}

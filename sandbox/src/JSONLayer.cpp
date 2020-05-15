@@ -39,8 +39,8 @@ namespace Engine
 
 		for (auto& mat : m_materials)
 		{
-			std::pair<std::string, void*> data("u_vp", (void*)& m_camera->getCamera()->getViewProjection()[0][0]);
-			ComponentMessage msg(ComponentMessageType::UniformSet, data);
+			std::pair<std::string, void*> data("u_vp", (void*)&m_camera->getCamera()->getViewProjection()[0][0]);
+			Components::ComponentMessage msg(Components::ComponentMessageType::UniformSet, data);
 			mat->receiveMessage(msg);
 			m_renderer->submit(mat->getMaterial());
 		}

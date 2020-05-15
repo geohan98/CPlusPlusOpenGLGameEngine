@@ -38,9 +38,9 @@ namespace Engine
 		m_resourceManager->addMaterial("TEXT", m_resourceManager->getShader("assets/shaders/2DQuad.shader"), m_resourceManager->getVertexArray("TEXT"));
 
 		m_resourceManager->addTexture("assets/textures/buttonTest.png");
-		m_materials.push_back(std::shared_ptr<MaterialComponent>(new MaterialComponent(m_resourceManager->getMaterial("TEXT"))));
-		m_positions.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(640.0f, 460.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(100.0f, 100.0f, 100.0f))));
-		m_velocities.push_back(std::shared_ptr<VelocityComponent>(new VelocityComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 90.0f))));
+		m_materials.push_back(std::shared_ptr<Components::MaterialComponent>(new Components::MaterialComponent(m_resourceManager->getMaterial("TEXT"))));
+		m_positions.push_back(std::shared_ptr<Components::PositionComponent>(new Components::PositionComponent(glm::vec3(640.0f, 460.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(100.0f, 100.0f, 100.0f))));
+		m_velocities.push_back(std::shared_ptr<Components::VelocityComponent>(new Components::VelocityComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 90.0f))));
 		m_gameObjects.push_back(std::shared_ptr<GameObject>(new GameObject));
 		m_gameObjects.back()->addComponent(m_materials.back());
 		m_gameObjects.back()->addComponent(m_positions.back());
@@ -65,7 +65,7 @@ namespace Engine
 		m_renderer->actionCommand(Renderer::RenderCommand::ClearDepthColourBufferCommand());
 
 		std::pair<std::string, void*> data("u_vp", (void*)&m_camera->getCamera()->getViewProjection()[0][0]);
-		ComponentMessage msg(ComponentMessageType::UniformSet, data);
+		Components::ComponentMessage msg(Components::ComponentMessageType::UniformSet, data);
 		m_materials.back()->receiveMessage(msg);
 
 

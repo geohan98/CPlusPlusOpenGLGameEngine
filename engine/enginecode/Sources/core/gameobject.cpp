@@ -21,13 +21,13 @@ namespace Engine
 		}
 	}
 
-	void GameObject::addComponent(const std::shared_ptr<Component>& comp)
+	void GameObject::addComponent(const std::shared_ptr<Components::Component>& comp)
 	{
 		m_components.push_back(comp);
 		m_components.back()->onAttach(this);
 	}
 
-	void GameObject::removeComponent(std::vector<std::shared_ptr<Component>>::iterator itt)
+	void GameObject::removeComponent(std::vector<std::shared_ptr<Components::Component>>::iterator itt)
 	{
 		auto it = m_components.begin();
 

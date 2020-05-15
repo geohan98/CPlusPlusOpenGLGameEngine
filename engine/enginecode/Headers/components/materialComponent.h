@@ -4,7 +4,7 @@
 
 namespace Engine
 {
-	
+	namespace Components {
 		/**
 		 *  Material Component, Holds Shader and Geometry Data
 		 */
@@ -28,3 +28,4 @@ namespace Engine
 
 		};
 	}
+}

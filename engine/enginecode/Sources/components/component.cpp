@@ -5,12 +5,13 @@
 
 namespace Engine
 {
-	void Component::sendMessage(const ComponentMessage& msg)
-	{
-		for (std::vector<std::shared_ptr<Component>>::iterator it = m_parent->begin(); it != m_parent->end(); ++it)
+	namespace Components {
+		void Component::sendMessage(const ComponentMessage& msg)
 		{
-			(*it)->receiveMessage(msg);
+			for (std::vector<std::shared_ptr<Component>>::iterator it = m_parent->begin(); it != m_parent->end(); ++it)
+			{
+				(*it)->receiveMessage(msg);
+			}
 		}
-
 	}
 }

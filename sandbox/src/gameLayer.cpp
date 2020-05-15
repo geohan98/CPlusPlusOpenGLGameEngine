@@ -31,7 +31,7 @@ namespace Engine
 		m_camera->init(80.0f, Engine::Application::getInstance().getWindow()->getWidth() / Engine::Application::getInstance().getWindow()->getHeight(), 0.1, 100.0f);
 
 		m_gameObjects.push_back(std::shared_ptr<GameObject>(new GameObject()));
-		m_positionComponents.push_back(std::shared_ptr<PositionComponent>(new PositionComponent(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f))));
+		m_positionComponents.push_back(std::shared_ptr<Components::PositionComponent>(new Components::PositionComponent(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f))));
 		m_particleComponents.push_back(std::shared_ptr<Components::ParticleComponent>(new Components::ParticleComponent()));
 		m_gameObjects.back()->addComponent(m_positionComponents.back());
 		if (!m_particleComponents.empty())

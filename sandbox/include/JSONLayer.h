@@ -1,15 +1,15 @@
 #pragma once
-#include "../enginecode/Headers/layers/layer.h"
+#include "Headers/layers/layer.h"
 #include <memory>
 #include <string>
 #include <vector>
-#include "../enginecode/Headers/core/gameObject.h"
-#include "../enginecode/Headers/components/materialComponent.h"
-#include "../enginecode/Headers/components/PositionComponent.h"
-#include "../enginecode/Headers/components/velocityComponent.h"
-#include "../enginecode/Headers/events/keyEvents.h"
-#include "../enginecode/Headers/events/applicationEvents.h"
-#include "../enginecode/Headers/events/mouseEvents.h"
+#include "Headers/core/gameObject.h"
+#include "Headers/components/materialComponent.h"
+#include "Headers/components/PositionComponent.h"
+#include "Headers/components/velocityComponent.h"
+#include "Headers/events/keyEvents.h"
+#include "Headers/events/applicationEvents.h"
+#include "Headers/events/mouseEvents.h"
 
 namespace Engine
 {
@@ -26,9 +26,10 @@ namespace Engine
 	{
 	protected:
 		std::vector<std::shared_ptr<GameObject>> m_gameObjects;			///< List Of All Game objects
-		std::vector<std::shared_ptr<MaterialComponent>> m_materials;	///< List of all Material Components
-		std::vector<std::shared_ptr<PositionComponent>> m_positions;	///< List of all Position Components
-		std::vector<std::shared_ptr<VelocityComponent>> m_velocities;	///< List of all Velocity Components
+		std::vector<std::shared_ptr<Components::MaterialComponent>> m_materials;	///< List of all Material Components
+		std::vector<std::shared_ptr<Components::PositionComponent>> m_positions;	///< List of all Position Components
+		std::vector<std::shared_ptr<Components::
+			VelocityComponent>> m_velocities;	///< List of all Velocity Components
 
 		std::vector<std::shared_ptr<Renderer::RenderCommand>> m_initCommands;		///< List of all Init Render Commands
 		std::vector<std::shared_ptr<Renderer::RenderCommand>> m_predrawCommands;	///< List of all PreDraw Render Commands
@@ -62,9 +63,9 @@ namespace Engine
 		virtual void onEvent(Events::Event& e) override; ///< Run on an Event
 
 		inline std::vector<std::shared_ptr<GameObject>>& getGameObjects() { return m_gameObjects; }					///< Return all the game objects
-		inline std::vector<std::shared_ptr<MaterialComponent>>& getMaterials() { return m_materials; }				///< Return all the material components
-		inline std::vector<std::shared_ptr<PositionComponent>>& getPositions() { return m_positions; }				///< Return all the position components
-		inline std::vector<std::shared_ptr<VelocityComponent>>& getVelocities() { return m_velocities; }			///< Return all the velocity components
+		inline std::vector<std::shared_ptr<Components::MaterialComponent>>& getMaterials() { return m_materials; }				///< Return all the material components
+		inline std::vector<std::shared_ptr<Components::PositionComponent>>& getPositions() { return m_positions; }				///< Return all the position components
+		inline std::vector<std::shared_ptr<Components::VelocityComponent>>& getVelocities() { return m_velocities; }			///< Return all the velocity components
 
 		inline std::vector<std::shared_ptr<Renderer::RenderCommand>>& getInitCommands() { return m_initCommands; }			///< Return all the Init Render Commands
 		inline std::vector<std::shared_ptr<Renderer::RenderCommand>>& getPredrawCommands() { return m_predrawCommands; }		///< Return all the	PreDraw Render Commands

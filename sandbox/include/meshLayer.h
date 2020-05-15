@@ -19,13 +19,13 @@ namespace Engine
 		//Cube
 		std::shared_ptr<GameObject> m_cube;
 		std::shared_ptr<Components::ModelComponent> m_cubeModelComponent;
-		std::shared_ptr<PositionComponent> m_cubePositionComponent;
-		std::shared_ptr<PhysicsBoxComponent> m_cubePhysicsBoxComponent;
+		std::shared_ptr<Components::PositionComponent> m_cubePositionComponent;
+		std::shared_ptr<Components::PhysicsBoxComponent> m_cubePhysicsBoxComponent;
 		//Plane
 		std::shared_ptr<GameObject> m_plane;
 		std::shared_ptr<Components::ModelComponent> m_planeModelComponent;
-		std::shared_ptr<PositionComponent> m_planePositionComponent;
-		std::shared_ptr<PhysicsBoxComponent> m_planePhysicsBoxComponent;
+		std::shared_ptr<Components::PositionComponent> m_planePositionComponent;
+		std::shared_ptr<Components::PhysicsBoxComponent> m_planePhysicsBoxComponent;
 	public:
 		MeshLayer(const std::string& name = "Game Layer") : Layer(name) {};
 		~MeshLayer() {};
