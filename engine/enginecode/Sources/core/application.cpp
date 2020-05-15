@@ -87,6 +87,7 @@ namespace Engine {
 
 	void Application::run()
 	{
+		m_time->tick();
 		while (m_running) //Run Loop
 		{
 			//Timer Tick

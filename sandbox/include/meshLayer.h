@@ -6,6 +6,7 @@
 #include "Headers/components/ModelComponent.h"
 #include "Headers/components/PositionComponent.h"
 #include "Headers/components/PhysicsBoxComponent.h"
+#include "Headers/components/PhysicsSphereComponent.h"
 
 namespace Engine
 {
@@ -26,6 +27,11 @@ namespace Engine
 		std::shared_ptr<Components::ModelComponent> m_planeModelComponent;
 		std::shared_ptr<Components::PositionComponent> m_planePositionComponent;
 		std::shared_ptr<Components::PhysicsBoxComponent> m_planePhysicsBoxComponent;
+		//Sphere
+		std::shared_ptr<GameObject> m_sphere;
+		std::shared_ptr<Components::ModelComponent> m_sphereModelComponent;
+		std::shared_ptr<Components::PositionComponent> m_spherePositionComponent;
+		std::shared_ptr<Components::PhysicsSphereComponent> m_spherePhysicsSphereComponent;
 	public:
 		MeshLayer(const std::string& name = "Game Layer") : Layer(name) {};
 		~MeshLayer() {};

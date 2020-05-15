@@ -29,21 +29,30 @@ namespace Engine
 		m_predrawCommands.push_back(std::shared_ptr <Engine::Renderer::RenderCommand>(Engine::Renderer::RenderCommand::setLineWidth(2.0f, false)));
 
 		m_cube = std::shared_ptr<GameObject>(new GameObject());
-		m_cubePositionComponent = std::shared_ptr<Components::PositionComponent>(new Components::PositionComponent(glm::vec3(0.0, 2.0, 0.0), glm::vec3(0.0, 0.0, 0.0), glm::vec3(1.0, 1.0, 1.0)));
+		m_cubePositionComponent = std::shared_ptr<Components::PositionComponent>(new Components::PositionComponent(glm::vec3(-2.0, 2.0, 0.0), glm::vec3(0.0, 0.0, 0.0), glm::vec3(1.0, 1.0, 1.0)));
 		m_cubeModelComponent = std::shared_ptr<Components::ModelComponent>(new Components::ModelComponent("assets/models/cube_1x1.obj"));
-		m_cubePhysicsBoxComponent = std::shared_ptr<Components::PhysicsBoxComponent>(new Components::PhysicsBoxComponent(glm::vec3(0.0, 2.0, 0.0), glm::vec4(0.0, 0.0, 0.0, 0.0), glm::vec3(0.5, 0.5, 0.5), 1.0f, true));
+		m_cubePhysicsBoxComponent = std::shared_ptr<Components::PhysicsBoxComponent>(new Components::PhysicsBoxComponent(glm::vec3(-2.0, 2.0, 0.0), glm::vec4(0.0, 0.0, 0.0, 0.0), glm::vec3(1.0, 1.0, 1.0), 1.0f, true));
 		m_cube->addComponent(m_cubePositionComponent);
 		m_cube->addComponent(m_cubeModelComponent);
 		m_cube->addComponent(m_cubePhysicsBoxComponent);
-		m_cubePhysicsBoxComponent->setLinearVelocity(glm::vec3(0, 2.0, 0));
+		m_cubePhysicsBoxComponent->setLinearVelocity(glm::vec3(0.0, 0.0, 0));
 
 		m_plane = std::shared_ptr<GameObject>(new GameObject());
 		m_planePositionComponent = std::shared_ptr<Components::PositionComponent>(new Components::PositionComponent(glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 0.0, 0.0), glm::vec3(5.0, 0.1, 5.0)));
 		m_planeModelComponent = std::shared_ptr<Components::ModelComponent>(new Components::ModelComponent("assets/models/cube_1x1.obj"));
-		m_planePhysicsBoxComponent = std::shared_ptr<Components::PhysicsBoxComponent>(new Components::PhysicsBoxComponent(glm::vec3(0.0, 0.0, 0.0), glm::vec4(0.0, 0.0, 0.0, 0.0), glm::vec3(5.0, 0.05, 5.0), 1.0f, false));
+		m_planePhysicsBoxComponent = std::shared_ptr<Components::PhysicsBoxComponent>(new Components::PhysicsBoxComponent(glm::vec3(0.0, 0.0, 0.0), glm::vec4(0.0, 0.0, 0.0, 0.0), glm::vec3(5.0, 0.1, 5.0), 1.0f, false, reactphysics3d::BodyType::STATIC));
 		m_plane->addComponent(m_planePositionComponent);
 		m_plane->addComponent(m_planeModelComponent);
 		m_plane->addComponent(m_planePhysicsBoxComponent);
+
+		m_sphere = std::shared_ptr<GameObject>(new GameObject());
+		m_spherePositionComponent = std::shared_ptr<Components::PositionComponent>(new Components::PositionComponent(glm::vec3(2.0, 2.0, 0.0), glm::vec3(0.0, 0.0, 0.0), glm::vec3(1.0, 1.0, 1.0)));
+		m_sphereModelComponent = std::shared_ptr<Components::ModelComponent>(new Components::ModelComponent("assets/models/sphere_0.5.obj"));
+		m_spherePhysicsSphereComponent = std::shared_ptr<Components::PhysicsSphereComponent>(new Components::PhysicsSphereComponent(glm::vec3(2.0, 2.0, 0.0), glm::vec4(0.0, 0.0, 0.0, 0.0), 0.5f, 1.0f, true, reactphysics3d::BodyType::DYNAMIC));
+		m_sphere->addComponent(m_spherePositionComponent);
+		m_sphere->addComponent(m_sphereModelComponent);
+		m_sphere->addComponent(m_spherePhysicsSphereComponent);
+		m_spherePhysicsSphereComponent->setLinearVelocity(glm::vec3(-2.5, 0.0, 0));
 	}
 	void MeshLayer::onDetach()
 	{
@@ -61,6 +70,7 @@ namespace Engine
 		//Update GameObjects
 		m_cube->onUpdate(deltaTime);
 		m_plane->onUpdate(deltaTime);
+		m_sphere->onUpdate(deltaTime);
 		//PreDraw Commands
 		for (auto& renderCommand : m_predrawCommands)
 		{
@@ -80,6 +90,12 @@ namespace Engine
 		//Plane
 		m_planeModelComponent->setDataElement("u_vp", (void*)&m_camera->getCamera()->getViewProjection());
 		for each (auto mat in m_planeModelComponent->getMaterials())
+		{
+			m_renderer->submit(mat);
+		}
+		//Sphere
+		m_sphereModelComponent->setDataElement("u_vp", (void*)&m_camera->getCamera()->getViewProjection());
+		for each (auto mat in m_sphereModelComponent->getMaterials())
 		{
 			m_renderer->submit(mat);
 		}

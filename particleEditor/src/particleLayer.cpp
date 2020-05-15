@@ -33,7 +33,7 @@ namespace ParticleEditor
 		m_worldGrid = std::shared_ptr<WorldGrid>(new WorldGrid());
 		//Particle Emiter
 		m_gameObject = std::shared_ptr<Engine::GameObject>(new Engine::GameObject());
-		m_positionComponent = std::shared_ptr<Engine::PositionComponent>(new Engine::PositionComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
+		m_positionComponent = std::shared_ptr<Engine::Components::PositionComponent>(new Engine::Components::PositionComponent(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
 		m_gameObject->addComponent(m_positionComponent);
 		m_particleComponent = std::shared_ptr<Engine::Components::ParticleComponent>(new Engine::Components::ParticleComponent(10.0f, 0.1f));
 		m_gameObject->addComponent(m_particleComponent);

@@ -18,7 +18,7 @@ namespace ParticleEditor
 		std::shared_ptr<WorldGrid> m_worldGrid; ///< The world grid, used for mesaureing and a sense of scale
 		std::shared_ptr<Engine::GameObject> m_gameObject; ///< The gameobject for the particle system
 		std::shared_ptr<Engine::Components::ParticleComponent> m_particleComponent; ///< The particle system
-		std::shared_ptr<Engine::PositionComponent> m_positionComponent; ///< The postion of the particle system
+		std::shared_ptr<Engine::Components::PositionComponent> m_positionComponent; ///< The postion of the particle system
 	public:
 		ParticleLayer(const std::string& name = "ParticleLayer") : Layer(name) {}; ///< Constructior
 		virtual void onAttach(); ///< Runs on layer attach to layer stack
