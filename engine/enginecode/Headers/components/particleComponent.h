@@ -23,8 +23,8 @@ namespace Engine
 		float m_minStartRotation = 0.0f;
 		float m_maxStartRotation = 0.0f;
 		//Scale - Start
-		float m_minStartScale = 1.0f;
-		float m_maxStartScale = 1.0f;
+		float m_minStartScale = 0.1f;
+		float m_maxStartScale = 0.1f;
 		//Scale - End
 		float m_minEndScale = 0.1f;
 		float m_maxEndScale = 0.1f;
@@ -44,7 +44,8 @@ namespace Engine
 		float m_minStartLifetime = 1.0f;
 		float m_maxStartLifetime = 1.0f;
 		//Gravity
-		bool m_gravity;
+		bool m_gravity = false;
+		float m_drag = 0.0;
 	};
 
 	struct ParticleData

@@ -5,56 +5,60 @@ namespace ParticleEditor {
 	{
 		std::string fp = "assets/particles/";
 		fp.append(filepath);
+		fp.append(".particle");
 		std::ofstream file(fp, std::ios::out);
 
 		if (file.is_open())
 		{
 			file << "spawnRate=" << particleProperties->m_spawnRate << std::endl <<
-			"minStartScale=" << particleProperties->m_minStartScale << std::endl <<
-			"maxStartScale=" << particleProperties->m_maxStartScale << std::endl <<
-			"minStartRotation=" << particleProperties->m_minStartRotation << std::endl <<
-			"maxStartRotation=" << particleProperties->m_maxStartRotation << std::endl <<
-			"minStartLinearVelocityX=" << particleProperties->m_minStartLinearVelocity.x << std::endl <<
-			"minStartLinearVelocityY=" << particleProperties->m_minStartLinearVelocity.y << std::endl << 
-			"minStartLinearVelocityZ=" << particleProperties->m_minStartLinearVelocity.z << std::endl <<
-			"maxStartLinearVelocityX=" << particleProperties->m_maxStartLinearVelocity.x << std::endl <<
-			"maxStartLinearVelocityY=" << particleProperties->m_maxStartLinearVelocity.y << std::endl <<
-			"maxStartLinearVelocityZ=" << particleProperties->m_maxStartLinearVelocity.z << std::endl <<
-			"minStartLifetime=" << particleProperties->m_minStartLifetime << std::endl <<
-			"maxStartLifetime=" << particleProperties->m_maxStartLifetime << std::endl <<
-			"minStartColourX=" << particleProperties->m_minStartColour.x << std::endl <<
-			"minStartColourY=" << particleProperties->m_minStartColour.y << std::endl <<
-			"minStartColourZ=" << particleProperties->m_minStartColour.z << std::endl <<
-			"minStartColourW=" << particleProperties->m_minStartColour.w << std::endl <<
-			"maxStartColourX=" << particleProperties->m_maxStartColour.x << std::endl <<
-			"maxStartColourY=" << particleProperties->m_maxStartColour.y << std::endl <<
-			"maxStartColourZ=" << particleProperties->m_maxStartColour.z << std::endl <<
-			"maxStartColourW=" << particleProperties->m_maxStartColour.w << std::endl <<
-			"minStartAngularVelocity=" << particleProperties->m_minStartAngularVelocity << std::endl <<
-			"maxStartAngularVelocity=" << particleProperties->m_maxStartAngularVelocity << std::endl <<
-			"minEndScale=" << particleProperties->m_minEndScale << std::endl <<
-			"maxEndScale=" << particleProperties->m_maxEndScale << std::endl <<
-			"minEndColourX=" << particleProperties->m_minEndColour.x << std::endl <<
-			"minEndColourY=" << particleProperties->m_minEndColour.y << std::endl <<
-			"minEndColourZ=" << particleProperties->m_minEndColour.z << std::endl <<
-			"minEndColourW=" << particleProperties->m_minEndColour.w << std::endl <<
-			"maxEndColourX=" << particleProperties->m_maxEndColour.x << std::endl <<
-			"maxEndColourY=" << particleProperties->m_maxEndColour.y << std::endl <<
-			"maxEndColourZ=" << particleProperties->m_maxEndColour.z << std::endl <<
-			"maxEndColourW=" << particleProperties->m_maxEndColour.w << std::endl;
+				"minStartScale=" << particleProperties->m_minStartScale << std::endl <<
+				"maxStartScale=" << particleProperties->m_maxStartScale << std::endl <<
+				"minStartRotation=" << particleProperties->m_minStartRotation << std::endl <<
+				"maxStartRotation=" << particleProperties->m_maxStartRotation << std::endl <<
+				"minStartLinearVelocityX=" << particleProperties->m_minStartLinearVelocity.x << std::endl <<
+				"minStartLinearVelocityY=" << particleProperties->m_minStartLinearVelocity.y << std::endl <<
+				"minStartLinearVelocityZ=" << particleProperties->m_minStartLinearVelocity.z << std::endl <<
+				"maxStartLinearVelocityX=" << particleProperties->m_maxStartLinearVelocity.x << std::endl <<
+				"maxStartLinearVelocityY=" << particleProperties->m_maxStartLinearVelocity.y << std::endl <<
+				"maxStartLinearVelocityZ=" << particleProperties->m_maxStartLinearVelocity.z << std::endl <<
+				"minStartLifetime=" << particleProperties->m_minStartLifetime << std::endl <<
+				"maxStartLifetime=" << particleProperties->m_maxStartLifetime << std::endl <<
+				"minStartColourX=" << particleProperties->m_minStartColour.x << std::endl <<
+				"minStartColourY=" << particleProperties->m_minStartColour.y << std::endl <<
+				"minStartColourZ=" << particleProperties->m_minStartColour.z << std::endl <<
+				"minStartColourW=" << particleProperties->m_minStartColour.w << std::endl <<
+				"maxStartColourX=" << particleProperties->m_maxStartColour.x << std::endl <<
+				"maxStartColourY=" << particleProperties->m_maxStartColour.y << std::endl <<
+				"maxStartColourZ=" << particleProperties->m_maxStartColour.z << std::endl <<
+				"maxStartColourW=" << particleProperties->m_maxStartColour.w << std::endl <<
+				"minStartAngularVelocity=" << particleProperties->m_minStartAngularVelocity << std::endl <<
+				"maxStartAngularVelocity=" << particleProperties->m_maxStartAngularVelocity << std::endl <<
+				"minEndScale=" << particleProperties->m_minEndScale << std::endl <<
+				"maxEndScale=" << particleProperties->m_maxEndScale << std::endl <<
+				"minEndColourX=" << particleProperties->m_minEndColour.x << std::endl <<
+				"minEndColourY=" << particleProperties->m_minEndColour.y << std::endl <<
+				"minEndColourZ=" << particleProperties->m_minEndColour.z << std::endl <<
+				"minEndColourW=" << particleProperties->m_minEndColour.w << std::endl <<
+				"maxEndColourX=" << particleProperties->m_maxEndColour.x << std::endl <<
+				"maxEndColourY=" << particleProperties->m_maxEndColour.y << std::endl <<
+				"maxEndColourZ=" << particleProperties->m_maxEndColour.z << std::endl <<
+				"maxEndColourW=" << particleProperties->m_maxEndColour.w << std::endl <<
+				"gravity=" << particleProperties->m_gravity << std::endl <<
+				"drag=" << particleProperties->m_drag << std::endl;
 
 			file.close();
 			return true;
 		}
 		else return false;
 	}
-	Engine::ParticleSystemProperties * ParticleFileManager::load(const char * filepath)
+	Engine::ParticleSystemProperties* ParticleFileManager::load(const char* filepath)
 	{
 		Engine::ParticleSystemProperties* properties = new Engine::ParticleSystemProperties;
 		std::string fp = "assets/particles/";
 		fp.append(filepath);
+		fp.append(".particle");
 		std::ifstream file(fp);
-			
+
 		Engine::IniParser particleFile = Engine::IniParser(fp.c_str());
 		properties->m_spawnRate = particleFile.getDataFloat("spawnRate");
 		properties->m_minStartScale = particleFile.getDataFloat("minStartScale");
@@ -89,7 +93,9 @@ namespace ParticleEditor {
 		properties->m_maxEndColour.y = particleFile.getDataFloat("maxEndColourY");
 		properties->m_maxEndColour.z = particleFile.getDataFloat("maxEndColourZ");
 		properties->m_maxEndColour.w = particleFile.getDataFloat("maxEndColourW");
-		
+		properties->m_gravity = particleFile.getDataBool("gravity");
+		properties->m_drag = particleFile.getDataFloat("drag");
+
 		return properties;
 	}
 }

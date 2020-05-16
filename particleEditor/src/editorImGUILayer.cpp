@@ -208,13 +208,13 @@ namespace ParticleEditor
 		else
 		{
 			ImGui::InputFloat3("Linear", &m_properties->m_minStartLinearVelocity.x, 0.1);
-			m_properties->m_minStartLinearVelocity = m_properties->m_minStartLinearVelocity;
+			m_properties->m_maxStartLinearVelocity = m_properties->m_minStartLinearVelocity;
 		}
 		ImGui::Checkbox("Random Linear Velocity", &randomLinearVelocity);
 		ImGui::NewLine();
 
 		//Angular Velocity
-		ImGui::Text("Linear Velocity");
+		ImGui::Text("Angular Velocity");
 		static bool randomAngularVelocity;
 		if (randomAngularVelocity)
 		{
@@ -228,6 +228,11 @@ namespace ParticleEditor
 		}
 		ImGui::Checkbox("Random Angular Velocity", &randomAngularVelocity);
 		ImGui::NewLine();
+
+		//Gravity
+		ImGui::Checkbox("Gravity", &m_properties->m_gravity);
+		//Drag
+		ImGui::InputFloat("Drag", &m_properties->m_drag, 0.01, 0.1, 2);
 
 		if (ImGui::Button("Apply"))
 		{

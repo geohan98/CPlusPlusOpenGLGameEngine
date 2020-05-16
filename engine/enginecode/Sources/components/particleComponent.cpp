@@ -84,6 +84,8 @@ namespace Engine
 
 				while (it != m_particleData.end())
 				{
+					if (m_properties.m_gravity) it->linearVelocity.y += -9.81f * deltaTime;
+					it->linearVelocity -= it->linearVelocity * m_properties.m_drag * deltaTime;
 					it->position += it->linearVelocity * deltaTime;
 					it->rotation += it->angularVelocity * deltaTime;
 					it->scale = glm::mix(it->endScale, it->startScale, it->timeleft / it->lifetime);
