@@ -178,6 +178,7 @@ namespace Engine {
 #ifdef NG_DEBUG
 		LOG_CORE_INFO("[APPLICATION][EVENT][WINDOW MOVED: {0} x {1}]", e.getxPos(), e.getyPos());
 #endif // NG_DEBUG
+		m_time->tick();
 		return true;
 	}
 
