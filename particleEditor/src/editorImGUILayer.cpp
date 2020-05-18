@@ -44,10 +44,7 @@ namespace ParticleEditor
 		ImGui::BeginMainMenuBar();
 		if (ImGui::BeginMenu("Particle Editor"))
 		{
-			if (ImGui::MenuItem("New")) {}
-			if (ImGui::MenuItem("Save")) {}
-			if (ImGui::MenuItem("Save As")) {}
-			ImGui::Separator();
+
 			if (ImGui::MenuItem("Close")) { Engine::Application::getInstance().close(); }
 			ImGui::EndMenu();
 		}

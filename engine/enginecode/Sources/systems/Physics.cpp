@@ -35,6 +35,8 @@ namespace Engine
 
 		void Physics::stop(SystemSignal close, ...)
 		{
+
+			m_world = nullptr;
 		}
 
 	}
