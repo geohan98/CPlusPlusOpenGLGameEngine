@@ -28,6 +28,7 @@ namespace Engine {
 		std::shared_ptr<Systems::Physics> m_physics; ///< Physics System
 
 		glm::ivec2 m_windowSize;
+		bool physicsRunning = false;
 		bool fullscreen;
 	private:
 		static Application* s_instance; ///< Pointer to this application

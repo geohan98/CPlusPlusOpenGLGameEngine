@@ -44,7 +44,7 @@ namespace Engine {
 		m_windowSystem->start();
 
 		IniParser config = IniParser("config.ini");
-
+		physicsRunning = config.getDataBool("physics");
 		Engine::WindowProperties win = Engine::WindowProperties();
 		win.m_title = _name;
 
@@ -61,9 +61,11 @@ namespace Engine {
 		m_layerStack = std::shared_ptr<Systems::LayerStack>(new Systems::LayerStack());
 		m_layerStack->start();
 
-		m_physics = Systems::Physics::GetInstance();
-		m_physics->start();
-
+		if (physicsRunning)
+		{
+			m_physics = Systems::Physics::GetInstance();
+			m_physics->start();
+		}
 		m_audioSystem->start();
 		m_audioSystem->loadSound("assets/audio/woo.mp3", false);
 		// alternatively
@@ -73,7 +75,10 @@ namespace Engine {
 
 	Application::~Application()
 	{
-		m_physics->stop();
+		if (physicsRunning)
+		{
+			m_physics->stop();
+		}
 		m_layerStack->stop();
 		m_window->close();
 		m_windowSystem->stop();
@@ -97,8 +102,9 @@ namespace Engine {
 			s_deltaTime = m_time->getDeltaTime();
 
 			//Update Physics
-			m_physics->getWorld()->update(s_deltaTime);
-
+			if (physicsRunning) {
+				m_physics->getWorld()->update(s_deltaTime);
+			}
 			//Update Audio 
 			m_audioSystem->update();
 
