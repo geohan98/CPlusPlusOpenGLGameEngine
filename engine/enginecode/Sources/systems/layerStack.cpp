@@ -17,11 +17,12 @@ namespace Engine
 			LOG_CORE_WARN("[SYSTEMS][LAYER STACK][LAYER STACK STOPPED]");
 		}
 
-		void LayerStack::push(std::shared_ptr<Layer> layer)
+		std::shared_ptr<Engine::Layer> LayerStack::push(std::shared_ptr<Layer> layer)
 		{
 			layer->onAttach();
 			m_layers.push_back(layer);
 			LOG_CORE_INFO("[SYSTEMS][LAYER STACK][ATTACHED LAYER:'{0}']", layer->getName());
+			return m_layers.back();
 		}
 
 		void LayerStack::pop()

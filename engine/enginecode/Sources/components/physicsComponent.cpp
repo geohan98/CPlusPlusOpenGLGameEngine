@@ -19,13 +19,21 @@ namespace Engine
 		{
 			if (m_body) m_body->enableGravity(_isEnabled);
 		}
-		void PhysicsComponent::addForce(glm::vec3 _force, glm::vec3 _point)
+		void PhysicsComponent::addForceAtPoint(glm::vec3 _force, glm::vec3 _point)
 		{
 			if (m_body)
 			{
 				rp3d::Vector3 force = rp3d::Vector3(_force.x, _force.y, _force.z);
 				rp3d::Vector3 point = rp3d::Vector3(_point.x, _point.y, _point.z);
 				m_body->applyForce(force, point);
+			}
+		}
+		void PhysicsComponent::addForce(glm::vec3 _force)
+		{
+			if (m_body)
+			{
+				rp3d::Vector3 force = rp3d::Vector3(_force.x, _force.y, _force.z);
+				m_body->applyForceToCenterOfMass(force);
 			}
 		}
 		void PhysicsComponent::addTorque(glm::vec3 _torque)
@@ -50,6 +58,18 @@ namespace Engine
 			{
 				rp3d::Vector3 linearVelocity = rp3d::Vector3(_linearVelocity.x, _linearVelocity.y, _linearVelocity.z);
 				m_body->setLinearVelocity(linearVelocity);
+			}
+		}
+		void PhysicsComponent::setPosition(glm::vec3 _position)
+		{
+			if (m_body)
+			{
+				rp3d::Vector3 pos = rp3d::Vector3(_position.x, _position.y, _position.z);
+				reactphysics3d::Transform transform;
+				reactphysics3d::Quaternion quat;
+				transform.setPosition(pos);
+				transform.setOrientation(reactphysics3d::Quaternion::identity());
+				m_body->setTransform(transform);
 			}
 		}
 	}

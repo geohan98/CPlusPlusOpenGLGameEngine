@@ -26,6 +26,7 @@ namespace Engine {
 			m_body->setIsSleeping(false);
 			m_body->setType(type);
 			m_body->enableGravity(useGravity);
+			m_body->setUserData(this);
 			//Create Box Shape
 			m_shape = new rp3d::SphereShape(radius);
 			//Add Shape to Rigibody

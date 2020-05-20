@@ -24,6 +24,7 @@ namespace Engine {
 			m_body->setIsSleeping(false);
 			m_body->setType(type);
 			m_body->enableGravity(useGravity);
+			m_body->setUserData(this);
 			//Create Box Shape
 			rp3d::Vector3 halfExtents(boxSize.x / 2.0f, boxSize.y / 2.0f, boxSize.z / 2.0f);
 			m_shape = new rp3d::BoxShape(halfExtents);

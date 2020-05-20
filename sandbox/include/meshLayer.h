@@ -39,5 +39,22 @@ namespace Engine
 		void onDetach() override;
 		void onUpdate(float deltaTime) override;
 		void onEvent(Events::Event& e) override;
+		void beNotified(MsgType _type, std::any _data) override ///< Part of observer pattern, updates the particle system proerties
+		{
+			if (_type == 0)
+			{
+				glm::vec3 force = std::any_cast<glm::vec3>(_data);
+				m_cubePhysicsBoxComponent->addForce(force);
+			}
+			if (_type == 1)
+			{
+				m_cubePhysicsBoxComponent->setPosition(glm::vec3(-2.0, 2.0, 0.0));
+				m_cubePhysicsBoxComponent->setLinearVelocity(glm::vec3(0, 0.1, 0));
+				m_cubePhysicsBoxComponent->setAngularVelocity(glm::vec3(0, 0.1, 0));
+				m_spherePhysicsSphereComponent->setPosition(glm::vec3(2.0, 2.0, 0.0));
+				m_spherePhysicsSphereComponent->setLinearVelocity(glm::vec3(0, 0.1, 0));
+				m_spherePhysicsSphereComponent->setAngularVelocity(glm::vec3(0, 0.1, 0));
+			}
+		};
 	};
 }

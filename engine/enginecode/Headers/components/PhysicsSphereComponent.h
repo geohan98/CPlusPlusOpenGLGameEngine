@@ -2,6 +2,7 @@
 #include "Headers/components/physicsComponent.h"
 #include "reactphysics3d.h"
 #include "glm/glm.hpp"
+#include "Headers/audio/audio.h"
 
 namespace Engine {
 
@@ -18,6 +19,10 @@ namespace Engine {
 			void onAttach(GameObject* parent) override { m_parent = parent; } ///< Run When Component is added to GameObject
 			void onDetach() override; ///< Run When Component is Removed From Parent
 			void onUpdate(float deltaTime) override; ///< Called Every Frame
+			void onCollision(PhysicsComponent _other) override
+			{
+				Systems::Audio::playSound("assets/audio/oof.mp3");
+			}
 		};
 
 	}

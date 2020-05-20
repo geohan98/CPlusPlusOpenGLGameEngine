@@ -21,10 +21,13 @@ namespace Engine {
 			virtual void onEvent(Events::Event& _e) override {};///< when an event happens this is called
 			virtual void receiveMessage(const ComponentMessage& _msg) override {};///< how to tinterperate messages
 			virtual void enableGravity(bool _isEnabled); ///< turns gravity on
-			virtual void addForce(glm::vec3 _force, glm::vec3 _point);///< adds a force to the ridgidbody
+			virtual void addForceAtPoint(glm::vec3 _force, glm::vec3 _point);///< adds a force to the ridgidbody
+			virtual void addForce(glm::vec3 _force);///< adds a force to the ridgidbody
 			virtual void addTorque(glm::vec3 _torque); ///< adds tourque to the ridgidbody
 			virtual void setAngularVelocity(glm::vec3 _angularVelocity); ///<  sets the angular velocity
 			virtual void setLinearVelocity(glm::vec3 _linearVelocity);///< sets the linear velocity
+			virtual void setPosition(glm::vec3 _position);
+			virtual void onCollision(PhysicsComponent _other) {};
 		};
 	}
 }
