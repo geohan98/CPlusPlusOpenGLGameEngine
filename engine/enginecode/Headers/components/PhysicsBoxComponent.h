@@ -5,6 +5,9 @@
 
 namespace Engine {
 	namespace Components {
+		/**
+	 *  PhysicsBoxComponent, A box shaped physics object
+	 */
 		class PhysicsBoxComponent : public PhysicsComponent
 		{
 		private:
