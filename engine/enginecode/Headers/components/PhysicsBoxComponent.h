@@ -18,10 +18,6 @@ namespace Engine {
 			void onAttach(GameObject* parent) override { m_parent = parent; } ///< Run When Component is added to GameObject
 			void onDetach() override; ///< Run When Component is Removed From Parent
 			void onUpdate(float deltaTime) override; ///< Called Every Frame
-			void onCollision(PhysicsComponent _other) override
-			{
-				Systems::Audio::playSound("assets/audio/woo.mp3");
-			}
 		};
 
 	}

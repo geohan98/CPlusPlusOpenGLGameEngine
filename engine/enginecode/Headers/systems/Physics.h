@@ -20,7 +20,7 @@ namespace Engine {
 			Engine::Components::PhysicsComponent* body2 = (Engine::Components::PhysicsComponent*)_collisionInfo.body2->getUserData();
 			body1->onCollision(*body2);
 			body2->onCollision(*body1);
-			LOG_CORE_ERROR("[PHYSICS][COLLISION LISTENER][COLLISION DETECTED WITH USER DATA]");
+			LOG_CORE_WARN("[PHYSICS][COLLISION LISTENER][COLLISION DETECTED WITH USER DATA]");
 		}
 	};
 

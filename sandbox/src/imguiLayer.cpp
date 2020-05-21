@@ -22,8 +22,9 @@ namespace Engine {
 		ImFont* roboto = io.Fonts->AddFontFromFileTTF("../sandbox/assets/fonts/Roboto-Medium.ttf", 16.0f);
 
 		// Can call createButton from anywhere in the project and it will be added to the buttons to load each frame
-		createButton("AddForce", { 200, 50 }, { 0, 0 }, "Add Force UP", ImVec4(0.8f, 0.4f, 0.5f, 1.0f), 1, [this] { notifySubscribers(0, glm::vec3(0, 1000, 0)); });
-		createButton("ResetObjects", { 200, 50 }, { 0, 60 }, "Reset Objects", ImVec4(0.8f, 0.4f, 0.5f, 1.0f), 0, [this] { notifySubscribers(1, nullptr); });
+		createButton("AddForce", { 200, 50 }, { 0, 0 }, "Add Force UP Cube", ImVec4(0.8f, 0.4f, 0.5f, 1.0f), 0, [this] { notifySubscribers(0, glm::vec3(0, 1000, 0)); });
+		createButton("PlaySound", { 200, 50 }, { 0, 0 }, "Play Sound", ImVec4(0.8f, 0.4f, 0.5f, 1.0f), 1, [this] { Systems::Audio::playSound("assets/audio/woo.mp3"); });
+		createButton("ResetObjects", { 200, 50 }, { 0, 0 }, "Reset Objects", ImVec4(0.8f, 0.4f, 0.5f, 1.0f), 2, [this] { notifySubscribers(1, nullptr); });
 	}
 
 	void ImGUILayer::onDetach()
