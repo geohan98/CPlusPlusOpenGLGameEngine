@@ -1,7 +1,0 @@
-Particle Data
-vec3 position;
-vec3 scale;
-vec4 colour;
-vec3 velocity;
-float lifetime;
-float spawnTime;
