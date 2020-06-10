@@ -1,6 +1,11 @@
 # C++ OpenGL Game Engine
 This work was done during the final year of my degree, during the first semester everyone would build the foundations of the engine, logging, time keeping, windows, OpenGL Abstraction, events, layers, and the entity component system. Then at the start of the second semester we were put into groups and had to pick somebody’s engine to build upon, my engine was chosen as I had completed most of the work from the previous semester and it was of higher quality. Each member of the team would then work on an individual project(s).
 
+# Lecturer Feedback
+* Our Lecturer was impressed by parts of the project and overall happy with the team’s performance.
+* My individual mark/ score was 73%, the highest in the group, the next highest was 65% and the lowest was 60%
+* In the presentation for the engine our lecture noted that 64% of the commits for the project were mine, there were five members in the group
+
 # My Individual projects were:
 * Particle System & Particle Component
 * Particle Editor Tool
