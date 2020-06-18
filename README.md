@@ -5,9 +5,9 @@ This work was done during the final year of my degree, during the first semester
 # Particle Designer Tool with ImGui Interface
 ![Particle Tool](https://github.com/geohan98/geohan98.github.io/blob/master/Images/fIKvygxFOG.gif)
 # Lecturer Feedback
-* Our Lecturer was impressed by parts of the project and overall happy with the team’s performance.
+* Our Lecturer was impressed by parts of the project and overall was happy with the team’s performance.
 * My individual score was 73%, the highest in the group, the next highest was 65% and the lowest was 60%
-* In the presentation for the engine our lecture noted that 64% of the commits for the project since the start of the semester (when the group work began) were mine, there were five members in the group
+* In the presentation for the engine our lecturer noted that 64% of the commits for the project since the start of the semester (when the group work began) were mine, there were five members in the group
 
 # My Individual projects were:
 * Particle System & Particle Component
