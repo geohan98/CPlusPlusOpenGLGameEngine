@@ -1,6 +1,9 @@
 # C++ OpenGL Game Engine
 This work was done during the final year of my degree, during the first semester everyone would build the foundations of the engine, logging, time keeping, windows, OpenGL Abstraction, events, layers, and the entity component system. Then at the start of the second semester we were put into groups and had to pick somebody’s engine to build upon, my engine was chosen as I had completed most of the work from the previous semester and it was of higher quality. Each member of the team would then work on an individual project(s).
-
+# Engine Application Showing ReactPhysics3D intergration, With ImGui Buttons For Actions
+![Physics Engine](https://github.com/geohan98/geohan98.github.io/blob/master/Images/hNtsVTfCAp.gif)
+# Particle Designer Tool With ImGui Interface
+![Particle Tool](https://github.com/geohan98/geohan98.github.io/blob/master/Images/fIKvygxFOG.gif)
 # Lecturer Feedback
 * Our Lecturer was impressed by parts of the project and overall happy with the team’s performance.
 * My individual score was 73%, the highest in the group, the next highest was 65% and the lowest was 60%
